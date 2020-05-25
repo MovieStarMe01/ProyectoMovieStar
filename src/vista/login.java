@@ -6,9 +6,9 @@
 package vista;
 
 import com.placeholder.PlaceHolder;
-import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -130,7 +130,7 @@ public class login extends javax.swing.JDialog {
         verPass.setForeground(new java.awt.Color(153, 153, 153));
         verPass.setText("Ver Contraseña");
         verPass.setBorder(null);
-        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         verPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
         verPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,9 +144,8 @@ public class login extends javax.swing.JDialog {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("    Registrarse");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -172,9 +171,8 @@ public class login extends javax.swing.JDialog {
 
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
         lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        lblEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        lblEntrar.setText("         Entrar");
-        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEntrar.setText("         Entraré");
+        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblEntrarMouseEntered(evt);
