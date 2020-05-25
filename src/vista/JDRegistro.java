@@ -269,7 +269,7 @@ public class JDRegistro extends javax.swing.JDialog {
 
         panelImage9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro_1.png"))); // NOI18N
         panelImage9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 10, 490, 100));
+        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 490, 50));
 
         jLabel1.setText("Hola Mundo!");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
