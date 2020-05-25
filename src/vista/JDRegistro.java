@@ -271,7 +271,7 @@ public class JDRegistro extends javax.swing.JDialog {
         panelImage9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 10, 490, 100));
 
-        jLabel1.setText("holaaaaaaaaaaaa");
+        jLabel1.setText("Hola Mundo!");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
