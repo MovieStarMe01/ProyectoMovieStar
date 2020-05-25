@@ -70,6 +70,7 @@ public class JDRegistro extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         chVerPass = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -270,6 +271,9 @@ public class JDRegistro extends javax.swing.JDialog {
         });
         jPanel1.add(chVerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
 
+        jLabel1.setText("Holaaaaaaaaaaaaaaaa");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -376,6 +380,7 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
