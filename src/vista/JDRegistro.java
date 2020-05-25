@@ -66,12 +66,10 @@ public class JDRegistro extends javax.swing.JDialog {
         txtPass1 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         chVerPass = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        panelImage9 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -246,10 +244,6 @@ public class JDRegistro extends javax.swing.JDialog {
         jLabel12.setText("Registrar");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 70, -1));
 
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro_1.png"))); // NOI18N
-        panelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 20, 510, 80));
-
         jSeparator2.setBackground(new java.awt.Color(237, 184, 73));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 82, 690, 10));
 
@@ -272,16 +266,9 @@ public class JDRegistro extends javax.swing.JDialog {
         });
         jPanel1.add(chVerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
 
-        jLabel1.setText("Holaaaaaaaaaaaaaaaa");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
-
-        jButton1.setText("no se le hace caso");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        panelImage9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro_1.png"))); // NOI18N
+        panelImage9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 10, 490, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,10 +330,6 @@ public class JDRegistro extends javax.swing.JDialog {
         }// fin del if
     }//GEN-LAST:event_txtPass2KeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -393,8 +376,6 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -408,7 +389,6 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
-    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage10;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
@@ -417,6 +397,7 @@ public class JDRegistro extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage6;
     private org.edisoncor.gui.panel.PanelImage panelImage7;
     private org.edisoncor.gui.panel.PanelImage panelImage8;
+    private org.edisoncor.gui.panel.PanelImage panelImage9;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtMaterno;
