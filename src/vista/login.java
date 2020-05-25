@@ -55,7 +55,7 @@ public class login extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         verPass = new javax.swing.JCheckBox();
         panelImage3 = new org.edisoncor.gui.panel.PanelImage();
-        jLabel4 = new javax.swing.JLabel();
+        lblRegistro = new javax.swing.JLabel();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         lblEntrar = new javax.swing.JLabel();
 
@@ -118,7 +118,7 @@ public class login extends javax.swing.JDialog {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 290, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logo.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(237, 184, 73));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -141,39 +141,37 @@ public class login extends javax.swing.JDialog {
         jPanel1.add(verPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, -1));
 
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/btns.png"))); // NOI18N
+        panelImage3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("    Registrarse");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblRegistro.setBackground(new java.awt.Color(255, 255, 255));
+        lblRegistro.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+        lblRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegistro.setText("     Registrarse");
+        lblRegistro.setToolTipText("");
+        lblRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblRegistroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRegistroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRegistroMouseExited(evt);
             }
         });
+        panelImage3.add(lblRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 160, 30));
 
-        javax.swing.GroupLayout panelImage3Layout = new javax.swing.GroupLayout(panelImage3);
-        panelImage3.setLayout(panelImage3Layout);
-        panelImage3Layout.setHorizontalGroup(
-            panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-        );
-        panelImage3Layout.setVerticalGroup(
-            panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage3Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 1, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 190, 30));
+        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 180, 40));
 
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/btns.png"))); // NOI18N
+        panelImage4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
-        lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
         lblEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        lblEntrar.setText("         Entrar");
+        lblEntrar.setText("          Entrar");
+        lblEntrar.setToolTipText("");
         lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -183,21 +181,9 @@ public class login extends javax.swing.JDialog {
                 lblEntrarMouseExited(evt);
             }
         });
+        panelImage4.add(lblEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
 
-        javax.swing.GroupLayout panelImage4Layout = new javax.swing.GroupLayout(panelImage4);
-        panelImage4.setLayout(panelImage4Layout);
-        panelImage4Layout.setHorizontalGroup(
-            panelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEntrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-        );
-        panelImage4Layout.setVerticalGroup(
-            panelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage4Layout.createSequentialGroup()
-                .addComponent(lblEntrar)
-                .addGap(0, 1, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 190, 30));
+        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 180, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
@@ -240,28 +226,47 @@ public class login extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void verPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPassMouseClicked
+        /*
+        si se presiona el CheckBox verPass entonces en el txtPassword será visible la contraseña
+        de lo contrario se encriptara el txtPassword con *
+        */
         if(verPass.isSelected()){
             txtPassword.setEchoChar((char)0);
         }else if(verPass.isShowing()){
             txtPassword.setEchoChar('*');
-        }
+        }// fin del else if
     }//GEN-LAST:event_verPassMouseClicked
 
     private void lblEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseEntered
+        //Al entrar el mouse al label se cambiara de color el texto y se aplica la misma fuente 
         lblEntrar.setFont(lblEntrar.getFont());
-        //lblEntrar.setForeground(204,204,204);
         lblEntrar.setForeground(Color.GRAY);
     }//GEN-LAST:event_lblEntrarMouseEntered
 
     private void lblEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseExited
+       //Al salir el mouse al label se cambiara de color el texto al que tenia por default
        lblEntrar.setFont((lblEntrar.getFont()));
        lblEntrar.setForeground(Color.WHITE);
     }//GEN-LAST:event_lblEntrarMouseExited
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseClicked
+        //Creamos una instancia del JDialogRegistro
         JDRegistro miRegistro = new JDRegistro(null, true);
+        //Hacemos visible nuestra ventana miRegistro 
         miRegistro.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lblRegistroMouseClicked
+
+    private void lblRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseEntered
+        //Al entrar el mouse al label se cambiara de color el texto y se aplica la misma fuente 
+        lblRegistro.setFont(lblRegistro.getFont());
+        lblRegistro.setForeground(Color.GRAY);
+    }//GEN-LAST:event_lblRegistroMouseEntered
+
+    private void lblRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseExited
+        //Al salir el mouse al label se cambiara de color el texto al que tenia por default
+        lblRegistro.setFont(lblRegistro.getFont());
+        lblRegistro.setForeground(Color.WHITE);
+    }//GEN-LAST:event_lblRegistroMouseExited
 
     /**
      * @param args the command line arguments
@@ -309,13 +314,13 @@ public class login extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblCandado;
     private javax.swing.JLabel lblEntrar;
+    private javax.swing.JLabel lblRegistro;
     private javax.swing.JLabel lblUser;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
@@ -333,10 +338,14 @@ public class login extends javax.swing.JDialog {
         holder = new PlaceHolder(txtUser, "Usuario");
     }// fin del método placeHolder
 
+    /**
+     * Método para mostrar la leyenda "contraseña" en el campos de texto
+     * txtPassword
+     */
     private void placeHolderPass() {
-        txtPassword.setEchoChar((char)0);
         holder = new PlaceHolder(txtPassword, "Contraseña");
-                
-    }
+        txtPassword.setEchoChar((char)0);
+        
+    }// fin del méotod placeHolderPass
     
 }// fin de la clase login
