@@ -70,6 +70,7 @@ public class JDRegistro extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         chVerPass = new javax.swing.JCheckBox();
         panelImage9 = new org.edisoncor.gui.panel.PanelImage();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -270,6 +271,9 @@ public class JDRegistro extends javax.swing.JDialog {
         panelImage9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 10, 490, 100));
 
+        jLabel1.setText("holaaaaaaaaaaaa");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -376,6 +380,7 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
