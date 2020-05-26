@@ -172,7 +172,7 @@ public class login extends javax.swing.JDialog {
 
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
         lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        lblEntrar.setText("         Entrarás");
+        lblEntrar.setText("         Entrar");
         lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
