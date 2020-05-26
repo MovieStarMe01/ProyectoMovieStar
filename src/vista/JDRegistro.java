@@ -65,6 +65,7 @@ public class JDRegistro extends javax.swing.JDialog {
         chVerPass = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -194,14 +195,14 @@ public class JDRegistro extends javax.swing.JDialog {
         btnRegistrar.setBorder(null);
         btnRegistrar.setBorderPainted(false);
         btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegistrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro(1).png"))); // NOI18N
         jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 60, 50));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/closeDoor.png"))); // NOI18N
         btnSalir.setBorder(null);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setDefaultCapable(false);
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/openDoor.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +251,7 @@ public class JDRegistro extends javax.swing.JDialog {
         chVerPass.setForeground(new java.awt.Color(153, 153, 153));
         chVerPass.setText("Ver Contraseñas");
         chVerPass.setBorder(null);
-        chVerPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chVerPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chVerPass.setFocusPainted(false);
         chVerPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         chVerPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
@@ -264,6 +265,9 @@ public class JDRegistro extends javax.swing.JDialog {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro img.png"))); // NOI18N
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 270, 50));
+
+        jLabel1.setText("Ya sale XD");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -371,6 +375,7 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
