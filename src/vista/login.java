@@ -203,7 +203,7 @@ public class login extends javax.swing.JDialog {
         jLabel5.setText("WOAAAAAAAAAAA PEDROZAAAAAAAAAAAA");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, 30));
 
-        jLabel6.setText("sdjmvgbskjdbvjsb");
+        jLabel6.setText("Holaaaaaaa");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
