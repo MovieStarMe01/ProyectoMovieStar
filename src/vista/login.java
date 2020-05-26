@@ -59,6 +59,7 @@ public class login extends javax.swing.JDialog {
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         lblEntrar = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -202,6 +203,9 @@ public class login extends javax.swing.JDialog {
         jLabel5.setText("WOAAAAAAAAAAA PEDROZAAAAAAAAAAAA");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, 30));
 
+        jLabel6.setText("sdjmvgbskjdbvjsb");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
         pack();
@@ -314,6 +318,7 @@ public class login extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
