@@ -261,39 +261,52 @@ public class login extends javax.swing.JDialog {
     }//GEN-LAST:event_lblRegistrarMouseExited
 
     private void lblEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseClicked
-        //Obtengo la contraseña encriptada MD5
-        String contra = encriptar();
-        //Obtengo el usurio 
-        String usu = txtUser.getText();
-        
-        try {
-            /*
-            Utilizo el método verificarUP para verificar usuario y contraseña y le mando
-            como parámetro el usuario y la contraseña ya encriptada MD5
-            */
-            if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
-                //Mando mensaje de que el logeo fue exitoso 
-                JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso</h2></html>","Login Exitoso",
-                    JOptionPane.INFORMATION_MESSAGE);
-                //Creo una instancia de mi FrmePrincipal
-                FrmePrincipal miVentana = new FrmePrincipal();
-                //Hago visible miVentana
-                miVentana.setVisible(true);
-                //Cierro la ventana login
-                this.dispose();
-            }else{
-                //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
-                JOptionPane.showMessageDialog(null, "<html><h2>Nick-Name o Contraseña Incorrecto</h2></html>","ERROR",
+        //checar si se llenaron los datos
+        if(txtUser.getText().equals("")){
+            //primero el usuario
+            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó el nombre del usuario</h2></html>","ERROR",
                     JOptionPane.ERROR_MESSAGE);
-                //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
-                txtUser.setText("");
-                txtPassword.setText("");
-                txtUser.requestFocusInWindow();
-            }// fin del else
+        }else if(txtPassword.getText().equals("")){
+            //luego la contraseña
+            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó la contraseña</h2></html>","ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+        }else{
+            //si se llegó aquí, se llenaron los datos
             
-        }catch(DAOException ex){
-            mensajeError(ex);
-        }// fin del catch
+            //Obtengo la contraseña encriptada MD5
+            String contra = encriptar();
+            //Obtengo el usurio 
+            String usu = txtUser.getText();
+            
+            try {
+                /*
+                Utilizo el método verificarUP para verificar usuario y contraseña y le mando
+                como parámetro el usuario y la contraseña ya encriptada MD5
+                */
+                if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
+                    //Mando mensaje de que el logeo fue exitoso 
+                    JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso</h2></html>","Login Exitoso",
+                        JOptionPane.INFORMATION_MESSAGE);
+                    //Creo una instancia de mi FrmePrincipal
+                    FrmePrincipal miVentana = new FrmePrincipal();
+                    //Hago visible miVentana
+                    miVentana.setVisible(true);
+                    //Cierro la ventana login
+                    this.dispose();
+                }else{
+                    //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
+                    JOptionPane.showMessageDialog(null, "<html><h2>Nick-Name o Contraseña Incorrecto</h2></html>","ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+                    //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
+                    txtUser.setText("");
+                    txtPassword.setText("");
+                    txtUser.requestFocusInWindow();
+                }// fin del else
+                
+            }catch(DAOException ex){
+                mensajeError(ex);
+            }// fin del catch
+        }
     }//GEN-LAST:event_lblEntrarMouseClicked
 
     /**
