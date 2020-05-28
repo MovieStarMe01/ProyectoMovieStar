@@ -5,19 +5,27 @@
  */
 package vista;
 
+import DAO.DAOException;
+import DAO.DAOManager;
+import DAOMySQL.MySQLDAOManager;
 import com.placeholder.PlaceHolder;
 import java.awt.Color;
-import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyEvent;
-
+import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
+    
 /**
  *
  * @author Jesús Moisés
  */
 public class login extends javax.swing.JDialog {
 
+    //Creamos un objeto de tipo interface IUsuarioDAO
+    private DAOManager manager = null;
+    //private Usuario idUSU;
     PlaceHolder holder;
-    String contraseña = "Contraseña";
+    String contraseña = "";
+    String nickName = "";
+    
     /**
      * Creates new form login
      */
@@ -25,9 +33,7 @@ public class login extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        placerHolder();
-        placeHolderPass();
-        
+        this.manager = new MySQLDAOManager();
         
     }
 
@@ -50,14 +56,17 @@ public class login extends javax.swing.JDialog {
         lblCandado = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         verPass = new javax.swing.JCheckBox();
         panelImage3 = new org.edisoncor.gui.panel.PanelImage();
-        jLabel4 = new javax.swing.JLabel();
+        lblRegistrar = new javax.swing.JLabel();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         lblEntrar = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        panelImage6 = new org.edisoncor.gui.panel.PanelImage();
+        panelImage5 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -84,24 +93,6 @@ public class login extends javax.swing.JDialog {
 
         txtPassword.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPassword.setBorder(null);
-        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPasswordFocusLost(evt);
-            }
-        });
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
-            }
-        });
-        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyTyped(evt);
-            }
-        });
         panelImage2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 230, 50));
@@ -117,12 +108,9 @@ public class login extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 290, 70));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logo.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(237, 184, 73));
+        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 20, 260));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 20, 260));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, -1, -1));
 
         verPass.setBackground(new java.awt.Color(255, 255, 255));
@@ -130,7 +118,7 @@ public class login extends javax.swing.JDialog {
         verPass.setForeground(new java.awt.Color(153, 153, 153));
         verPass.setText("Ver Contraseña");
         verPass.setBorder(null);
-        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         verPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
         verPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,13 +130,20 @@ public class login extends javax.swing.JDialog {
 
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/btns.png"))); // NOI18N
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel4.setText("    Registrarse");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblRegistrar.setBackground(new java.awt.Color(255, 255, 255));
+        lblRegistrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        lblRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegistrar.setText("    Registrarse");
+        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblRegistrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRegistrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRegistrarMouseExited(evt);
             }
         });
 
@@ -156,12 +151,12 @@ public class login extends javax.swing.JDialog {
         panelImage3.setLayout(panelImage3Layout);
         panelImage3Layout.setHorizontalGroup(
             panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+            .addComponent(lblRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
         );
         panelImage3Layout.setVerticalGroup(
             panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage3Layout.createSequentialGroup()
-                .addComponent(jLabel4)
+                .addComponent(lblRegistrar)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
@@ -171,9 +166,13 @@ public class login extends javax.swing.JDialog {
 
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
         lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        lblEntrar.setForeground(new java.awt.Color(255, 255, 255));
         lblEntrar.setText("         Entrar");
-        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEntrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblEntrarMouseEntered(evt);
             }
@@ -186,7 +185,10 @@ public class login extends javax.swing.JDialog {
         panelImage4.setLayout(panelImage4Layout);
         panelImage4Layout.setHorizontalGroup(
             panelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblEntrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+            .addGroup(panelImage4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelImage4Layout.setVerticalGroup(
             panelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,69 +199,102 @@ public class login extends javax.swing.JDialog {
 
         jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 190, 30));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logo.png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 120));
+
+        panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logoNewBlanco.png"))); // NOI18N
+        panelImage6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 110));
+
+        panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/newLogoNA.png"))); // NOI18N
+        panelImage5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 310, 120));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-        //si se da un clic en el campo txtPasword los caracteres se encriptaran con *
-        if(!txtPassword.equals("")){ 
-            txtPassword.setEchoChar('*');
-        }else{
-            placeHolderPass();
-        }
-    }//GEN-LAST:event_txtPasswordMouseClicked
-
-    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
-       //si se coloca el cursor en el campo txtPassword los caracteres se ecriptan con *
-        txtPassword.setEchoChar('*');
-    }//GEN-LAST:event_txtPasswordKeyTyped
-
-    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
-        /* si se pierde el focus del mouse y esta vacio del campo txtPasword se
-        * manda llamar el método placeHolder para poner la leyenda
-        */
-        if(!txtPassword.equals("")){
-            txtPassword.setEchoChar('*');
-        }else{
-            placeHolderPass();
-        }
-    }//GEN-LAST:event_txtPasswordFocusLost
-
-    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
-        txtPassword.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, java.util.Collections.EMPTY_SET);
-        
-        if(evt.getKeyCode() == KeyEvent.VK_TAB){
-            txtUser.requestFocus();
-            txtPassword.setCaretPosition(0);
-        }
-    }//GEN-LAST:event_txtPasswordKeyPressed
-
     private void verPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPassMouseClicked
+       //Si se verPass esta seleccionado mostrará la contraseña
         if(verPass.isSelected()){
             txtPassword.setEchoChar((char)0);
         }else if(verPass.isShowing()){
             txtPassword.setEchoChar('*');
-        }
+        }// fin del else if
     }//GEN-LAST:event_verPassMouseClicked
 
     private void lblEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseEntered
+        // al pasar el mouse dentro del label este cambiará de color a gris
         lblEntrar.setFont(lblEntrar.getFont());
-        //lblEntrar.setForeground(204,204,204);
         lblEntrar.setForeground(Color.GRAY);
     }//GEN-LAST:event_lblEntrarMouseEntered
 
     private void lblEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseExited
+       // al salir el mouse de los limites del label este cambiará de color a blanco
        lblEntrar.setFont((lblEntrar.getFont()));
        lblEntrar.setForeground(Color.WHITE);
     }//GEN-LAST:event_lblEntrarMouseExited
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lblRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseClicked
+        //Creamos una instancia de JDRegistro y hacemos visible el objeto MiRegistro
         JDRegistro miRegistro = new JDRegistro(null, true);
         miRegistro.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lblRegistrarMouseClicked
+
+    private void lblRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseEntered
+        // al pasar el mouse dentro del label este cambiará de color
+        lblRegistrar.setFont(lblRegistrar.getFont());
+        lblRegistrar.setForeground(Color.GRAY);
+    }//GEN-LAST:event_lblRegistrarMouseEntered
+
+    private void lblRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseExited
+        // al salir el mouse de los limites del label este cambiará de color a blanco
+        lblRegistrar.setFont(lblRegistrar.getFont());
+        lblRegistrar.setForeground(Color.WHITE);
+    }//GEN-LAST:event_lblRegistrarMouseExited
+
+    private void lblEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEntrarMouseClicked
+        //Obtengo la contraseña encriptada MD5
+        String contra = encriptar();
+        //Obtengo el usurio 
+        String usu = txtUser.getText();
+        
+        try {
+            /*
+            Utilizo el método verificarUP para verificar usuario y contraseña y le mando
+            como parámetro el usuario y la contraseña ya encriptada MD5
+            */
+            if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
+                //Mando mensaje de que el logeo fue exitoso 
+                JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso</h2></html>","Login Exitoso",
+                    JOptionPane.INFORMATION_MESSAGE);
+                //Creo una instancia de mi FrmePrincipal
+                FrmePrincipal miVentana = new FrmePrincipal();
+                //Hago visible miVentana
+                miVentana.setVisible(true);
+                //Cierro la ventana login
+                this.dispose();
+            }else{
+                //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
+                JOptionPane.showMessageDialog(null, "<html><h2>Nick-Name o Contraseña Incorrecto</h2></html>","ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+                //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
+                txtUser.setText("");
+                txtPassword.setText("");
+                txtUser.requestFocusInWindow();
+            }// fin del else
+            
+        }catch(DAOException ex){
+            mensajeError(ex);
+        }// fin del catch
+    }//GEN-LAST:event_lblEntrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -307,18 +342,21 @@ public class login extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblCandado;
     private javax.swing.JLabel lblEntrar;
+    private javax.swing.JLabel lblRegistrar;
     private javax.swing.JLabel lblUser;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
+    private org.edisoncor.gui.panel.PanelImage panelImage5;
+    private org.edisoncor.gui.panel.PanelImage panelImage6;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     private javax.swing.JCheckBox verPass;
@@ -331,10 +369,62 @@ public class login extends javax.swing.JDialog {
         holder = new PlaceHolder(txtUser, "Usuario");
     }// fin del método placeHolder
 
+    /**
+     * Método para mostrar leyenda de msj en los campos de contraseña
+     */
     private void placeHolderPass() {
         txtPassword.setEchoChar((char)0);
         holder = new PlaceHolder(txtPassword, "Contraseña");
-                
-    }
+    }// fin del método placeHolderPass
+
+    /**
+     * Método para mandar mensaje de error
+     * @param ex 
+     */
+    private void mensajeError(DAOException ex) {
+        //Si getMessage existe obtenemos su valor
+        String mensajeError;
+
+        try{
+            mensajeError = "Mensaje: " + ex.getCause().getMessage();
+        }catch(NullPointerException error){
+            mensajeError = "";
+        }// fin del catch
+
+        JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
+                JOptionPane.ERROR_MESSAGE);
+    }// fin del método mensajeError
+    
+    /**
+     * Método para obtener la contraseña escrita
+     * @return contraseña
+     */
+    public String getContraseña(){
+        contraseña = txtPassword.getText();
+        return contraseña;
+    }// fin del método getContraseña
+    
+    /**
+     * Método para obtener el nickName del usuario
+     * @return nickName
+     */
+    public String getNickName(){
+        nickName = txtUser.getText();
+        System.out.println(nickName);
+        return nickName;
+    }// fin del método getNickName
+
+    /**
+     * Método para encriptar la contraseña que se introduce en el campo de texto
+     * contraseña
+     */
+    private String encriptar() {
+        //Obtengo la contraseña que se ingresó
+        String contra = txtPassword.getText();
+        //Encripto la contraseña a MD5
+        String textoEncriptadoConMD5 = DigestUtils.md5Hex(contra); 
+        System.out.println(textoEncriptadoConMD5);
+        return textoEncriptadoConMD5;
+    }// fin del método encriptar
     
 }// fin de la clase login

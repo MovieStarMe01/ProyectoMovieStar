@@ -5,21 +5,40 @@
  */
 package vista;
 
+import DAO.DAOException;
+import DAO.DAOManager;
+import DAOMySQL.MySQLDAOManager;
+import Modelo.Usuario;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jesús Moisés
  */
 public class JDRegistro extends javax.swing.JDialog {
-
+    //Creamos un objeto de tipo interface IAutorDAO
+    private DAOManager manager = null;
+    
+    //Campos para alamcenar los datos del formulario
+    private String nombreUsuario;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String domicilio;
+    private String celular;
+    private String nickName;
+    private String contraseña;
+    private String contraseñaConfirmacion;
+    
     /**
      * Creates new form JDRegistro
      */
     public JDRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.manager = new MySQLDAOManager();
     }
 
     /**
@@ -65,7 +84,6 @@ public class JDRegistro extends javax.swing.JDialog {
         chVerPass = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -195,14 +213,19 @@ public class JDRegistro extends javax.swing.JDialog {
         btnRegistrar.setBorder(null);
         btnRegistrar.setBorderPainted(false);
         btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro(1).png"))); // NOI18N
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 60, 50));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/closeDoor.png"))); // NOI18N
         btnSalir.setBorder(null);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setDefaultCapable(false);
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/openDoor.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +274,7 @@ public class JDRegistro extends javax.swing.JDialog {
         chVerPass.setForeground(new java.awt.Color(153, 153, 153));
         chVerPass.setText("Ver Contraseñas");
         chVerPass.setBorder(null);
-        chVerPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chVerPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         chVerPass.setFocusPainted(false);
         chVerPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         chVerPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
@@ -265,9 +288,6 @@ public class JDRegistro extends javax.swing.JDialog {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro img.png"))); // NOI18N
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 270, 50));
-
-        jLabel1.setText("Ya sale XD");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -329,6 +349,38 @@ public class JDRegistro extends javax.swing.JDialog {
         }// fin del else if
     }//GEN-LAST:event_chVerPassMouseClicked
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        /*
+        si se Hace clic en este bóton, se hará el registro en laBD si todo está 
+        Correcto
+        */
+        if(validar()){
+            
+            /*
+            llamamos el método verificarPass para ver si las contraseñas son iguales
+            de lo contrario se mandará mensaje de error
+            */
+            if(verificarPass()){
+
+                //llamamos el constructor para crear un Objeto de tipo Usuario
+                Usuario miUsuario = new Usuario(nombreUsuario, apellidoPaterno, apellidoMaterno, domicilio, celular, 
+                nickName, contraseña);
+
+                try{
+                    manager.getUsuarioDAO().insertar(miUsuario);
+                    JOptionPane.showMessageDialog(null, "<html><h2>El Usuario se ha Registardo Correctamente</h2></html>");
+                    limpiarFormulario();
+                }catch(DAOException ex){
+                    mensajeError(ex);
+                }// fin del catch
+            }else{
+                JOptionPane.showMessageDialog(null,"<html><h2>Las Contraseñas no son Iguales</h2></html>", "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+            }// fin del else
+            
+        }// fin dl if validar
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -375,7 +427,6 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -408,4 +459,121 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtPass2;
     private javax.swing.JTextField txtPaterno;
     // End of variables declaration//GEN-END:variables
-}
+
+    //Métodos
+    /**
+     * Método para validar que todos los campos de texto esten llenos
+     * @return true si está todo correcto
+     * @return false si faltan datos
+     */
+    private boolean validar() {
+        boolean validacion = false;
+        
+        nombreUsuario = txtNombre.getText().trim();
+        apellidoPaterno = txtPaterno.getText().trim();
+        apellidoMaterno = txtMaterno.getText().trim();
+        domicilio = txtDomicilio.getText().trim();
+        celular = txtCelular.getText().trim();
+        nickName = txtNick.getText().trim();
+        contraseña = txtPass1.getText();
+        contraseñaConfirmacion = txtPass2.getText();
+
+        if(nombreUsuario.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un nombre de Usuario");
+            txtNombre.requestFocusInWindow();
+            return validacion;
+        }// fin del if nombreUsuario
+
+        if(apellidoPaterno.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Paterno");
+            txtPaterno.requestFocusInWindow();
+            return validacion;
+        }// fin del if apellidPaterno
+        
+        if(apellidoMaterno.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Materno");
+            txtMaterno.requestFocusInWindow();
+            return validacion;
+        }// fin del if apellidoMaterno
+        
+        if(domicilio.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Domicilio");
+            txtDomicilio.requestFocusInWindow();
+            return validacion;
+        }// fin del if domicilio
+        
+        if(celular.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Número de Celular");
+            txtCelular.requestFocusInWindow();
+            return validacion;
+        }// fin del if celular
+        
+        if(nickName.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Nick-Name");
+            txtNick.requestFocusInWindow();
+            return validacion;
+        }// fin del if nickName
+        
+        if(contraseña.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa una Contraseña");
+            txtPass1.requestFocusInWindow();
+            return validacion;
+        }// fin del if contraseña
+        
+        if(contraseñaConfirmacion.equals("")){
+            JOptionPane.showMessageDialog(null, "Confirma Contraseña");
+            txtPass2.requestFocusInWindow();
+            return validacion;
+        }// fin del if contraseñConfirmacion
+
+        return true;
+    }// fin del método validar
+
+    /**
+     * Metodo para Mandar Mensaje de Error
+     * @param ex 
+     */
+    private void mensajeError(DAOException ex) {
+        //Si getMessage existe obtenemos su valor
+        String mensajeError;
+
+        try{
+            mensajeError = "Mensaje: " + ex.getCause().getMessage();
+        }catch(NullPointerException error){
+            mensajeError = "";
+        }// fin del catch
+
+        JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
+                JOptionPane.ERROR_MESSAGE);
+    }// fin del método mensajeError
+
+    /**
+     * Método para verificar si las contraseñas son iguales
+     * @return true si las contraseñas son iguales
+     */
+    private boolean verificarPass() {
+        boolean verificar = false;
+      
+        if(!contraseña.contains(contraseñaConfirmacion)){
+            return verificar;
+        }
+        return true;
+    }// fin del método verificarPass
+
+    /**
+     * Método para limpiar las cajas de texto y poner el cursor en el campo de
+     * nombre
+     */
+    private void limpiarFormulario() {
+        txtNombre.setText("");
+        txtPaterno.setText("");
+        txtMaterno.setText("");
+        txtDomicilio.setText("");
+        txtCelular.setText("");
+        txtNick.setText("");
+        txtPass1.setText("");
+        txtPass2.setText("");
+        txtNombre.requestFocusInWindow();
+    }// fin del método limpiarFormulario
+    
+}// fin de la clase JDRegistro
