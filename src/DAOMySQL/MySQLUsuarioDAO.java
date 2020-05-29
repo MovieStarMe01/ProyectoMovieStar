@@ -55,7 +55,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 ps.setString(1, miUsuario.getNombreUsuario());
                 ps.setString(2, miUsuario.getApellidoPaterno());
                 ps.setString(3, miUsuario.getApellidoMaterno());
-                ps.setString(4, miUsuario.getDomiciilio());
+                ps.setString(4, miUsuario.getDomicilio());
                 ps.setString(5, miUsuario.getCelular());
                 ps.setString(6, miUsuario.getNickName());
                 ps.setString(7, miUsuario.getContraseña());
