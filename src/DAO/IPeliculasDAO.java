@@ -5,16 +5,12 @@
  */
 package DAO;
 
+import Modelo.peliculas;
+
 /**
  *
  * @author Jesús Moisés
  */
-public interface DAOManager {
-    /*
-    Mediante esta  interface haremos una forma centralizada de pedir
-    cualquier DAO, Usuario etc.
-    */
-    IUsuarioDAO getUsuarioDAO();
-    IClienteDAO getClienteDAO();
-   
+public interface IPeliculasDAO extends IDAO<peliculas, String>{
+    
 }

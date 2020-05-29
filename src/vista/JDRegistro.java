@@ -373,6 +373,7 @@ public class JDRegistro extends javax.swing.JDialog {
                 }catch(DAOException ex){
                     mensajeError(ex);
                 }// fin del catch
+            this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"<html><h2>Las Contraseñas no son Iguales</h2></html>", "ERROR",
                     JOptionPane.ERROR_MESSAGE);

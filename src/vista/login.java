@@ -64,8 +64,6 @@ public class login extends javax.swing.JDialog {
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         lblEntrar = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        panelImage6 = new org.edisoncor.gui.panel.PanelImage();
         panelImage5 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -118,7 +116,7 @@ public class login extends javax.swing.JDialog {
         verPass.setForeground(new java.awt.Color(153, 153, 153));
         verPass.setText("Ver Contraseña");
         verPass.setBorder(null);
-        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         verPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
         verPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,9 +130,8 @@ public class login extends javax.swing.JDialog {
 
         lblRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         lblRegistrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        lblRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         lblRegistrar.setText("    Registrarse");
-        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegistrarMouseClicked(evt);
@@ -166,9 +163,8 @@ public class login extends javax.swing.JDialog {
 
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
         lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        lblEntrar.setForeground(new java.awt.Color(255, 255, 255));
         lblEntrar.setText("         Entrar");
-        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblEntrarMouseClicked(evt);
@@ -202,16 +198,9 @@ public class login extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logo.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 120));
-
-        panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/logoNewBlanco.png"))); // NOI18N
-        panelImage6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 110));
-
-        panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/newLogoNA.png"))); // NOI18N
+        panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/ver2.png"))); // NOI18N
         panelImage5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 310, 120));
+        jPanel3.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 320, 260));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
@@ -353,7 +342,6 @@ public class login extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -369,7 +357,6 @@ public class login extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage3;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
     private org.edisoncor.gui.panel.PanelImage panelImage5;
-    private org.edisoncor.gui.panel.PanelImage panelImage6;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     private javax.swing.JCheckBox verPass;
