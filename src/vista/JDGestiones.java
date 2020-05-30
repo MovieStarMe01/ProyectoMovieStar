@@ -34,6 +34,7 @@ public class JDGestiones extends javax.swing.JDialog {
         btnRentadas = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
         btnAlta = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,7 +45,7 @@ public class JDGestiones extends javax.swing.JDialog {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 710, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 700, -1));
 
         btnRentadas.setText("Peliculas Rentadas");
         jPanel1.add(btnRentadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 160, 130));
@@ -59,6 +60,14 @@ public class JDGestiones extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 160, 130));
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +88,10 @@ public class JDGestiones extends javax.swing.JDialog {
         JDAltaPelicula miPelicula = new JDAltaPelicula(null, true);
         miPelicula.setVisible(true);
     }//GEN-LAST:event_btnAltaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,6 +139,7 @@ public class JDGestiones extends javax.swing.JDialog {
     private javax.swing.JButton btnAlta;
     private javax.swing.JButton btnBaja;
     private javax.swing.JButton btnRentadas;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

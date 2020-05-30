@@ -32,6 +32,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private String audio;
     private String calidad;
     private String peliID;
+    private String estado = "activo";
     /**
      * Creates new form JDAltaPelicula
      */
@@ -290,8 +291,8 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         */
         if(validar()){
             //llamamos el constructor para crear un Objeto de tipo Pelicula
-            peliculas miPelicula = new peliculas(genero, peliTitulo, peliSinopsis, Double.parseDouble(precioRenta),
-                    Double.parseDouble(precioVenta), caratula, Integer.parseInt(año), audio, calidad, peliID);
+            peliculas miPelicula = new peliculas(peliID, genero, peliTitulo, peliSinopsis, Double.parseDouble(precioRenta),
+                    Double.parseDouble(precioVenta), caratula, audio, calidad, Integer.parseInt(año), estado);
 
                 try{
                     manager.getPeliculasDAO().insertar(miPelicula);
@@ -309,8 +310,8 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         jf.showOpenDialog(this);
         File caratulaF = jf.getSelectedFile();
         if(caratulaF != null){
-            txtCaratula.setText(caratulaF.getAbsolutePath());
-        }
+            txASinopsis.setText(caratulaF.getAbsolutePath());
+        }// fin del if
         
     }//GEN-LAST:event_btnAbrirCaratulaActionPerformed
 
@@ -404,19 +405,32 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private boolean validar() {
         boolean validacion = false;
         
-        peliTitulo = txtTitulo.getText().trim();
-        peliSinopsis = txASinopsis.getText().trim();
-        precioRenta = txtPrecioRenta.getText().trim();
-        precioVenta = txtGenero.getText().trim();
-        //caratula = txtCaratula.getText().trim();
+        peliID = txtPeliID.getText();
+        genero = txtGenero.getText();
+        peliTitulo = txtTitulo.getText();
+        peliSinopsis = txASinopsis.getText();
+        precioRenta = txtPrecioRenta.getText();
+        precioVenta = txtPrecioVenta1.getText();
+        caratula = txtCaratula.getText();
+        audio = txtAudio.getText();
+        calidad = txtCalidad.getText();
         año = txtAño.getText().trim();
-        audio = txtAudio.getText().trim();
-        calidad = txtCalidad.getText().trim();
-        genero = txtGenero.getText().trim();
+        
+        if(peliID.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un ID a la Pelicula");
+            txtPeliID.requestFocusInWindow();
+            return validacion;
+        }// fin del if peliID
+        
+        if(genero.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Género");
+            txtGenero.requestFocusInWindow();
+            return validacion;
+        }// fin el if genero
         
         if(peliTitulo.equals("")){
             JOptionPane.showMessageDialog(null, "Ingresa un Título");
-            txtPeliID.requestFocusInWindow();
+            txtTitulo.requestFocusInWindow();
             return validacion;
         }// fin del if peliTitulo
         
@@ -434,41 +448,35 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         
         if(precioVenta.equals("")){
             JOptionPane.showMessageDialog(null, "Ingresa un Precio de Venta");
-            txtGenero.requestFocusInWindow();
+            txtPrecioVenta1.requestFocusInWindow();
             return validacion;
         }// fin del if precioVenta
+        
+        if(caratula.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa una Caratula");
+            txtCaratula.requestFocusInWindow();
+            return validacion;
+        }// fin del if caratula
+        
+         if(audio.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa un Audio");
+            txtAudio.requestFocusInWindow();
+            return validacion;
+        }// fin del if audio
+         
+          if(calidad.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa una Calidad");
+            txtCalidad.requestFocusInWindow();
+            return validacion;
+        }// fin del if calidad
         
         if(año.equals("")){
             JOptionPane.showMessageDialog(null, "Ingresa un Año");
             txtAño.requestFocusInWindow();
             return validacion;
         }// fin del if año
-        
-        if(audio.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Audio");
-            txtAudio.requestFocusInWindow();
-            return validacion;
-        }// fin del if audio
-        
-        if(calidad.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Calidad");
-            txtCalidad.requestFocusInWindow();
-            return validacion;
-        }// fin del if calidad
-        
-        if(genero.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Género");
-            txtGenero.requestFocusInWindow();
-            return validacion;
-        }// fin el if genero
-        
-        /*if(caratula.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Caratula");
-            txtCaratula.requestFocusInWindow();
-            return validacion;
-        }// fin del if caratula*/
-            
-        return validacion;
+           
+        return true;
     }// fin del método validar
 
     /**
@@ -477,14 +485,15 @@ public class JDAltaPelicula extends javax.swing.JDialog {
      */
     private void limpiarFormulario() {
         txtPeliID.setText("");
+        txtGenero.setText("");
         txtTitulo.setText("");
+        txASinopsis.setText("");
+        txtPrecioRenta.setText("");
+        txtPrecioVenta1.setText("");
+        txtCaratula.setText("");
+        txtAudio.setText("");
         txtCalidad.setText("");
         txtAño.setText("");
-        txtAudio.setText("");
-        txtPrecioRenta.setText("");
-        txtGenero.setText("");
-        txtCaratula.setText("");
-        cmbGeneros.setSelectedItem(1);
         txtPeliID.requestFocusInWindow();
     }//fin del método limpiarFormulario
 

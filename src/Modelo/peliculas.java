@@ -11,6 +11,7 @@ package Modelo;
  */
 public class peliculas {
     //Campos
+    private String peliID;
     private String genero;
     private String peliTitulo;
     private String peliSinopsis;
@@ -18,65 +19,64 @@ public class peliculas {
     private double precioVenta;
     private String caratula;
     private String estado;
-    private int año;
     private String audio;
     private String calidad;
-    private String peliID;
+    private int anio;
 
     /**
      * Constructor con parámetros
+     * @param peliID 
      * @param genero
      * @param peliTitulo
      * @param peliSinopsis
      * @param precioRenta
      * @param precioVenta
      * @param caratula
-     * @param estado 
-     * @param año 
-     * @param audio 
+     * @param audio
      * @param calidad 
-     * @param peliID 
+     * @param anio 
+     * @param estado
      */
-    public peliculas(String genero, String peliTitulo, String peliSinopsis, double precioRenta, double precioVenta, 
-            String caratula, String estado, int año, String audio, String calidad, String peliID) {
+    public peliculas(String peliID, String genero, String peliTitulo, String peliSinopsis, double precioRenta, double precioVenta, 
+            String caratula, String audio, String calidad, int anio, String estado) {
+        this.peliID = peliID;
         this.genero = genero;
         this.peliTitulo = peliTitulo;
         this.peliSinopsis = peliSinopsis;
         this.precioRenta = precioRenta;
         this.precioVenta = precioVenta;
         this.caratula = caratula;
-        this.estado = estado;
-        this.año = año;
         this.audio = audio;
         this.calidad = calidad;
-        this.peliID = peliID;
+        this.anio = anio;
+        this.estado = estado;
     }// fin del constructor peliculas
 
     /**
      * Constructor sin el parámetro estado
+     * @param peliID 
      * @param genero
      * @param peliTitulo
      * @param peliSinopsis
      * @param precioRenta
      * @param precioVenta
      * @param caratula
-     * @param año
      * @param audio
      * @param calidad 
-     * @param peliID 
+     * @param anio 
      */
-    public peliculas(String genero, String peliTitulo, String peliSinopsis, double precioRenta, double precioVenta, 
-            String caratula, int año, String audio, String calidad, String peliID) {
+    public peliculas(String peliID, String genero, String peliTitulo, String peliSinopsis, double precioRenta, double precioVenta, 
+            String caratula, String audio, String calidad, int anio){
+        this.peliID = peliID;
         this.genero = genero;
         this.peliTitulo = peliTitulo;
         this.peliSinopsis = peliSinopsis;
         this.precioRenta = precioRenta;
         this.precioVenta = precioVenta;
         this.caratula = caratula;
-        this.año = año;
         this.audio = audio;
         this.calidad = calidad;
-        this.peliID = peliID;
+        this.anio = anio; 
     }// fin del construtor
     
     
@@ -182,17 +182,17 @@ public class peliculas {
     }
 
     /**
-     * @return the año
+     * @return the anio
      */
-    public int getAño() {
-        return año;
+    public int getAnio() {
+        return anio;
     }
 
     /**
-     * @param año the año to set
+     * @param anio the anio to set
      */
-    public void setAño(int año) {
-        this.año = año;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 
     /**

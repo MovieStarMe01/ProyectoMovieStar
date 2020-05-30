@@ -88,6 +88,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblTerror.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTerror.jpg"))); // NOI18N
         lblTerror.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblTerror.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTerrorMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblTerrorMouseEntered(evt);
             }
@@ -99,6 +102,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblRomanticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaRomance.jpg"))); // NOI18N
         lblRomanticas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRomanticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRomanticasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblRomanticasMouseEntered(evt);
             }
@@ -110,6 +116,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblInfantiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaInfantil.jpg"))); // NOI18N
         lblInfantiles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblInfantiles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblInfantilesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblInfantilesMouseEntered(evt);
             }
@@ -121,6 +130,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblCrimen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaCrimen.jpg"))); // NOI18N
         lblCrimen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCrimen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCrimenMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblCrimenMouseEntered(evt);
             }
@@ -132,6 +144,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblTodas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTodas.png"))); // NOI18N
         lblTodas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblTodas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTodasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblTodasMouseEntered(evt);
             }
@@ -164,6 +179,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblComedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/Caratula.jpg"))); // NOI18N
         lblComedias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblComedias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblComediasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblComediasMouseEntered(evt);
             }
@@ -175,6 +193,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblDrama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaDrama.jpg"))); // NOI18N
         lblDrama.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDrama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDramaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblDramaMouseEntered(evt);
             }
@@ -474,7 +495,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
         JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("Acción");
+        miPelicula.lblGenero.setText("ACCIÓN");
         miPelicula.setVisible(true);
         
     }//GEN-LAST:event_lblAccionMouseClicked
@@ -483,6 +504,48 @@ public class FrmePrincipal extends javax.swing.JFrame {
         JDGestiones misGestiones = new JDGestiones(null, true);
         misGestiones.setVisible(true);
     }//GEN-LAST:event_btnGestionesActionPerformed
+
+    private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("COMEDIAS");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblComediasMouseClicked
+
+    private void lblDramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("DRAMA");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblDramaMouseClicked
+
+    private void lblTerrorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTerrorMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("TERROR");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblTerrorMouseClicked
+
+    private void lblRomanticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanticasMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("ROMANTICAS");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblRomanticasMouseClicked
+
+    private void lblInfantilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("INFANTILES");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblInfantilesMouseClicked
+
+    private void lblCrimenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("CRIMEN");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblCrimenMouseClicked
+
+    private void lblTodasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseClicked
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("TODOS LOS GÉNEROS");
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_lblTodasMouseClicked
 
     /**
      * @param args the command line arguments

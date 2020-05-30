@@ -104,6 +104,11 @@ public class JDPeliculas extends javax.swing.JDialog {
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, -1, -1));
 
         btnGestionPeliculas.setText("GestionPeliculas");
+        btnGestionPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionPeliculasActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,6 +134,11 @@ public class JDPeliculas extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionPeliculasActionPerformed
+        JDGestiones misGestiones = new JDGestiones(null, true);
+        misGestiones.setVisible(true);
+    }//GEN-LAST:event_btnGestionPeliculasActionPerformed
 
     /**
      * @param args the command line arguments

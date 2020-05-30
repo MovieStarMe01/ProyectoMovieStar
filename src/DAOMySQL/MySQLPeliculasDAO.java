@@ -29,7 +29,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     
     //Consultas SQL a utilizar
     private final String INSERT = "INSERT INTO peliculas (peli_id, peli_genero, peli_titulo, peli_sinopsis, peli_precio_renta, "
-            + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado"
+            + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     /**
@@ -54,7 +54,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                 ps.setString(7, peli.getCaratula());
                 ps.setString(8, peli.getAudio());
                 ps.setString(9, peli.getCalidad());
-                ps.setInt(10, peli.getAño());
+                ps.setInt(10, peli.getAnio());
                 ps.setString(11, peli.getEstado());
                 
             //Ejecutamos la consulta y verificamos el resultado
