@@ -68,7 +68,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/Caratula.jpg"))); // NOI18N
+        lblAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaAccion.jpg"))); // NOI18N
         lblAccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -352,7 +352,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private void lblAccionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseEntered
         //Al entrar el focus al label este cambiará su icono por un gif
         ImageIcon imgAccionGif;
-        imgAccionGif = new ImageIcon(getClass().getResource("/imgGestiones/gifAccion (1).gif"));
+        imgAccionGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/accionGif.gif"));
         lblAccion.setIcon(imgAccionGif);
         
     }//GEN-LAST:event_lblAccionMouseEntered
@@ -360,7 +360,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private void lblAccionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseExited
         //Al salir el focus del label este regresará su icono al que tenia por defecto
         ImageIcon imgAccion;
-        imgAccion = new ImageIcon(getClass().getResource("/imgGestiones/Caratula.jpg"));
+        imgAccion = new ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaAccion.jpg"));
         lblAccion.setIcon(imgAccion);
     }//GEN-LAST:event_lblAccionMouseExited
 
