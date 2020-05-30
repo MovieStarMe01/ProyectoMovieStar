@@ -83,7 +83,7 @@ public class JDRegistro extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         chVerPass = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -222,12 +222,12 @@ public class JDRegistro extends javax.swing.JDialog {
         });
         jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 60, 50));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/closeDoor.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setDefaultCapable(false);
-        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/openDoor.png"))); // NOI18N
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -263,7 +263,7 @@ public class JDRegistro extends javax.swing.JDialog {
         jLabel12.setText("Registrar");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 70, -1));
 
-        jSeparator2.setBackground(new java.awt.Color(237, 184, 73));
+        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 82, 690, 10));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registerLogo.png"))); // NOI18N
@@ -286,8 +286,20 @@ public class JDRegistro extends javax.swing.JDialog {
         jPanel1.add(chVerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/registro img.png"))); // NOI18N
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 270, 50));
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/imgRegistroUsu.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 270, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -432,7 +444,6 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -443,6 +454,7 @@ public class JDRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage10;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage3;

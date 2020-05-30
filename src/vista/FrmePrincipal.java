@@ -7,6 +7,7 @@ package vista;
 
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +61,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblAñadirUsu = new javax.swing.JLabel();
         lblReportes = new javax.swing.JLabel();
         lblGestiones = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,7 +286,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 880, 550));
 
-        jPanel3.setBackground(new java.awt.Color(240, 203, 114));
+        jPanel3.setBackground(new java.awt.Color(255, 214, 71));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelImage1.setBackground(new java.awt.Color(240, 203, 114));
@@ -355,11 +358,28 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 710));
 
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 630, 50, 40));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel1.setText("Salir");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 670, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1350, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,6 +567,12 @@ public class FrmePrincipal extends javax.swing.JFrame {
         miPelicula.setVisible(true);
     }//GEN-LAST:event_lblTodasMouseClicked
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //Instanciamos una ventana para preguntar si desea salir del sistema
+        JDSalir salida = new JDSalir(null, true);
+        salida.setVisible(true);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -587,6 +613,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAñadirUsu;
     private javax.swing.JButton btnGestiones;
     private javax.swing.JButton btnReportes;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

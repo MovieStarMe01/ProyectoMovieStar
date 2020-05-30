@@ -10,6 +10,7 @@ import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import com.placeholder.PlaceHolder;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
     
@@ -101,7 +102,7 @@ public class login extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/usersAmarillo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/userA.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 290, 70));
@@ -273,9 +274,11 @@ public class login extends javax.swing.JDialog {
                 como parámetro el usuario y la contraseña ya encriptada MD5
                 */
                 if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
+                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
                     //Mando mensaje de que el logeo fue exitoso 
-                    JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso</h2></html>","Login Exitoso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso Bienvenido "+usu+" </h2></html>","BIENVENIDO",
+                        JOptionPane.INFORMATION_MESSAGE, miIcono);
                     //Creo una instancia de mi FrmePrincipal
                     FrmePrincipal miVentana = new FrmePrincipal();
                     //Hago visible miVentana
@@ -283,9 +286,11 @@ public class login extends javax.swing.JDialog {
                     //Cierro la ventana login
                     this.dispose();
                 }else{
+                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginfallido.png"));
                     //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
-                    JOptionPane.showMessageDialog(null, "<html><h2>Nick-Name o Contraseña Incorrecto</h2></html>","ERROR",
-                        JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>","ERROR",
+                        JOptionPane.ERROR_MESSAGE, miIcono);
                     //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
                     txtUser.setText("");
                     txtPassword.setText("");

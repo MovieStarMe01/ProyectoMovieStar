@@ -29,55 +29,108 @@ public class JDGestiones extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnRentadas = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
         btnAlta = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("GESTIONES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 10));
 
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 700, -1));
+        btnRentadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas.png"))); // NOI18N
+        btnRentadas.setBorder(null);
+        btnRentadas.setContentAreaFilled(false);
+        btnRentadas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRentadas.setDefaultCapable(false);
+        btnRentadas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas (1).png"))); // NOI18N
+        jPanel1.add(btnRentadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, 150));
 
-        btnRentadas.setText("Peliculas Rentadas");
-        jPanel1.add(btnRentadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 160, 130));
+        btnBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas.png"))); // NOI18N
+        btnBaja.setBorder(null);
+        btnBaja.setBorderPainted(false);
+        btnBaja.setContentAreaFilled(false);
+        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas (1).png"))); // NOI18N
+        jPanel1.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 160, 150));
 
-        btnBaja.setText("Baja Peliculas");
-        jPanel1.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 160, 130));
-
-        btnAlta.setText("Alta Peliculas");
+        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas.png"))); // NOI18N
+        btnAlta.setBorder(null);
+        btnAlta.setBorderPainted(false);
+        btnAlta.setContentAreaFilled(false);
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas (1).png"))); // NOI18N
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAltaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 160, 130));
+        jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 160, 150));
 
-        btnSalir.setText("Salir");
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 50, -1));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel2.setText("Salir");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel3.setText("PELICULAS RENTADAS");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel4.setText("BAJA PELICULAS");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel5.setText("ALTA PELICULAS");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/imgGestiones.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
         );
 
         pack();
@@ -140,8 +193,12 @@ public class JDGestiones extends javax.swing.JDialog {
     private javax.swing.JButton btnBaja;
     private javax.swing.JButton btnRentadas;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private String audio;
     private String calidad;
     private String peliID;
-    private String estado = "activo";
+    private String estado = "ACTIVO";
     /**
      * Creates new form JDAltaPelicula
      */
@@ -53,7 +53,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
@@ -70,8 +69,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         panelImage7 = new org.edisoncor.gui.panel.PanelImage();
         txtAño = new javax.swing.JTextField();
-        panelImage8 = new org.edisoncor.gui.panel.PanelImage();
-        txtGenero = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         panelImage9 = new org.edisoncor.gui.panel.PanelImage();
@@ -89,18 +86,18 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         btnAbrirCaratula = new javax.swing.JButton();
         panelImage10 = new org.edisoncor.gui.panel.PanelImage();
         txtPrecioVenta1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("Alta Peliculas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 620, 10));
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 680, 10));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Pelicula ID:");
@@ -177,17 +174,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
         jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, 40));
 
-        panelImage8.setBackground(new java.awt.Color(255, 255, 255));
-        panelImage8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
-        panelImage8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtGenero.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        txtGenero.setForeground(new java.awt.Color(153, 153, 153));
-        txtGenero.setBorder(null);
-        panelImage8.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
-
-        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 170, 40));
-
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("Audio:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
@@ -230,8 +216,10 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
         jPanel1.add(panelImage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 180, 40));
 
-        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acción", "Comedia", "Drama", "Terror", "Romanticas", "Infantiles", "Crimen" }));
-        jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 170, -1));
+        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Acción", "Comedia", "Drama", "Terror", "Romanticas", "Infantiles", "Crimen" }));
+        cmbGeneros.setBorder(null);
+        cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 170, -1));
 
         txASinopsis.setColumns(20);
         txASinopsis.setRows(5);
@@ -239,16 +227,31 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 280, 120));
 
-        btnAlta.setText("Alta");
+        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnAlta.setBorder(null);
+        btnAlta.setBorderPainted(false);
+        btnAlta.setContentAreaFilled(false);
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAltaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+        jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 70, 50));
 
-        btnSalir.setText("Salir");
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, -1, -1));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 50, 50));
 
         btnAbrirCaratula.setText("Elegir");
         btnAbrirCaratula.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +271,29 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         panelImage10.add(txtPrecioVenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, 40));
+
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel12.setText("Salir");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, -1, -1));
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/imgAltaPeli.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 230, 70));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel1.setText("Alta");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,30 +316,41 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         Correcto
         */
         if(validar()){
-            //llamamos el constructor para crear un Objeto de tipo Pelicula
-            peliculas miPelicula = new peliculas(peliID, genero, peliTitulo, peliSinopsis, Double.parseDouble(precioRenta),
-                    Double.parseDouble(precioVenta), caratula, audio, calidad, Integer.parseInt(año), estado);
+            //Obtenemos el géneto seleccionado
+            genero = seleccionGenero();
+            // si se seleccionó un género válido hacemos la inserción de la pelicula a la BD
+            if(!genero.equals("false")){
+                //llamamos el constructor para crear un Objeto de tipo Pelicula
+                peliculas miPelicula = new peliculas(peliID, genero, peliTitulo, peliSinopsis, Double.parseDouble(precioRenta),
+                        Double.parseDouble(precioVenta), caratula, audio, calidad, Integer.parseInt(año), estado);
 
-                try{
-                    manager.getPeliculasDAO().insertar(miPelicula);
-                    JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Dado de Alta Correctamente</h2></html>");
-                    limpiarFormulario();
-                }catch(DAOException ex){
-                    mensajeError(ex);
-                }// fin del catch
-            this.dispose();
-            }// fin del if validar   
+                    try{
+                        manager.getPeliculasDAO().insertar(miPelicula);
+                        JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Dado de Alta Correctamente</h2></html>");
+                        limpiarFormulario();
+                    }catch(DAOException ex){
+                        mensajeError(ex);
+                    }// fin del catch
+                this.dispose();
+            }else{
+                //Mandamos mensaje de que debe seleccionar un género válido
+                JOptionPane.showMessageDialog(null, "Selecciona un género");
+            }// fin del else
+        }// fin del if validar
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnAbrirCaratulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaratulaActionPerformed
-        JFileChooser jf = new JFileChooser();
-        jf.showOpenDialog(this);
-        File caratulaF = jf.getSelectedFile();
+        JFileChooser rutaImg = new JFileChooser();
+        rutaImg.showOpenDialog(this);
+        File caratulaF = rutaImg.getSelectedFile();
         if(caratulaF != null){
-            txASinopsis.setText(caratulaF.getAbsolutePath());
-        }// fin del if
-        
+            txtCaratula.setText(caratulaF.getAbsolutePath());
+        }// fin del i   
     }//GEN-LAST:event_btnAbrirCaratulaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +402,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -376,6 +414,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage10;
     private org.edisoncor.gui.panel.PanelImage panelImage11;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
@@ -383,14 +422,12 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage5;
     private org.edisoncor.gui.panel.PanelImage panelImage6;
     private org.edisoncor.gui.panel.PanelImage panelImage7;
-    private org.edisoncor.gui.panel.PanelImage panelImage8;
     private org.edisoncor.gui.panel.PanelImage panelImage9;
     private javax.swing.JTextArea txASinopsis;
     private javax.swing.JTextField txtAudio;
     private javax.swing.JTextField txtAño;
     private javax.swing.JTextField txtCalidad;
     private javax.swing.JTextField txtCaratula;
-    private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtPeliID;
     private javax.swing.JTextField txtPrecioRenta;
     private javax.swing.JTextField txtPrecioVenta1;
@@ -406,7 +443,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         boolean validacion = false;
         
         peliID = txtPeliID.getText();
-        genero = txtGenero.getText();
         peliTitulo = txtTitulo.getText();
         peliSinopsis = txASinopsis.getText();
         precioRenta = txtPrecioRenta.getText();
@@ -421,12 +457,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
             txtPeliID.requestFocusInWindow();
             return validacion;
         }// fin del if peliID
-        
-        if(genero.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Género");
-            txtGenero.requestFocusInWindow();
-            return validacion;
-        }// fin el if genero
         
         if(peliTitulo.equals("")){
             JOptionPane.showMessageDialog(null, "Ingresa un Título");
@@ -485,7 +515,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
      */
     private void limpiarFormulario() {
         txtPeliID.setText("");
-        txtGenero.setText("");
         txtTitulo.setText("");
         txASinopsis.setText("");
         txtPrecioRenta.setText("");
@@ -514,5 +543,23 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
                 JOptionPane.ERROR_MESSAGE);
     }// fin del método mensajeError
+
+    /**
+     * Método para saber que género se seleccionó
+     * @return 
+     */
+    private String seleccionGenero() {
+      
+        switch(cmbGeneros.getSelectedIndex()){
+            case 1: return genero = "ACCIÓN";
+            case 2: return genero = "COMEDIA";
+            case 3: return genero = "DRAMA";
+            case 4: return genero = "TERROR";
+            case 5: return genero = "ROMANTICAS";
+            case 6: return genero = "INFANTILES";
+            case 7: return genero = "CRIMEN";
+            default: return "false";
+        }// fin del switchcase
+    }// fin del método seleccionGenero 
     
 }// fin de la clase JDAltaPelicula

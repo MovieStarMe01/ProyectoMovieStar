@@ -46,7 +46,6 @@ public class JDAñadirCliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
@@ -68,6 +67,9 @@ public class JDAñadirCliente extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         btnAñadirCli = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -75,12 +77,8 @@ public class JDAñadirCliente extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("AÑADIR CLIENTE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 62, 690, 10));
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 690, 10));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -172,27 +170,60 @@ public class JDAñadirCliente extends javax.swing.JDialog {
         jLabel2.setText("E-Mail:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
-        btnAñadirCli.setText("AñadirCliente");
+        btnAñadirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnAñadirCli.setBorder(null);
+        btnAñadirCli.setBorderPainted(false);
+        btnAñadirCli.setContentAreaFilled(false);
+        btnAñadirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAñadirCli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
         btnAñadirCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAñadirCliActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAñadirCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
+        jPanel1.add(btnAñadirCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 60, 50));
 
-        btnSalir.setText("Salir");
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 30, 50));
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/imgAñadirCli.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 60));
+
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel8.setText("Salir");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 40, -1));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel1.setText("Añadir");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,8 +311,10 @@ public class JDAñadirCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
     private org.edisoncor.gui.panel.PanelImage panelImage5;
