@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Jesús Moisés
  */
 public class JDAñadirCliente extends javax.swing.JDialog {
-     //Creamos un objeto de tipo interface IAutorDAO
+     //Creamos un objeto de tipo interface IClienteDAO
     private DAOManager manager = null;
     
     //Campos para alamcenar los datos del formulario

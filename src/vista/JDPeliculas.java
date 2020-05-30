@@ -17,6 +17,7 @@ public class JDPeliculas extends javax.swing.JDialog {
     public JDPeliculas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+       
     }
 
     /**
@@ -29,7 +30,7 @@ public class JDPeliculas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
@@ -39,15 +40,16 @@ public class JDPeliculas extends javax.swing.JDialog {
         btnRentarComprar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnGestionPeliculas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel1.setText("\"Nombre del Genero de la Pelicula\"");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, -1));
+        lblGenero.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lblGenero.setText("\"Nombre del Genero de la Pelicula\"");
+        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Buscar:");
@@ -99,7 +101,10 @@ public class JDPeliculas extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, -1, -1));
+
+        btnGestionPeliculas.setText("GestionPeliculas");
+        jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,7 +122,8 @@ public class JDPeliculas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRentarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarComprarActionPerformed
-        // TODO add your handling code here:
+        JDRentaVenta miRentaVenta = new JDRentaVenta(null, true);
+        miRentaVenta.setVisible(true);
     }//GEN-LAST:event_btnRentarComprarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -168,14 +174,15 @@ public class JDPeliculas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGestionPeliculas;
     private javax.swing.JButton btnRentarComprar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    public javax.swing.JLabel lblGenero;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables

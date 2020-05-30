@@ -35,7 +35,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblAccion = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblAccion1 = new javax.swing.JLabel();
         lblTerror = new javax.swing.JLabel();
         lblRomanticas = new javax.swing.JLabel();
         lblInfantiles = new javax.swing.JLabel();
@@ -82,8 +82,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel1.setText("ACCIÓN");
+        lblAccion1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lblAccion1.setText("ACCIÓN");
 
         lblTerror.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTerror.jpg"))); // NOI18N
         lblTerror.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,7 +221,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131)
                 .addComponent(jLabel2)
                 .addGap(138, 138, 138)
@@ -241,7 +241,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                     .addComponent(lblDrama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblAccion1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
@@ -309,6 +309,11 @@ public class FrmePrincipal extends javax.swing.JFrame {
         btnGestiones.setContentAreaFilled(false);
         btnGestiones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGestiones.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/gestiones(1).png"))); // NOI18N
+        btnGestiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionesActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnGestiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 495, 130, 80));
 
         lblAñadirCli.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -327,7 +332,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblGestiones.setText("Gestiones");
         jPanel3.add(lblGestiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, 70, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 670));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -469,8 +474,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
         JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText("Acción");
         miPelicula.setVisible(true);
+        
     }//GEN-LAST:event_lblAccionMouseClicked
+
+    private void btnGestionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionesActionPerformed
+        JDGestiones misGestiones = new JDGestiones(null, true);
+        misGestiones.setVisible(true);
+    }//GEN-LAST:event_btnGestionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,7 +524,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAñadirUsu;
     private javax.swing.JButton btnGestiones;
     private javax.swing.JButton btnReportes;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -524,6 +535,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblAccion;
+    public javax.swing.JLabel lblAccion1;
     private javax.swing.JLabel lblAñadirCli;
     private javax.swing.JLabel lblAñadirUsu;
     private javax.swing.JLabel lblComedias;

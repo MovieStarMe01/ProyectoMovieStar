@@ -7,6 +7,7 @@ package DAOMySQL;
 
 import DAO.DAOManager;
 import DAO.IClienteDAO;
+import DAO.IPeliculasDAO;
 import DAO.IUsuarioDAO;
 
 /**
@@ -18,6 +19,7 @@ public class MySQLDAOManager implements DAOManager{
     //Campos
     private IUsuarioDAO usuario = null;
     private IClienteDAO cliente = null;
+    private IPeliculasDAO pelicula = null;
     /**
      * Con esta clase hacemoss el uso del patrón singleton para reutilizar 
      * objetos si estos ya han sido creados
@@ -38,6 +40,15 @@ public class MySQLDAOManager implements DAOManager{
         }// fin cel if
         return cliente;
     }// fin del método getClienteDAO
+    
+    @Override
+    public IPeliculasDAO getPeliculasDAO() {
+        if(pelicula == null){
+            pelicula = new MySQLPeliculasDAO();
+        }// fin cel if
+        return pelicula;
+    }// fin del método getPeliculasDAO
+    
 
     
 }// fin de la clase MySQLDAOManager
