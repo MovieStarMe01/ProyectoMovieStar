@@ -22,6 +22,13 @@ public class peliculas {
     private String audio;
     private String calidad;
     private int anio;
+    
+    /**
+     * Constructor sin parametros
+     */
+    public peliculas(){
+        
+    }
 
     /**
      * Constructor con parámetros

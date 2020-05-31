@@ -52,16 +52,21 @@ public class JDGestiones extends javax.swing.JDialog {
         btnRentadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas.png"))); // NOI18N
         btnRentadas.setBorder(null);
         btnRentadas.setContentAreaFilled(false);
-        btnRentadas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRentadas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRentadas.setDefaultCapable(false);
         btnRentadas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas (1).png"))); // NOI18N
+        btnRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentadasActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRentadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, 150));
 
         btnBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas.png"))); // NOI18N
         btnBaja.setBorder(null);
         btnBaja.setBorderPainted(false);
         btnBaja.setContentAreaFilled(false);
-        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBaja.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas (1).png"))); // NOI18N
         jPanel1.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 160, 150));
 
@@ -69,7 +74,7 @@ public class JDGestiones extends javax.swing.JDialog {
         btnAlta.setBorder(null);
         btnAlta.setBorderPainted(false);
         btnAlta.setContentAreaFilled(false);
-        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas (1).png"))); // NOI18N
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +87,7 @@ public class JDGestiones extends javax.swing.JDialog {
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +150,11 @@ public class JDGestiones extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentadasActionPerformed
+        JDPeliculasRentadas miPelicula = new JDPeliculasRentadas(null, true);
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_btnRentadasActionPerformed
 
     /**
      * @param args the command line arguments

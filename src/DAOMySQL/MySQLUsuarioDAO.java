@@ -168,5 +168,10 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
        
         return validar;
     }// fin del método verificarUP
+
+    @Override
+    public List<Usuario> obtenerRentadas() throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }// fin de la clase MySQLUsuaioDAO

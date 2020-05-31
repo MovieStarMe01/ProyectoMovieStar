@@ -20,5 +20,6 @@ public interface IDAO <T, K> {
     //Verificar contraseña
     boolean verificaUP(String a, String passE) throws DAOException;
     List<T> obtenerTodos() throws DAOException;
+    List<T> obtenerRentadas() throws DAOException;
     T obtener(K id) throws DAOException;
 }// fin de la interface

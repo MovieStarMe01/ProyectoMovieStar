@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,12 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     private final String INSERT = "INSERT INTO peliculas (peli_id, peli_genero, peli_titulo, peli_sinopsis, peli_precio_renta, "
             + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    private final String GETALL = "SELECT peli_id, peli_genero, peli_titulo, peli_sinopsis, peli_precio_renta, "
+            + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado FROM peliculas";
+    
+    private final String GETALLRENTEDMOVIES = "SELECT peli_id, peli_genero, peli_titulo, peli_sinopsis, peli_precio_renta, "
+            + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio FROM peliculas WHERE peli_estado = 'ACTIVO'";
     
     /**
      * Método para dar de alta peliculas a la BD
@@ -85,13 +92,92 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
 
     @Override
     public List<peliculas> obtenerTodos() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        //lista de peliculas a retornar
+        List<peliculas> misPeliculas = new ArrayList<peliculas>();
+        
+        try{
+            //creamos la conexion a la base de datos
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta
+            ps = conn.prepareStatement(GETALL);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto ResultSet
+            rs = ps.executeQuery();
+            
+            //recorremos el ResultSet y agregamos cada item al ArrayList
+            while(rs.next()){
+                peliculas miPelicula = new peliculas();
+                miPelicula.setPeliID(rs.getString("peli_id"));
+                miPelicula.setGenero(rs.getString("peli_genero"));
+                miPelicula.setPeliTitulo(rs.getString("peli_titulo"));
+                miPelicula.setPeliSinopsis(rs.getString("peli_sinopsis"));
+                miPelicula.setPrecioRenta(rs.getDouble("peli_precio_renta"));
+                miPelicula.setPrecioVenta(rs.getDouble("peli_precio_venta"));
+                miPelicula.setCaratula(rs.getString("peli_caratula"));
+                miPelicula.setAudio(rs.getString("peli_audio"));
+                miPelicula.setCalidad(rs.getString("peli_calidad"));
+                miPelicula.setAnio(rs.getInt("peli_anio"));
+                miPelicula.setCalidad(rs.getString("peli_estado"));
+                misPeliculas.add(miPelicula);
+            }//fin del while
+        }
+        catch(SQLException ex){
+            throw new DAOException("Error de SQL: ", ex);
+        }
+        finally{
+            cerrarConexiones(ps, rs, conn);
+        }//fin del finally
+        
+        return misPeliculas;
+    }//fin del metodo obtenerTodos
 
     @Override
     public peliculas obtener(String id) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public List<peliculas> obtenerRentadas() throws DAOException {
+        //lista de peliculas a retornar
+        List<peliculas> misPeliculas = new ArrayList<peliculas>();
+        
+        try{
+            //creamos la conexion a la base de datos
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta
+            ps = conn.prepareStatement(GETALLRENTEDMOVIES);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto ResultSet
+            rs = ps.executeQuery();
+            
+            //recorremos el ResultSet y agregamos cada item al ArrayList
+            while(rs.next()){
+                peliculas miPelicula = new peliculas();
+                miPelicula.setPeliID(rs.getString("peli_id"));
+                miPelicula.setGenero(rs.getString("peli_genero"));
+                miPelicula.setPeliTitulo(rs.getString("peli_titulo"));
+                miPelicula.setPeliSinopsis(rs.getString("peli_sinopsis"));
+                miPelicula.setPrecioRenta(rs.getDouble("peli_precio_renta"));
+                miPelicula.setPrecioVenta(rs.getDouble("peli_precio_venta"));
+                miPelicula.setCaratula(rs.getString("peli_caratula"));
+                miPelicula.setAudio(rs.getString("peli_audio"));
+                miPelicula.setCalidad(rs.getString("peli_calidad"));
+                miPelicula.setAnio(rs.getInt("peli_anio"));
+                misPeliculas.add(miPelicula);
+            }//fin del while
+        }
+        catch(SQLException ex){
+            throw new DAOException("Error de SQL: ", ex);
+        }
+        finally{
+            cerrarConexiones(ps, rs, conn);
+        }//fin del finally
+        
+        return misPeliculas;
+    }//fin del metodo obtenerRentadas
+    
 
     /**
      * Método para cerrar las Conexiones de la BD

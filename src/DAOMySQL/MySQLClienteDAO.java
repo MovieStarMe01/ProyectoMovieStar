@@ -115,5 +115,10 @@ public class MySQLClienteDAO implements IClienteDAO{
             throw new DAOException("ERROR en SQL", ex);
         }// fin del catch
     }// fin del método cerrarConexiones
+
+    @Override
+    public List<cliente> obtenerRentadas() throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }// fin de la clase MySQLClienteDAO
