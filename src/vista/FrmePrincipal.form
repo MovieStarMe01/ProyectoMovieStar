@@ -362,7 +362,7 @@
                   <Color blue="72" green="cb" red="f0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imgLogin/newLogoNA.png"/>
+                  <Image iconType="3" name="/imgFrmePrincipal/newLogo.png"/>
                 </Property>
               </Properties>
               <Constraints>

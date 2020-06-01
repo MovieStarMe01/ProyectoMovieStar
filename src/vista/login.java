@@ -116,7 +116,6 @@ public class login extends javax.swing.JDialog {
         verPass.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         verPass.setForeground(new java.awt.Color(153, 153, 153));
         verPass.setText("Ver Contraseña");
-        verPass.setBorder(null);
         verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         verPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N

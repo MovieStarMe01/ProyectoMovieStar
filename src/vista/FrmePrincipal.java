@@ -290,7 +290,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelImage1.setBackground(new java.awt.Color(240, 203, 114));
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/newLogoNA.png"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/newLogo.png"))); // NOI18N
         panelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 265, 90));
 
@@ -516,8 +516,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
         JDPeliculas miPelicula = new JDPeliculas(null, true);
         miPelicula.lblGenero.setText("ACCIÓN");
-        miPelicula.setVisible(true);
-        
+        miPelicula.setVisible(true);   
     }//GEN-LAST:event_lblAccionMouseClicked
 
     private void btnGestionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionesActionPerformed
@@ -527,7 +526,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
     private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
         JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("COMEDIAS");
+        miPelicula.lblGenero.setText("COMEDIA");
         miPelicula.setVisible(true);
     }//GEN-LAST:event_lblComediasMouseClicked
 
@@ -640,4 +639,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTodas;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     // End of variables declaration//GEN-END:variables
+
+    private void abrirPeliculas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

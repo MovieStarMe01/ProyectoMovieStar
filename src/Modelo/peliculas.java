@@ -24,6 +24,15 @@ public class peliculas {
     private int anio;
 
     /**
+     * Constructor vacio
+     */
+    public peliculas() {
+        super();
+    }// fin del constuctor vacio
+
+    
+    
+    /**
      * Constructor con parámetros
      * @param peliID 
      * @param genero
@@ -78,8 +87,6 @@ public class peliculas {
         this.calidad = calidad;
         this.anio = anio; 
     }// fin del construtor
-    
-    
     
     // Getters & Setters
 

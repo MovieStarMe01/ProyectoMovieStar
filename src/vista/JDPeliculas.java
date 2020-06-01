@@ -5,19 +5,49 @@
  */
 package vista;
 
+import DAO.DAOException;
+import DAO.DAOManager;
+import DAOMySQL.MySQLDAOManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author Jesús Moisés
  */
 public class JDPeliculas extends javax.swing.JDialog {
-
+    
+    //Creamos un objeto de tipo interface IPeliculasDAO
+    private DAOManager manager = null;
+   
+    //Modelo para nuestra tablaPeliculas
+    private PeliculasTableModel model;
+    
+    //Propiedades para  modificar el width de nuestra tabla tblPeliculas
+    TableColumnModel columnModel = null;
+    
+    String genero ="";
+    
     /**
      * Creates new form JDPeliculas
+     * @param parent
+     * @param modal
      */
     public JDPeliculas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-       
+        
+        //Obtenemos todos los métodos de la clase MySQLTituloDAO
+        this.manager = new MySQLDAOManager();
+        
+        try {
+            inicializarListaPeliculas();
+        } catch (DAOException ex) {
+            Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }// fin del catch     
     }
 
     /**
@@ -36,11 +66,12 @@ public class JDPeliculas extends javax.swing.JDialog {
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         txtBusqueda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPeliculas = new javax.swing.JTable();
         btnRentarComprar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
+        btnVerPeliculas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGestionPeliculas = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,12 +79,11 @@ public class JDPeliculas extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblGenero.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        lblGenero.setText("\"Nombre del Genero de la Pelicula\"");
-        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, -1));
+        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 20));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Buscar:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 42, 690, 10));
@@ -67,9 +97,9 @@ public class JDPeliculas extends javax.swing.JDialog {
         txtBusqueda.setBorder(null);
         panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
 
-        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 250, 40));
+        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 250, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,7 +110,7 @@ public class JDPeliculas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPeliculas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 700, 180));
 
@@ -92,8 +122,13 @@ public class JDPeliculas extends javax.swing.JDialog {
         });
         jPanel1.add(btnRentarComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
-        btnBuscar.setText("Buscar");
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        btnVerPeliculas.setText("Ver Películas");
+        btnVerPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPeliculasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVerPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +136,7 @@ public class JDPeliculas extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, -1, -1));
 
         btnGestionPeliculas.setText("GestionPeliculas");
         btnGestionPeliculas.addActionListener(new java.awt.event.ActionListener() {
@@ -109,17 +144,25 @@ public class JDPeliculas extends javax.swing.JDialog {
                 btnGestionPeliculasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+        jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, -1, -1));
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();
@@ -127,8 +170,14 @@ public class JDPeliculas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRentarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarComprarActionPerformed
-        JDRentaVenta miRentaVenta = new JDRentaVenta(null, true);
-        miRentaVenta.setVisible(true);
+        //tblPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
+        if(tblPeliculas.getSelectedRow() > -1){
+            JDRentaVenta miRentaVenta = new JDRentaVenta(null, true);
+            miRentaVenta.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película</h1></html>");
+        }// fin del else
     }//GEN-LAST:event_btnRentarComprarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -139,6 +188,29 @@ public class JDPeliculas extends javax.swing.JDialog {
         JDGestiones misGestiones = new JDGestiones(null, true);
         misGestiones.setVisible(true);
     }//GEN-LAST:event_btnGestionPeliculasActionPerformed
+
+    private void btnVerPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPeliculasActionPerformed
+        
+        genero = lblGenero.getText();
+      
+        try {
+            inicializarListaPeliculas();
+        } catch (DAOException ex) {
+            Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnVerPeliculasActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        tblPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+        // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
+        if(tblPeliculas.getSelectedRow() > -1){
+            JDEditarPeliculas miPeliEditar = new JDEditarPeliculas(null, true);
+            miPeliEditar.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película</h1></html>");
+        }// fin del else
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,17 +255,46 @@ public class JDPeliculas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGestionPeliculas;
     private javax.swing.JButton btnRentarComprar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVerPeliculas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JLabel lblGenero;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
+    private javax.swing.JTable tblPeliculas;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
-}
+
+    /**
+     * Método para colocar los titulos a nuestra tabla
+     */
+    private void inicializarListaPeliculas() throws DAOException {
+        
+        model = new PeliculasTableModel(manager.getPeliculasDAO());
+            
+        //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
+        tblPeliculas.setModel(model);
+        cargarPeliculas();
+    }// fin del método inicializarListaAutores
+    
+    /**
+     * Método para mostrar las películas en nuestra tabla
+     * @throws DAOException 
+     */
+    private void cargarPeliculas() throws DAOException{
+        if(!genero.equals("TODOS LOS GÉNEROS")){
+            model.updateModel(genero);
+            model.fireTableDataChanged();
+        }else{
+            model.updateModelAll("TODOS");
+            model.fireTableDataChanged();
+        }// fin del else if
+    }// fin del método cargarPeliculas
+
+    
+}// fin de la clase JDPeliculas
