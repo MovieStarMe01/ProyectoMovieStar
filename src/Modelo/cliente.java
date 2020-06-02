@@ -17,7 +17,36 @@ public class cliente {
     private String domicilio;
     private String celular;
     private String correo;
+    private int cli_ID;
 
+    /**
+     * Constructor vacio
+     */
+    public cliente() {
+        super();
+    }// fin de constrcutor vacio
+
+    /**
+     * Constructor con idCliente
+     * @param nombreCliente
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param domicilio
+     * @param celular
+     * @param correo
+     * @param cli_ID 
+     */
+    public cliente(String nombreCliente, String apellidoPaterno, String apellidoMaterno, String domicilio, String celular, String correo, int cli_ID) {
+        this.nombreCliente = nombreCliente;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.domicilio = domicilio;
+        this.celular = celular;
+        this.correo = correo;
+        this.cli_ID = cli_ID;
+    }// fin del constructor con idCliente
+    
+    
     /**
      * Constructor con sus parámetros
      * @param nombreCliente
@@ -122,5 +151,20 @@ public class cliente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-      
+
+    /**
+     * @return the cli_ID
+     */
+    public int getCli_ID() {
+        return cli_ID;
+    }
+
+    /**
+     * @param cli_ID the cli_ID to set
+     */
+    public void setCli_ID(int cli_ID) {
+        this.cli_ID = cli_ID;
+    }
+     
+    
 }// fin de la clase cliente

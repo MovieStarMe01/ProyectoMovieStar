@@ -39,6 +39,9 @@ public class JDGestiones extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        btnEditarPeli = new javax.swing.JButton();
+        btnEditarCli = new javax.swing.JButton();
+        btnEditarUsu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -89,11 +92,11 @@ public class JDGestiones extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 50, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 50, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Salir");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setText("PELICULAS RENTADAS");
@@ -122,6 +125,30 @@ public class JDGestiones extends javax.swing.JDialog {
 
         jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 80));
 
+        btnEditarPeli.setText("Editar Peli");
+        btnEditarPeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPeliActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditarPeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 160, 150));
+
+        btnEditarCli.setText("Editar Cliente");
+        btnEditarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarCliActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 160, 150));
+
+        btnEditarUsu.setText("Editar Usuario");
+        btnEditarUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarUsuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 160, 150));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +157,9 @@ public class JDGestiones extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,6 +174,21 @@ public class JDGestiones extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEditarPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPeliActionPerformed
+        JDGesEditarPeli miEdicion = new JDGesEditarPeli(null, true);
+        miEdicion.setVisible(true);
+    }//GEN-LAST:event_btnEditarPeliActionPerformed
+
+    private void btnEditarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCliActionPerformed
+        JDGesEditarCli miCliente = new JDGesEditarCli(null, true);
+        miCliente.setVisible(true);
+    }//GEN-LAST:event_btnEditarCliActionPerformed
+
+    private void btnEditarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuActionPerformed
+        JDGesEditarUsu miEdicion = new JDGesEditarUsu(null, true);
+        miEdicion.setVisible(true);
+    }//GEN-LAST:event_btnEditarUsuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,6 +235,9 @@ public class JDGestiones extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlta;
     private javax.swing.JButton btnBaja;
+    private javax.swing.JButton btnEditarCli;
+    private javax.swing.JButton btnEditarPeli;
+    private javax.swing.JButton btnEditarUsu;
     private javax.swing.JButton btnRentadas;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;

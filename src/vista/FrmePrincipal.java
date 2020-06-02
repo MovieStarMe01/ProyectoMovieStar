@@ -394,8 +394,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         //Al entrar el focus al label este cambiará su icono por un gif
         ImageIcon imgAccionGif;
         imgAccionGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/accionGif.gif"));
-        lblAccion.setIcon(imgAccionGif);
-        
+        lblAccion.setIcon(imgAccionGif);  
     }//GEN-LAST:event_lblAccionMouseEntered
 
     private void lblAccionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseExited

@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,9 +37,16 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
             + " usu_nick, usu_pass)"
             + " VALUES (?, ?, ?, ?, ?, ?, MD5(?))";
     
-    //private final String VALIDAR = "SELECT * FROM pelicula.usuario WHERE usu_nick = ? and usu_pass = ?";
     private final String VALIDAR = "SELECT usu_nick, usu_pass FROM pelicula.usuario";
     
+    private final String DELETE = "DELETE FROM usuario WHERE usu_id = ?";
+    
+    private final String UPDATE = "UPDATE usuario SET usu_nombre = ?, usu_paterno = ?, usu_materno = ?, usu_domicilio = ?, "
+             + " usu_cel = ?, usu_nick = ?, usu_ pass MD5(?) WHERE cli_id = ?";
+    
+     private final String GETALLUSU = "SELECT usu_id, usu_nombre, usu_paterno, usu_materno, usu_domicilio, usu_cel, usu_nick "
+             + " FROM usuario";
+     
     /**
      * Este método nos sirve para poder agregar un nuevo Usuario a nuestra BD
      * @param miUsuario
@@ -71,28 +79,104 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
         }// fin del finally
     }// fin del método insertar
 
+    /**
+     * Método para modificar un usuario
+     * @param miUsuario
+     * @throws DAOException 
+     */
     @Override
-    public void modificar(Usuario a) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void modificar(Usuario miUsuario) throws DAOException {
+         try{
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+             
+            //Preparamos la consult SQL y especificamos los parámetros de entrada
+            ps = conn.prepareStatement(UPDATE);
+                ps.setString(1, miUsuario.getNombreUsuario());
+                ps.setString(2, miUsuario.getApellidoPaterno());
+                ps.setString(3, miUsuario.getApellidoMaterno());
+                ps.setString(4, miUsuario.getDomicilio());
+                ps.setString(5, miUsuario.getCelular());
+                ps.setString(6, miUsuario.getNickName());
+                ps.setString(7, miUsuario.getContraseña());        
+            
+            //Ejecutamos la consulta y verificamos  el resultado
+            if(ps.executeUpdate() == 0){
+                throw new DAOException("Hubo un problema y no se guardaron los cambios");
+            }
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+    }// fin del método modificar 
 
+    /**
+     * Método para eliminar un usuario del registro
+     * @param id
+     * @throws DAOException 
+     */
     @Override
-    public void eliminar(String id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void eliminar(Integer id) throws DAOException {
+        try{
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //Preparamos la consulta SQL y especificamos los parámetros de entrada
+            ps = conn.prepareStatement(DELETE);
+                ps.setInt(1, id);
+                
+            //Ejecutamos la consulta  y verficamos el resultado
+            if(ps.executeUpdate() == 0){
+                throw new DAOException("Hubo un problema y no se pudo eliminar  el registro");
+            }
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+    }// fin del método eliminar
 
     @Override
     public List<Usuario> obtenerTodos() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         //Lista de IDClientes a retornar
+        List<Usuario> misUsuarios = null;
+        
+        try{
+            //Creamos un arrayList 
+            misUsuarios = new ArrayList<>();
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(GETALLUSU);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                Usuario miUsu = new Usuario();
+                miUsu.setId_Usu(rs.getInt("usu_id"));
+                miUsu.setNombreUsuario(rs.getString("usu_nombre"));
+                miUsu.setApellidoPaterno(rs.getString("usu_paterno"));
+                miUsu.setApellidoMaterno(rs.getString("usu_materno"));
+                miUsu.setDomiciilio(rs.getString("usu_domicilio"));
+                miUsu.setCelular(rs.getString("usu_cel"));
+                miUsu.setNickName(rs.getString("usu_nick"));
+                misUsuarios.add(miUsu);
+            }// fin del while
+          
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin dle finally
+        
+        return misUsuarios;
+    }// fin del método obtenerTodos
 
-    @Override
-    public Usuario obtener(String id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    
+  
     /**
      * Método para cerrar las Conexiones de la BD
      * @param ps
@@ -168,5 +252,10 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
        
         return validar;
     }// fin del método verificarUP
+
+    @Override
+    public Usuario obtener(Integer id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }// fin de la clase MySQLUsuaioDAO

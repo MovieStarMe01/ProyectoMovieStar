@@ -11,6 +11,6 @@ import Modelo.Usuario;
  *
  * @author Jesús Moisés
  */
-public interface IUsuarioDAO extends IDAO<Usuario, String>{
+public interface IUsuarioDAO extends IDAO<Usuario, Integer>{
     
 }

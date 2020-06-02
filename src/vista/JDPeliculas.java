@@ -11,7 +11,6 @@ import DAOMySQL.MySQLDAOManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -40,7 +39,7 @@ public class JDPeliculas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        //Obtenemos todos los métodos de la clase MySQLTituloDAO
+        //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
         
         try {
@@ -71,7 +70,6 @@ public class JDPeliculas extends javax.swing.JDialog {
         btnVerPeliculas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGestionPeliculas = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -128,7 +126,7 @@ public class JDPeliculas extends javax.swing.JDialog {
                 btnVerPeliculasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        jPanel1.add(btnVerPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -145,14 +143,6 @@ public class JDPeliculas extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, -1, -1));
-
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,20 +187,9 @@ public class JDPeliculas extends javax.swing.JDialog {
             inicializarListaPeliculas();
         } catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }// fin del catch
         
     }//GEN-LAST:event_btnVerPeliculasActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        tblPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-        // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
-        if(tblPeliculas.getSelectedRow() > -1){
-            JDEditarPeliculas miPeliEditar = new JDEditarPeliculas(null, true);
-            miPeliEditar.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película</h1></html>");
-        }// fin del else
-    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,7 +234,6 @@ public class JDPeliculas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGestionPeliculas;
     private javax.swing.JButton btnRentarComprar;
     private javax.swing.JButton btnSalir;
