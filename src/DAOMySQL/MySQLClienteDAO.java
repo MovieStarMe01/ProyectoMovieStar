@@ -96,10 +96,10 @@ public class MySQLClienteDAO implements IClienteDAO{
                 ps.setString(6, cli.getCorreo());
                 ps.setInt(7, cli.getCli_ID());
                 
-             //Ejecutamos la consulta y verificamos  el resultado
-             if(ps.executeUpdate() == 0){
-                 throw new DAOException("Hubo un problema y no se guardaron los cambios");
-             }
+            //Ejecutamos la consulta y verificamos  el resultado
+            if(ps.executeUpdate() == 0){
+                throw new DAOException("Hubo un problema y no se guardaron los cambios");
+            }
         }catch(SQLException ex){
             throw new DAOException("ERROR de SQL", ex);
         }finally{

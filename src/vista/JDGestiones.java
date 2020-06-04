@@ -42,6 +42,9 @@ public class JDGestiones extends javax.swing.JDialog {
         btnEditarPeli = new javax.swing.JButton();
         btnEditarCli = new javax.swing.JButton();
         btnEditarUsu = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -92,11 +95,11 @@ public class JDGestiones extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 50, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 50, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Salir");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setText("PELICULAS RENTADAS");
@@ -125,41 +128,66 @@ public class JDGestiones extends javax.swing.JDialog {
 
         jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 80));
 
-        btnEditarPeli.setText("Editar Peli");
+        btnEditarPeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarPeli.png"))); // NOI18N
+        btnEditarPeli.setBorder(null);
+        btnEditarPeli.setBorderPainted(false);
+        btnEditarPeli.setContentAreaFilled(false);
+        btnEditarPeli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarPeli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarPeli (1).png"))); // NOI18N
         btnEditarPeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPeliActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarPeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 160, 150));
+        jPanel1.add(btnEditarPeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 160, 150));
 
-        btnEditarCli.setText("Editar Cliente");
+        btnEditarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarCli.png"))); // NOI18N
+        btnEditarCli.setBorder(null);
+        btnEditarCli.setBorderPainted(false);
+        btnEditarCli.setContentAreaFilled(false);
+        btnEditarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarCli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarCli(1).png"))); // NOI18N
         btnEditarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarCliActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 160, 150));
+        jPanel1.add(btnEditarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 160, 150));
 
-        btnEditarUsu.setText("Editar Usuario");
+        btnEditarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarUsu.png"))); // NOI18N
+        btnEditarUsu.setBorder(null);
+        btnEditarUsu.setBorderPainted(false);
+        btnEditarUsu.setContentAreaFilled(false);
+        btnEditarUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarUsu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarUsu (1).png"))); // NOI18N
         btnEditarUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarUsuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 160, 150));
+        jPanel1.add(btnEditarUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 160, 150));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel1.setText("EDITAR CLIENTE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel6.setText("EDITAR USUARIO");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel7.setText("EDITAR PELICULA");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
         );
 
         pack();
@@ -240,10 +268,13 @@ public class JDGestiones extends javax.swing.JDialog {
     private javax.swing.JButton btnEditarUsu;
     private javax.swing.JButton btnRentadas;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private org.edisoncor.gui.panel.PanelImage panelImage1;

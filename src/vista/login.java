@@ -414,7 +414,6 @@ public class login extends javax.swing.JDialog {
      */
     public String getNickName(){
         nickName = txtUser.getText();
-        System.out.println(nickName);
         return nickName;
     }// fin del método getNickName
 
@@ -427,7 +426,6 @@ public class login extends javax.swing.JDialog {
         String contra = txtPassword.getText();
         //Encripto la contraseña a MD5
         String textoEncriptadoConMD5 = DigestUtils.md5Hex(contra); 
-        System.out.println(textoEncriptadoConMD5);
         return textoEncriptadoConMD5;
     }// fin del método encriptar
     

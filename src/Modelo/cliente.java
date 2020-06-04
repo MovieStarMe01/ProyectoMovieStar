@@ -36,7 +36,8 @@ public class cliente {
      * @param correo
      * @param cli_ID 
      */
-    public cliente(String nombreCliente, String apellidoPaterno, String apellidoMaterno, String domicilio, String celular, String correo, int cli_ID) {
+    public cliente(String nombreCliente, String apellidoPaterno, String apellidoMaterno, String domicilio, String celular,
+            String correo, int cli_ID) {
         this.nombreCliente = nombreCliente;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;

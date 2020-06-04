@@ -75,7 +75,6 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuario = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
@@ -104,8 +103,12 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         panelImage2 = new org.edisoncor.gui.panel.PanelImage();
         txtPass2 = new javax.swing.JPasswordField();
         chVerPass = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,22 +116,22 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 710, 10));
 
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setBorderPainted(false);
         btnActualizar.setContentAreaFilled(false);
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
+        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar (1).png"))); // NOI18N
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, 60, 50));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 60, 50));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel1.setText("Actualizar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -141,23 +144,24 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 30, 50));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 30, 50));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel8.setText("Salir");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, 40, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, 40, -1));
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/eliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/eliminar (1).png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel10.setText("Editar Cliente");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 60, 50));
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,31 +176,37 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblUsuario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 640, 130));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 660, 130));
 
-        btnEditar.setText("Editar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editar.png"))); // NOI18N
+        btnEditar.setToolTipText("");
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editar (1).png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 60, 50));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel4.setText("Apellido Materno:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 130, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Teléfono Celular:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel9.setText("Contraseña:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 90, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 90, -1));
 
         panelImage10.setBackground(new java.awt.Color(255, 255, 255));
         panelImage10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -216,7 +226,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         });
         panelImage10.add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 18));
 
-        jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 180, 40));
+        jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 180, 40));
 
         panelImage7.setBackground(new java.awt.Color(255, 255, 255));
         panelImage7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -227,7 +237,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtCelular.setBorder(null);
         panelImage7.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 180, 40));
+        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 180, 40));
 
         panelImage5.setBackground(new java.awt.Color(255, 255, 255));
         panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -238,7 +248,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtMaterno.setBorder(null);
         panelImage5.add(txtMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 180, 40));
+        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 180, 40));
 
         panelImage4.setBackground(new java.awt.Color(255, 255, 255));
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -249,23 +259,23 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtNombre.setBorder(null);
         panelImage4.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 180, 40));
+        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 40));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Apellido Paterno:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setText("Domicilio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("Nick-Name:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 110, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel11.setText("Confirma Contraseña:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 160, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 160, -1));
 
         panelImage8.setBackground(new java.awt.Color(255, 255, 255));
         panelImage8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -276,7 +286,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtNick.setBorder(null);
         panelImage8.add(txtNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 180, 40));
+        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 180, 40));
 
         panelImage6.setBackground(new java.awt.Color(255, 255, 255));
         panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -287,7 +297,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtDomicilio.setBorder(null);
         panelImage6.add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 180, 40));
+        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 180, 40));
 
         panelImage3.setBackground(new java.awt.Color(255, 255, 255));
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -298,7 +308,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtPaterno.setBorder(null);
         panelImage3.add(txtPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 180, 40));
+        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 180, 40));
 
         panelImage2.setBackground(new java.awt.Color(255, 255, 255));
         panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -318,7 +328,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         });
         panelImage2.add(txtPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 18));
 
-        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 180, 40));
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 180, 40));
 
         chVerPass.setBackground(new java.awt.Color(255, 255, 255));
         chVerPass.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
@@ -334,7 +344,30 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
                 chVerPassMouseClicked(evt);
             }
         });
-        jPanel1.add(chVerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, -1, -1));
+        jPanel1.add(chVerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel12.setText("Editar");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel13.setText("Eliminar");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/imgTituloEditarUsu.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,9 +377,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -358,13 +389,14 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         if(validar()){
             //Verificamos si las contraseñas son iguales
             if(verificarPass()){
-                 nickName  = (String) tblUsuario.getValueAt(fila, 0);
+                
+                id_Usu  = (int) tblUsuario.getValueAt(fila, 0);
                 //llamamos el constructor para crear un objeto de tipo cliente
                 Usuario miUsuario = new Usuario(nombre, paterno, materno, domicilio, celular, nickName, contraseña, id_Usu);
 
                 try {
                     manager.getUsuarioDAO().modificar(miUsuario);
-                    JOptionPane.showMessageDialog(null, "Los cambios han sido guardados exitosamente");
+                    JOptionPane.showMessageDialog(null, "<html><h2>Los cambios han sido guardados exitosamente</h2></html>");
                     //llamamos el método limpiarFormulario
                     limpiarFormulario();
                     //llamamos el método deshabilitar
@@ -375,7 +407,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
                     mensajeError(ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Las Contraseñas no son iguales");
+                JOptionPane.showMessageDialog(null, "<html><h1>Las Contraseñas no son iguales</h1></html>");
             }//fin del else  
         }// fin del if validar
 
@@ -398,7 +430,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
             try{
                 manager.getClienteDAO().eliminar(id_Usu);
                 //si no ocurre una excepción
-                JOptionPane.showMessageDialog(null, "El autor ha sido eliminado");
+                JOptionPane.showMessageDialog(null, "<html><h1>El Usuario ha sido eliminado</h1></html>");
                 //llamamos el método limpiarFormulario
                 limpiarFormulario();
                 //llamamos el método deshabilitar
@@ -416,7 +448,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         if(tblUsuario.getSelectedRow() > -1){
             llenarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "Selecciona un Usuario a Editar o Eliminar");
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un Usuario a Editar o Eliminar</h2></html>");
         }// fin del else
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -509,8 +541,9 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chVerPass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -522,6 +555,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage10;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
@@ -641,6 +675,15 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
     private boolean validar() {
         boolean validacion = false;
         
+        nombre = txtNombre.getText();
+        paterno = txtPaterno.getText();
+        materno = txtMaterno.getText();
+        domicilio = txtDomicilio.getText();
+        celular = txtCelular.getText();
+        nickName = txtNick.getText();
+        contraseña = txtPass1.getText();
+        contraseñaConfirmacion = txtPass2.getText();
+        
         if(nombre.equals("")){
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Nombre</h2></html>");
             txtNombre.requestFocusInWindow();
@@ -677,6 +720,18 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
             return validacion;
         }// fin del if Correo
         
+        if(contraseña.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Contraseña</h2></html>");
+            txtPass1.requestFocusInWindow();
+            return validacion;
+        }// fin del if contraseña
+        
+        if(contraseñaConfirmacion.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Confirmación Contraseña</h2></html>");
+            txtPass2.requestFocusInWindow();
+            return validacion;
+        }// fin del if contraseñaConfirmacion
+        
         return true;
     }// fin del método validar
     
@@ -689,7 +744,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
       
         if(!contraseña.contains(contraseñaConfirmacion)){
             return verificar;
-        }
+        }// fin del if 
         return true;
     }// fin del método verificarPass
 
@@ -706,5 +761,5 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtPass1.setText("");
         txtPass2.setText("");
     }// fin del método limpiarFormulario
-    
+     
 }// fin de la clase JDGesEditarUsu

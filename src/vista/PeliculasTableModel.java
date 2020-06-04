@@ -46,7 +46,7 @@ public class PeliculasTableModel extends AbstractTableModel{
         }// fin del switchCase
     }// fin del método getColumnName
     
-    public String getColumnName1(int colum){
+   /* public String getColumnName1(int colum){
         switch(colum){
             case 0: return "Nombre";
             case 1: return "Año";
@@ -59,7 +59,7 @@ public class PeliculasTableModel extends AbstractTableModel{
             default: return "[no]";
         }// fin del switchCase
     }// fin del método getColumnName
-    
+    */
     
     /**
      * Retorna el número de elementos  obtenidos de la tabla títulos
@@ -76,7 +76,7 @@ public class PeliculasTableModel extends AbstractTableModel{
      */
     @Override
     public int getColumnCount() {
-        return 8;
+        return 7;
     }// fin del método getColumnCount
     
     @Override

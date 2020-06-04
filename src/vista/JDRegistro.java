@@ -482,12 +482,12 @@ public class JDRegistro extends javax.swing.JDialog {
     private boolean validar() {
         boolean validacion = false;
         
-        nombreUsuario = txtNombre.getText().trim();
-        apellidoPaterno = txtPaterno.getText().trim();
-        apellidoMaterno = txtMaterno.getText().trim();
-        domicilio = txtDomicilio.getText().trim();
-        celular = txtCelular.getText().trim();
-        nickName = txtNick.getText().trim();
+        nombreUsuario = txtNombre.getText();
+        apellidoPaterno = txtPaterno.getText();
+        apellidoMaterno = txtMaterno.getText();
+        domicilio = txtDomicilio.getText();
+        celular = txtCelular.getText();
+        nickName = txtNick.getText();
         contraseña = txtPass1.getText();
         contraseñaConfirmacion = txtPass2.getText();
 

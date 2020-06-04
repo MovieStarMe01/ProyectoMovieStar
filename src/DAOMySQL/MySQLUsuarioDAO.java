@@ -42,9 +42,9 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     private final String DELETE = "DELETE FROM usuario WHERE usu_id = ?";
     
     private final String UPDATE = "UPDATE usuario SET usu_nombre = ?, usu_paterno = ?, usu_materno = ?, usu_domicilio = ?, "
-             + " usu_cel = ?, usu_nick = ?, usu_ pass MD5(?) WHERE cli_id = ?";
+             + " usu_cel = ?, usu_nick = ?, usu_pass = MD5(?) WHERE usu_id = ?";
     
-     private final String GETALLUSU = "SELECT usu_id, usu_nombre, usu_paterno, usu_materno, usu_domicilio, usu_cel, usu_nick "
+    private final String GETALLUSU = "SELECT usu_id, usu_nombre, usu_paterno, usu_materno, usu_domicilio, usu_cel, usu_nick "
              + " FROM usuario";
      
     /**
@@ -66,7 +66,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 ps.setString(4, miUsuario.getDomicilio());
                 ps.setString(5, miUsuario.getCelular());
                 ps.setString(6, miUsuario.getNickName());
-                ps.setString(7, miUsuario.getContraseña());
+               //ps.setString(7, miUsuario.getContraseña());
                 
             //Ejecutamos la consulta y verificamos el resultado
             if(ps.executeUpdate() == 0){
@@ -98,7 +98,8 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 ps.setString(4, miUsuario.getDomicilio());
                 ps.setString(5, miUsuario.getCelular());
                 ps.setString(6, miUsuario.getNickName());
-                ps.setString(7, miUsuario.getContraseña());        
+                ps.setString(7, miUsuario.getContraseña());   
+                ps.setInt(8, miUsuario.getId_Usu());
             
             //Ejecutamos la consulta y verificamos  el resultado
             if(ps.executeUpdate() == 0){
@@ -240,7 +241,6 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 */
                 if(usu.equals(u) && p.equals(passE)){
                     validar = true;
-                    System.out.println(passE);
                  }// fin del if
              }// fin del while
         }catch(SQLException ex){

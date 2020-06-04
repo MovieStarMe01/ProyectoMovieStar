@@ -45,13 +45,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblGestiones = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        lblAccion1 = new javax.swing.JLabel();
         panelImage2 = new org.edisoncor.gui.panel.PanelImage();
         lblTerror = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblDrama = new javax.swing.JLabel();
         lblComedias = new javax.swing.JLabel();
         lblAccion = new javax.swing.JLabel();
-        lblAccion1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblCrimen = new javax.swing.JLabel();
@@ -62,6 +62,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblTodas = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        panelImage3 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,6 +156,10 @@ public class FrmePrincipal extends javax.swing.JFrame {
         });
         jPanel3.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, 50, 40));
 
+        lblAccion1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lblAccion1.setText("ACCIÓN");
+        jPanel3.add(lblAccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 680, 70, -1));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 750));
 
         panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo.jpg"))); // NOI18N
@@ -217,9 +222,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblAccionMouseExited(evt);
             }
         });
-
-        lblAccion1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        lblAccion1.setText("ACCIÓN");
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("COMEDIAS");
@@ -295,6 +297,19 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel8.setText("TODAS");
 
+        panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/accion.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage3Layout = new javax.swing.GroupLayout(panelImage3);
+        panelImage3.setLayout(panelImage3Layout);
+        panelImage3Layout.setHorizontalGroup(
+            panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelImage3Layout.setVerticalGroup(
+            panelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
         panelImage2.setLayout(panelImage2Layout);
         panelImage2Layout.setHorizontalGroup(
@@ -303,31 +318,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 .addGap(135, 135, 135)
                 .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelImage2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblAccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel2)
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel3)
-                        .addGap(153, 153, 153)
-                        .addComponent(jLabel4))
-                    .addGroup(panelImage2Layout.createSequentialGroup()
-                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRomanticas, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblInfantiles, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblComedias, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
-                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDrama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCrimen))
-                        .addGap(50, 50, 50)
-                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTerror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTodas)))
-                    .addGroup(panelImage2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel5)
                         .addGap(109, 109, 109)
@@ -335,26 +325,52 @@ public class FrmePrincipal extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addComponent(jLabel7)
                         .addGap(155, 155, 155)
-                        .addComponent(jLabel8)))
+                        .addComponent(jLabel8))
+                    .addGroup(panelImage2Layout.createSequentialGroup()
+                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panelImage3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblRomanticas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelImage2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblInfantiles, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblComedias, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(47, 47, 47)
+                                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDrama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCrimen))
+                                .addGap(50, 50, 50)
+                                .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblTerror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTodas)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelImage2Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel2)
+                                .addGap(136, 136, 136)
+                                .addComponent(jLabel3)
+                                .addGap(156, 156, 156)
+                                .addComponent(jLabel4)))))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         panelImage2Layout.setVerticalGroup(
             panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage2Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblDrama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblComedias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTerror))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAccion1)
-                    .addComponent(jLabel2)
                     .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(jLabel4)))
-                .addGap(31, 31, 31)
+                        .addComponent(jLabel2))
+                    .addComponent(panelImage3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInfantiles, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRomanticas, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -633,6 +649,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTodas;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
+    private org.edisoncor.gui.panel.PanelImage panelImage3;
     // End of variables declaration//GEN-END:variables
 
     private void abrirPeliculas() {

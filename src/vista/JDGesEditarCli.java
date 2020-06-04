@@ -90,30 +90,33 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         panelImage9 = new org.edisoncor.gui.panel.PanelImage();
         txtNombre = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        panelImage2 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 710, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 720, 10));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel4.setText("Apellido Materno:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("Teléfono Celular:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         panelImage7.setBackground(new java.awt.Color(255, 255, 255));
         panelImage7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -123,7 +126,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtCelular.setBorder(null);
         panelImage7.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 180, 40));
+        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 180, 40));
 
         panelImage5.setBackground(new java.awt.Color(255, 255, 255));
         panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -133,19 +136,19 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtMaterno.setBorder(null);
         panelImage5.add(txtMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 180, 40));
+        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 180, 40));
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setText("Apellido Paterno:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Domicilio:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("E-Mail:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
 
         panelImage6.setBackground(new java.awt.Color(255, 255, 255));
         panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -155,7 +158,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtCorreo.setBorder(null);
         panelImage6.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 180, 40));
+        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 180, 40));
 
         panelImage8.setBackground(new java.awt.Color(255, 255, 255));
         panelImage8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -165,7 +168,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtDomicilio.setBorder(null);
         panelImage8.add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 180, 40));
+        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 180, 40));
 
         panelImage3.setBackground(new java.awt.Color(255, 255, 255));
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -175,24 +178,24 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtPaterno.setBorder(null);
         panelImage3.add(txtPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 180, 40));
+        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 180, 40));
 
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setBorderPainted(false);
         btnActualizar.setContentAreaFilled(false);
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
+        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar (1).png"))); // NOI18N
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 60, 50));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 60, 50));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel1.setText("Actualizar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -205,11 +208,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, 30, 50));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 30, 50));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel8.setText("Salir");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 40, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 40, -1));
 
         panelImage9.setBackground(new java.awt.Color(255, 255, 255));
         panelImage9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -219,19 +222,20 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtNombre.setBorder(null);
         panelImage9.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 180, 40));
+        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 40));
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/eliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/eliminar (1).png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel10.setText("Editar Cliente");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 60, 50));
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,25 +250,53 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblClientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 640, 130));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 660, 130));
 
-        btnEditar.setText("Editar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editar (1).png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 60, 50));
+
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel9.setText("Eliminar");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel11.setText("Editar");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, -1, -1));
+
+        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/imgTituloEditarCli.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
+        panelImage2.setLayout(panelImage2Layout);
+        panelImage2Layout.setHorizontalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        panelImage2Layout.setVerticalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -280,7 +312,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
             
             try {
                 manager.getClienteDAO().modificar(miCliente);
-                JOptionPane.showMessageDialog(null, "Los cambios han sido guardados exitosamente");
+                JOptionPane.showMessageDialog(null, "<html><h1>Los cambios han sido guardados exitosamente</h1></html>");
                 //llamamos el método limpiarFormulario 
                 limpiarFormulario();
                 //llamamos el método deshabilitar
@@ -303,7 +335,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         if(tblClientes.getSelectedRow() > -1){
             llenarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "Selecciona un cliente a Editar o Eliminar");
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un cliente a Editar o Eliminar</h2></html>");
         }// fin del else
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -320,7 +352,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
             try{
                 manager.getClienteDAO().eliminar(cli_ID);   
                 //si no ocurre una excepción 
-                JOptionPane.showMessageDialog(null, "El autor ha sido eliminado");
+                JOptionPane.showMessageDialog(null, "<html><h1>El Cliente ha sido eliminado</h1></html>");
                //llamamos el método limpiarFormulario 
                 limpiarFormulario();
                 //llamamos el método deshabilitar
@@ -382,7 +414,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -390,9 +422,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
     private org.edisoncor.gui.panel.PanelImage panelImage5;
     private org.edisoncor.gui.panel.PanelImage panelImage6;
@@ -504,6 +538,14 @@ public class JDGesEditarCli extends javax.swing.JDialog {
      */
     private boolean validar() {
         boolean validacion = false;
+        
+        nombre = txtNombre.getText();
+        paterno = txtPaterno.getText();
+        materno = txtMaterno.getText();
+        domicilio = txtDomicilio.getText();
+        celular = txtCelular.getText();
+        correo = txtCorreo.getText();
+        
         
         if(nombre.equals("")){
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Nombre</h2></html>");
