@@ -18,4 +18,6 @@ public interface IPeliculasDAO extends IDAO<peliculas, String>{
     List<peliculas> obtenerPeliculas(String genero) throws DAOException;
     //Lista para obtener todaas las películas
     List<peliculas> obtenerTodasPeli(String todas) throws DAOException;
+    //Lista para obtener todas las peliculas con otra columna mas, se utiliza para la edición
+    List<peliculas> obtenerPeliEdit() throws DAOException;
 }

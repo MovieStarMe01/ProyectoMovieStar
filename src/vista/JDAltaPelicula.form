@@ -463,15 +463,14 @@
         <Component class="javax.swing.JComboBox" name="cmbGeneros">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="8">
-                <StringItem index="0" value="Seleccionar"/>
-                <StringItem index="1" value="Acci&#xf3;n"/>
-                <StringItem index="2" value="Comedia"/>
-                <StringItem index="3" value="Drama"/>
-                <StringItem index="4" value="Terror"/>
-                <StringItem index="5" value="Romanticas"/>
-                <StringItem index="6" value="Infantiles"/>
-                <StringItem index="7" value="Crimen"/>
+              <StringArray count="7">
+                <StringItem index="0" value="ACCI&#xd3;N"/>
+                <StringItem index="1" value="COMEDIA"/>
+                <StringItem index="2" value="DRAMA"/>
+                <StringItem index="3" value="TERROR"/>
+                <StringItem index="4" value="ROMANTICAS"/>
+                <StringItem index="5" value="INFANTILES"/>
+                <StringItem index="6" value="CRIMEN"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -514,7 +513,7 @@
         <Component class="javax.swing.JButton" name="btnAlta">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgIconos/a&#xf1;adirPeli.png"/>
+              <Image iconType="3" name="/imgIconos/peliAlta.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -525,7 +524,7 @@
               <Color id="Cursor de Mano"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgIconos/a&#xf1;adirPeli(1).png"/>
+              <Image iconType="3" name="/imgIconos/peliAlta(1).png"/>
             </Property>
           </Properties>
           <Events>
@@ -565,14 +564,27 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAbrirCaratula">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Elegir"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imgGestiones/elegirCara.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imgGestiones/elegirCara (1).png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirCaratulaActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="250" y="320" width="-1" height="-1"/>
+              <AbsoluteConstraints x="320" y="280" width="40" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

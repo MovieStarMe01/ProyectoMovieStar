@@ -62,6 +62,35 @@ public class peliculas {
     }// fin del constructor peliculas
 
     /**
+     * Constructor para la actualización de una película
+     * @param genero
+     * @param peliTitulo
+     * @param peliSinopsis
+     * @param precioRenta
+     * @param precioVenta
+     * @param caratula
+     * @param audio
+     * @param calidad
+     * @param anio
+     * @param peliID
+     */
+    public peliculas(String genero, String peliTitulo, String peliSinopsis, double precioRenta, double precioVenta, 
+            String caratula, String audio, String calidad, int anio, String peliID) {
+        this.genero = genero;
+        this.peliTitulo = peliTitulo;
+        this.peliSinopsis = peliSinopsis;
+        this.precioRenta = precioRenta;
+        this.precioVenta = precioVenta;
+        this.caratula = caratula;
+        this.audio = audio;
+        this.calidad = calidad;
+        this.anio = anio;
+        this.peliID = peliID;
+    }// fin del constructor
+    
+    
+
+    /**
      * Constructor sin el parámetro estado
      * @param peliID 
      * @param genero

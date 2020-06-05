@@ -11,6 +11,7 @@ import DAOMySQL.MySQLDAOManager;
 import Modelo.cliente;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
 
@@ -312,7 +313,9 @@ public class JDGesEditarCli extends javax.swing.JDialog {
             
             try {
                 manager.getClienteDAO().modificar(miCliente);
-                JOptionPane.showMessageDialog(null, "<html><h1>Los cambios han sido guardados exitosamente</h1></html>");
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/cliActualizacion.png"));
+                JOptionPane.showMessageDialog(null, "<html><h1>Los cambios han sido guardados exitosamente</h1></html>",
+                        "Actualizacion Exitosa", 0, miIcono);
                 //llamamos el método limpiarFormulario 
                 limpiarFormulario();
                 //llamamos el método deshabilitar
@@ -332,37 +335,49 @@ public class JDGesEditarCli extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        //Si se selecciona una fila entonces procedemos a llenar los campos
         if(tblClientes.getSelectedRow() > -1){
             llenarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un cliente a Editar o Eliminar</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un cliente a Editar</h2></html>",
+                    "Selecciona una Fila", 0, miIcono);
         }// fin del else
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-         //Solo se puede eliminar si el idAutor es = -1
-       
-        cli_ID = (int) tblClientes.getValueAt(fila, 0);
-            
-        int respuesta = JOptionPane.showConfirmDialog(null,"¿Deseas eliminar el cliente con el id = "
-                +cli_ID+"?","Confirmar",0);
-            
-        //si la respuesta es igual a 0 entonces procedemos a intentar eliminar
-        if(respuesta == 0){
-            try{
-                manager.getClienteDAO().eliminar(cli_ID);   
-                //si no ocurre una excepción 
-                JOptionPane.showMessageDialog(null, "<html><h1>El Cliente ha sido eliminado</h1></html>");
-               //llamamos el método limpiarFormulario 
-                limpiarFormulario();
-                //llamamos el método deshabilitar
-                deshabilitar();
-                //llamamos el método inicializarListaCliente
-                inicializarListaClientes();
-            }catch(DAOException ex){
-                imprimirMensajeDeErrorDAO(ex);
-            }//fin del catch
-        }// fin del if respuesta
+        // si se selecciona una fila entonces procedemos a eliminar el usuario si asi se desea
+        if(tblClientes.getSelectedRow() > -1){
+            fila = tblClientes.getSelectedRow();
+            cli_ID = (int) tblClientes.getValueAt(fila, 0);
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/eliminarCli.png"));
+            int respuesta = JOptionPane.showConfirmDialog(null,"¿Deseas eliminar el cliente con el id = "
+                +cli_ID+"?","Confirmar", JOptionPane.YES_NO_OPTION, 0, miIcono);
+
+            //si la respuesta es igual a 0 entonces procedemos a intentar eliminar
+            if(respuesta == 0){
+                try{
+                    manager.getClienteDAO().eliminar(cli_ID);   
+                    //si no ocurre una excepción 
+                    ImageIcon miIcono1 = new ImageIcon(getClass().getResource("/imgIconos/eliminarCli.png"));
+                    JOptionPane.showMessageDialog(null, "<html><h1>El Cliente ha sido eliminado</h1></html>",
+                            "Eliminado", 0, miIcono1);
+                    //llamamos el método limpiarFormulario 
+                    limpiarFormulario();
+                    //llamamos el método deshabilitar
+                    deshabilitar();
+                    //llamamos el método inicializarListaCliente
+                    inicializarListaClientes();
+                }catch(DAOException ex){
+                    imprimirMensajeDeErrorDAO(ex);
+                }//fin del catch
+            }// fin del if respuesta
+        }else{
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un cliente a Eliminar</h2></html>",
+                    "Selecciona una fila", 0, miIcono);
+        }// fin del else
+        
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -454,7 +469,6 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtCelular.setEnabled(false);
         txtCorreo.setEnabled(false);
         btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
     }// fin del método deshabilitar
 
     /**
@@ -529,7 +543,6 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         txtCelular.setEnabled(true);
         txtCorreo.setEnabled(true);
         btnActualizar.setEnabled(true);
-        btnEliminar.setEnabled(true);
     }// fin del método habilitar
 
     /**

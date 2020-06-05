@@ -216,7 +216,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
         jPanel1.add(panelImage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 180, 40));
 
-        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Acción", "Comedia", "Drama", "Terror", "Romanticas", "Infantiles", "Crimen" }));
+        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACCIÓN", "COMEDIA", "DRAMA", "TERROR", "ROMANTICAS", "INFANTILES", "CRIMEN" }));
         cmbGeneros.setBorder(null);
         cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 170, -1));
@@ -227,12 +227,12 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 280, 120));
 
-        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/peliAlta.png"))); // NOI18N
         btnAlta.setBorder(null);
         btnAlta.setBorderPainted(false);
         btnAlta.setContentAreaFilled(false);
         btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
+        btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/peliAlta(1).png"))); // NOI18N
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAltaActionPerformed(evt);
@@ -253,13 +253,18 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 50, 50));
 
-        btnAbrirCaratula.setText("Elegir");
+        btnAbrirCaratula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/elegirCara.png"))); // NOI18N
+        btnAbrirCaratula.setBorder(null);
+        btnAbrirCaratula.setBorderPainted(false);
+        btnAbrirCaratula.setContentAreaFilled(false);
+        btnAbrirCaratula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAbrirCaratula.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/elegirCara (1).png"))); // NOI18N
         btnAbrirCaratula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirCaratulaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAbrirCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
+        jPanel1.add(btnAbrirCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 40, 40));
 
         panelImage10.setBackground(new java.awt.Color(255, 255, 255));
         panelImage10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N

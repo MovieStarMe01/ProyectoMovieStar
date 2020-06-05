@@ -277,7 +277,7 @@ public class login extends javax.swing.JDialog {
                     ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
                     //Mando mensaje de que el logeo fue exitoso 
                     JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso Bienvenido "+usu+" </h2></html>","BIENVENIDO",
-                        JOptionPane.INFORMATION_MESSAGE, miIcono);
+                        0, miIcono);
                     //Creo una instancia de mi FrmePrincipal
                     FrmePrincipal miVentana = new FrmePrincipal();
                     //Hago visible miVentana

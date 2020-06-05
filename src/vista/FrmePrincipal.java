@@ -162,8 +162,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 750));
 
-        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo.jpg"))); // NOI18N
-
         lblTerror.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTerror.jpg"))); // NOI18N
         lblTerror.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblTerror.addMouseListener(new java.awt.event.MouseAdapter() {

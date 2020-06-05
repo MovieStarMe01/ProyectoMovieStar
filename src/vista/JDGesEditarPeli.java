@@ -8,9 +8,11 @@ package vista;
 import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
+import Modelo.peliculas;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
@@ -25,17 +27,17 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private DAOManager manager = null;
    
     //Modelo para nuestra tablaPeliculas
-    private PeliculasTableModel model;
+    private PeliculasEditTableModel model;
     
     //Propiedades para  modificar el width de nuestra tabla tblPeliculas
     TableColumnModel columnModel = null;
     
-    String genero ="TODAS";
+    String genero;
     
     String peliID;
     String titulo;
     String calidad;
-    String anio;
+    int anio;
     String audio;
     String caratula;
     double precioRenta;
@@ -59,6 +61,8 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         } catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
         }// fin del catch  
+        
+        deshabilitar();
     }
 
     /**
@@ -105,7 +109,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         panelImage10 = new org.edisoncor.gui.panel.PanelImage();
         txtPrecioVenta = new javax.swing.JTextField();
         cmbGeneros = new javax.swing.JComboBox<>();
-        btnAlta = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -162,12 +166,12 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
         jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 260, 40));
 
-        btnEditarPeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editPeli.png"))); // NOI18N
+        btnEditarPeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarPeli_1.png"))); // NOI18N
         btnEditarPeli.setBorder(null);
         btnEditarPeli.setBorderPainted(false);
         btnEditarPeli.setContentAreaFilled(false);
         btnEditarPeli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditarPeli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editPeli (1).png"))); // NOI18N
+        btnEditarPeli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarPeli (1)_1.png"))); // NOI18N
         btnEditarPeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPeliActionPerformed(evt);
@@ -256,7 +260,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txASinopsis.setRows(5);
         jScrollPane2.setViewportView(txASinopsis);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 310, 130));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 300, 120));
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setText("Sinopsis:");
@@ -296,22 +300,27 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
         jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 170, 40));
 
-        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Acción", "Comedia", "Drama", "Terror", "Romanticas", "Infantiles", "Crimen" }));
+        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACCIÓN", "COMEDIA", "DRAMA", "TERROR", "ROMANTICAS", "INFANTILES", "CRIMEN" }));
         cmbGeneros.setBorder(null);
         cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 170, -1));
 
-        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar.png"))); // NOI18N
-        btnAlta.setBorder(null);
-        btnAlta.setBorderPainted(false);
-        btnAlta.setContentAreaFilled(false);
-        btnAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAlta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizar (1).png"))); // NOI18N
-        jPanel1.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 70, 50));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizarPeli.png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setBorderPainted(false);
+        btnActualizar.setContentAreaFilled(false);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizarPeli (1).png"))); // NOI18N
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, 70, 50));
 
         jLabel13.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel13.setText("Actualizar");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -382,7 +391,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
        if(tblPeliculas.getSelectedRow() > -1){
             llenarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "Selecciona una Película a Editar o Eliminar");
+            JOptionPane.showMessageDialog(null, "Selecciona una Película a Editar");
         }// fin del else
     }//GEN-LAST:event_btnEditarPeliActionPerformed
 
@@ -398,6 +407,35 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        //Verificamos que todos los campos esten llenos
+        if(validar()){
+            //Obtenemos el géneto seleccionado
+            genero = seleccionGenero();  
+            peliID  = (String) tblPeliculas.getValueAt(fila, 0);
+            System.out.println(peliID);
+            //llamamos el constructor para crear un objeto de tipo cliente
+            peliculas miPelicula = new peliculas(genero, titulo, sinopsis, precioRenta, precioVenta, caratula, audio,
+                    calidad, anio, peliID);
+            
+            try {
+                manager.getPeliculasDAO().modificar(miPelicula);
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliActualizar.png"));
+                JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Actualizado Correctamente</h2></html>",
+                     "Actulización Exitosa", 0, miIcono);
+                //llamamos el método limpiarFormulario
+                limpiarFormulario();
+                //llamamos el método deshabilitar
+                deshabilitar();
+                //llamamos el método inicializarListaClientes
+                inicializarListaPeliculas();
+            }catch (DAOException ex) {
+                    mensajeError(ex);
+            }
+        }// fin del if validar
+
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,7 +481,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirCaratula;
-    private javax.swing.JButton btnAlta;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEditarPeli;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbGeneros;
@@ -492,47 +530,199 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
      */
     private void inicializarListaPeliculas() throws DAOException {
         
-        model = new PeliculasTableModel(manager.getPeliculasDAO());
+        model = new PeliculasEditTableModel(manager.getPeliculasDAO());
             
         //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
         tblPeliculas.setModel(model);
-        cargarPeliculas();
+        model.updateModelAll();
+        model.fireTableDataChanged();
     }// fin del método inicializarListaAutores
     
     /**
-     * Método para mostrar las películas en nuestra tabla
-     * @throws DAOException 
+     * Método para llenar todos los campos con los de la película seleccionada
      */
-    private void cargarPeliculas() throws DAOException{
-            model.updateModelAll("TODOS");
-            model.fireTableDataChanged();
-        
-    }// fin del método cargarPeliculas
-
     private void llenarCampos() {
         //Obtenemos la fila seleccionada
         fila = tblPeliculas.getSelectedRow();
         
-        //Obtenemos los datos de la fila
         titulo = (String) tblPeliculas.getValueAt(fila, 1);
-        anio = (String) tblPeliculas.getValueAt(fila, 2);
+        anio = (int) tblPeliculas.getValueAt(fila, 2);
         audio = (String) tblPeliculas.getValueAt(fila, 3);
         calidad = (String) tblPeliculas.getValueAt(fila, 4);
         precioRenta = (double) tblPeliculas.getValueAt(fila, 5);
         precioVenta = (double) tblPeliculas.getValueAt(fila, 6);
-        genero = (String) tblPeliculas.getValueAt(fila, 7);
+        caratula = (String) tblPeliculas.getValueAt(fila, 7);
+        sinopsis = (String) tblPeliculas.getValueAt(fila, 8);
         
         //Colocamos los datos obtenidos de la fila seleccionada en los campos
         txtTitulo.setText(titulo);
-        txtAño.setText(anio);
+        txtAño.setText(String.valueOf(anio));
         txtAudio.setText(audio);
         txtCalidad.setText(calidad);
         txtPrecioRenta.setText(String.valueOf(precioRenta));
         txtPrecioVenta.setText(String.valueOf(precioVenta));
+        txtCaratula.setText(caratula);
         txASinopsis.setText(sinopsis);
+        
         //llamamos el método habilitar
-        //habilitar();
-    }
+        habilitar();
+    }// fin del método llenar campos
+
+    /**
+     * Método para deshabilitar los campos de texto y los botones Actualizar,
+     * Eliminar, y abrirCaratula
+     */
+    private void deshabilitar() {
+        txtTitulo.setEnabled(false);
+        txtAudio.setEnabled(false);
+        txtAño.setEnabled(false);
+        txtCalidad.setEnabled(false);
+        txtCaratula.setEnabled(false);
+        txtPrecioRenta.setEnabled(false);
+        txtPrecioVenta.setEnabled(false);
+        txASinopsis.setEnabled(false);
+        btnAbrirCaratula.setEnabled(false);
+        btnActualizar.setEnabled(false);
+        cmbGeneros.setEnabled(false);
+    }// fin del método deshabilitar
+
+    /**
+     * Método para habilitar los campos de texto y los botones Actualizar, 
+     * Eliminar y abrirCaratula
+     */
+    private void habilitar() {
+        txtTitulo.setEnabled(true);
+        txtAudio.setEnabled(true);
+        txtAño.setEnabled(true);
+        txtCalidad.setEnabled(true);
+        txtCaratula.setEnabled(true);
+        txtPrecioRenta.setEnabled(true);
+        txtPrecioVenta.setEnabled(true);
+        txASinopsis.setEnabled(true);
+        btnAbrirCaratula.setEnabled(true);
+        btnActualizar.setEnabled(true);
+        cmbGeneros.setEnabled(true);
+    }// fin del método habilitar
+    
+    /**
+    * Metodo para Mandar Mensaje de Error
+    * @param ex 
+    */
+    private void mensajeError(DAOException ex) {
+        //Si getMessage existe obtenemos su valor
+        String mensajeError;
+
+        try{
+            mensajeError = "Mensaje: " + ex.getCause().getMessage();
+        }catch(NullPointerException error){
+            mensajeError = "";
+        }// fin del catch
+
+        JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
+                JOptionPane.ERROR_MESSAGE);
+    }// fin del método mensajeError
+
+    /**
+     * Méotodo para validar que todos los campos esten llenos
+     * @return true si todo está correcto, false si faltan datos
+     */
+    private boolean validar() {
+        boolean validacion = false;
+        
+        String año;
+        String renta;
+        String venta;
+        titulo = txtTitulo.getText();
+        calidad = txtCalidad.getText();
+        año = txtAño.getText();
+        audio = txtAudio.getText();
+        caratula = txtCaratula.getText();
+        renta = txtPrecioRenta.getText();
+        venta = txtPrecioVenta.getText();
+        sinopsis = txASinopsis.getText();
+        
+        if(titulo.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Título</h2></html>");
+            txtTitulo.requestFocusInWindow();
+            return validacion;
+        }// fin del if Título
+        
+         if(calidad.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Calidad</h2></html>");
+            txtCalidad.requestFocusInWindow();
+            return validacion;
+        }// fin del if Calidad
+         
+        if(año.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Año</h2></html>");
+            txtAño.requestFocusInWindow();
+            return validacion;
+        }// fin del if Anio
+          
+        if(audio.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Audio</h2></html>");
+            txtAudio.requestFocusInWindow();
+            return validacion;
+        }//fin dle if Audio
+        
+        if(caratula.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Caratula</h2></html>");
+            txtCaratula.requestFocusInWindow();
+            return validacion;
+        }//fin del if Caratula
+        
+        if(renta.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Renta</h2></html>");
+            txtPrecioRenta.requestFocusInWindow();
+            return validacion;
+        }// fin del if PrecioRenta
+        
+        if(venta.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Venta</h2></html>");
+            txtPrecioVenta.requestFocusInWindow();
+            return validacion;
+        }// fin del if PrecioVenta
+        
+        if(sinopsis.equals("")){
+            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Sinopsis</h2></html>");
+            txASinopsis.requestFocusInWindow();
+            return validacion;
+        }// fin del if contraseñaConfirmacion
+        
+        return true;
+    }// fin del método validar
+    
+     /**
+     * Método para saber que género se seleccionó
+     * @return 
+     */
+    private String seleccionGenero() {
+      
+        switch(cmbGeneros.getSelectedIndex()){
+            case 1: return genero = "ACCIÓN";
+            case 2: return genero = "COMEDIA";
+            case 3: return genero = "DRAMA";
+            case 4: return genero = "TERROR";
+            case 5: return genero = "ROMANTICAS";
+            case 6: return genero = "INFANTILES";
+            case 7: return genero = "CRIMEN";
+            default: return "false";
+        }// fin del switchcase
+    }// fin del método seleccionGenero 
+
+    /**
+     * Método para limpar los campos
+     */
+    private void limpiarFormulario() {
+        txtTitulo.setText("");
+        txtCalidad.setText("");
+        txtAño.setText("");
+        txtAudio.setText("");
+        txtCaratula.setText("");
+        txtPrecioRenta.setText("");
+        txtPrecioVenta.setText("");
+        txASinopsis.setText("");
+    }// fin del método limpiarFormulario
     
 }//fin de la clase JDGesEditarPeli
 

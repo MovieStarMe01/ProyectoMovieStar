@@ -66,7 +66,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 ps.setString(4, miUsuario.getDomicilio());
                 ps.setString(5, miUsuario.getCelular());
                 ps.setString(6, miUsuario.getNickName());
-               //ps.setString(7, miUsuario.getContraseña());
+                ps.setString(7, miUsuario.getContraseña());
                 
             //Ejecutamos la consulta y verificamos el resultado
             if(ps.executeUpdate() == 0){
@@ -126,7 +126,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
             //Preparamos la consulta SQL y especificamos los parámetros de entrada
             ps = conn.prepareStatement(DELETE);
                 ps.setInt(1, id);
-                
+               
             //Ejecutamos la consulta  y verficamos el resultado
             if(ps.executeUpdate() == 0){
                 throw new DAOException("Hubo un problema y no se pudo eliminar  el registro");

@@ -13,6 +13,8 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -396,7 +398,9 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
 
                 try {
                     manager.getUsuarioDAO().modificar(miUsuario);
-                    JOptionPane.showMessageDialog(null, "<html><h2>Los cambios han sido guardados exitosamente</h2></html>");
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/userActualizacion.png"));
+                    JOptionPane.showMessageDialog(null, "<html><h2>Los cambios han sido guardados exitosamente</h2></html>",
+                            "Actulización Exitosa", 0, miIcono);
                     //llamamos el método limpiarFormulario
                     limpiarFormulario();
                     //llamamos el método deshabilitar
@@ -407,7 +411,9 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
                     mensajeError(ex);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "<html><h1>Las Contraseñas no son iguales</h1></html>");
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/contraIncorrecta.png"));
+                JOptionPane.showMessageDialog(null, "<html><h1>Las Contraseñas no son iguales</h1></html>", "Fallido",
+                        0, miIcono);
             }//fin del else  
         }// fin del if validar
 
@@ -419,36 +425,48 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-        id_Usu = (int) tblUsuario.getValueAt(fila, 0);
-
-        int respuesta = JOptionPane.showConfirmDialog(null,"¿Deseas eliminar el cliente con el id = "
-            +id_Usu+"?","Confirmar",0);
-
-        //si la respuesta es igual a 0 entonces procedemos a intentar eliminar
-        if(respuesta == 0){
-            try{
-                manager.getClienteDAO().eliminar(id_Usu);
-                //si no ocurre una excepción
-                JOptionPane.showMessageDialog(null, "<html><h1>El Usuario ha sido eliminado</h1></html>");
-                //llamamos el método limpiarFormulario
-                limpiarFormulario();
-                //llamamos el método deshabilitar
-                deshabilitar();
-                //llamamos el método inicializarListaUsuario
-                inicializarListaUsuarios();
-            }catch(DAOException ex){
-                mensajeError(ex);
-            }//fin del catch
-        }// fin del if respuesta
-
+       //Verificamos que se haya seleccionado una fila
+       if(tblUsuario.getSelectedRow() > -1){
+            fila = tblUsuario.getSelectedRow();
+            id_Usu = (int) tblUsuario.getValueAt(fila, 0);
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/eliminarUser.png")); 
+            int respuesta = JOptionPane.showConfirmDialog(null,"¿Deseas eliminar el Usuario con el id = "
+                +id_Usu+"?","Confirmar", JOptionPane.YES_NO_OPTION, 0, miIcono);
+                
+            //si la respuesta es igual a 0 entonces procedemos a intentar eliminar
+            if(respuesta == 0){
+                try{
+                    manager.getUsuarioDAO().eliminar(id_Usu);
+                    
+                    //si no ocurre una excepción
+                    ImageIcon miIcono1 = new ImageIcon(getClass().getResource("/imgIconos/eliminarUser.png"));
+                    JOptionPane.showMessageDialog(null, "<html><h1>El Usuario ha sido eliminado</h1></html>",
+                            "Eliminado", 0, miIcono1);
+                    //llamamos el método limpiarFormulario
+                    limpiarFormulario();
+                    //llamamos el método deshabilitar
+                    deshabilitar();
+                    //llamamos el método inicializarListaUsuario
+                    inicializarListaUsuarios();
+                }catch(DAOException ex){
+                    mensajeError(ex);
+                }//fin del catch
+            }// fin del if respuesta
+        }else{
+           ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un Usuario a Eliminar</h2></html>",
+                    "Selecciona una fila", 0, miIcono);
+        }// fin del else
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        //Si se selecciona una fila procedemos a eliminar el Usuario si asi se desea
         if(tblUsuario.getSelectedRow() > -1){
             llenarCampos();
         }else{
-            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un Usuario a Editar o Eliminar</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Selecciona un Usuario a Editar</h2></html>",
+                    "Selecciona una Fila", 0, miIcono);
         }// fin del else
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -590,7 +608,6 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtPass1.setEnabled(false);
         txtPass2.setEnabled(false);
         btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
     }// fin del método deshabilitar
 
     /**
@@ -665,7 +682,6 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtPass1.setEnabled(true);
         txtPass2.setEnabled(true);
         btnActualizar.setEnabled(true);
-        btnEliminar.setEnabled(true);
     }// fin del método habilitar
     
     /**
@@ -761,5 +777,7 @@ public class JDGesEditarUsu extends javax.swing.JDialog {
         txtPass1.setText("");
         txtPass2.setText("");
     }// fin del método limpiarFormulario
+    
+    
      
 }// fin de la clase JDGesEditarUsu
