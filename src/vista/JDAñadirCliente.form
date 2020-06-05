@@ -372,7 +372,7 @@
         <Component class="javax.swing.JButton" name="btnA&#xf1;adirCli">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgIconos/a&#xf1;adirPeli.png"/>
+              <Image iconType="3" name="/imgRegistrar/nuevoCliente.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -383,7 +383,7 @@
               <Color id="Cursor de Mano"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgIconos/a&#xf1;adirPeli(1).png"/>
+              <Image iconType="3" name="/imgRegistrar/nuevoCliente (1).png"/>
             </Property>
           </Properties>
           <Events>

@@ -699,13 +699,13 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private String seleccionGenero() {
       
         switch(cmbGeneros.getSelectedIndex()){
-            case 1: return genero = "ACCIÓN";
-            case 2: return genero = "COMEDIA";
-            case 3: return genero = "DRAMA";
-            case 4: return genero = "TERROR";
-            case 5: return genero = "ROMANTICAS";
-            case 6: return genero = "INFANTILES";
-            case 7: return genero = "CRIMEN";
+            case 0: return genero = "ACCIÓN";
+            case 1: return genero = "COMEDIA";
+            case 2: return genero = "DRAMA";
+            case 3: return genero = "TERROR";
+            case 4: return genero = "ROMANTICAS";
+            case 5: return genero = "INFANTILES";
+            case 6: return genero = "CRIMEN";
             default: return "false";
         }// fin del switchcase
     }// fin del método seleccionGenero 

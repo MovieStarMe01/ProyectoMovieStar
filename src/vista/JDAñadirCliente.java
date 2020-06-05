@@ -170,12 +170,12 @@ public class JDAñadirCliente extends javax.swing.JDialog {
         jLabel2.setText("E-Mail:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
-        btnAñadirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli.png"))); // NOI18N
+        btnAñadirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/nuevoCliente.png"))); // NOI18N
         btnAñadirCli.setBorder(null);
         btnAñadirCli.setBorderPainted(false);
         btnAñadirCli.setContentAreaFilled(false);
         btnAñadirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAñadirCli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/añadirPeli(1).png"))); // NOI18N
+        btnAñadirCli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgRegistrar/nuevoCliente (1).png"))); // NOI18N
         btnAñadirCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAñadirCliActionPerformed(evt);

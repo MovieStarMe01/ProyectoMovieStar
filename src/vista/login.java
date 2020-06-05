@@ -34,6 +34,9 @@ public class login extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        /*txtPassword.setEchoChar((char)0);
+        txtPassword.setText("Contraseña");
+        txtUser.setText("Nick Name");*/
         this.manager = new MySQLDAOManager();
         
     }
@@ -82,6 +85,11 @@ public class login extends javax.swing.JDialog {
 
         txtUser.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtUser.setBorder(null);
+        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserMouseClicked(evt);
+            }
+        });
         panelImage1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 230, 50));
@@ -92,6 +100,11 @@ public class login extends javax.swing.JDialog {
 
         txtPassword.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPassword.setBorder(null);
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
         panelImage2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 230, 50));
@@ -301,6 +314,15 @@ public class login extends javax.swing.JDialog {
             }// fin del catch
         }
     }//GEN-LAST:event_lblEntrarMouseClicked
+
+    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+       // txtUser.setText("");
+    }//GEN-LAST:event_txtUserMouseClicked
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+       /* txtPassword.setText("");
+        txtPassword.setEchoChar('*');*/
+    }//GEN-LAST:event_txtPasswordMouseClicked
 
     /**
      * @param args the command line arguments
