@@ -666,7 +666,5 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private org.edisoncor.gui.panel.PanelImage panelImage9;
     // End of variables declaration//GEN-END:variables
 
-    private void abrirPeliculas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

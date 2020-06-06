@@ -38,7 +38,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             + " peli_estado = 'ACTIVO'";
     
     private final String GETALLMOVIES = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_genero FROM peliculas WHERE peli_estado = 'ACTIVO'";
+            + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_estado = 'ACTIVO'";
     
     private final String GETALLMOVIESEDIT = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
             + " peli_precio_venta, peli_caratula, peli_sinopsis, peli_genero, peli_id FROM peliculas WHERE peli_estado = 'ACTIVO'";
@@ -295,6 +295,8 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                 miPeli.setPrecioRenta(rs.getDouble("peli_precio_renta"));
                 miPeli.setPrecioVenta(rs.getDouble("peli_precio_venta"));
                 miPeli.setGenero(rs.getString("peli_genero"));
+                miPeli.setPeliSinopsis(rs.getString("peli_sinopsis"));
+                miPeli.setCaratula(rs.getString("peli_caratula"));
                 misPeliculas.add(miPeli);
             }// fin del while
         }catch(SQLException ex){

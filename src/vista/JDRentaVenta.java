@@ -6,7 +6,11 @@
 package vista;
 
 import DAO.DAOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import static vista.JDPeliculas.titulo;
 import static vista.JDPeliculas.anio;
 import static vista.JDPeliculas.audio;
@@ -37,23 +41,12 @@ public class JDRentaVenta extends javax.swing.JDialog {
     /**
      * Creates new form JDRentaVenta
      */
-    public JDRentaVenta(java.awt.Frame parent, boolean modal) {
+    public JDRentaVenta(java.awt.Frame parent, boolean modal){
         super(parent, modal);
         initComponents();
         
-        //this.manager = new MySQLDAOManager();
+        cargarDatos();
         
-        //titulo = lblNombre.getText();
-        lblNombre.setText(titulo);
-        lblAño.setText(String.valueOf(anio));
-        lblAudio.setText(audio);
-        lblGenero.setText(genero1);
-        lblCalidad.setText(calidad);
-        lblRenta.setText(String.valueOf(precioRenta));
-        lblventa.setText(String.valueOf(precioVenta));
-        txASinopsis.setText(sinopsis);
-        
-        lblCaratula.setIcon(new ImageIcon(caratula));
         
         //System.out.println(idPeli);
         /*try {
@@ -282,16 +275,32 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JTextArea txASinopsis;
     // End of variables declaration//GEN-END:variables
 
-    private void llenarDatos() {
+    /**
+     * Método para cargar datos de la película seleccionada
+     */
+    private void cargarDatos() {
+        lblNombre.setText(titulo);
+        lblAño.setText(String.valueOf(anio));
+        lblAudio.setText(audio);
+        lblGenero.setText(genero1);
+        lblCalidad.setText(calidad);
+        lblRenta.setText(String.valueOf(precioRenta));
+        lblventa.setText(String.valueOf(precioVenta));
+        txASinopsis.setText(sinopsis);
         
-    }
+        try{
+            FileReader file = new FileReader(caratula);
+            lblCaratula.setIcon(new ImageIcon(caratula));
+        }catch(FileNotFoundException ex){
+            JOptionPane.showMessageDialog(null, "Imagen No Disponible", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }// fin del catch
+        
+        
+        
+    }// fin del método cargarDatos
 
-    private void obtenerDatos() throws DAOException {
-        
-       //manager.getPeliculasDAO().obtener(idPeli);
-        
-        
-        
-        //System.out.println(idPeli);
+    private void imgError() {
+        lblCaratula.setIcon(new ImageIcon("/imgGestiones/imgNoDisponible.png"));
     }
-}
+    
+}// fin de la clase JDRentaVenta

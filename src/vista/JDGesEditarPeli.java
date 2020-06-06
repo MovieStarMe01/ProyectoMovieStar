@@ -719,7 +719,9 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Año</h2></html>");
             txtAño.requestFocusInWindow();
             return validacion;
-        }// fin del if Anio
+        }else{
+            anio = Integer.parseInt(año);
+        }
           
         if(audio.equals("")){
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Audio</h2></html>");
@@ -737,13 +739,17 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Renta</h2></html>");
             txtPrecioRenta.requestFocusInWindow();
             return validacion;
-        }// fin del if PrecioRenta
+        }else{
+            precioRenta = Double.parseDouble(renta);
+        }// fin del else
         
         if(venta.equals("")){
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Venta</h2></html>");
             txtGenero.requestFocusInWindow();
             return validacion;
-        }// fin del if PrecioVenta
+        }else{
+            precioVenta = Double.parseDouble(venta);
+        }// fin del else
         
         if(sinopsis.equals("")){
             JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Sinopsis</h2></html>");
