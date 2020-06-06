@@ -69,6 +69,11 @@ public class JDGestiones extends javax.swing.JDialog {
         btnBaja.setContentAreaFilled(false);
         btnBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBaja.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas (1).png"))); // NOI18N
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 160, 150));
 
         btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas.png"))); // NOI18N
@@ -217,6 +222,11 @@ public class JDGestiones extends javax.swing.JDialog {
         JDGesEditarUsu miEdicion = new JDGesEditarUsu(null, true);
         miEdicion.setVisible(true);
     }//GEN-LAST:event_btnEditarUsuActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        JDBajaPeliculas miPelicula = new JDBajaPeliculas(null, true);
+        miPelicula.setVisible(true);
+    }//GEN-LAST:event_btnBajaActionPerformed
 
     /**
      * @param args the command line arguments

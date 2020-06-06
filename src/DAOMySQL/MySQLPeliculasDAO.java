@@ -34,18 +34,28 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     private final String GETMOVIES = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_genero FROM peliculas WHERE peli_genero = ?";
+            + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_genero = ? AND "
+            + " peli_estado = 'ACTIVO'";
     
     private final String GETALLMOVIES = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_genero FROM peliculas";
+            + " peli_precio_venta, peli_genero FROM peliculas WHERE peli_estado = 'ACTIVO'";
     
     private final String GETALLMOVIESEDIT = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_caratula, peli_sinopsis, peli_genero, peli_id FROM peliculas";
+            + " peli_precio_venta, peli_caratula, peli_sinopsis, peli_genero, peli_id FROM peliculas WHERE peli_estado = 'ACTIVO'";
     
-    private final String GETONE = "SELECT * FROM peliculas WHERE peli_genero = ?";
+    private final String GETONE = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_genero, peli_precio_renta,"
+            + " peli_precio_venta, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_id = ?"; 
     
     private final String UPDATE = "UPDATE peliculas SET peli_genero = ?, peli_titulo = ?, peli_sinopsis = ?, peli_precio_renta = ?, "
              + " peli_precio_venta = ?, peli_caratula = ?, peli_audio = ?, peli_calidad = ?, peli_anio = ? WHERE peli_id = ?";
+    
+    private final String SEARCH = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
+            + " peli_precio_venta, peli_caratula, peli_sinopsis, peli_genero, peli_id FROM peliculas WHERE peli_titulo = ?";
+    
+    private final String VISIBLE = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
+            + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
+    
+    private final String ESTADO = "UPDATE peliculas SET peli_estado = ? WHERE peli_id = ?";
     
     /**
      * Método para dar de alta peliculas a la BD
@@ -166,6 +176,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                    miPelicula.setPrecioRenta(rs.getDouble("peli_precio_renta"));
                    miPelicula.setPrecioVenta(rs.getDouble("peli_precio_venta"));
                    miPelicula.setGenero(rs.getString("peli_genero"));
+                   miPelicula.setCaratula(rs.getString("peli_caratula"));
                }// fin del while
             }// fin del if
             
@@ -244,6 +255,8 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                 miPeli.setPrecioRenta(rs.getDouble("peli_precio_renta"));
                 miPeli.setPrecioVenta(rs.getDouble("peli_precio_venta"));
                 miPeli.setGenero(rs.getString("peli_genero"));
+                miPeli.setPeliSinopsis(rs.getString("peli_sinopsis"));
+                miPeli.setCaratula(rs.getString("peli_caratula"));
                 misPeliculas.add(miPeli);
             }// fin del while
         }catch(SQLException ex){
@@ -296,7 +309,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     /**
      * Método para obtener todas las películas con un campos mas, el de sinopsis
      * para al momento de editarlas
-     * @param todas
      * @return
      * @throws DAOException 
      */
@@ -320,7 +332,50 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //recorremos el RS y agregamos cada item al ArrayList
             while(rs.next()){
                 peliculas miPeli = new peliculas();
+               
+                miPeli.setPeliTitulo(rs.getString("peli_titulo"));
+                miPeli.setAnio(rs.getInt("peli_anio"));
+                miPeli.setAudio(rs.getString("peli_audio"));
+                miPeli.setCalidad(rs.getString("peli_calidad"));
+                miPeli.setPrecioRenta(rs.getDouble("peli_precio_renta"));
+                miPeli.setPrecioVenta(rs.getDouble("peli_precio_venta"));
+                miPeli.setCaratula(rs.getString("peli_caratula"));
+                miPeli.setPeliSinopsis(rs.getString("peli_sinopsis"));
+                miPeli.setGenero(rs.getString("peli_genero"));
+                miPeli.setPeliID(rs.getString("peli_id"));
+                misPeliculas.add(miPeli);
+            }// fin del while
+        }catch(SQLException ex){
+            throw new DAOException("Error en SQL: " + ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+        
+        return misPeliculas;
+    }// fin del método ObtenerPeliEdit
+
+    @Override
+    public List<peliculas> obtenerBusqueda(String busqueda) throws DAOException {
+        
+        List<peliculas> misPeliculas = null;
+       
+        try{
+            //Creamos un arrayList 
+            misPeliculas = new ArrayList<>();
+            
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(SEARCH);
+                ps.setString(1, busqueda);
                 
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                peliculas miPeli = new peliculas();
                 miPeli.setGenero(rs.getString("peli_genero"));
                 miPeli.setPeliTitulo(rs.getString("peli_titulo"));
                 miPeli.setAnio(rs.getInt("peli_anio"));
@@ -340,6 +395,71 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         }// fin del finally
         
         return misPeliculas;
-    }// fin del método ObtenerPeliEdit
-    
+    }//fin del método obtenerBusqueda
+
+    @Override
+    public List<peliculas> obtenerActivoInactivo(String estado) throws DAOException {
+         List<peliculas> misPeliculas = null;
+       
+        try{
+            //Creamos un arrayList 
+            misPeliculas = new ArrayList<>();
+            
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(VISIBLE);
+                ps.setString(1, estado);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                peliculas miPeli = new peliculas();
+                miPeli.setPeliID(rs.getString("peli_id"));
+                miPeli.setPeliTitulo(rs.getString("peli_titulo"));
+                miPeli.setAnio(rs.getInt("peli_anio"));
+                miPeli.setAudio(rs.getString("peli_audio"));
+                miPeli.setCalidad(rs.getString("peli_calidad"));
+                miPeli.setGenero(rs.getString("peli_genero"));
+                miPeli.setEstado(rs.getString("peli_estado"));
+             
+                misPeliculas.add(miPeli);
+            }// fin del while
+        }catch(SQLException ex){
+            throw new DAOException("Error en SQL: " + ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+        
+        return misPeliculas;
+    }// fin del método obtenerVisibles
+
+    @Override
+    public void estado(peliculas estado) throws DAOException {
+        try{
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+             
+            //Preparamos la consult SQL y especificamos los parámetros de entrada
+            ps = conn.prepareStatement(ESTADO);
+                ps.setString(1, estado.getEstado());
+                ps.setString(2, estado.getPeliID());
+                
+            //Ejecutamos la consulta y verificamos  el resultado
+            if(ps.executeUpdate() == 0){
+                throw new DAOException("Hubo un problema y no se guardaron los cambios");
+            }
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+    }
+
+
+ 
+     
 }// fin de la clase MySQLPeliculasDAO

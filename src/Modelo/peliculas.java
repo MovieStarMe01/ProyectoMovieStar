@@ -88,8 +88,6 @@ public class peliculas {
         this.peliID = peliID;
     }// fin del constructor
     
-    
-
     /**
      * Constructor sin el parámetro estado
      * @param peliID 
@@ -117,8 +115,17 @@ public class peliculas {
         this.anio = anio; 
     }// fin del construtor
     
-    // Getters & Setters
+    /**
+     * constructor para Modificar la visibilidad de las películas
+     * @param peliID
+     * @param estado
+     **/
+    public peliculas(String peliID, String estado) {
+        this.peliID = peliID;
+        this.estado = estado;
+    }// fin del constructor
 
+    // Getters & Setters
     /**
      * @return the genero
      */

@@ -5,18 +5,65 @@
  */
 package vista;
 
+import DAO.DAOException;
+import javax.swing.ImageIcon;
+import static vista.JDPeliculas.titulo;
+import static vista.JDPeliculas.anio;
+import static vista.JDPeliculas.audio;
+import static vista.JDPeliculas.calidad;
+import static vista.JDPeliculas.caratula;
+import static vista.JDPeliculas.genero1;
+import static vista.JDPeliculas.precioRenta;
+import static vista.JDPeliculas.precioVenta;
+import static vista.JDPeliculas.sinopsis;
+
 /**
  *
  * @author Jesús Moisés
  */
 public class JDRentaVenta extends javax.swing.JDialog {
 
+    //Creamos un objeto de tipo interface IPeliculasDAO
+    //private DAOManager manager = null;
+    /*String titulo1;
+    String sinopsis;
+    String anio;
+    String audio;
+    String calidad;
+    double precioRenta;
+    double precioVenta;
+    String genero;/
+    
     /**
      * Creates new form JDRentaVenta
      */
     public JDRentaVenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        //this.manager = new MySQLDAOManager();
+        
+        //titulo = lblNombre.getText();
+        lblNombre.setText(titulo);
+        lblAño.setText(String.valueOf(anio));
+        lblAudio.setText(audio);
+        lblGenero.setText(genero1);
+        lblCalidad.setText(calidad);
+        lblRenta.setText(String.valueOf(precioRenta));
+        lblventa.setText(String.valueOf(precioVenta));
+        txASinopsis.setText(sinopsis);
+        
+        lblCaratula.setIcon(new ImageIcon(caratula));
+        
+        //System.out.println(idPeli);
+        /*try {
+            obtenerDatos();
+        } catch (DAOException ex) {
+            Logger.getLogger(JDRentaVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        //Mandamos llamar el método llenarDatos
+        llenarDatos();*/
        
     }
 
@@ -32,7 +79,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        lblCaratula = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txASinopsis = new javax.swing.JTextArea();
@@ -46,6 +93,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
         btnRenta = new javax.swing.JButton();
         btnVenta = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
+        lblAudio = new javax.swing.JLabel();
+        lblCalidad = new javax.swing.JLabel();
+        lblRenta = new javax.swing.JLabel();
+        lblventa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,17 +113,17 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 650, -1));
 
-        jLabel2.setText("Aquí imagen pelicula");
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 180, 270));
+        lblCaratula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(lblCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 180, 270));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setText("Sinopsis");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         txASinopsis.setColumns(20);
+        txASinopsis.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         txASinopsis.setRows(5);
-        txASinopsis.setText("Aquí una breve información sobre la película");
+        txASinopsis.setEnabled(false);
         jScrollPane2.setViewportView(txASinopsis);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 380, 110));
@@ -80,15 +134,15 @@ public class JDRentaVenta extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setText("Genero:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 60, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Año:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 300, 40, -1));
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("Audio:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel8.setText("Calidad:");
@@ -100,13 +154,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel10.setText("Precio Venta: $");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         btnRenta.setText("Renta");
-        jPanel1.add(btnRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
+        jPanel1.add(btnRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         btnVenta.setText("Venta");
-        jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, -1));
+        jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +169,27 @@ public class JDRentaVenta extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
+
+        lblNombre.setText("jLabel11");
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        lblGenero.setText("jLabel11");
+        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+
+        lblAño.setText("jLabel11");
+        jPanel1.add(lblAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+
+        lblAudio.setText("jLabel11");
+        jPanel1.add(lblAudio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+
+        lblCalidad.setText("jLabel11");
+        jPanel1.add(lblCalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+
+        lblRenta.setText("jLabel11");
+        jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
+
+        lblventa.setText("jLabel11");
+        jPanel1.add(lblventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +207,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //limpiamos la variable IDPeli
+        titulo = null;
         //Cerramos la ventana
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
@@ -184,7 +261,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -195,6 +271,27 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAudio;
+    private javax.swing.JLabel lblAño;
+    private javax.swing.JLabel lblCalidad;
+    private javax.swing.JLabel lblCaratula;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblRenta;
+    private javax.swing.JLabel lblventa;
     private javax.swing.JTextArea txASinopsis;
     // End of variables declaration//GEN-END:variables
+
+    private void llenarDatos() {
+        
+    }
+
+    private void obtenerDatos() throws DAOException {
+        
+       //manager.getPeliculasDAO().obtener(idPeli);
+        
+        
+        
+        //System.out.println(idPeli);
+    }
 }

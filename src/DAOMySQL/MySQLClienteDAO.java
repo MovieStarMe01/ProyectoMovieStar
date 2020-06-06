@@ -216,6 +216,11 @@ public class MySQLClienteDAO implements IClienteDAO{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void estado(cliente estado) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
  
 }// fin de la clase MySQLClienteDAO

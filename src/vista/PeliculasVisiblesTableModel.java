@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Jesús Moisés
  */
-public class PeliculasEditTableModel extends AbstractTableModel{
+public class PeliculasVisiblesTableModel extends AbstractTableModel{
     
     //propiedades
     private IPeliculasDAO peliculas;
@@ -28,23 +28,20 @@ public class PeliculasEditTableModel extends AbstractTableModel{
      * Constructor
      * @param peliculas 
      */
-    public PeliculasEditTableModel(IPeliculasDAO peliculas){
+    public PeliculasVisiblesTableModel(IPeliculasDAO peliculas){
         this.peliculas = peliculas;
     }// fin del constructor
     
     @Override
     public String getColumnName(int colum){
         switch(colum){
-            case 0: return "ID-Peli";
+            case 0: return "ID-Pelicula";
             case 1: return "Nombre";
             case 2: return "Año";
             case 3: return "Audio";
             case 4: return "Calidad";
-            case 5: return "Precio Renta";
-            case 6: return "Precio Venta";
-            case 7: return "Caratula";
-            case 8: return "Sinopsis";
-            case 9: return "Género";
+            case 5: return "Género";
+            case 6: return "Estado";
             default: return "[no]";
         }// fin del switchCase
     }// fin del método getColumnName
@@ -64,7 +61,7 @@ public class PeliculasEditTableModel extends AbstractTableModel{
      */
     @Override
     public int getColumnCount() {
-        return 10;
+        return 7;
     }// fin del método getColumnCount
     
     
@@ -83,11 +80,8 @@ public class PeliculasEditTableModel extends AbstractTableModel{
             case 2: return preguntado.getAnio();
             case 3: return preguntado.getAudio();
             case 4: return preguntado.getCalidad();
-            case 5: return preguntado.getPrecioRenta();
-            case 6: return preguntado.getPrecioVenta();
-            case 7: return preguntado.getCaratula();
-            case 8: return preguntado.getPeliSinopsis();
-            case 9: return preguntado.getGenero();
+            case 5: return preguntado.getGenero();
+            case 6: return preguntado.getEstado();
             default: return "";
         }// fin del switchCase
     }// fin del método getValueAt
@@ -96,9 +90,10 @@ public class PeliculasEditTableModel extends AbstractTableModel{
     /**
      * Método para actualizar la tabla peliculas
      * @throws DAOException 
+     * @param estado
      */
-    public void updateModelAll() throws DAOException{
-        this.datosPeli = peliculas.obtenerPeliEdit();
+    public void updateModelAll(String estado) throws DAOException{
+        this.datosPeli = peliculas.obtenerActivoInactivo(estado);
     }//fin del método updateModelAll
     
-}// fin de la clase PeliculasEditTableModel
+}

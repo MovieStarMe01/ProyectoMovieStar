@@ -42,6 +42,8 @@ public class PeliculasTableModel extends AbstractTableModel{
             case 4: return "Precio Renta";
             case 5: return "Precio Venta";
             case 6: return "Género";
+            case 7: return "Sinopsis";
+            case 8: return "Caratula";
             default: return "[no]";
         }// fin del switchCase
     }// fin del método getColumnName
@@ -61,7 +63,7 @@ public class PeliculasTableModel extends AbstractTableModel{
      */
     @Override
     public int getColumnCount() {
-        return 7;
+        return 9;
     }// fin del método getColumnCount
     
     @Override
@@ -76,6 +78,7 @@ public class PeliculasTableModel extends AbstractTableModel{
             case 5: return preguntado.getPrecioVenta();
             case 6: return preguntado.getGenero();
             case 7: return preguntado.getPeliSinopsis();
+            case 8: return preguntado.getCaratula();
             default: return "";
         }// fin del switchCase
     }// fin del método getValueAt

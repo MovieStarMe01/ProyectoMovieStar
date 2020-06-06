@@ -22,6 +22,16 @@ public class JDPeliculas extends javax.swing.JDialog {
     //Creamos un objeto de tipo interface IPeliculasDAO
     private DAOManager manager = null;
    
+    //public static String idPeli;
+    public static String titulo;
+    public static int anio;
+    public static String genero1;
+    public static String audio;
+    public static String calidad;
+    public static double precioRenta;
+    public static double precioVenta;
+    public static String sinopsis;
+    public static String caratula;
     //Modelo para nuestra tablaPeliculas
     private PeliculasTableModel model;
     
@@ -29,6 +39,7 @@ public class JDPeliculas extends javax.swing.JDialog {
     TableColumnModel columnModel = null;
     
     String genero ="";
+    //String idPeli;
     
     /**
      * Creates new form JDPeliculas
@@ -163,6 +174,18 @@ public class JDPeliculas extends javax.swing.JDialog {
         //tblPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
         if(tblPeliculas.getSelectedRow() > -1){
+            int fila = tblPeliculas.getSelectedRow();
+            titulo = (String) tblPeliculas.getValueAt(fila, 0);
+            anio = (int) tblPeliculas.getValueAt(fila, 1);
+            audio = (String) tblPeliculas.getValueAt(fila, 2);
+            calidad = (String) tblPeliculas.getValueAt(fila, 3);
+            precioRenta = (double) tblPeliculas.getValueAt(fila, 4);
+            precioVenta = (double) tblPeliculas.getValueAt(fila, 5);
+            genero1 = (String) tblPeliculas.getValueAt(fila, 6);
+            sinopsis = (String) tblPeliculas.getValueAt(fila, 7);
+            caratula = (String) tblPeliculas.getValueAt(fila, 8);
+            //lblIDPeli.setText(idPeli);
+            //miIDPeli.
             JDRentaVenta miRentaVenta = new JDRentaVenta(null, true);
             miRentaVenta.setVisible(true);
         }else{

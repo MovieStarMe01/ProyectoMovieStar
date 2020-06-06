@@ -21,4 +21,6 @@ public interface IDAO <T, K> {
     boolean verificaUP(String a, String passE) throws DAOException;
     List<T> obtenerTodos() throws DAOException;
     T obtener(K id) throws DAOException;
+    //Método para cambiar el estado de las peliculas a Activo o Inactivo
+    void estado(T estado) throws DAOException;
 }// fin de la interface

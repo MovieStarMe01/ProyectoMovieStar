@@ -12,13 +12,14 @@ import Modelo.peliculas;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Jesús Moisés
  */
 public class JDAltaPelicula extends javax.swing.JDialog {
-     //Creamos un objeto de tipo interface IPeliculasDAO
+    //Creamos un objeto de tipo interface IPeliculasDAO
     private DAOManager manager = null;
     
     //Campos para alamcenar los datos del formulario
@@ -222,10 +223,11 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 170, -1));
 
         txASinopsis.setColumns(20);
+        txASinopsis.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         txASinopsis.setRows(5);
         jScrollPane1.setViewportView(txASinopsis);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 280, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 300, 120));
 
         btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/peliAlta.png"))); // NOI18N
         btnAlta.setBorder(null);
@@ -346,11 +348,21 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
     private void btnAbrirCaratulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaratulaActionPerformed
         JFileChooser rutaImg = new JFileChooser();
+        //Hacemos un filtro para que solo puedan utilizar imagenes de este tipo
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Imagen", "jpg", "png", "gif");
+        //Aplicamos el filtro
+        rutaImg.setFileFilter(filtro);
         rutaImg.showOpenDialog(this);
         File caratulaF = rutaImg.getSelectedFile();
+        
         if(caratulaF != null){
-            txtCaratula.setText(caratulaF.getAbsolutePath());
-        }// fin del i   
+            if(caratulaF.exists()){
+                txtCaratula.setText(caratulaF.getAbsolutePath());
+            }else{
+                 JOptionPane.showMessageDialog(null, "<html><h2>La Imagen no se encuentra en esta Ruta</h2></html>");
+                 txtCaratula.setText("");
+            }//fin del else
+         }// fin del if  
     }//GEN-LAST:event_btnAbrirCaratulaActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
