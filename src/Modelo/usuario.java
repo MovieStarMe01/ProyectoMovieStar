@@ -9,16 +9,48 @@ package Modelo;
  *
  * @author Jesús Moisés
  */
-public class usuario {
+public class Usuario {
     //Campos
     private String nombreUsuario;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private String domiciilio;
+    private String domicilio;
     private String celular;
     private String nickName;
     private String contraseña;
+    private int id_Usu;
 
+    /**
+     * Constrcutor vacio
+     */
+    public Usuario() {
+        super();
+    }// fin del constrcutor vacio
+    
+    /**
+     * Constructor con todos los parámetros
+     * @param nombreUsuario
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param domicilio
+     * @param celular
+     * @param nickName
+     * @param contraseña
+     * @param id_Usu 
+     */
+    public Usuario(String nombreUsuario, String apellidoPaterno, String apellidoMaterno, String domicilio, String celular,
+            String nickName, String contraseña, int id_Usu) {
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.domicilio = domicilio;
+        this.celular = celular;
+        this.nickName = nickName;
+        this.contraseña = contraseña;
+        this.id_Usu = id_Usu;
+    }// fin del constrcutor
+   
+    
     /**
      * constructor con sus parámetros
      * @param nombreUsuario
@@ -29,12 +61,12 @@ public class usuario {
      * @param nickName
      * @param contraseña 
      */
-    public usuario(String nombreUsuario, String apellidoPaterno, String apellidoMaterno, String domiciilio, String celular,
+    public Usuario(String nombreUsuario, String apellidoPaterno, String apellidoMaterno, String domicilio, String celular,
             String nickName, String contraseña) {
         this.nombreUsuario = nombreUsuario;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
-        this.domiciilio = domiciilio;
+        this.domicilio = domicilio;
         this.celular = celular;
         this.nickName = nickName;
         this.contraseña = contraseña;
@@ -87,15 +119,15 @@ public class usuario {
     /**
      * @return the domiciilio
      */
-    public String getDomiciilio() {
-        return domiciilio;
+    public String getDomicilio() {
+        return domicilio;
     }
 
     /**
      * @param domiciilio the domiciilio to set
      */
     public void setDomiciilio(String domiciilio) {
-        this.domiciilio = domiciilio;
+        this.domicilio = domiciilio;
     }
 
     /**
@@ -139,5 +171,21 @@ public class usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+    /**
+     * @return the id_Usu
+     */
+    public int getId_Usu() {
+        return id_Usu;
+    }
+
+    /**
+     * @param id_Usu the id_Usu to set
+     */
+    public void setId_Usu(int id_Usu) {
+        this.id_Usu = id_Usu;
+    }
+    
+    
      
 }// fin de la clase usuario
