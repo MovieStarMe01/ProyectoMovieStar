@@ -6,9 +6,15 @@
 package vista;
 
 import DAO.DAOException;
-import java.io.File;
+import DAO.DAOManager;
+import DAOMySQL.MySQLDAOManager;
+import Modelo.cliente;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static vista.JDPeliculas.titulo;
@@ -28,15 +34,17 @@ import static vista.JDPeliculas.sinopsis;
 public class JDRentaVenta extends javax.swing.JDialog {
 
     //Creamos un objeto de tipo interface IPeliculasDAO
-    //private DAOManager manager = null;
-    /*String titulo1;
-    String sinopsis;
-    String anio;
-    String audio;
-    String calidad;
-    double precioRenta;
-    double precioVenta;
-    String genero;/
+    private DAOManager manager = null;
+    
+    DefaultComboBoxModel model = new DefaultComboBoxModel();
+    
+    String nombre;
+    int id;
+    String[] idCli = new String[50];
+    String[] nombreCli = new String[50];
+    int cantidad;
+    
+    ArrayList<cliente> misClientes = new ArrayList<cliente>();
     
     /**
      * Creates new form JDRentaVenta
@@ -45,18 +53,21 @@ public class JDRentaVenta extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        //Obtenemos todos los métodos de la clase MySQLClienteDAO
+        this.manager = new MySQLDAOManager();
+        
+        
+   
+        
+        //llamamos el método cargarDatos
         cargarDatos();
         
-        
-        //System.out.println(idPeli);
-        /*try {
-            obtenerDatos();
+        cmbClientes.removeAllItems();
+        try {
+            cargarComboClientes();
         } catch (DAOException ex) {
             Logger.getLogger(JDRentaVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        //Mandamos llamar el método llenarDatos
-        llenarDatos();*/
        
     }
 
@@ -70,7 +81,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lblCaratula = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -93,15 +103,18 @@ public class JDRentaVenta extends javax.swing.JDialog {
         lblCalidad = new javax.swing.JLabel();
         lblRenta = new javax.swing.JLabel();
         lblventa = new javax.swing.JLabel();
+        cmbClientes = new javax.swing.JComboBox<>();
+        lblCliente = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        jLabel1 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("DETALLES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 650, -1));
@@ -111,7 +124,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setText("Sinopsis");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
         txASinopsis.setColumns(20);
         txASinopsis.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
@@ -119,7 +132,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         txASinopsis.setEnabled(false);
         jScrollPane2.setViewportView(txASinopsis);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 380, 110));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 380, 110));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel4.setText("Nombre:");
@@ -143,7 +156,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel9.setText("Precio Renta Por 48h: $");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 380, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel10.setText("Precio Venta: $");
@@ -155,34 +168,94 @@ public class JDRentaVenta extends javax.swing.JDialog {
         btnVenta.setText("Venta");
         jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
-        btnSalir.setText("Salir");
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 380, 60, -1));
 
+        lblNombre.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblNombre.setText("jLabel11");
         jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
 
+        lblGenero.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblGenero.setText("jLabel11");
         jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
+        lblAño.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblAño.setText("jLabel11");
         jPanel1.add(lblAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
 
+        lblAudio.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblAudio.setText("jLabel11");
         jPanel1.add(lblAudio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
+        lblCalidad.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblCalidad.setText("jLabel11");
         jPanel1.add(lblCalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
+        lblRenta.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblRenta.setText("jLabel11");
         jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
 
+        lblventa.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         lblventa.setText("jLabel11");
         jPanel1.add(lblventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+
+        cmbClientes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cmbClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClientes.setBorder(null);
+        cmbClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbClientes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbClientesItemStateChanged(evt);
+            }
+        });
+        cmbClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 150, -1));
+
+        lblCliente.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
+        jPanel1.add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 130, 17));
+
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel11.setText("Salir");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, -1, -1));
+
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/detalles.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 50));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel1.setText(" Cliente:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 60, -1));
+
+        lblID.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
+        jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 80, 17));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel2.setText("ID_Cliente:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,6 +278,39 @@ public class JDRentaVenta extends javax.swing.JDialog {
         //Cerramos la ventana
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void cmbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientesActionPerformed
+        //Cada que se seleccione un cliente este se agregará al label para mostrar el cliente
+        //int seleccionado = 0;
+        //System.out.println(seleccionado);
+        //int seleccionado = cmbClientes.getSelectedIndex();
+        
+        //System.out.println(seleccionado);
+       /* for(int i = 0; i < cantidad; ++i){
+            if(cmbClientes.getSelectedIndex() != -1){
+                
+            }
+        }
+        id = (int) cmbClientes.getSelectedItem();
+       
+        lblID.setText(String.valueOf(id));
+        */
+        //System.out.println(seleccionado);
+        
+        //lblCliente.setText(nombreCli[seleccionado]);
+        
+    }//GEN-LAST:event_cmbClientesActionPerformed
+
+    private void cmbClientesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientesItemStateChanged
+        //Cada que se seleccione un cliente este se agregará al label para mostrar el cliente y su id
+        //Obtenemos el indice Seleccionado
+        int seleccionado = (int) cmbClientes.getSelectedIndex();
+     
+        if(seleccionado != -1){
+            lblCliente.setText(nombreCli[seleccionado]);
+            lblID.setText(idCli[seleccionado]);
+        }// fin del if 
+    }//GEN-LAST:event_cmbClientesItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -252,8 +358,11 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JButton btnRenta;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVenta;
+    private javax.swing.JComboBox<String> cmbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -268,10 +377,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JLabel lblAño;
     private javax.swing.JLabel lblCalidad;
     private javax.swing.JLabel lblCaratula;
+    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblRenta;
     private javax.swing.JLabel lblventa;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private javax.swing.JTextArea txASinopsis;
     // End of variables declaration//GEN-END:variables
 
@@ -302,5 +414,27 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private void imgError() {
         lblCaratula.setIcon(new ImageIcon("/imgGestiones/imgNoDisponible.png"));
     }
-    
+
+    /**
+     * Método para cargar idCliente y nombreCliente
+     * @throws DAOException 
+     */
+    private void cargarComboClientes() throws DAOException {
+        
+        misClientes = (ArrayList<cliente>) manager.getClienteDAO().obtenerClientes();
+        /**
+         * For para recorrer el total de clientes que tenemos dados de alta
+         */
+        for(int i = 0; i < misClientes.size(); ++i){
+            //Cada vuelta agregamos un cliente con su id y su nombre al ComboBox
+            cmbClientes.addItem(String.valueOf(misClientes.get(i).getCli_ID()) + ", " +
+                    misClientes.get(i).getNombreCliente());
+            
+            //llenamos los arrays con todo los id y nombres de los clientes
+            idCli[i] = (String.valueOf(misClientes.get(i).getCli_ID()));
+            nombreCli[i] = misClientes.get(i).getNombreCliente();
+        }//fin del for 
+        lblCliente.setText(nombreCli[0]);
+        lblID.setText(idCli[0]);
+    }// fin del método cargarComboClientes 
 }// fin de la clase JDRentaVenta

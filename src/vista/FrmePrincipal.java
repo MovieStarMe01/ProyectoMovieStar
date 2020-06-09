@@ -7,13 +7,16 @@ package vista;
 
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Jesús Moisés
  */
 public class FrmePrincipal extends javax.swing.JFrame {
-
+    
+    public static String generos = "";
+    
     /**
      * Creates new form FrmePrincipal
      */
@@ -31,6 +34,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -64,17 +68,26 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 214, 71));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
         panelImage1.setBackground(new java.awt.Color(240, 203, 114));
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/LOGONA.png"))); // NOI18N
         panelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 265, 90));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 265;
+        gridBagConstraints.ipady = 90;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 15);
+        jPanel3.add(panelImage1, gridBagConstraints);
 
         btnAñadirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/addCli.png"))); // NOI18N
         btnAñadirCli.setBorder(null);
@@ -87,7 +100,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 btnAñadirCliActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAñadirCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 130, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 80, 0, 0);
+        jPanel3.add(btnAñadirCli, gridBagConstraints);
 
         btnAñadirUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/addUsu.png"))); // NOI18N
         btnAñadirUsu.setBorder(null);
@@ -99,7 +120,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 btnAñadirUsuActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAñadirUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 80, 0, 0);
+        jPanel3.add(btnAñadirUsu, gridBagConstraints);
 
         btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/reportes.png"))); // NOI18N
         btnReportes.setBorder(null);
@@ -107,7 +136,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
         btnReportes.setContentAreaFilled(false);
         btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/reportes (1).png"))); // NOI18N
-        jPanel3.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 130, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 80, 0, 0);
+        jPanel3.add(btnReportes, gridBagConstraints);
 
         btnGestiones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/gestiones.png"))); // NOI18N
         btnGestiones.setBorder(null);
@@ -120,28 +157,61 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 btnGestionesActionPerformed(evt);
             }
         });
-        jPanel3.add(btnGestiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 130, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 80, 0, 0);
+        jPanel3.add(btnGestiones, gridBagConstraints);
 
         lblAñadirCli.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         lblAñadirCli.setText("Añadir Cliente");
-        jPanel3.add(lblAñadirCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipady = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        jPanel3.add(lblAñadirCli, gridBagConstraints);
 
         lblAñadirUsu.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         lblAñadirUsu.setText("Añadir Usuario");
-        jPanel3.add(lblAñadirUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        jPanel3.add(lblAñadirUsu, gridBagConstraints);
 
         lblReportes.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         lblReportes.setText("Reportes");
-        jPanel3.add(lblReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 120, 0, 0);
+        jPanel3.add(lblReportes, gridBagConstraints);
 
         lblGestiones.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         lblGestiones.setText("Gestiones");
-        jPanel3.add(lblGestiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 590, 70, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 110, 145, 0);
+        jPanel3.add(lblGestiones, gridBagConstraints);
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 750));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 720));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         lblAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaAccion.jpg"))); // NOI18N
         lblAccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -156,7 +226,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblAccionMouseExited(evt);
             }
         });
-        jPanel1.add(lblAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
+        jPanel1.add(lblAccion, gridBagConstraints);
 
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/accion.png"))); // NOI18N
 
@@ -171,7 +247,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 50, 0, 0);
+        jPanel1.add(panelImage3, gridBagConstraints);
 
         lblComedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/Caratula.jpg"))); // NOI18N
         lblComedias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -186,7 +269,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblComediasMouseExited(evt);
             }
         });
-        jPanel1.add(lblComedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
+        jPanel1.add(lblComedias, gridBagConstraints);
 
         lblDrama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaDrama.jpg"))); // NOI18N
         lblDrama.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,7 +290,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblDramaMouseExited(evt);
             }
         });
-        jPanel1.add(lblDrama, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 60, 0, 0);
+        jPanel1.add(lblDrama, gridBagConstraints);
 
         lblTerror.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTerror.jpg"))); // NOI18N
         lblTerror.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -216,7 +311,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblTerrorMouseExited(evt);
             }
         });
-        jPanel1.add(lblTerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 53, 0, 23);
+        jPanel1.add(lblTerror, gridBagConstraints);
 
         lblInfantiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaInfantil.jpg"))); // NOI18N
         lblInfantiles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,7 +332,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblInfantilesMouseExited(evt);
             }
         });
-        jPanel1.add(lblInfantiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
+        jPanel1.add(lblInfantiles, gridBagConstraints);
 
         lblRomanticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaRomance.jpg"))); // NOI18N
         lblRomanticas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -246,7 +353,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblRomanticasMouseExited(evt);
             }
         });
-        jPanel1.add(lblRomanticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
+        jPanel1.add(lblRomanticas, gridBagConstraints);
 
         lblCrimen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaCrimen.jpg"))); // NOI18N
         lblCrimen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -261,7 +374,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblCrimenMouseExited(evt);
             }
         });
-        jPanel1.add(lblCrimen, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 60, 0, 0);
+        jPanel1.add(lblCrimen, gridBagConstraints);
 
         lblTodas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTodas.png"))); // NOI18N
         lblTodas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -276,7 +395,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblTodasMouseExited(evt);
             }
         });
-        jPanel1.add(lblTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 53, 0, 23);
+        jPanel1.add(lblTodas, gridBagConstraints);
 
         panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/comedias.png"))); // NOI18N
 
@@ -291,7 +416,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 50, 0, 0);
+        jPanel1.add(panelImage2, gridBagConstraints);
 
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/drama.png"))); // NOI18N
 
@@ -306,7 +438,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 60, 0, 0);
+        jPanel1.add(panelImage4, gridBagConstraints);
 
         panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/terror.png"))); // NOI18N
 
@@ -321,7 +460,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 53, 0, 0);
+        jPanel1.add(panelImage5, gridBagConstraints);
 
         panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/romanticas.png"))); // NOI18N
 
@@ -336,7 +482,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 170, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 170;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 40, 10, 0);
+        jPanel1.add(panelImage6, gridBagConstraints);
 
         panelImage7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/infantiles.png"))); // NOI18N
 
@@ -351,7 +505,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 170, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 170;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 40, 10, 0);
+        jPanel1.add(panelImage7, gridBagConstraints);
 
         panelImage8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/crimen.png"))); // NOI18N
 
@@ -366,7 +528,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 60, 10, 0);
+        jPanel1.add(panelImage8, gridBagConstraints);
 
         panelImage9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/todas.png"))); // NOI18N
 
@@ -381,7 +550,14 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 53, 10, 0);
+        jPanel1.add(panelImage9, gridBagConstraints);
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 870, 570));
 
@@ -402,16 +578,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel1.setText("Salir");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 680, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1313, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel2, new java.awt.GridBagConstraints());
 
         pack();
         setLocationRelativeTo(null);
@@ -541,7 +708,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
         JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("ACCIÓN");
+        generos = "ACCIÓN";
+        miPelicula.lblGenero.setText(generos); 
         miPelicula.setVisible(true);   
     }//GEN-LAST:event_lblAccionMouseClicked
 
@@ -614,6 +782,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                     break;
                 }
             }
+           
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(FrmePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -667,4 +836,4 @@ public class FrmePrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
    
-}
+}// fin de la clase FrmePrincipal

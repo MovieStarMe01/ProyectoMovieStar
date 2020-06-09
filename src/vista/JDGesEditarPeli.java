@@ -102,14 +102,10 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         txASinopsis = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         panelImage3 = new org.edisoncor.gui.panel.PanelImage();
         txtPrecioRenta = new javax.swing.JTextField();
-        panelImage10 = new org.edisoncor.gui.panel.PanelImage();
-        txtGenero = new javax.swing.JTextField();
-        cmbGeneros = new javax.swing.JComboBox<>();
         btnActualizar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -121,6 +117,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         panelImage12 = new org.edisoncor.gui.panel.PanelImage();
         txtPrecioVenta = new javax.swing.JTextField();
+        cmbGeneros = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -276,10 +273,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         jLabel5.setText("Sinopsis:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, 30));
 
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jLabel11.setText("Cambiar Género:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
-
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Precio Venta $:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, -1, -1));
@@ -298,23 +291,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         panelImage3.add(txtPrecioRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 40));
-
-        panelImage10.setBackground(new java.awt.Color(255, 255, 255));
-        panelImage10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
-        panelImage10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtGenero.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        txtGenero.setForeground(new java.awt.Color(153, 153, 153));
-        txtGenero.setBorder(null);
-        txtGenero.setEnabled(false);
-        panelImage10.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
-
-        jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 170, 40));
-
-        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACCIÓN", "COMEDIA", "DRAMA", "TERROR", "ROMANTICAS", "INFANTILES", "CRIMEN" }));
-        cmbGeneros.setBorder(null);
-        cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 170, -1));
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizarPeli.png"))); // NOI18N
         btnActualizar.setBorder(null);
@@ -382,7 +358,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel15.setText("Género:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
 
         panelImage12.setBackground(new java.awt.Color(255, 255, 255));
         panelImage12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -394,6 +370,11 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         panelImage12.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 170, 40));
+
+        cmbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACCIÓN", "COMEDIA", "DRAMA", "TERROR", "ROMANTICAS", "INFANTILES", "CRIMEN" }));
+        cmbGeneros.setBorder(null);
+        cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,17 +460,8 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         // Cada que se presione una tecla en la busqueda se hará una consulta a la BD y traera lo relacionado a esta
         //Primero limpiamos la tabla para cada vez que se escriba o borre sea nueva consulta con lo solicitado
         //limpiarTabla();
-        String busqueda = txtBusqueda.getText();
-        
-        try {
-            List<peliculas> listaPeliculas = manager.getPeliculasDAO().obtenerBusqueda(busqueda);
-            
-            int numeroPeliculas = listaPeliculas.size();
-            model.getValueAt(0, fila);
-        } catch (DAOException ex) {
-            Logger.getLogger(JDGesEditarPeli.class.getName()).log(Level.SEVERE, null, ex);
-        }
        
+         
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     /**
@@ -543,7 +515,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -561,7 +532,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
-    private org.edisoncor.gui.panel.PanelImage panelImage10;
     private org.edisoncor.gui.panel.PanelImage panelImage11;
     private org.edisoncor.gui.panel.PanelImage panelImage12;
     private org.edisoncor.gui.panel.PanelImage panelImage3;
@@ -577,7 +547,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtCalidad;
     private javax.swing.JTextField txtCaratula;
-    private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtPrecioRenta;
     private javax.swing.JTextField txtPrecioVenta;
     private javax.swing.JTextField txtTitulo;
@@ -620,10 +589,8 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtCalidad.setText(calidad);
         txtPrecioRenta.setText(String.valueOf(precioRenta));
         txtPrecioVenta.setText(String.valueOf(precioVenta));
-        txtGenero.setText(String.valueOf(precioVenta));
         txtCaratula.setText(caratula);
         txASinopsis.setText(sinopsis);
-        txtGenero.setText(genero);
         cmbGeneros.setSelectedItem(genero);
         
         //llamamos el método habilitar
@@ -704,19 +671,42 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         sinopsis = txASinopsis.getText();
         
         if(titulo.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Título</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaTitulo.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Título</h2></html>", "Llena el Campo", 0, miIcono);
             txtTitulo.requestFocusInWindow();
             return validacion;
         }// fin del if Título
         
-         if(calidad.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Calidad</h2></html>");
+        if(venta.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Precio de Renta</h2></html>", "Llena el Campo", 0, miIcono);
+            txtPrecioVenta.requestFocusInWindow();
+            return validacion;
+        }else{
+            precioVenta = Double.parseDouble(venta);
+        }// fin del else
+        
+        
+        if(renta.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Precio de Venta</h2></html>", "Lllena el Campo", 0, miIcono);
+            txtPrecioRenta.requestFocusInWindow();
+            return validacion;
+        }else{
+            precioRenta = Double.parseDouble(renta);
+        }// fin del else
+        
+        
+        if(calidad.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCara.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Caratula</h2></html>", "Llena el Campo", 0, miIcono);
             txtCalidad.requestFocusInWindow();
             return validacion;
         }// fin del if Calidad
          
         if(año.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Año</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaAño.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Año</h2></html>", "Llena el Campo", 0, miIcono);
             txtAño.requestFocusInWindow();
             return validacion;
         }else{
@@ -724,35 +714,22 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         }
           
         if(audio.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Audio</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaAudio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Audio</h2></html>", "Llena el Campo", 0, miIcono);
             txtAudio.requestFocusInWindow();
             return validacion;
         }//fin dle if Audio
         
         if(caratula.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Caratula</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCara.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Caratula</h2></html>", "Llena el Campo", 0, miIcono);
             txtCaratula.requestFocusInWindow();
             return validacion;
         }//fin del if Caratula
-        
-        if(renta.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Renta</h2></html>");
-            txtPrecioRenta.requestFocusInWindow();
-            return validacion;
-        }else{
-            precioRenta = Double.parseDouble(renta);
-        }// fin del else
-        
-        if(venta.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Precio-Venta</h2></html>");
-            txtGenero.requestFocusInWindow();
-            return validacion;
-        }else{
-            precioVenta = Double.parseDouble(venta);
-        }// fin del else
-        
+       
         if(sinopsis.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Sinopsis</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaSino.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Sinopsis</h2></html>", "Llena el Campo", 0, miIcono);
             txASinopsis.requestFocusInWindow();
             return validacion;
         }// fin del if contraseñaConfirmacion
@@ -789,7 +766,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtCaratula.setText("");
         txtPrecioRenta.setText("");
         txtPrecioVenta.setText("");
-        txtGenero.setText("");
         txASinopsis.setText("");
     }// fin del método limpiarFormulario
 

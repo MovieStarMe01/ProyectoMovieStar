@@ -13,7 +13,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
-    
+   
 /**
  *
  * @author Jesús Moisés
@@ -26,6 +26,7 @@ public class login extends javax.swing.JDialog {
     PlaceHolder holder;
     String contraseña = "";
     String nickName = "";
+    public static int idUsu;
     
     /**
      * Creates new form login
@@ -286,6 +287,7 @@ public class login extends javax.swing.JDialog {
                 como parámetro el usuario y la contraseña ya encriptada MD5
                 */
                 if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
+                    idUsu = 1;
                     //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
                     ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
                     //Mando mensaje de que el logeo fue exitoso 

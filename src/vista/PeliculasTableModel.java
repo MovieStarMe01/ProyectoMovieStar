@@ -97,5 +97,14 @@ public class PeliculasTableModel extends AbstractTableModel{
         this.datosPeli = peliculas.obtenerTodasPeli(todas);
     }
     
+    /**
+     * Método para realizar busqueda filtrada, Busqueda por nombre
+     * @param busqueda
+     * @throws DAOException 
+     */
+    public void updateModelSearch(String busqueda) throws DAOException{
+        this.datosPeli = peliculas.obtenerBusquedaGEN(busqueda);
+    }// fin del método updateModelSearch
+    
     
 }// fin de la clase PeliculasTableModel

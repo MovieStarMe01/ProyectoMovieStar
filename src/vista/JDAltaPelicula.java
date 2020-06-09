@@ -10,6 +10,7 @@ import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import Modelo.peliculas;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -333,7 +334,9 @@ public class JDAltaPelicula extends javax.swing.JDialog {
 
                     try{
                         manager.getPeliculasDAO().insertar(miPelicula);
-                        JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Dado de Alta Correctamente</h2></html>");
+                        ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
+                        JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Dado de Alta Correctamente</h2></html>",
+                                "Proceso Exitoso", 0, miIcono);
                         limpiarFormulario();
                     }catch(DAOException ex){
                         mensajeError(ex);
@@ -470,58 +473,66 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         año = txtAño.getText().trim();
         
         if(peliID.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un ID a la Pelicula");
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un ID a la Pelicula</h2></html>");
             txtPeliID.requestFocusInWindow();
             return validacion;
         }// fin del if peliID
         
         if(peliTitulo.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Título");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaTitulo.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Título</h2></html>", "Llena el Campo", 0, miIcono);
             txtTitulo.requestFocusInWindow();
             return validacion;
         }// fin del if peliTitulo
         
-        if(peliSinopsis.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Sinopsis");
-            txASinopsis.requestFocusInWindow();
-            return validacion;
-        }// fin del if peliSinopsis
-        
         if(precioRenta.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Precio de Renta");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Precio de Renta</h2></html>", "Llena el Campo", 0, miIcono);
             txtPrecioRenta.requestFocusInWindow();
             return validacion;
         }// fin del if precioRenta
         
         if(precioVenta.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Precio de Venta");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Precio de Venta</h2></html>", "Lllena el Campo", 0, miIcono);
             txtPrecioVenta1.requestFocusInWindow();
             return validacion;
         }// fin del if precioVenta
-        
-        if(caratula.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Caratula");
-            txtCaratula.requestFocusInWindow();
+       
+        if(año.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaAño.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Año</h2></html>", "Llena el Campo", 0, miIcono);
+            txtAño.requestFocusInWindow();
             return validacion;
-        }// fin del if caratula
+        }// fin del if año
         
-         if(audio.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Audio");
+        if(peliSinopsis.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaSino.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Sinopsis</h2></html>", "Llena el Campo", 0, miIcono);
+            txASinopsis.requestFocusInWindow();
+            return validacion;
+        }// fin del if peliSinopsis
+        
+        if(audio.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaAudio.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Audio</h2></html>", "Llena el Campo", 0, miIcono);
             txtAudio.requestFocusInWindow();
             return validacion;
         }// fin del if audio
          
           if(calidad.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Calidad");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCal.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Calidad</h2></html>", "Llena el Campo", 0, miIcono);
             txtCalidad.requestFocusInWindow();
             return validacion;
         }// fin del if calidad
-        
-        if(año.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Año");
-            txtAño.requestFocusInWindow();
+       
+        if(caratula.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCara.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Caratula</h2></html>", "Llena el Campo", 0, miIcono);
+            txtCaratula.requestFocusInWindow();
             return validacion;
-        }// fin del if año
+        }// fin del if caratula
            
         return true;
     }// fin del método validar

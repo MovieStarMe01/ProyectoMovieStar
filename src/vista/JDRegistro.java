@@ -11,6 +11,7 @@ import DAOMySQL.MySQLDAOManager;
 import Modelo.Usuario;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -380,15 +381,18 @@ public class JDRegistro extends javax.swing.JDialog {
 
                 try{
                     manager.getUsuarioDAO().insertar(miUsuario);
-                    JOptionPane.showMessageDialog(null, "<html><h2>El Usuario se ha Registardo Correctamente</h2></html>");
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/usuAltaJOP.png"));
+                    JOptionPane.showMessageDialog(null, "<html><h2>El Usuario se ha Registardo Correctamente</h2></html>",
+                            "Usuario Dado de Alta", 0, miIcono);
                     limpiarFormulario();
                 }catch(DAOException ex){
                     mensajeError(ex);
                 }// fin del catch
             this.dispose();
             }else{
-                JOptionPane.showMessageDialog(null,"<html><h2>Las Contraseñas no son Iguales</h2></html>", "ERROR",
-                    JOptionPane.ERROR_MESSAGE);
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/passDesigualJOP.png"));
+                JOptionPane.showMessageDialog(null,"<html><h2>Las Contraseñas no son Iguales</h2></html>", "ERROR", 0,
+                        miIcono);
             }// fin del else
             
         }// fin dl if validar
@@ -492,49 +496,57 @@ public class JDRegistro extends javax.swing.JDialog {
         contraseñaConfirmacion = txtPass2.getText();
 
         if(nombreUsuario.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un nombre de Usuario");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un nombre de Usuario</h2></html>", "Llena el Campo", 0, miIcono);
             txtNombre.requestFocusInWindow();
             return validacion;
         }// fin del if nombreUsuario
 
         if(apellidoPaterno.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Paterno");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Paterno</h2></html>", "Llena el Campo", 0, miIcono);
             txtPaterno.requestFocusInWindow();
             return validacion;
         }// fin del if apellidPaterno
         
         if(apellidoMaterno.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Materno");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaMaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Materno</h2></html>", "Llena el Campo", 0, miIcono);
             txtMaterno.requestFocusInWindow();
             return validacion;
         }// fin del if apellidoMaterno
         
         if(domicilio.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Domicilio");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaDire.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Domicilio</h2></html>", "Llena el Campo", 0, miIcono);
             txtDomicilio.requestFocusInWindow();
             return validacion;
         }// fin del if domicilio
         
         if(celular.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Número de Celular");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCel.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Número de Celular</h2></html>", "Llena el Campo", 0, miIcono);
             txtCelular.requestFocusInWindow();
             return validacion;
         }// fin del if celular
         
         if(nickName.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Nick-Name");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNick.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Nick-Name</h2></html>", "Llena el Campo", 0, miIcono);
             txtNick.requestFocusInWindow();
             return validacion;
         }// fin del if nickName
         
         if(contraseña.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa una Contraseña");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPass.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Contraseña</h2></html>", "Llena el Campo", 0, miIcono);
             txtPass1.requestFocusInWindow();
             return validacion;
         }// fin del if contraseña
         
         if(contraseñaConfirmacion.equals("")){
-            JOptionPane.showMessageDialog(null, "Confirma Contraseña");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPass.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Confirma Contraseña</h2></html>", "Llena el Campo", 0, miIcono);
             txtPass2.requestFocusInWindow();
             return validacion;
         }// fin del if contraseñConfirmacion

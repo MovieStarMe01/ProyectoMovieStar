@@ -44,6 +44,10 @@ public class MySQLClienteDAO implements IClienteDAO{
      
     private final String DELETE = "DELETE FROM cliente WHERE cli_id = ?";
     
+    private final String LLENARCMB = "SELECT cli_id, cli_nombre FROM cliente";
+    
+    private final String NAMES = "SELECT cli_nombre FROM cliente WHERE cli_id = ?";
+    
     /**
      * Método para añadir un cliente a nuestra BD
      * @param miCliente
@@ -220,6 +224,48 @@ public class MySQLClienteDAO implements IClienteDAO{
     public void estado(cliente estado) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    /**
+     * Método para obtener clientes y mostrarlos en el combobox
+     * @return
+     * @throws DAOException 
+     */
+    @Override
+    public List<cliente> obtenerClientes() throws DAOException {
+        //Lista de IDClientes a retornar
+        List<cliente> misClientes = null;
+    
+        try{
+            //Creamos un arrayList 
+            misClientes = new ArrayList<>();
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(LLENARCMB);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                cliente miCli = new cliente();
+                miCli.setCli_ID(rs.getInt("cli_id"));
+                miCli.setNombreCliente(rs.getString("cli_nombre"));
+                misClientes.add(miCli);
+            }// fin del while
+          
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin dle finally
+        
+        return misClientes;
+    }// fin del método obtenerClientes
+
+   
+    
 
 
  

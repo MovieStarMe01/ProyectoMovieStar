@@ -13,7 +13,7 @@ import java.util.List;
  * @author Jesús Moisés
  */
 public interface IClienteDAO extends IDAO<cliente, Integer>{
-    //Obtenemos una lista con todos los IDCliente que están dado de alta
-   //List<cliente> obtenerClientes() throws DAOException;
-    
+   //Obtenemos una lista con todos IDCliente que están dado de alta
+   List<cliente> obtenerClientes() throws DAOException;
+   
 }

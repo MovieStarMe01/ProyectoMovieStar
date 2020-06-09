@@ -9,6 +9,7 @@ import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import Modelo.cliente;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -245,7 +246,9 @@ public class JDAñadirCliente extends javax.swing.JDialog {
 
                 try{
                     manager.getClienteDAO().insertar(miCliente);
-                    JOptionPane.showMessageDialog(null, "<html><h2>El Cliente se ha Registardo Correctamente</h2></html>");
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/cliAltaJOP.png"));
+                    JOptionPane.showMessageDialog(null, "<html><h2>El Cliente se ha Registardo Correctamente</h2></html>",
+                            "Cliente Dado de Alta", 0, miIcono);
                     limpiarFormulario();
                 }catch(DAOException ex){
                     mensajeError(ex);
@@ -345,37 +348,43 @@ public class JDAñadirCliente extends javax.swing.JDialog {
         correo = txtCorreo.getText().trim();
         
         if(nombreCliente.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un nombre de Usuario");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un nombre de Usuario</h2></html>", "Llena el Campo", 0, miIcono);
             txtNombre.requestFocusInWindow();
             return validacion;
         }// fin del if nombreUsuario
 
         if(apellidoPaterno.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Paterno");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Paterno</h2></html>", "Llena el Campo", 0, miIcono);
             txtPaterno.requestFocusInWindow();
             return validacion;
         }// fin del if apellidPaterno
         
         if(apellidoMaterno.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Apellido Materno");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaMaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Materno</h2></html>", "Llena el Campo", 0, miIcono);
             txtMaterno.requestFocusInWindow();
             return validacion;
         }// fin del if apellidoMaterno
         
         if(domicilio.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Domicilio");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaDire.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Domicilio</h2></html>", "Llena el Campo", 0, miIcono);
             txtDomicilio.requestFocusInWindow();
             return validacion;
         }// fin del if domicilio
         
         if(celular.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un Número de Celular");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCel.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Número de Celular</h2></html>", "Llena el Campo", 0, miIcono);
             txtCelular.requestFocusInWindow();
             return validacion;
         }// fin del if celular
         
         if(correo.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresa un correo");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCorreo.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un correo</h2></html>", "Llena el Campo", 0, miIcono);
             txtCorreo.requestFocusInWindow();
             return validacion;
         }// fin del if correo

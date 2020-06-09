@@ -28,6 +28,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     
     String estadoV = "ACTIVO";
     String estadoI = "INACTIVO";
+    String vendido = "VENDIDO";
     
     String idPeli;
     int filaV;
@@ -69,7 +70,6 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
@@ -83,15 +83,12 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         btnVisible = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("Películas Visibles");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel2.setText("Peliculas Invisibles");
@@ -178,6 +175,21 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
 
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/peliculasVisibles.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
+        );
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 290, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,8 +208,8 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private void btnInvisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvisibleActionPerformed
         //Obtenemos la fila seleccioanda de la tabla Visibles
         filaV = tblVisibles.getSelectedRow();
-        if(filaV >=0 ){
-             //Obtenemos el IDPelicula
+        if(filaV >= 0 ){
+            //Obtenemos el IDPelicula
             idPeli = (String) tblVisibles.getValueAt(filaV, 0);
             //llamamos el método cambiarEstado y mandamos como parámetro el estado a cambiar en este caso a Invisible
             cambiarEstado(estadoI, idPeli);
@@ -274,7 +286,6 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JButton btnInvisible;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVisible;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -284,6 +295,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private javax.swing.JTable tblInvisibles;
     private javax.swing.JTable tblVisibles;
     // End of variables declaration//GEN-END:variables
