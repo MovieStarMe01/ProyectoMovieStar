@@ -34,7 +34,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private String audio;
     private String calidad;
     private String peliID;
-    private String estado = "ACTIVO";
+    private final String estado = "ACTIVO";
     /**
      * Creates new form JDAltaPelicula
      */
@@ -473,17 +473,11 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         año = txtAño.getText().trim();
         
         if(peliID.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un ID a la Pelicula</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/idPeli.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un ID a la Pelicula</h2></html>", "Llena el Campo", 0, miIcono);
             txtPeliID.requestFocusInWindow();
             return validacion;
         }// fin del if peliID
-        
-        if(peliTitulo.equals("")){
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaTitulo.png"));
-            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Título</h2></html>", "Llena el Campo", 0, miIcono);
-            txtTitulo.requestFocusInWindow();
-            return validacion;
-        }// fin del if peliTitulo
         
         if(precioRenta.equals("")){
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
@@ -492,12 +486,26 @@ public class JDAltaPelicula extends javax.swing.JDialog {
             return validacion;
         }// fin del if precioRenta
         
+        if(peliTitulo.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaTitulo.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Título</h2></html>", "Llena el Campo", 0, miIcono);
+            txtTitulo.requestFocusInWindow();
+            return validacion;
+        }// fin del if peliTitulo
+        
         if(precioVenta.equals("")){
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPrecio.png"));
             JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Precio de Venta</h2></html>", "Lllena el Campo", 0, miIcono);
             txtPrecioVenta1.requestFocusInWindow();
             return validacion;
         }// fin del if precioVenta
+        
+        if(calidad.equals("")){
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCal.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Calidad</h2></html>", "Llena el Campo", 0, miIcono);
+            txtCalidad.requestFocusInWindow();
+            return validacion;
+        }// fin del if calidad
        
         if(año.equals("")){
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaAño.png"));
@@ -519,13 +527,6 @@ public class JDAltaPelicula extends javax.swing.JDialog {
             txtAudio.requestFocusInWindow();
             return validacion;
         }// fin del if audio
-         
-          if(calidad.equals("")){
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCal.png"));
-            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa una Calidad</h2></html>", "Llena el Campo", 0, miIcono);
-            txtCalidad.requestFocusInWindow();
-            return validacion;
-        }// fin del if calidad
        
         if(caratula.equals("")){
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCara.png"));

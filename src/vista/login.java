@@ -130,7 +130,7 @@ public class login extends javax.swing.JDialog {
         verPass.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         verPass.setForeground(new java.awt.Color(153, 153, 153));
         verPass.setText("Ver Contraseña");
-        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/hide.png"))); // NOI18N
         verPass.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/visibility.png"))); // NOI18N
         verPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +145,7 @@ public class login extends javax.swing.JDialog {
         lblRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         lblRegistrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         lblRegistrar.setText("    Registrarse");
-        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegistrarMouseClicked(evt);
@@ -178,7 +178,7 @@ public class login extends javax.swing.JDialog {
         lblEntrar.setBackground(new java.awt.Color(255, 255, 255));
         lblEntrar.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         lblEntrar.setText("         Entrar");
-        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblEntrarMouseClicked(evt);

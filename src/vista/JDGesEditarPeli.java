@@ -460,6 +460,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         // Cada que se presione una tecla en la busqueda se hará una consulta a la BD y traera lo relacionado a esta
         //Primero limpiamos la tabla para cada vez que se escriba o borre sea nueva consulta con lo solicitado
         //limpiarTabla();
+        
        
          
     }//GEN-LAST:event_txtBusquedaKeyReleased

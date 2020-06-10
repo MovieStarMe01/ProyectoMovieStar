@@ -33,11 +33,11 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             + " peli_precio_venta, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-    private final String GETMOVIES = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
+    private final String GETMOVIES = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
             + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_genero = ? AND "
             + " peli_estado = 'ACTIVO'";
     
-    private final String GETALLMOVIES = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
+    private final String GETALLMOVIES = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
             + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_estado = 'ACTIVO'";
     
     private final String GETALLMOVIESEDIT = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
@@ -51,6 +51,10 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     
     private final String SEARCHGEN = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
             + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_titulo LIKE '%?%'";
+    
+    private final String SEARCH = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
+            + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE  peli_genero = ? AND"
+            + " peli_titulo LIKE '%?%'";
     
     private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
             + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
@@ -254,6 +258,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //recorremos el RS y agregamos cada item al ArrayList
             while(rs.next()){
                 peliculas miPeli = new peliculas();
+                miPeli.setPeliID(rs.getString("peli_id"));
                 miPeli.setPeliTitulo(rs.getString("peli_titulo"));
                 miPeli.setAnio(rs.getInt("peli_anio"));
                 miPeli.setAudio(rs.getString("peli_audio"));
@@ -387,7 +392,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             conn = Conectar.ConectarBD();
             
             //preparamos la consulta y especificamos los parametros de entrada
-            ps = conn.prepareStatement(SEARCHGEN);
+            ps = conn.prepareStatement(SEARCH);
                 ps.setString(1, genero);
                 ps.setString(2, busqueda);
                 
@@ -511,7 +516,10 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //preparamos la consulta y especificamos los parametros de entrada
             ps = conn.prepareStatement(INACTIVOVEND);
                 ps.setString(1, estado);
+                ps.setString(2, estado1);
             
+                System.out.println(estado);
+                System.out.println(estado1);
             //ejecutamos la consulta y almacenamos el resultado en un objeto RS
             rs = ps.executeQuery();
             
@@ -524,7 +532,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                 miPeli.setAudio(rs.getString("peli_audio"));
                 miPeli.setCalidad(rs.getString("peli_calidad"));
                 miPeli.setGenero(rs.getString("peli_genero"));
-                miPeli.setEstado(rs.getString("peli_estado"));
                 miPeli.setEstado(rs.getString("peli_estado"));
                 misPeliculas.add(miPeli);
             }// fin del while

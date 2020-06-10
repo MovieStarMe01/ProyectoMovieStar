@@ -17,5 +17,5 @@ public interface DAOManager {
     IUsuarioDAO getUsuarioDAO();
     IClienteDAO getClienteDAO();
     IPeliculasDAO getPeliculasDAO();
-   
+    INotasDAO getNotasDAO();
 }

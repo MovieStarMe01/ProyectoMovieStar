@@ -9,6 +9,8 @@ import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import Modelo.cliente;
+import Modelo.notas;
+import Modelo.peliculas;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.sql.Timestamp;
+import static vista.JDPeliculas.IDPelicula;
 import static vista.JDPeliculas.titulo;
 import static vista.JDPeliculas.anio;
 import static vista.JDPeliculas.audio;
@@ -38,8 +42,19 @@ public class JDRentaVenta extends javax.swing.JDialog {
     
     DefaultComboBoxModel model = new DefaultComboBoxModel();
     
+  
+    int notaID;
+    String notaTotal;
+    //Date notaFecha;
+    String peliID;
+    String notaVenta = "VENDIDA";
+    String notaRenta = "RENTADA";
+    int  idUsuario;
+    int idCliente;
+    
     String nombre;
     int id;
+    String genero;
     String[] idCli = new String[50];
     String[] nombreCli = new String[50];
     int cantidad;
@@ -55,10 +70,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         
         //Obtenemos todos los métodos de la clase MySQLClienteDAO
         this.manager = new MySQLDAOManager();
-        
-        
-   
-        
+       
         //llamamos el método cargarDatos
         cargarDatos();
         
@@ -102,13 +114,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
         lblAudio = new javax.swing.JLabel();
         lblCalidad = new javax.swing.JLabel();
         lblRenta = new javax.swing.JLabel();
-        lblventa = new javax.swing.JLabel();
+        lblVenta = new javax.swing.JLabel();
         cmbClientes = new javax.swing.JComboBox<>();
         lblCliente = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
         jLabel1 = new javax.swing.JLabel();
-        lblID = new javax.swing.JLabel();
+        lblIDCliente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -166,6 +178,11 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1.add(btnRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         btnVenta.setText("Venta");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
@@ -204,9 +221,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
         lblRenta.setText("jLabel11");
         jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
 
-        lblventa.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblventa.setText("jLabel11");
-        jPanel1.add(lblventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+        lblVenta.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
+        lblVenta.setText("jLabel11");
+        jPanel1.add(lblVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         cmbClientes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         cmbClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -250,8 +267,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jLabel1.setText(" Cliente:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 60, -1));
 
-        lblID.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 80, 17));
+        lblIDCliente.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
+        jPanel1.add(lblIDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 80, 17));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("ID_Cliente:");
@@ -308,9 +325,42 @@ public class JDRentaVenta extends javax.swing.JDialog {
      
         if(seleccionado != -1){
             lblCliente.setText(nombreCli[seleccionado]);
-            lblID.setText(idCli[seleccionado]);
+            lblIDCliente.setText(idCli[seleccionado]);
         }// fin del if 
     }//GEN-LAST:event_cmbClientesItemStateChanged
+
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        
+        idCliente = Integer.parseInt(lblIDCliente.getText());
+        notaTotal = lblVenta.getText();
+        peliID = IDPelicula;
+        java.util.Date utilDate = new java.util.Date();
+        long lnMilisegundos = utilDate.getTime();
+        java.sql.Timestamp notaFecha = new java.sql.Timestamp(lnMilisegundos);
+
+        System.out.println(idCliente);
+        System.out.println(notaTotal);
+        System.out.println(peliID);
+        System.out.println(notaFecha);
+        System.out.println(notaVenta);
+        //llamamos el constructor para crear un Objeto de tipo Notas
+        notas miNota = new notas(notaTotal, notaFecha, peliID, notaVenta, 1, idCliente);
+        try{
+            manager.getNotasDAO().insertar(miNota);
+                
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
+                "Proceso Exitoso", 0, miIcono);
+            
+            //llamamos el constructor para crear un objeto de tipo peliculas
+            peliculas miPelicula = new peliculas(peliID, notaVenta);
+            //Hacemos un update para cambiar el estado de la película a VENDIDA
+            manager.getPeliculasDAO().estado(miPelicula);
+                         
+        }catch(DAOException ex){
+                 mensajeError(ex);
+        }// fin del catch  
+    }//GEN-LAST:event_btnVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,10 +429,10 @@ public class JDRentaVenta extends javax.swing.JDialog {
     private javax.swing.JLabel lblCaratula;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblGenero;
-    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblIDCliente;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblRenta;
-    private javax.swing.JLabel lblventa;
+    private javax.swing.JLabel lblVenta;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private javax.swing.JTextArea txASinopsis;
     // End of variables declaration//GEN-END:variables
@@ -397,7 +447,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         lblGenero.setText(genero1);
         lblCalidad.setText(calidad);
         lblRenta.setText(String.valueOf(precioRenta));
-        lblventa.setText(String.valueOf(precioVenta));
+        lblVenta.setText(String.valueOf(precioVenta));
         txASinopsis.setText(sinopsis);
         
         try{
@@ -435,6 +485,25 @@ public class JDRentaVenta extends javax.swing.JDialog {
             nombreCli[i] = misClientes.get(i).getNombreCliente();
         }//fin del for 
         lblCliente.setText(nombreCli[0]);
-        lblID.setText(idCli[0]);
+        lblIDCliente.setText(idCli[0]);
     }// fin del método cargarComboClientes 
+
+    /**
+     * Método para Mandar Mensaje de Error
+     * @param ex 
+     */
+    private void mensajeError(DAOException ex) {
+        //Si getMessage existe obtenemos su valor
+        String mensajeError;
+
+        try{
+            mensajeError = "Mensaje: " + ex.getCause().getMessage();
+        }catch(NullPointerException error){
+            mensajeError = "";
+        }// fin del catch
+
+        JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
+                JOptionPane.ERROR_MESSAGE);
+    }// fin del método mensajeError
+    
 }// fin de la clase JDRentaVenta

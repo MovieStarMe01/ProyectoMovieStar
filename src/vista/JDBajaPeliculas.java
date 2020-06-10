@@ -28,7 +28,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     
     String estadoV = "ACTIVO";
     String estadoI = "INACTIVO";
-    String vendido = "VENDIDO";
+    String vendido = "VENDIDA";
     
     String idPeli;
     int filaV;
@@ -322,7 +322,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
             
         //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
         tblInvisibles.setModel(model);
-        model.updateModelAll(estadoI);
+        model.updateModel(estadoI, vendido);
         model.fireTableDataChanged();
     }// fin del método inicializarListaPeliculas
 

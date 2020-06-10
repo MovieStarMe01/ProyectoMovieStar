@@ -7,6 +7,7 @@ package DAO;
 
 import Modelo.peliculas;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +29,5 @@ public interface IPeliculasDAO extends IDAO<peliculas, String>{
     List<peliculas> obtenerActivo(String estado) throws DAOException;
     //Lista para obtener las peliculas Inactivas y Vendidas
     List<peliculas> obtenerInactivoVendido(String estado, String estado1) throws DAOException;
-   
 
 }

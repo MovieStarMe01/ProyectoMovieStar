@@ -5,6 +5,9 @@
  */
 package Modelo;
 
+import java.util.Date;
+import java.sql.Timestamp;
+
 /**
  *
  * @author Erick Cabrera
@@ -13,11 +16,11 @@ public class notas {
     //Campos
     private int notaId;
     private String notaTotal;
-    private String notaFecha;
+    private Timestamp notaFecha;
     private String peliID;
     private String notaTipo;
-    private String usuarioID;
-    private String clienteID;
+    private int usuarioID;
+    private int clienteID;
 
     /**
      * Constructor con parámetros
@@ -29,7 +32,8 @@ public class notas {
      * @param usuarioID
      * @param clienteID 
      */
-    public notas(int notaId, String notaTotal, String notaFecha, String peliID, String notaTipo, String usuarioID, String clienteID) {
+    public notas(int notaId, String notaTotal, Timestamp notaFecha, String peliID, String notaTipo, int usuarioID, 
+            int clienteID) {
         this.notaId = notaId;
         this.notaTotal = notaTotal;
         this.notaFecha = notaFecha;
@@ -38,6 +42,26 @@ public class notas {
         this.usuarioID = usuarioID;
         this.clienteID = clienteID;
     }// fin del constructor notas
+
+    /**
+     * Consctructor sin el parámetro idNota
+     * @param notaTotal
+     * @param notaFecha
+     * @param peliID
+     * @param notaTipo
+     * @param usuarioID
+     * @param clienteID 
+     */
+    public notas(String notaTotal, Timestamp notaFecha, String peliID, String notaTipo, int usuarioID, int clienteID) {
+        this.notaTotal = notaTotal;
+        this.notaFecha = notaFecha;
+        this.peliID = peliID;
+        this.notaTipo = notaTipo;
+        this.usuarioID = usuarioID;
+        this.clienteID = clienteID;
+    }// fin del cosntructor
+    
+    
     
     // Getters & Setters
 
@@ -72,14 +96,14 @@ public class notas {
     /**
      * @return the notaFecha
      */
-    public String getNotaFecha() {
+    public Timestamp getNotaFecha() {
         return notaFecha;
     }
 
     /**
      * @param notaFecha the notaFecha to set
      */
-    public void setNotaFecha(String notaFecha) {
+    public void setNotaFecha(Timestamp notaFecha) {
         this.notaFecha = notaFecha;
     }
 
@@ -114,28 +138,28 @@ public class notas {
     /**
      * @return the usuarioID
      */
-    public String getUsuarioID() {
+    public int getUsuarioID() {
         return usuarioID;
     }
 
     /**
      * @param usuarioID the usuarioID to set
      */
-    public void setUsuarioID(String usuarioID) {
+    public void setUsuarioID(int usuarioID) {
         this.usuarioID = usuarioID;
     }
 
     /**
      * @return the clienteID
      */
-    public String getClienteID() {
+    public int getClienteID() {
         return clienteID;
     }
 
     /**
      * @param clienteID the clienteID to set
      */
-    public void setClienteID(String clienteID) {
+    public void setClienteID(int clienteID) {
         this.clienteID = clienteID;
     }
     
