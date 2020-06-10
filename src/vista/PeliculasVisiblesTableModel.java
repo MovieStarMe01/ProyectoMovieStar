@@ -88,7 +88,7 @@ public class PeliculasVisiblesTableModel extends AbstractTableModel{
     
     
     /**
-     * Método para actualizar la tabla peliculas con las Activas
+     * Método para actualizar la tabla peliculas con las Activas o Rentadas
      * @throws DAOException 
      * @param estado
      */
@@ -104,6 +104,6 @@ public class PeliculasVisiblesTableModel extends AbstractTableModel{
      */
     public void updateModel(String estado, String estado1) throws DAOException{
         this.datosPeli = peliculas.obtenerInactivoVendido(estado, estado1);
-    }// fin del método updateModel
+    }// fin del método updateModel     
     
 }

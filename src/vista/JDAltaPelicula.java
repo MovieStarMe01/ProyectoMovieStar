@@ -99,6 +99,7 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 680, 10));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -127,6 +128,11 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         txtPrecioRenta.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPrecioRenta.setForeground(new java.awt.Color(153, 153, 153));
         txtPrecioRenta.setBorder(null);
+        txtPrecioRenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioRentaKeyTyped(evt);
+            }
+        });
         panelImage3.add(txtPrecioRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 170, 40));
@@ -172,6 +178,11 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         txtAño.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtAño.setForeground(new java.awt.Color(153, 153, 153));
         txtAño.setBorder(null);
+        txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAñoKeyTyped(evt);
+            }
+        });
         panelImage7.add(txtAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, 40));
@@ -276,6 +287,11 @@ public class JDAltaPelicula extends javax.swing.JDialog {
         txtPrecioVenta1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPrecioVenta1.setForeground(new java.awt.Color(153, 153, 153));
         txtPrecioVenta1.setBorder(null);
+        txtPrecioVenta1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioVenta1KeyTyped(evt);
+            }
+        });
         panelImage10.add(txtPrecioVenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, 40));
@@ -371,6 +387,27 @@ public class JDAltaPelicula extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtAñoKeyTyped
+
+    private void txtPrecioRentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioRentaKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtPrecioRentaKeyTyped
+
+    private void txtPrecioVenta1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioVenta1KeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtPrecioVenta1KeyTyped
 
     /**
      * @param args the command line arguments

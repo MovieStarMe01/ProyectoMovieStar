@@ -25,7 +25,7 @@ public interface IPeliculasDAO extends IDAO<peliculas, String>{
     List<peliculas> obtenerBusqueda(String genero, String busqueda) throws DAOException;
     //Lista para obtener peliculas al buscarlas
     List<peliculas> obtenerBusquedaGEN(String busqueda) throws DAOException;
-    //Lista para obtener lista de Peliculas Actvas e inactivas
+    //Lista para obtener lista de Peliculas Activas
     List<peliculas> obtenerActivo(String estado) throws DAOException;
     //Lista para obtener las peliculas Inactivas y Vendidas
     List<peliculas> obtenerInactivoVendido(String estado, String estado1) throws DAOException;

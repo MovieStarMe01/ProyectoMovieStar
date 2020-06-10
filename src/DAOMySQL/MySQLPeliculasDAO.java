@@ -64,9 +64,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     
     private final String ESTADO = "UPDATE peliculas SET peli_estado = ? WHERE peli_id = ?";
     
-    private final String ALTANOTA = "INSERT INTO nota (nota_id, nota_total, nota_fecha, nota_peli_id, nota_tipo, "
-            + " nota, peli_caratula, peli_audio, peli_calidad, peli_anio, peli_estado)"
-            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     /**
      * Método para dar de alta peliculas a la BD
@@ -204,34 +201,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     }// fin del método obtener
 
     /**
-     * Método para cerrar las Conexiones de la BD
-     * @param ps
-     * @param rs
-     * @param conn
-     * @throws DAOException 
-     */
-    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
-        try{
-            if(rs != null){
-                //Cerramos el rs
-                rs.close();
-            }//fin del if rs
-            
-            if(ps != null){
-                //Cerramos el ps
-                ps.close();
-            }// fin del if ps 
-            
-            if(conn != null){
-                //Cerramos la conn
-                conn.close();
-            }// fin del if conn
-        }catch(SQLException ex){
-            throw new DAOException("ERROR en SQL", ex);
-        }// fin del catch
-    }// fin del método cerrarConexiones
-
-    /**
      * Método para obtener todas las peliculas por genero
      * @param genero
      * @return
@@ -305,6 +274,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //recorremos el RS y agregamos cada item al ArrayList
             while(rs.next()){
                 peliculas miPeli = new peliculas();
+                miPeli.setPeliID(rs.getString("peli_id"));
                 miPeli.setPeliTitulo(rs.getString("peli_titulo"));
                 miPeli.setAnio(rs.getInt("peli_anio"));
                 miPeli.setAudio(rs.getString("peli_audio"));
@@ -517,9 +487,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             ps = conn.prepareStatement(INACTIVOVEND);
                 ps.setString(1, estado);
                 ps.setString(2, estado1);
-            
-                System.out.println(estado);
-                System.out.println(estado1);
+           
             //ejecutamos la consulta y almacenamos el resultado en un objeto RS
             rs = ps.executeQuery();
             
@@ -544,6 +512,12 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         return misPeliculas;
     }// fin del método obtenerInactivoVendido
 
+    /**
+     * Método para buscar peliculas
+     * @param busqueda
+     * @return
+     * @throws DAOException 
+     */
     @Override
     public List<peliculas> obtenerBusquedaGEN(String busqueda) throws DAOException {
         List<peliculas> misPeliculas = null;
@@ -585,9 +559,34 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         }// fin del finally
         
         return misPeliculas;
-    }
+    }// fin del método obtenerBusquedaGEN
 
-
- 
-     
+     /**
+     * Método para cerrar las Conexiones de la BD
+     * @param ps
+     * @param rs
+     * @param conn
+     * @throws DAOException 
+     */
+    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
+        try{
+            if(rs != null){
+                //Cerramos el rs
+                rs.close();
+            }//fin del if rs
+            
+            if(ps != null){
+                //Cerramos el ps
+                ps.close();
+            }// fin del if ps 
+            
+            if(conn != null){
+                //Cerramos la conn
+                conn.close();
+            }// fin del if conn
+        }catch(SQLException ex){
+            throw new DAOException("ERROR en SQL", ex);
+        }// fin del catch
+    }// fin del método cerrarConexiones
+    
 }// fin de la clase MySQLPeliculasDAO

@@ -107,8 +107,9 @@ public class JDPeliculas extends javax.swing.JDialog {
         jLabel2.setText("Buscar:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
 
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 42, 690, 10));
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 42, 730, 10));
 
         panelImage4.setBackground(new java.awt.Color(255, 255, 255));
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N

@@ -105,6 +105,7 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 720, 10));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -125,6 +126,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
 
         txtCelular.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtCelular.setBorder(null);
+        txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCelularKeyTyped(evt);
+            }
+        });
         panelImage7.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 180, 40));
@@ -135,6 +141,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
 
         txtMaterno.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtMaterno.setBorder(null);
+        txtMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaternoKeyTyped(evt);
+            }
+        });
         panelImage5.add(txtMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 180, 40));
@@ -177,6 +188,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
 
         txtPaterno.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPaterno.setBorder(null);
+        txtPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPaternoKeyTyped(evt);
+            }
+        });
         panelImage3.add(txtPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 180, 40));
@@ -221,6 +237,11 @@ public class JDGesEditarCli extends javax.swing.JDialog {
 
         txtNombre.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtNombre.setBorder(null);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         panelImage9.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 40));
@@ -380,6 +401,34 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         
         
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtCelularKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+         //Solo se aceptan letras, los numeros no los anota
+        char c = evt.getKeyChar();
+        
+        if((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') ) evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaternoKeyTyped
+         //Solo se aceptan letras, los numeros no los anota
+        char c = evt.getKeyChar();
+        
+        if((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') ) evt.consume();
+    }//GEN-LAST:event_txtPaternoKeyTyped
+
+    private void txtMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaternoKeyTyped
+         //Solo se aceptan letras, los numeros no los anota
+        char c = evt.getKeyChar();
+        
+        if((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') ) evt.consume();
+    }//GEN-LAST:event_txtMaternoKeyTyped
 
     /**
      * @param args the command line arguments

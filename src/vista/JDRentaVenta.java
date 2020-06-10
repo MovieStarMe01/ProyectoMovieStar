@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import java.sql.Timestamp;
 import static vista.JDPeliculas.IDPelicula;
 import static vista.JDPeliculas.titulo;
 import static vista.JDPeliculas.anio;
@@ -45,10 +44,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
   
     int notaID;
     String notaTotal;
-    //Date notaFecha;
     String peliID;
-    String notaVenta = "VENDIDA";
-    String notaRenta = "RENTADA";
+    String tipoNota;
     int  idUsuario;
     int idCliente;
     
@@ -128,7 +125,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 650, -1));
 
         lblCaratula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -175,6 +173,11 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         btnRenta.setText("Renta");
+        btnRenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         btnVenta.setText("Venta");
@@ -330,37 +333,22 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        
-        idCliente = Integer.parseInt(lblIDCliente.getText());
+        //Cambiamos tipoNota a RENTADA
+        tipoNota = "VENDIDA";
+        //Obtenemos el total o costo de la Película
         notaTotal = lblVenta.getText();
-        peliID = IDPelicula;
-        java.util.Date utilDate = new java.util.Date();
-        long lnMilisegundos = utilDate.getTime();
-        java.sql.Timestamp notaFecha = new java.sql.Timestamp(lnMilisegundos);
-
-        System.out.println(idCliente);
-        System.out.println(notaTotal);
-        System.out.println(peliID);
-        System.out.println(notaFecha);
-        System.out.println(notaVenta);
-        //llamamos el constructor para crear un Objeto de tipo Notas
-        notas miNota = new notas(notaTotal, notaFecha, peliID, notaVenta, 1, idCliente);
-        try{
-            manager.getNotasDAO().insertar(miNota);
-                
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
-            JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
-                "Proceso Exitoso", 0, miIcono);
-            
-            //llamamos el constructor para crear un objeto de tipo peliculas
-            peliculas miPelicula = new peliculas(peliID, notaVenta);
-            //Hacemos un update para cambiar el estado de la película a VENDIDA
-            manager.getPeliculasDAO().estado(miPelicula);
-                         
-        }catch(DAOException ex){
-                 mensajeError(ex);
-        }// fin del catch  
+        //llamamos el método rentaVenta con el parámetro tipoNota
+        rentaVenta(tipoNota,notaTotal);  
     }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnRentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentaActionPerformed
+        //Cambiamos tipoNota a RENTADA
+        tipoNota = "RENTADA";
+        //Obtenemos el total o costo de la Película
+        notaTotal = lblRenta.getText();
+        //llamamos el método rentaVenta con el parámetro tipoNota
+        rentaVenta(tipoNota, notaTotal); 
+    }//GEN-LAST:event_btnRentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -505,5 +493,57 @@ public class JDRentaVenta extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, ex.getMessage()+"\n"+mensajeError,"ERROR",
                 JOptionPane.ERROR_MESSAGE);
     }// fin del método mensajeError
+
+    /**
+     * Método para realizar una Renta o una Venta según lo solicitado
+     * @param tipoNota 
+     */
+    private void rentaVenta(String tipoNota, String notaTotal) {
+        //Obtenemos el idCliente
+        idCliente = Integer.parseInt(lblIDCliente.getText());
+        //Obtenemos el id de la ¨Película a vender
+        peliID = IDPelicula;
+        //Obtenemos la fecha Actual en la que se realizará la venta
+        java.util.Date utilDate = new java.util.Date();
+        long lnMilisegundos = utilDate.getTime();
+        java.sql.Timestamp notaFecha = new java.sql.Timestamp(lnMilisegundos);
+
+        //System.out.println(notaFecha);
+        //llamamos el constructor para crear un Objeto de tipo Notas
+        notas miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente);
+        try{
+            manager.getNotasDAO().insertar(miNota);
+            
+            //Si tipoNota es igual a "Venta" entonces mandamos el mensaje de Vendida y cambiamos estado a VENDIDA
+            if(tipoNota.equals("VENDIDA")){
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
+                JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
+                    "Proceso Exitoso", 0, miIcono);
+
+                //llamamos el constructor para crear un objeto de tipo peliculas
+                peliculas miPelicula = new peliculas(peliID, tipoNota);
+                //Hacemos un update para cambiar el estado de la película a VENDIDA
+                manager.getPeliculasDAO().estado(miPelicula);
+         
+            }// fin dle if VENDIDA
+            
+            //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
+            if(tipoNota.equals("RENTADA")){
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
+                JOptionPane.showMessageDialog(null, "<html><h2>Renta Satisfactoria</h2></html>",
+                    "Proceso Exitoso", 0, miIcono);
+
+                //llamamos el constructor para crear un objeto de tipo peliculas
+                peliculas miPelicula = new peliculas(peliID, tipoNota);
+                //Hacemos un update para cambiar el estado de la película a RENTADA
+                manager.getPeliculasDAO().estado(miPelicula);
+            }// fin del if RENTADA
+                         
+            //Cerramos la ventanda Detalles
+            this.dispose();
+        }catch(DAOException ex){
+                 mensajeError(ex);
+        }// fin del catch  
+    }// fin del método rentaVenta
     
 }// fin de la clase JDRentaVenta

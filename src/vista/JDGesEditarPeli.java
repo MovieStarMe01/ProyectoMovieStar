@@ -143,6 +143,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 660, 180));
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 720, 10));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -245,6 +246,11 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtAño.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtAño.setForeground(new java.awt.Color(153, 153, 153));
         txtAño.setBorder(null);
+        txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAñoKeyTyped(evt);
+            }
+        });
         panelImage8.add(txtAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
         jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 180, 40));
@@ -288,6 +294,11 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtPrecioRenta.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPrecioRenta.setForeground(new java.awt.Color(153, 153, 153));
         txtPrecioRenta.setBorder(null);
+        txtPrecioRenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioRentaKeyTyped(evt);
+            }
+        });
         panelImage3.add(txtPrecioRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 40));
@@ -367,6 +378,11 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtPrecioVenta.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPrecioVenta.setForeground(new java.awt.Color(153, 153, 153));
         txtPrecioVenta.setBorder(null);
+        txtPrecioVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioVentaKeyTyped(evt);
+            }
+        });
         panelImage12.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
 
         jPanel1.add(panelImage12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 170, 40));
@@ -464,6 +480,27 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
        
          
     }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtAñoKeyTyped
+
+    private void txtPrecioRentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioRentaKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtPrecioRentaKeyTyped
+
+    private void txtPrecioVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioVentaKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
+        
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtPrecioVentaKeyTyped
 
     /**
      * @param args the command line arguments

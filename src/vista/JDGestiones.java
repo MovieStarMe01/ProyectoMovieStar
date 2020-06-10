@@ -53,6 +53,7 @@ public class JDGestiones extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 620, 10));
 
         btnRentadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas.png"))); // NOI18N
@@ -61,6 +62,11 @@ public class JDGestiones extends javax.swing.JDialog {
         btnRentadas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRentadas.setDefaultCapable(false);
         btnRentadas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasRentadas (1).png"))); // NOI18N
+        btnRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentadasActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRentadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 160, 150));
 
         btnBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/bajaPeliculas.png"))); // NOI18N
@@ -227,6 +233,11 @@ public class JDGestiones extends javax.swing.JDialog {
         JDBajaPeliculas miPelicula = new JDBajaPeliculas(null, true);
         miPelicula.setVisible(true);
     }//GEN-LAST:event_btnBajaActionPerformed
+
+    private void btnRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentadasActionPerformed
+        JDGesRentadas misRentadas = new JDGesRentadas(null, true);
+        misRentadas.setVisible(true);
+    }//GEN-LAST:event_btnRentadasActionPerformed
 
     /**
      * @param args the command line arguments

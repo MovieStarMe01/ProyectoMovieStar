@@ -48,7 +48,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        //Obtenemos todos los métodos de la clase MySQLTituloDAO
+        //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
         
         try {
@@ -70,30 +70,29 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVisibles = new javax.swing.JTable();
         btnInvisible = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblInvisibles = new javax.swing.JTable();
         btnVisible = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        panelImage2 = new org.edisoncor.gui.panel.PanelImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel2.setText("Peliculas Invisibles");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
-
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 670, 10));
 
@@ -116,16 +115,25 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 130));
 
-        btnInvisible.setText("Hacer Invisible");
+        btnInvisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/borrarPeli.png"))); // NOI18N
+        btnInvisible.setBorderPainted(false);
+        btnInvisible.setContentAreaFilled(false);
+        btnInvisible.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInvisible.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/borrarPeli (1).png"))); // NOI18N
         btnInvisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInvisibleActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
+        jPanel2.add(btnInvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 220));
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel2.setText("Hacer Inactiva");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 230));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 670, 10));
 
@@ -148,19 +156,27 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 140));
 
-        btnVisible.setText("Hacer Visible");
+        btnVisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/verPeli.png"))); // NOI18N
+        btnVisible.setBorderPainted(false);
+        btnVisible.setContentAreaFilled(false);
+        btnVisible.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVisible.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/verPeli (1).png"))); // NOI18N
         btnVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisibleActionPerformed(evt);
             }
         });
-        jPanel3.add(btnVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+        jPanel3.add(btnVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 670, 210));
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel1.setText("Hacer Activa");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 670, 230));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Salir");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 620, 40, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 640, 40, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -173,9 +189,9 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, -1, -1));
 
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/peliculasVisibles.png"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasActi.png"))); // NOI18N
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
@@ -185,10 +201,25 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 290, 60));
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 50));
+
+        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliVenIna.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
+        panelImage2.setLayout(panelImage2Layout);
+        panelImage2Layout.setHorizontalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
+        );
+        panelImage2Layout.setVerticalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,7 +229,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
         );
 
         pack();
@@ -286,6 +317,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JButton btnInvisible;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVisible;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -296,12 +328,13 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
+    private org.edisoncor.gui.panel.PanelImage panelImage2;
     private javax.swing.JTable tblInvisibles;
     private javax.swing.JTable tblVisibles;
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Método para cargar la tabla con las películas Activas o Visibles
+     * Método para cargar la tabla con las películas Activas 
      * @throws DAOException 
      */
     private void inicializarListaPeliculasVI() throws DAOException {
