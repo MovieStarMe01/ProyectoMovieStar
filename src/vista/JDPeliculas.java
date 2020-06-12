@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
-import static vista.FrmePrincipal.generos;
 
 
 /**
@@ -45,7 +44,7 @@ public class JDPeliculas extends javax.swing.JDialog {
     //Propiedades para  modificar el width de nuestra tabla tblPeliculas
     TableColumnModel columnModel = null;
     
-    String genero = "";
+    String genero = "TERROR";
     //String idPeli;
     
     /**
@@ -59,7 +58,7 @@ public class JDPeliculas extends javax.swing.JDialog {
         
         //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
-        lblGenero.setText(generos);
+        //lblGenero.setText(generos);
         
         try {
             inicializarListaPeliculas();

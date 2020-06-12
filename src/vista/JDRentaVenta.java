@@ -11,14 +11,26 @@ import DAOMySQL.MySQLDAOManager;
 import Modelo.cliente;
 import Modelo.notas;
 import Modelo.peliculas;
+import static MySQLConexion.Conectar.ConectarBD;
+import static MySQLConexion.Conectar.conn;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import static vista.JDPeliculas.IDPelicula;
 import static vista.JDPeliculas.titulo;
 import static vista.JDPeliculas.anio;
@@ -41,7 +53,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
     
     DefaultComboBoxModel model = new DefaultComboBoxModel();
     
-  
+    //Obtenemos la fecha Actual en la que se realizará la venta o renta
+    java.util.Date utilDate = new java.util.Date();
+    long lnMilisegundos = utilDate.getTime();
+    
+    //llamamos el constructor para crear un Objeto de tipo Notas
+    notas miNota = new notas();
+        
     int notaID;
     String notaTotal;
     String peliID;
@@ -237,11 +255,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 cmbClientesItemStateChanged(evt);
             }
         });
-        cmbClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbClientesActionPerformed(evt);
-            }
-        });
         jPanel1.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 150, -1));
 
         lblCliente.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
@@ -299,28 +312,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void cmbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientesActionPerformed
-        //Cada que se seleccione un cliente este se agregará al label para mostrar el cliente
-        //int seleccionado = 0;
-        //System.out.println(seleccionado);
-        //int seleccionado = cmbClientes.getSelectedIndex();
-        
-        //System.out.println(seleccionado);
-       /* for(int i = 0; i < cantidad; ++i){
-            if(cmbClientes.getSelectedIndex() != -1){
-                
-            }
-        }
-        id = (int) cmbClientes.getSelectedItem();
-       
-        lblID.setText(String.valueOf(id));
-        */
-        //System.out.println(seleccionado);
-        
-        //lblCliente.setText(nombreCli[seleccionado]);
-        
-    }//GEN-LAST:event_cmbClientesActionPerformed
-
     private void cmbClientesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientesItemStateChanged
         //Cada que se seleccione un cliente este se agregará al label para mostrar el cliente y su id
         //Obtenemos el indice Seleccionado
@@ -333,7 +324,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        //Cambiamos tipoNota a RENTADA
+        //Cambiamos tipoNota a VENDIDA
         tipoNota = "VENDIDA";
         //Obtenemos el total o costo de la Película
         notaTotal = lblVenta.getText();
@@ -443,15 +434,10 @@ public class JDRentaVenta extends javax.swing.JDialog {
             lblCaratula.setIcon(new ImageIcon(caratula));
         }catch(FileNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Imagen No Disponible", "ERROR",JOptionPane.ERROR_MESSAGE);
-        }// fin del catch
-        
-        
-        
+        }// fin del catch  
     }// fin del método cargarDatos
 
-    private void imgError() {
-        lblCaratula.setIcon(new ImageIcon("/imgGestiones/imgNoDisponible.png"));
-    }
+   
 
     /**
      * Método para cargar idCliente y nombreCliente
@@ -503,23 +489,24 @@ public class JDRentaVenta extends javax.swing.JDialog {
         idCliente = Integer.parseInt(lblIDCliente.getText());
         //Obtenemos el id de la ¨Película a vender
         peliID = IDPelicula;
-        //Obtenemos la fecha Actual en la que se realizará la venta
-        java.util.Date utilDate = new java.util.Date();
-        long lnMilisegundos = utilDate.getTime();
+        //Obtenemos la fecha exacta de la renta o venta
         java.sql.Timestamp notaFecha = new java.sql.Timestamp(lnMilisegundos);
-
-        //System.out.println(notaFecha);
-        //llamamos el constructor para crear un Objeto de tipo Notas
-        notas miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente);
-        try{
-            manager.getNotasDAO().insertar(miNota);
-            
-            //Si tipoNota es igual a "Venta" entonces mandamos el mensaje de Vendida y cambiamos estado a VENDIDA
+        //Obtenemos la fecha limite a entregar la película Rentada en este caso 48 horas (2 dias)
+        Date fechaLim = sumaFecha(notaFecha, 2);
+       
+        try{ 
+            //Si tipoNota es igual a "VENDIDA" entonces mandamos el mensaje de Vendida y cambiamos estado a VENDIDA
             if(tipoNota.equals("VENDIDA")){
+                //llamamos el constructor para crear un Objeto de tipo Notas sin el parámetro fechaLimite
+                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente);
+                
+                manager.getNotasDAO().venta(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
                     "Proceso Exitoso", 0, miIcono);
-
+                
+                //Llamamos el método para que mande el ticket de venta
+                ticket();
                 //llamamos el constructor para crear un objeto de tipo peliculas
                 peliculas miPelicula = new peliculas(peliID, tipoNota);
                 //Hacemos un update para cambiar el estado de la película a VENDIDA
@@ -529,6 +516,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
             
             //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
             if(tipoNota.equals("RENTADA")){
+                //llamamos el constructor para crear un Objeto de tipo Notas con el parámetro fechaLimite
+                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente, fechaLim);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Renta Satisfactoria</h2></html>",
                     "Proceso Exitoso", 0, miIcono);
@@ -545,5 +534,43 @@ public class JDRentaVenta extends javax.swing.JDialog {
                  mensajeError(ex);
         }// fin del catch  
     }// fin del método rentaVenta
+
+    /**
+     * Método para hacer la suma de la fecha actual de renta mas 2 dias o 48 horas
+     * para saber la fecha en la que deberá ser entregada
+     * @param notaFecha
+     * @param dias
+     * @return 
+     */
+    public Date sumaFecha(Date notaFecha, int dias) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(notaFecha);
+        calendar.add(Calendar.DAY_OF_YEAR, dias);
+        
+        /*String fecha = "";
+        fecha = calendar.getTime().toString();*/
+        return calendar.getTime();
+    }// fin del método sumarFecha
+
+    /**
+     * Método para mostrar el ticket que compra de la película
+     */
+    private void ticket() {
+        try {
+        conn = ConectarBD();
+        JasperReport reporte = null;
+        String path = "ticket.jasper";
+        //reporte = (JasperReport) JRLoader.loadObjectFromLocation(path);
+        reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        
+        JasperPrint jPrint =  JasperFillManager.fillReport(reporte, null, conn);
+        JasperViewer view =  new JasperViewer(jPrint, false);
+        view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        view.setVisible(true);
+        //reporte = JRLoader.loadObjectFromFile(path);
+        } catch (SQLException | JRException ex) {
+        Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }// fin del método ticket
     
 }// fin de la clase JDRentaVenta

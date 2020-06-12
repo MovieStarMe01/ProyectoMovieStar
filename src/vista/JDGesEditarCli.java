@@ -610,37 +610,43 @@ public class JDGesEditarCli extends javax.swing.JDialog {
         
         
         if(nombre.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Nombre</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un nombre de Usuario</h2></html>", "Llena el Campo", 0, miIcono);
             txtNombre.requestFocusInWindow();
             return validacion;
         }// fin del if Nombre
         
          if(paterno.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Apellido Paterno</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaPaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Paterno</h2></html>", "Llena el Campo", 0, miIcono);
             txtPaterno.requestFocusInWindow();
             return validacion;
         }// fin del if Paterno
          
           if(materno.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Apellido Materno</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaMaterno.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Apellido Materno</h2></html>", "Llena el Campo", 0, miIcono);
             txtMaterno.requestFocusInWindow();
             return validacion;
         }// fin del if Materno
           
         if(domicilio.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Domicilio</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaDire.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Domicilio</h2></html>", "Llena el Campo", 0, miIcono);
             txtDomicilio.requestFocusInWindow();
             return validacion;
         }//fin dle if Domicilio
         
         if(celular.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Celular</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCel.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un Número de Celular</h2></html>", "Llena el Campo", 0, miIcono);
             txtCelular.requestFocusInWindow();
             return validacion;
         }//fin del if Celular
         
         if(correo.equals("")){
-            JOptionPane.showMessageDialog(null, "<html><h2>LLena el campo Correo</h2></html>");
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaCorreo.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Ingresa un correo</h2></html>", "Llena el Campo", 0, miIcono);
             txtCorreo.requestFocusInWindow();
             return validacion;
         }// fin del if Correo

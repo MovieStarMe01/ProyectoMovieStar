@@ -15,6 +15,7 @@ import java.util.List;
 public interface IDAO <T, K> {
     
     void insertar(T a) throws DAOException;
+    void venta(T a) throws DAOException;
     void modificar(T a) throws DAOException;
     void eliminar(K id) throws DAOException;
     //Verificar contraseña

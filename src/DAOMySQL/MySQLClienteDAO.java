@@ -264,6 +264,11 @@ public class MySQLClienteDAO implements IClienteDAO{
         return misClientes;
     }// fin del método obtenerClientes
 
+    @Override
+    public void venta(cliente a) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     
 

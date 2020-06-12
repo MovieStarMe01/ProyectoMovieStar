@@ -588,5 +588,10 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             throw new DAOException("ERROR en SQL", ex);
         }// fin del catch
     }// fin del método cerrarConexiones
+
+    @Override
+    public void venta(peliculas a) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }// fin de la clase MySQLPeliculasDAO

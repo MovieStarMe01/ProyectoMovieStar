@@ -8,8 +8,11 @@ package vista;
 import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
+import Modelo.peliculas;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,8 +37,11 @@ public class JDGesRentadas extends javax.swing.JDialog {
         //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
         
-         try {
+        fechaLimite();
+        
+        try {
             inicializarListaPeliculasRent();
+            inicializarListaPeliculasNoDevueltas();
         } catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
         }// fin del catch  
@@ -51,17 +57,66 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblRentadas = new javax.swing.JTable();
-        btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         panelImage2 = new org.edisoncor.gui.panel.PanelImage();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        btnDevolver = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRentadas = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        btnDevolver1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblNoDevueltas = new javax.swing.JTable();
+        btnSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        panelImage1 = new org.edisoncor.gui.panel.PanelImage();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliRent.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
+        panelImage2.setLayout(panelImage2Layout);
+        panelImage2Layout.setHorizontalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 320, Short.MAX_VALUE)
+        );
+        panelImage2Layout.setVerticalGroup(
+            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 320, 50));
+
+        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 700, 10));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnDevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/regresarPeli.png"))); // NOI18N
+        btnDevolver.setBorderPainted(false);
+        btnDevolver.setContentAreaFilled(false);
+        btnDevolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDevolver.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/regresarPeli(1).png"))); // NOI18N
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel3.setText("Devolver");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, -1, -1));
 
         tblRentadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,54 +131,111 @@ public class JDGesRentadas extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblRentadas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 630, 110));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 110));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 700, 190));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnDevolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/regresarPeli.png"))); // NOI18N
+        btnDevolver1.setBorderPainted(false);
+        btnDevolver1.setContentAreaFilled(false);
+        btnDevolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDevolver1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/regresarPeli(1).png"))); // NOI18N
+        btnDevolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolver1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnDevolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel4.setText("Devolver");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
+
+        tblNoDevueltas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblNoDevueltas);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 670, 110));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 690, 190));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/open door.png"))); // NOI18N
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 400, 60, -1));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 560, 50, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Salir");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 600, -1, -1));
 
-        panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliRent.png"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/noDevueltas.png"))); // NOI18N
 
-        javax.swing.GroupLayout panelImage2Layout = new javax.swing.GroupLayout(panelImage2);
-        panelImage2.setLayout(panelImage2Layout);
-        panelImage2Layout.setHorizontalGroup(
-            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
+        panelImage1.setLayout(panelImage1Layout);
+        panelImage1Layout.setHorizontalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
-        panelImage2Layout.setVerticalGroup(
-            panelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelImage1Layout.setVerticalGroup(
+            panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 320, 60));
+        jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 370, 60));
 
-        jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 640, 10));
+        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 690, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+        //Mandamos llamar el método devolver
+        devolver();
+    }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //Cerramos la ventana
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnDevolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolver1ActionPerformed
+        //Mandamos llamar el método devolver
+        devolver();
+    }//GEN-LAST:event_btnDevolver1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,12 +280,22 @@ public class JDGesRentadas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDevolver;
+    private javax.swing.JButton btnDevolver1;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
+    private javax.swing.JTable tblNoDevueltas;
     private javax.swing.JTable tblRentadas;
     // End of variables declaration//GEN-END:variables
 
@@ -189,4 +311,74 @@ public class JDGesRentadas extends javax.swing.JDialog {
         model.updateModelAll(estadoR);
         model.fireTableDataChanged();
     }// fin del método inicializarListaPeliculasRent
-}
+    
+    /**
+     * Método para cargar la tabla con las películas Rentadas no Devueltas
+     * @throws DAOException 
+     */
+    private void inicializarListaPeliculasNoDevueltas() throws DAOException {
+        
+        //fechaLimite();
+        
+        model = new PeliculasVisiblesTableModel(manager.getPeliculasDAO());
+            
+        //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
+        tblRentadas.setModel(model);
+        //model.updateModelAll(estadoR);
+        //model.fireTableDataChanged();
+    }// fin del método inicializarListaPeliculasNoDevueltas
+
+    private void fechaLimite() {
+        
+        
+    }
+
+    /**
+     * Método para validar que se haya seleccionado una fila se la tabla
+     * @return 
+     */
+    private boolean seleccion() {
+       boolean validar = false;
+        //si se selecciona una fila entonces se devuelve la película
+       if(tblRentadas.getSelectedRow() > -1){
+           validar = true;
+       }else{
+            validar = false;
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película</h1></html>",
+                    "Selecciona una Fila", 0, miIcono);
+        }// fin del else
+       
+       return validar;
+    }// fin del método seleccion
+
+    /**
+     * Método para devolver una película su estado será ACTIVO
+     */
+    private void devolver() {
+        //Verificamos que se haya seleccionado una fila para cambiar el estado
+        if(seleccion()){
+            //Obtenemos la fila seleccionada de la tbl Rentadas
+            int fila = tblRentadas.getSelectedRow();
+            // Obtenemos el id de la película seleccionada
+            String peliID = (String) tblRentadas.getValueAt(fila, 0);
+            //Colocamos el estado a ACTIVO que será el estado al cuál se hará el cambio
+            String estado = "ACTIVO";
+
+            //llamamos el constructor para crear un objeto de tipo peliculas
+            peliculas miPelicula = new peliculas(peliID, estado);
+            try {
+                //Hacemos un update para cambiar el estado de la película a ACTIVO
+                manager.getPeliculasDAO().estado(miPelicula);
+                ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliActualizar.png"));
+                JOptionPane.showMessageDialog(null, "<html><h2>La Película ha sido Devuelta</h2></html>", "Proceso Exitoso",
+                        0, miIcono); 
+                //Llamaos el método para actualizar la tabla
+                inicializarListaPeliculasRent();
+            } catch (DAOException ex) {
+                Logger.getLogger(JDGesRentadas.class.getName()).log(Level.SEVERE, null, ex);
+            }// fin del catch
+        }//fin del if
+    }// fin del método devolver
+    
+}// fin de la clase JDGesRentadas

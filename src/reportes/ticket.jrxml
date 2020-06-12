@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="860" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="5" isIgnorePagination="true" uuid="b5356ab1-3c5f-4f9f-9cff-7727363c3a55">
+	<property name="ireport.zoom" value="4.96737058447324"/>
+	<property name="ireport.x" value="105"/>
+	<property name="ireport.y" value="192"/>
+	<parameter name="EFECTIVO" class="java.lang.String"/>
+	<parameter name="LETRA" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM nota 
+INNER JOIN peliculas ON nota.nota_peli_id = peliculas.peli_id
+INNER JOIN usuario on nota.nota_usu_id = usuario.usu_id
+INNER JOIN cliente on nota.nota_cli_id = cliente.cli_id
+ORDER BY nota.nota_fecha DESC
+LIMIT 1]]>
+	</queryString>
+	<field name="nota_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_total" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_peli_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_usu_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_cli_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_genero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_sinopsis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_precio_renta" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_precio_venta" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_caratula" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_audio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_calidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_anio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peli_estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_paterno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_materno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_domicilio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_cel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_nick" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usu_pass" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_paterno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_materno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_domicilio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_cel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cli_correo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement x="34" y="57" width="33" height="8" forecolor="#FFCC00" uuid="66bfbf32-3d65-4b95-8c56-a8a14a20dce7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="106" width="30" height="11" uuid="470313a8-a922-42a0-be67-84c9e9378fe3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
+				<reportElement x="45" y="106" width="94" height="11" uuid="a477c27f-fef1-4b9c-a9dd-69d208bb544e"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="34" y="65" width="47" height="8" forecolor="#FFCC00" uuid="9537905e-95f6-4b24-8b51-c0566306cdc5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vendido Por: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="73" width="125" height="8" uuid="ea688934-472f-412f-95b2-991d2228bf9d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.21 de Marzo #1211 COL.EL ROSARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="81" width="125" height="8" uuid="ee7618a1-2d8b-44ab-8013-baf0862bc618"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JALPA, ZAC. CP.99600]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="89" width="125" height="8" uuid="129b1aab-daea-4372-99d5-44af7cc2e3d8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:(463)103 0444 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="97" width="125" height="8" uuid="e268f191-dda1-4fe1-b470-1478dbd5b2f1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORREO: moviestar@outlook.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="57" width="25" height="8" uuid="0a3ade2f-4b68-456f-8893-c40ddefbaaea"/>
+				<textElement>
+					<font size="6" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cli_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="57" width="58" height="8" uuid="453181a1-466e-41bf-a1fd-d9f9942e97fe"/>
+				<textElement>
+					<font size="6" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cli_paterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="65" width="68" height="8" uuid="40356246-df60-4f9d-bd78-d730f625b6ad"/>
+				<textElement>
+					<font size="6" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usu_nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="164" height="57" uuid="7bcda184-2444-434a-aff3-52b164772fb0"/>
+				<imageExpression><![CDATA["C:\\logos\\logoms2.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="8" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="0" width="35" height="13" forecolor="#FFCC00" uuid="f614e6c4-3f9e-48d1-968d-07fe8ce3e52a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Consolas" size="7" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Pelicula: ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="15" y="0" width="149" height="11" uuid="0a837c5f-e933-4817-8d1d-5fc953881515"/>
+				<textElement>
+					<font size="7" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="82" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="59" width="58" height="11" uuid="845a4e77-4326-453c-a883-b3e6ec97e19c"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="114" y="59" width="26" height="11" uuid="d69a0cbc-b671-487a-95e5-157b3847595c"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_precio_venta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="11" width="77" height="10" uuid="4d0b636a-f0aa-4547-b638-8dc0ca9ef94d"/>
+				<textElement>
+					<font size="7" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="21" width="149" height="24" uuid="aba13f17-dfaf-4033-b79e-e7b28a8b269a"/>
+				<textElement textAlignment="Left">
+					<font size="6" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_sinopsis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="0" width="61" height="11" uuid="de52e754-c18d-456c-b107-da8e93c73081"/>
+				<textElement>
+					<font size="7" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_calidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="105" y="59" width="9" height="11" uuid="7a8f089a-9e3e-47f3-8ebe-555bcbd6830c"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="2" width="118" height="14" uuid="5aa089a3-d75c-4787-985f-71d3a009b567"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Consolas" size="7" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[¡Gracias por su preferencia!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="16" width="118" height="10" uuid="a3c3cd09-e6f3-4697-b206-5cb068922914"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Consolas" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vuelva Pronto]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

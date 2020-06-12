@@ -17,11 +17,20 @@ public class notas {
     private int notaId;
     private String notaTotal;
     private Timestamp notaFecha;
+    private Date fechaDevolucion;
     private String peliID;
     private String notaTipo;
     private int usuarioID;
     private int clienteID;
 
+    /**
+     * Constructor vacio
+     */
+    public notas() {
+        super();
+    }// fin del constrcutor vacio
+
+    
     /**
      * Constructor con parámetros
      * @param notaId
@@ -43,6 +52,27 @@ public class notas {
         this.clienteID = clienteID;
     }// fin del constructor notas
 
+    /**
+     * Consctructor sin el parámetro idNota
+     * @param notaTotal
+     * @param notaFecha
+     * @param peliID
+     * @param notaTipo
+     * @param usuarioID
+     * @param clienteID 
+     * @param fechaDevolucion 
+     */
+    public notas(String notaTotal, Timestamp notaFecha, String peliID, String notaTipo, int usuarioID, int clienteID, 
+            Date fechaDevolucion) {
+        this.notaTotal = notaTotal;
+        this.notaFecha = notaFecha;
+        this.peliID = peliID;
+        this.notaTipo = notaTipo;
+        this.usuarioID = usuarioID;
+        this.clienteID = clienteID;
+        this.fechaDevolucion = fechaDevolucion;
+    }// fin del cosntructor
+    
     /**
      * Consctructor sin el parámetro idNota
      * @param notaTotal
@@ -162,5 +192,21 @@ public class notas {
     public void setClienteID(int clienteID) {
         this.clienteID = clienteID;
     }
+
+    /**
+     * @return the fechaDevolucion
+     */
+    public Date getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    /**
+     * @param fechaDevolucion the fechaDevolucion to set
+     */
+    public void setFechaDevolucion(Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+    
+    
     
 }// fin de la clase notas

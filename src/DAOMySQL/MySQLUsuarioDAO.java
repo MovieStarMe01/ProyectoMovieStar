@@ -262,5 +262,10 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     public void estado(Usuario estado) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void venta(Usuario a) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }// fin de la clase MySQLUsuaioDAO

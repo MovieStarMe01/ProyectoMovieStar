@@ -10,6 +10,7 @@ import DAO.INotasDAO;
 import Modelo.notas;
 import MySQLConexion.Conectar;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,30 +29,34 @@ public class MySQLNotasDAO implements INotasDAO {
     private Statement st = null;
     
     //Consultas SQL a utilizar
-    private final String INSERT = "INSERT INTO nota (nota_total, nota_fecha, nota_peli_id, nota_tipo, nota_usu_id, "
+    private final String INSERTRENTA = "INSERT INTO nota (nota_total, nota_fecha, nota_peli_id, nota_tipo, nota_usu_id, "
+            + " nota_cli_id, nota_fecha_lim) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
+    private final String INSERTVENTA = "INSERT INTO nota (nota_total, nota_fecha, nota_peli_id, nota_tipo, nota_usu_id, "
             + " nota_cli_id) VALUES (?, ?, ?, ?, ?, ?)";
     
     
     /**
-     * Método para instertar una nota, ya sea de venta o renta de una Película
+     * Método para insertar una renta de una película a la tbl notas
      * @param nota
-     * @throws DAOException 
+      * @throws DAOException 
      */
     @Override
     public void insertar(notas nota) throws DAOException {
         try{
-            //Creamos la conexión a la BD
+            //Creamos la conexión a la BD   
             conn = Conectar.ConectarBD();
             
             //Preparamos la consulta y especificamos el parámetro de entrada
-            ps = conn.prepareStatement(INSERT);
+            ps = conn.prepareStatement(INSERTRENTA);
                 ps.setString(1, nota.getNotaTotal());
                 ps.setTimestamp(2, nota.getNotaFecha());
                 ps.setString(3, nota.getPeliID());
                 ps.setString(4, nota.getNotaTipo());
                 ps.setInt(5, nota.getUsuarioID());
                 ps.setInt(6, nota.getClienteID());
-               
+                ps.setDate(7, new java.sql.Date(nota.getFechaDevolucion().getTime()));
+            
             //Ejecutamos la consulta y verificamos el resultado
             if(ps.executeUpdate() == 0){
                 throw new DAOException("No se pudo dar de alta La Nota");
@@ -62,6 +67,37 @@ public class MySQLNotasDAO implements INotasDAO {
             cerrarConexiones(ps, rs, conn);
         }// fin del finally   
     }// fin del método insertar
+    
+    /**
+     * Método para insertar una venta de una película a la tbl notas
+     * @param nota
+     * @throws DAOException 
+     */
+    @Override
+    public void venta(notas nota) throws DAOException {
+        try{
+            //Creamos la conexión a la BD   
+            conn = Conectar.ConectarBD();
+            
+            //Preparamos la consulta y especificamos el parámetro de entrada
+            ps = conn.prepareStatement(INSERTVENTA);
+                ps.setString(1, nota.getNotaTotal());
+                ps.setTimestamp(2, nota.getNotaFecha());
+                ps.setString(3, nota.getPeliID());
+                ps.setString(4, nota.getNotaTipo());
+                ps.setInt(5, nota.getUsuarioID());
+                ps.setInt(6, nota.getClienteID());
+           
+            //Ejecutamos la consulta y verificamos el resultado
+            if(ps.executeUpdate() == 0){
+                throw new DAOException("No se pudo dar de alta La Nota");
+            }// fin del if 1.0
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally   
+    }// fin del método venta
 
     @Override
     public void modificar(notas a) throws DAOException {
@@ -120,5 +156,7 @@ public class MySQLNotasDAO implements INotasDAO {
             throw new DAOException("ERROR en SQL", ex);
         }// fin del catch
     }// fin del método cerrarConexiones
+
+    
     
 }// fin de la clase MySQLNotasDAO

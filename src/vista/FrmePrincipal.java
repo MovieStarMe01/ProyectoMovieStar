@@ -7,7 +7,6 @@ package vista;
 
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
 
 /**
  *
@@ -15,7 +14,7 @@ import javax.swing.UIManager;
  */
 public class FrmePrincipal extends javax.swing.JFrame {
     
-    public static String generos = "";
+    //public static String generos = "";
     
     /**
      * Creates new form FrmePrincipal
@@ -54,8 +53,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblDrama = new javax.swing.JLabel();
         lblTerror = new javax.swing.JLabel();
         lblInfantiles = new javax.swing.JLabel();
-        lblRomanticas = new javax.swing.JLabel();
-        lblCrimen = new javax.swing.JLabel();
         lblTodas = new javax.swing.JLabel();
         panelImage2 = new org.edisoncor.gui.panel.PanelImage();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
@@ -64,10 +61,13 @@ public class FrmePrincipal extends javax.swing.JFrame {
         panelImage7 = new org.edisoncor.gui.panel.PanelImage();
         panelImage8 = new org.edisoncor.gui.panel.PanelImage();
         panelImage9 = new org.edisoncor.gui.panel.PanelImage();
+        lblRomance = new javax.swing.JLabel();
+        lblCrimen = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -211,7 +211,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 720));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaAccion.jpg"))); // NOI18N
         lblAccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -226,13 +226,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblAccionMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
-        jPanel1.add(lblAccion, gridBagConstraints);
+        jPanel1.add(lblAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         panelImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/accion.png"))); // NOI18N
 
@@ -247,14 +241,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 50, 0, 0);
-        jPanel1.add(panelImage3, gridBagConstraints);
+        jPanel1.add(panelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         lblComedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/Caratula.jpg"))); // NOI18N
         lblComedias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -269,13 +256,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblComediasMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
-        jPanel1.add(lblComedias, gridBagConstraints);
+        jPanel1.add(lblComedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         lblDrama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaDrama.jpg"))); // NOI18N
         lblDrama.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -290,13 +271,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblDramaMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 60, 0, 0);
-        jPanel1.add(lblDrama, gridBagConstraints);
+        jPanel1.add(lblDrama, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
 
         lblTerror.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTerror.jpg"))); // NOI18N
         lblTerror.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -311,13 +286,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblTerrorMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 53, 0, 23);
-        jPanel1.add(lblTerror, gridBagConstraints);
+        jPanel1.add(lblTerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, -1, -1));
 
         lblInfantiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaInfantil.jpg"))); // NOI18N
         lblInfantiles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -332,55 +301,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblInfantilesMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
-        jPanel1.add(lblInfantiles, gridBagConstraints);
-
-        lblRomanticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaRomance.jpg"))); // NOI18N
-        lblRomanticas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblRomanticas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblRomanticasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblRomanticasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblRomanticasMouseExited(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
-        jPanel1.add(lblRomanticas, gridBagConstraints);
-
-        lblCrimen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaCrimen.jpg"))); // NOI18N
-        lblCrimen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblCrimen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCrimenMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblCrimenMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblCrimenMouseExited(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 60, 0, 0);
-        jPanel1.add(lblCrimen, gridBagConstraints);
+        jPanel1.add(lblInfantiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
 
         lblTodas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaTodas.png"))); // NOI18N
         lblTodas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -395,13 +316,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
                 lblTodasMouseExited(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 53, 0, 23);
-        jPanel1.add(lblTodas, gridBagConstraints);
+        jPanel1.add(lblTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, -1));
 
         panelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/comedias.png"))); // NOI18N
 
@@ -416,14 +331,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 50, 0, 0);
-        jPanel1.add(panelImage2, gridBagConstraints);
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/drama.png"))); // NOI18N
 
@@ -438,14 +346,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 60, 0, 0);
-        jPanel1.add(panelImage4, gridBagConstraints);
+        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, -1));
 
         panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/terror.png"))); // NOI18N
 
@@ -460,14 +361,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 53, 0, 0);
-        jPanel1.add(panelImage5, gridBagConstraints);
+        jPanel1.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
 
         panelImage6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/romanticas.png"))); // NOI18N
 
@@ -482,15 +376,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 170;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 40, 10, 0);
-        jPanel1.add(panelImage6, gridBagConstraints);
+        jPanel1.add(panelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
 
         panelImage7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/infantiles.png"))); // NOI18N
 
@@ -505,15 +391,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 170;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 40, 10, 0);
-        jPanel1.add(panelImage7, gridBagConstraints);
+        jPanel1.add(panelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, -1, -1));
 
         panelImage8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/crimen.png"))); // NOI18N
 
@@ -528,14 +406,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 60, 10, 0);
-        jPanel1.add(panelImage8, gridBagConstraints);
+        jPanel1.add(panelImage8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, -1, -1));
 
         panelImage9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/todas.png"))); // NOI18N
 
@@ -550,14 +421,37 @@ public class FrmePrincipal extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 150;
-        gridBagConstraints.ipady = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 53, 10, 0);
-        jPanel1.add(panelImage9, gridBagConstraints);
+        jPanel1.add(panelImage9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
+
+        lblRomance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaRomance.jpg"))); // NOI18N
+        lblRomance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRomance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRomanceMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRomanceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRomanceMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblRomance, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+
+        lblCrimen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaCrimen.jpg"))); // NOI18N
+        lblCrimen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCrimen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCrimenMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCrimenMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCrimenMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblCrimen, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 870, 570));
 
@@ -578,7 +472,12 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel1.setText("Salir");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 680, -1, -1));
 
-        getContentPane().add(jPanel2, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 1, 0, 1);
+        getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
         setLocationRelativeTo(null);
@@ -626,20 +525,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
         lblTerror.setIcon(imgTerror); 
     }//GEN-LAST:event_lblTerrorMouseExited
 
-    private void lblRomanticasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanticasMouseEntered
-        //Al entrar el focus al label este cambiará su icono por un gif
-        ImageIcon imgRomanceGif;
-        imgRomanceGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/romanceGif.gif"));
-        lblRomanticas.setIcon(imgRomanceGif);
-    }//GEN-LAST:event_lblRomanticasMouseEntered
-
-    private void lblRomanticasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanticasMouseExited
-        //Al salir el focus del label este regresará su icono al que tenia por defecto
-        ImageIcon imgRomance;
-        imgRomance = new ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaRomance.jpg"));
-        lblRomanticas.setIcon(imgRomance); 
-    }//GEN-LAST:event_lblRomanticasMouseExited
-
     private void lblInfantilesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseEntered
         //Al entrar el focus al label este cambiará su icono por un gif
         ImageIcon imgInfantilGif;
@@ -653,20 +538,6 @@ public class FrmePrincipal extends javax.swing.JFrame {
         imgInfantil = new ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaInfantil.jpg"));
         lblInfantiles.setIcon(imgInfantil); 
     }//GEN-LAST:event_lblInfantilesMouseExited
-
-    private void lblCrimenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseEntered
-        //Al entrar el focus al label este cambiará su icono por un gif
-        ImageIcon imgCrimenGif;
-        imgCrimenGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/crimenGif.gif"));
-        lblCrimen.setIcon(imgCrimenGif);
-    }//GEN-LAST:event_lblCrimenMouseEntered
-
-    private void lblCrimenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseExited
-        //Al salir el focus del label este regresará su icono al que tenia por defecto
-        ImageIcon imgCrimen;
-        imgCrimen = new ImageIcon(getClass().getResource("/imgFrmePrincipal/CaratulaCrimen.jpg"));
-        lblCrimen.setIcon(imgCrimen); 
-    }//GEN-LAST:event_lblCrimenMouseExited
 
     private void lblTodasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseEntered
         //Al entrar el focus al label este cambiará su icono por un gif
@@ -683,7 +554,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblTodasMouseExited
 
     private void lblDramaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseEntered
-       //Al entrar el focus al label este cambiará su icono por un gif
+        //Al entrar el focus al label este cambiará su icono por un gif
         ImageIcon imgDramaGif;
         imgDramaGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/dramaGif.gif"));
         lblDrama.setIcon(imgDramaGif);
@@ -706,65 +577,84 @@ public class FrmePrincipal extends javax.swing.JFrame {
         miCliente.setVisible(true);
     }//GEN-LAST:event_btnAñadirCliActionPerformed
 
-    private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        generos = "ACCIÓN";
-        miPelicula.lblGenero.setText(generos); 
-        miPelicula.setVisible(true);   
-    }//GEN-LAST:event_lblAccionMouseClicked
-
     private void btnGestionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionesActionPerformed
         JDGestiones misGestiones = new JDGestiones(null, true);
         misGestiones.setVisible(true);
     }//GEN-LAST:event_btnGestionesActionPerformed
-
-    private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("COMEDIA");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblComediasMouseClicked
-
-    private void lblDramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("DRAMA");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblDramaMouseClicked
-
-    private void lblTerrorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTerrorMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("TERROR");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblTerrorMouseClicked
-
-    private void lblRomanticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanticasMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("ROMANTICAS");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblRomanticasMouseClicked
-
-    private void lblInfantilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("INFANTILES");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblInfantilesMouseClicked
-
-    private void lblCrimenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("CRIMEN");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblCrimenMouseClicked
-
-    private void lblTodasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseClicked
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
-        miPelicula.lblGenero.setText("TODOS LOS GÉNEROS");
-        miPelicula.setVisible(true);
-    }//GEN-LAST:event_lblTodasMouseClicked
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         //Instanciamos una ventana para preguntar si desea salir del sistema
         JDSalir salida = new JDSalir(null, true);
         salida.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void lblRomanceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanceMouseEntered
+        //Al entrar el focus al label este cambiará su icono por un gif
+        ImageIcon imgRomanceGif;
+        imgRomanceGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/romanceGif.gif"));
+        lblRomance.setIcon(imgRomanceGif);
+    }//GEN-LAST:event_lblRomanceMouseEntered
+
+    private void lblRomanceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanceMouseExited
+        //Al salir el focus del label este regresará su icono al que tenia por defecto
+        ImageIcon imgRomance;
+        imgRomance = new ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaRomance.jpg"));
+        lblRomance.setIcon(imgRomance);
+    }//GEN-LAST:event_lblRomanceMouseExited
+
+    private void lblRomanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanceMouseClicked
+        String genero = "ROMANTICAS";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblRomanceMouseClicked
+
+    private void lblCrimenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseEntered
+        //Al entrar el focus al label este cambiará su icono por un gif
+        ImageIcon imgCrimenGif;
+        imgCrimenGif = new ImageIcon(getClass().getResource("/imgFrmePrincipal/crimenGif.gif"));
+        lblCrimen.setIcon(imgCrimenGif);
+    }//GEN-LAST:event_lblCrimenMouseEntered
+
+    private void lblCrimenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseExited
+        //Al salir el focus del label este regresará su icono al que tenia por defecto
+        ImageIcon imgCrimen;
+        imgCrimen = new ImageIcon(getClass().getResource("/imgFrmePrincipal/caratulaCrimen.jpg"));
+        lblCrimen.setIcon(imgCrimen);                              
+    }//GEN-LAST:event_lblCrimenMouseExited
+
+    private void lblCrimenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseClicked
+        String genero = "CRIMEN";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblCrimenMouseClicked
+
+    private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
+        String genero = "ACCIÓN";
+        abrirVentana(genero); 
+    }//GEN-LAST:event_lblAccionMouseClicked
+
+    private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
+        String genero = "COMEDIA";
+        abrirVentana(genero); 
+    }//GEN-LAST:event_lblComediasMouseClicked
+
+    private void lblDramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseClicked
+        String genero = "DRAMA";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblDramaMouseClicked
+
+    private void lblTerrorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTerrorMouseClicked
+        String genero = "TERROR";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblTerrorMouseClicked
+
+    private void lblInfantilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseClicked
+        String genero = "INFANTILES";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblInfantilesMouseClicked
+
+    private void lblTodasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseClicked
+        String genero = "TODOS LOS GÉNEROS";
+        abrirVentana(genero);
+    }//GEN-LAST:event_lblTodasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -821,7 +711,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblGestiones;
     private javax.swing.JLabel lblInfantiles;
     private javax.swing.JLabel lblReportes;
-    private javax.swing.JLabel lblRomanticas;
+    private javax.swing.JLabel lblRomance;
     private javax.swing.JLabel lblTerror;
     private javax.swing.JLabel lblTodas;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
@@ -834,6 +724,12 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private org.edisoncor.gui.panel.PanelImage panelImage8;
     private org.edisoncor.gui.panel.PanelImage panelImage9;
     // End of variables declaration//GEN-END:variables
+
+    private void abrirVentana(String genero) {
+        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        miPelicula.lblGenero.setText(genero);
+        miPelicula.setVisible(true);
+    }
 
    
 }// fin de la clase FrmePrincipal
