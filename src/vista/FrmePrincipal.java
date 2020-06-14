@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class FrmePrincipal extends javax.swing.JFrame {
     
-    //public static String generos = "";
+    public static String genero = "";
     
     /**
      * Creates new form FrmePrincipal
@@ -603,7 +603,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblRomanceMouseExited
 
     private void lblRomanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRomanceMouseClicked
-        String genero = "ROMANTICAS";
+        genero = "ROMANTICAS";
         abrirVentana(genero);
     }//GEN-LAST:event_lblRomanceMouseClicked
 
@@ -622,37 +622,37 @@ public class FrmePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCrimenMouseExited
 
     private void lblCrimenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseClicked
-        String genero = "CRIMEN";
+        genero = "CRIMEN";
         abrirVentana(genero);
     }//GEN-LAST:event_lblCrimenMouseClicked
 
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
-        String genero = "ACCIÓN";
+        genero = "ACCIÓN";
         abrirVentana(genero); 
     }//GEN-LAST:event_lblAccionMouseClicked
 
     private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
-        String genero = "COMEDIA";
+        genero = "COMEDIA";
         abrirVentana(genero); 
     }//GEN-LAST:event_lblComediasMouseClicked
 
     private void lblDramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseClicked
-        String genero = "DRAMA";
+        genero = "DRAMA";
         abrirVentana(genero);
     }//GEN-LAST:event_lblDramaMouseClicked
 
     private void lblTerrorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTerrorMouseClicked
-        String genero = "TERROR";
+        genero = "TERROR";
         abrirVentana(genero);
     }//GEN-LAST:event_lblTerrorMouseClicked
 
     private void lblInfantilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseClicked
-        String genero = "INFANTILES";
+        genero = "INFANTILES";
         abrirVentana(genero);
     }//GEN-LAST:event_lblInfantilesMouseClicked
 
     private void lblTodasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseClicked
-        String genero = "TODOS LOS GÉNEROS";
+        genero = "TODOS LOS GÉNEROS";
         abrirVentana(genero);
     }//GEN-LAST:event_lblTodasMouseClicked
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="860" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="5" isIgnorePagination="true" uuid="b5356ab1-3c5f-4f9f-9cff-7727363c3a55">
 	<property name="ireport.zoom" value="4.96737058447324"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="576"/>
+	<property name="ireport.x" value="105"/>
+	<property name="ireport.y" value="192"/>
 	<parameter name="EFECTIVO" class="java.lang.String"/>
 	<parameter name="LETRA" class="java.lang.String"/>
 	<queryString>
@@ -164,7 +164,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Center">
 					<font fontName="Consolas" size="6" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TEL:(467)103 0444 ]]></text>
+				<text><![CDATA[TEL:(463)103 0444 ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="15" y="97" width="125" height="8" uuid="e268f191-dda1-4fe1-b470-1478dbd5b2f1"/>

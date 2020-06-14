@@ -56,13 +56,16 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE  peli_genero = ? AND"
             + " peli_titulo LIKE '%?%'";
     
-    private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
+    private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, "
             + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
     
-    private final String INACTIVOVEND = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
+    private final String INACTIVOVEND = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, "
             + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ? OR peli_estado = ?";
     
     private final String ESTADO = "UPDATE peliculas SET peli_estado = ? WHERE peli_id = ?";
+    
+    private final String NODEV = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, "
+            + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
     
     
     /**
@@ -405,7 +408,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         try{
             //Creamos un arrayList 
             misPeliculas = new ArrayList<>();
-            
             //Creamos la conexión a la BD
             conn = Conectar.ConectarBD();
             
@@ -449,7 +451,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //Creamos la conexión a la BD
             conn = Conectar.ConectarBD();
              
-            //Preparamos la consult SQL y especificamos los parámetros de entrada
+            //Preparamos la consulta SQL y especificamos los parámetros de entrada
             ps = conn.prepareStatement(ESTADO);
                 ps.setString(1, estado.getEstado());
                 ps.setString(2, estado.getPeliID());
@@ -593,5 +595,45 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     public void venta(peliculas a) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<peliculas> obtenerNoDevueltas(String estado) throws DAOException {
+        List<peliculas> misPeliculas = null;
+       
+        try{
+            //Creamos un arrayList 
+            misPeliculas = new ArrayList<>();
+            
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(NODEV);
+                ps.setString(1, estado);
+
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                peliculas miPeli = new peliculas();
+                miPeli.setPeliID(rs.getString("peli_id"));
+                miPeli.setPeliTitulo(rs.getString("peli_titulo"));
+                miPeli.setAnio(rs.getInt("peli_anio"));
+                miPeli.setAudio(rs.getString("peli_audio"));
+                miPeli.setCalidad(rs.getString("peli_calidad"));
+                miPeli.setGenero(rs.getString("peli_genero"));
+                miPeli.setEstado(rs.getString("peli_estado"));
+             
+                misPeliculas.add(miPeli);
+            }// fin del while
+        }catch(SQLException ex){
+            throw new DAOException("Error en SQL: " + ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+        
+        return misPeliculas;
+    }// fin del método obtenerNoDevueltas
     
 }// fin de la clase MySQLPeliculasDAO

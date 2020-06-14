@@ -10,11 +10,12 @@ import DAO.INotasDAO;
 import Modelo.notas;
 import MySQLConexion.Conectar;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +35,12 @@ public class MySQLNotasDAO implements INotasDAO {
     
     private final String INSERTVENTA = "INSERT INTO nota (nota_total, nota_fecha, nota_peli_id, nota_tipo, nota_usu_id, "
             + " nota_cli_id) VALUES (?, ?, ?, ?, ?, ?)";
+    
+    private final String LLENARNOTAS = "SELECT nota_fecha_lim, nota_peli_id FROM nota WHERE nota_fecha_lim != 'NULL' "
+            + "AND nota_tipo = 'RENTADA'";
+    
+    //private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
+      //      + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = 'RENTADA' AND INNER JOIN";
     
     
     /**
@@ -121,7 +128,8 @@ public class MySQLNotasDAO implements INotasDAO {
 
     @Override
     public notas obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+        
     }
 
     @Override
@@ -157,6 +165,46 @@ public class MySQLNotasDAO implements INotasDAO {
         }// fin del catch
     }// fin del método cerrarConexiones
 
+    /**
+     * Método para obtener las notas dadas de alta
+     * @param id
+     * @return
+     * @throws DAOException 
+     */
+    @Override
+    public List<notas> obtenerNotas() throws DAOException {
+         List<notas> miRenta = null;
+       
+        try{
+            //Creamos un arrayList 
+            miRenta = new ArrayList<>();
+            
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(LLENARNOTAS);
+                //ps.setString(1, id);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                notas miPeli = new notas();
+                miPeli.setFechaDevolucion(rs.getDate("nota_fecha_lim"));
+                miPeli.setPeliID(rs.getString("nota_peli_id"));
+                miRenta.add(miPeli);
+            }// fin del while
+        }catch(SQLException ex){
+            throw new DAOException("Error en SQL: " + ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin del finally
+        
+        return miRenta;
+    }// fin del método obtenerNotas
     
+
     
 }// fin de la clase MySQLNotasDAO

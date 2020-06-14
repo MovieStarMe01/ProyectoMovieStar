@@ -182,7 +182,7 @@
         <Component class="javax.swing.JButton" name="btnVerPeliculas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgGestiones/verPeli.png"/>
+              <Image iconType="3" name="/imgGestiones/actualizarPeli.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -190,7 +190,7 @@
               <Color id="Cursor de Mano"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imgGestiones/verPeli (1).png"/>
+              <Image iconType="3" name="/imgGestiones/actualizarPeli (1).png"/>
             </Property>
           </Properties>
           <Events>
@@ -198,7 +198,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="60" width="-1" height="30"/>
+              <AbsoluteConstraints x="65" y="60" width="60" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -253,7 +253,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Rockwell" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ver Pel&#xed;culas"/>
+            <Property name="text" type="java.lang.String" value="Actualizar Lista"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

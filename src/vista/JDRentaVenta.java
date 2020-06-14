@@ -69,7 +69,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
     
     String nombre;
     int id;
-    String genero;
+    //String genero;
     String[] idCli = new String[50];
     String[] nombreCli = new String[50];
     int cantidad;
@@ -512,12 +512,13 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 //Hacemos un update para cambiar el estado de la película a VENDIDA
                 manager.getPeliculasDAO().estado(miPelicula);
          
-            }// fin dle if VENDIDA
+            }// fin del if VENDIDA
             
             //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
             if(tipoNota.equals("RENTADA")){
                 //llamamos el constructor para crear un Objeto de tipo Notas con el parámetro fechaLimite
                 miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente, fechaLim);
+                manager.getNotasDAO().insertar(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Renta Satisfactoria</h2></html>",
                     "Proceso Exitoso", 0, miIcono);
@@ -545,10 +546,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
     public Date sumaFecha(Date notaFecha, int dias) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(notaFecha);
-        calendar.add(Calendar.DAY_OF_YEAR, dias);
+        calendar.add(Calendar.DAY_OF_YEAR, 2);
         
-        /*String fecha = "";
-        fecha = calendar.getTime().toString();*/
+      
         return calendar.getTime();
     }// fin del método sumarFecha
 
@@ -565,8 +565,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
         
         JasperPrint jPrint =  JasperFillManager.fillReport(reporte, null, conn);
         JasperViewer view =  new JasperViewer(jPrint, false);
-        view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         view.setVisible(true);
+        view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         //reporte = JRLoader.loadObjectFromFile(path);
         } catch (SQLException | JRException ex) {
         Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);

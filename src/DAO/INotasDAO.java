@@ -6,11 +6,14 @@
 package DAO;
 
 import Modelo.notas;
+import java.util.List;
 
 /**
  *
  * @author Jesús Moisés
  */
 public interface INotasDAO extends IDAO<notas, Integer>{
-    
+   //Obtenemos una lista con todos IDCliente que están dado de alta
+   List<notas> obtenerNotas() throws DAOException;
+   
 }

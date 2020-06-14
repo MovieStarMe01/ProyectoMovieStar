@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Erick Cabrera
+ * @author Jesús Moisés
  */
 public class notas {
     //Campos
@@ -206,7 +206,6 @@ public class notas {
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
-    
     
     
 }// fin de la clase notas

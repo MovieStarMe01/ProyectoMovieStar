@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
+import static vista.FrmePrincipal.genero;
 
 
 /**
@@ -44,8 +45,8 @@ public class JDPeliculas extends javax.swing.JDialog {
     //Propiedades para  modificar el width de nuestra tabla tblPeliculas
     TableColumnModel columnModel = null;
     
-    String genero = "TERROR";
-    //String idPeli;
+    //String genero = "";
+
     
     /**
      * Creates new form JDPeliculas
@@ -153,17 +154,17 @@ public class JDPeliculas extends javax.swing.JDialog {
         });
         jPanel1.add(btnRentarComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
-        btnVerPeliculas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/verPeli.png"))); // NOI18N
+        btnVerPeliculas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizarPeli.png"))); // NOI18N
         btnVerPeliculas.setBorderPainted(false);
         btnVerPeliculas.setContentAreaFilled(false);
         btnVerPeliculas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVerPeliculas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/verPeli (1).png"))); // NOI18N
+        btnVerPeliculas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/actualizarPeli (1).png"))); // NOI18N
         btnVerPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerPeliculasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 30));
+        jPanel1.add(btnVerPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 60, 60, 30));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorderPainted(false);
@@ -190,7 +191,7 @@ public class JDPeliculas extends javax.swing.JDialog {
         jPanel1.add(btnGestionPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel1.setText("Ver Películas");
+        jLabel1.setText("Actualizar Lista");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N

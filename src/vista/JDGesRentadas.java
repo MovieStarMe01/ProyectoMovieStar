@@ -8,7 +8,15 @@ package vista;
 import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
+import Modelo.notas;
 import Modelo.peliculas;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -27,6 +35,10 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private PeliculasVisiblesTableModel model;
     
     String estadoR = "RENTADA";
+    String estadoV = "VENCIDA";
+    String[] ids;
+    int cantidad = 0;
+    
     /**
      * Creates new form JDGesRentadas
      */
@@ -37,14 +49,18 @@ public class JDGesRentadas extends javax.swing.JDialog {
         //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
         
-        fechaLimite();
+        
         
         try {
             inicializarListaPeliculasRent();
+            fechaLimite();
             inicializarListaPeliculasNoDevueltas();
-        } catch (DAOException ex) {
+        }catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-        }// fin del catch  
+        } catch (ParseException ex) {
+            Logger.getLogger(JDGesRentadas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -223,8 +239,10 @@ public class JDGesRentadas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+        //colocamos un 1 para saber que es de la tblRentadas
+        //int tbl = 1;
         //Mandamos llamar el método devolver
-        devolver();
+        devolver(1);
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -234,7 +252,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
 
     private void btnDevolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolver1ActionPerformed
         //Mandamos llamar el método devolver
-        devolver();
+        devolver(0);
     }//GEN-LAST:event_btnDevolver1ActionPerformed
 
     /**
@@ -317,21 +335,81 @@ public class JDGesRentadas extends javax.swing.JDialog {
      * @throws DAOException 
      */
     private void inicializarListaPeliculasNoDevueltas() throws DAOException {
-        
-        //fechaLimite();
-        
+       
         model = new PeliculasVisiblesTableModel(manager.getPeliculasDAO());
             
         //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
-        tblRentadas.setModel(model);
-        //model.updateModelAll(estadoR);
-        //model.fireTableDataChanged();
+        tblNoDevueltas.setModel(model);
+        model.updateModelID(estadoV);
+        model.fireTableDataChanged();
+        inicializarListaPeliculasRent();
     }// fin del método inicializarListaPeliculasNoDevueltas
 
-    private void fechaLimite() {
+    /**
+     * Método para ver las películas que están vencidas 
+     * @throws DAOException
+     * @throws ParseException 
+     */
+    private void fechaLimite() throws DAOException, ParseException {
+        //Obtenemos la fecha Actual
+        Date fechaHoy = new Date();
         
+        // El formato de fecha está especificado  
+        String strDateFormat = "YYYY-MM-dd"; 
+        // La cadena de formato de fecha se pasa como un argumento al objeto
+        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+        /*Aplicamos el formato a nuestra fecha para que se pueda comparar con la fecha de la película RENTADA
+        * ya que la de la BD tienen este formato
+        */
+        objSDF.format(fechaHoy);
         
-    }
+        //Obtenemos la cantidad de filas que hay en nuestra tabla
+        int filas = tblRentadas.getRowCount();
+        
+        ArrayList<notas> misRentas = new ArrayList<notas>();
+        misRentas = (ArrayList<notas>) manager.getNotasDAO().obtenerNotas();
+        //Guardaremos todas las fechas limite de la BD
+        Date[] fechasLim = new Date[misRentas.size()];
+        //Guardaremos todos los id de las películas rentadas de la BD
+        String[] id = new String[misRentas.size()];
+        //Guardaremos todos los id de las películas rentadas que están en la tblRentadas
+        String[] idPelitbl = new String[misRentas.size()];
+        
+        //For para guardar todos los id y fechasLimite de las BD
+        for(int i = 0; i < filas; ++i){
+            idPelitbl[i] = (String) tblRentadas.getValueAt(i, 0);
+            fechasLim[i] = misRentas.get(i).getFechaDevolucion();
+            id[i] = misRentas.get(i).getPeliID();
+        }// fin del for
+        
+        //For para guardar todos los id de las películas de la tblRentadas
+        for(int i = 0; i < misRentas.size(); ++i){
+            id[i] = misRentas.get(i).getPeliID();
+            fechasLim[i] = misRentas.get(i).getFechaDevolucion();
+        }// fin del for
+    
+        /**
+         * Comparamos cada idPelicula con toda la lista de las que están rentadas
+         */
+        for(int i = 0; i < misRentas.size(); ++i){
+            for(int k = 0; k < misRentas.size(); ++k){
+                /**
+                 * Si un id de la BD es igual al de la tbl entonces comparamos las fechas
+                 */
+                if(id[i].equals(idPelitbl[k])){
+                    /**
+                     * Comparamos las fechas para ver si ya se pasaron con el limite
+                     */
+                    if(fechasLim[i].compareTo(fechaHoy) < 0){
+                        ids = new String[misRentas.size()];
+                        ids[i] = id[i];
+                        //Llamamos el método vencida
+                        vencida(i);
+                    }// fin del if interno
+                }//fin del if externo
+            }// fin del for interno
+        }// fin del for
+    }//fin del método fechaLimite
 
     /**
      * Método para validar que se haya seleccionado una fila se la tabla
@@ -340,7 +418,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private boolean seleccion() {
        boolean validar = false;
         //si se selecciona una fila entonces se devuelve la película
-       if(tblRentadas.getSelectedRow() > -1){
+       if(tblNoDevueltas.getSelectedRow() > -1 || tblRentadas.getSelectedRow() > -1){
            validar = true;
        }else{
             validar = false;
@@ -355,18 +433,31 @@ public class JDGesRentadas extends javax.swing.JDialog {
     /**
      * Método para devolver una película su estado será ACTIVO
      */
-    private void devolver() {
+    private void devolver(int tbl) {
         //Verificamos que se haya seleccionado una fila para cambiar el estado
         if(seleccion()){
-            //Obtenemos la fila seleccionada de la tbl Rentadas
-            int fila = tblRentadas.getSelectedRow();
-            // Obtenemos el id de la película seleccionada
-            String peliID = (String) tblRentadas.getValueAt(fila, 0);
+            int fila;
+            String peli;
+            /**
+             * Si tbl es igual a 1 entonces sabremos que la película a devolver será RENTADA
+             * si tbl es igual a 0 entonces la película a devolver será VENCIDA
+             */
+            if(tbl == 1){
+                //Obtenemos la fila seleccionada de la tbl Rentadas
+                fila = tblRentadas.getSelectedRow();
+                // Obtenemos el id de la película seleccionada
+                peli = (String) tblRentadas.getValueAt(fila, 0);
+            }else{
+                fila = tblNoDevueltas.getSelectedRow();
+                // Obtenemos el id de la película seleccionada
+                peli = (String) tblNoDevueltas.getValueAt(fila, 0);
+            }//fin del if else
+            
             //Colocamos el estado a ACTIVO que será el estado al cuál se hará el cambio
             String estado = "ACTIVO";
 
             //llamamos el constructor para crear un objeto de tipo peliculas
-            peliculas miPelicula = new peliculas(peliID, estado);
+            peliculas miPelicula = new peliculas(peli, estado);
             try {
                 //Hacemos un update para cambiar el estado de la película a ACTIVO
                 manager.getPeliculasDAO().estado(miPelicula);
@@ -374,11 +465,44 @@ public class JDGesRentadas extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "<html><h2>La Película ha sido Devuelta</h2></html>", "Proceso Exitoso",
                         0, miIcono); 
                 //Llamaos el método para actualizar la tabla
-                inicializarListaPeliculasRent();
+                //inicializarListaPeliculasRent();
+                inicializarListaPeliculasNoDevueltas();
             } catch (DAOException ex) {
                 Logger.getLogger(JDGesRentadas.class.getName()).log(Level.SEVERE, null, ex);
             }// fin del catch
         }//fin del if
     }// fin del método devolver
+
+    /**
+     * Método para obtener la fecha Actual de Sistema
+     * @return 
+     */
+    public static String getFechaActual() {
+      Date ahora = new Date();
+      SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+      return formateador.format(ahora);
+    }// fin del método getFechaActual
+    
+    /**
+     * Método para cambiar de estado de la película a VENCIDA y colocarlas en 
+     * la tbl de no Devueltas
+     * @param k 
+     */
+    public void vencida(int k){
+        //Colocamos el estado a ACTIVO que será el estado al cuál se hará el cambio
+        String estado = "VENCIDA";
+        for(int i = 0; i < k; ++ i){
+        //llamamos el constructor para crear un objeto de tipo peliculas
+        peliculas miPelicula = new peliculas(ids[k], estado);
+            try {
+                //Hacemos un update para cambiar el estado de la película a VENCIDA
+                manager.getPeliculasDAO().estado(miPelicula);                
+                //Llamaos el método para actualizar la tabla
+                inicializarListaPeliculasNoDevueltas();
+            } catch (DAOException ex) {
+                Logger.getLogger(JDGesRentadas.class.getName()).log(Level.SEVERE, null, ex);
+            }// fin del catch
+        }//fin del for
+    }// fin del métod vencida
     
 }// fin de la clase JDGesRentadas
