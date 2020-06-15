@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +26,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     private Connection conn = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private Statement st = null;
-    private String usu;
-    private String pass;
-    
-    
+ 
     //Consultas SQL a utilizar
     private final String INSERT = "INSERT INTO usuario (usu_nombre, usu_paterno, usu_materno, usu_domicilio, usu_cel, "
             + " usu_nick, usu_pass)"
@@ -176,37 +171,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
         
         return misUsuarios;
     }// fin del método obtenerTodos
-
-  
-    /**
-     * Método para cerrar las Conexiones de la BD
-     * @param ps
-     * @param rs
-     * @param conn
-     * @throws DAOException 
-     */
-    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
-        try{
-            if(rs != null){
-                //Cerramos el rs
-                rs.close();
-            }//fin del if rs
-            
-            if(ps != null){
-                //Cerramos el ps
-                ps.close();
-            }// fin del if ps 
-            
-            if(conn != null){
-                //Cerramos la conn
-                conn.close();
-            }// fin del if conn
-        }catch(SQLException ex){
-            throw new DAOException("ERROR en SQL", ex);
-        }// fin del catch
-    }// fin del método cerrarConexiones
-
-  
+    
     /**
      * Método para verificar usuario y contraseña esten dados de alta en la BD
      * @param usu
@@ -252,6 +217,34 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
        
         return validar;
     }// fin del método verificarUP
+
+    /**
+     * Método para cerrar las Conexiones de la BD
+     * @param ps
+     * @param rs
+     * @param conn
+     * @throws DAOException 
+     */
+    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
+        try{
+            if(rs != null){
+                //Cerramos el rs
+                rs.close();
+            }//fin del if rs
+            
+            if(ps != null){
+                //Cerramos el ps
+                ps.close();
+            }// fin del if ps 
+            
+            if(conn != null){
+                //Cerramos la conn
+                conn.close();
+            }// fin del if conn
+        }catch(SQLException ex){
+            throw new DAOException("ERROR en SQL", ex);
+        }// fin del catch
+    }// fin del método cerrarConexiones
 
     @Override
     public Usuario obtener(Integer id) throws DAOException {

@@ -13,9 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +25,7 @@ public class MySQLNotasDAO implements INotasDAO {
     private Connection conn = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private Statement st = null;
+
     
     //Consultas SQL a utilizar
     private final String INSERTRENTA = "INSERT INTO nota (nota_total, nota_fecha, nota_peli_id, nota_tipo, nota_usu_id, "
@@ -39,14 +37,10 @@ public class MySQLNotasDAO implements INotasDAO {
     private final String LLENARNOTAS = "SELECT nota_fecha_lim, nota_peli_id FROM nota WHERE nota_fecha_lim != 'NULL' "
             + "AND nota_tipo = 'RENTADA'";
     
-    //private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad,  "
-      //      + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = 'RENTADA' AND INNER JOIN";
-    
-    
     /**
      * Método para insertar una renta de una película a la tbl notas
      * @param nota
-      * @throws DAOException 
+     * @throws DAOException 
      */
     @Override
     public void insertar(notas nota) throws DAOException {
@@ -105,70 +99,10 @@ public class MySQLNotasDAO implements INotasDAO {
             cerrarConexiones(ps, rs, conn);
         }// fin del finally   
     }// fin del método venta
-
-    @Override
-    public void modificar(notas a) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eliminar(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean verificaUP(String a, String passE) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<notas> obtenerTodos() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public notas obtener(Integer id) throws DAOException {
-        return null;
-        
-    }
-
-    @Override
-    public void estado(notas estado) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     /**
-     * Método para cerrar las Conexiones de la BD
-     * @param ps
-     * @param rs
-     * @param conn
-     * @throws DAOException 
-     */
-    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
-        try{
-            if(rs != null){
-                //Cerramos el rs
-                rs.close();
-            }//fin del if rs
-            
-            if(ps != null){
-                //Cerramos el ps
-                ps.close();
-            }// fin del if ps 
-            
-            if(conn != null){
-                //Cerramos la conn
-                conn.close();
-            }// fin del if conn
-        }catch(SQLException ex){
-            throw new DAOException("ERROR en SQL", ex);
-        }// fin del catch
-    }// fin del método cerrarConexiones
-
-    /**
      * Método para obtener las notas dadas de alta
-     * @param id
-     * @return
+     * @return miRenta
      * @throws DAOException 
      */
     @Override
@@ -204,7 +138,64 @@ public class MySQLNotasDAO implements INotasDAO {
         
         return miRenta;
     }// fin del método obtenerNotas
-    
 
+    /**
+     * Método para cerrar las Conexiones de la BD
+     * @param ps
+     * @param rs
+     * @param conn
+     * @throws DAOException 
+     */
+    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
+        try{
+            if(rs != null){
+                //Cerramos el rs
+                rs.close();
+            }//fin del if rs
+            
+            if(ps != null){
+                //Cerramos el ps
+                ps.close();
+            }// fin del if ps 
+            
+            if(conn != null){
+                //Cerramos la conn
+                conn.close();
+            }// fin del if conn
+        }catch(SQLException ex){
+            throw new DAOException("ERROR en SQL", ex);
+        }// fin del catch
+    }// fin del método cerrarConexiones
+    
+    @Override
+    public void modificar(notas a) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Integer id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean verificaUP(String a, String passE) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<notas> obtenerTodos() throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public notas obtener(Integer id) throws DAOException {
+        return null;
+        
+    }
+
+    @Override
+    public void estado(notas estado) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }// fin de la clase MySQLNotasDAO

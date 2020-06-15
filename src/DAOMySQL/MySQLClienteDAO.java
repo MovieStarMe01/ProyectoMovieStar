@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,27 +25,20 @@ public class MySQLClienteDAO implements IClienteDAO{
     private Connection conn = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private Statement st = null;
     
     //Consultas SQL a utilizar
     private final String INSERT = "INSERT INTO cliente (cli_nombre, cli_paterno, cli_materno, cli_domicilio, cli_cel, "
             + " cli_correo)"
             + " VALUES (?, ?, ?, ?, ?, ?)";
     
-    private final String GETONE = "SELECT cli_nombre, cli_paterno, cli_materno, cli_domicilio, cli_cel, cli_correo "
-            + " FROM cliente WHERE cli_id = ?";
-    
     private final String UPDATE = "UPDATE cliente SET cli_nombre = ?, cli_paterno = ?, cli_materno = ?, cli_domicilio = ?, "
              + " cli_cel = ?, cli_correo = ? WHERE cli_id = ?";
    
-     
     private final String GETALLCLI = "SELECT * FROM cliente";
      
     private final String DELETE = "DELETE FROM cliente WHERE cli_id = ?";
     
     private final String LLENARCMB = "SELECT cli_id, cli_nombre FROM cliente";
-    
-    private final String NAMES = "SELECT cli_nombre FROM cliente WHERE cli_id = ?";
     
     /**
      * Método para añadir un cliente a nuestra BD
@@ -135,13 +127,8 @@ public class MySQLClienteDAO implements IClienteDAO{
         }finally{
             cerrarConexiones(ps, rs, conn);
         }// fin del finally
-    }
-
-    @Override
-    public boolean verificaUP(String a, String passE) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    }// fin del método  eliminar
+    
     /**
      * Método para obtener todo los clientes que están dados de alta
      * @return misClientes
@@ -185,46 +172,7 @@ public class MySQLClienteDAO implements IClienteDAO{
         
         return misClientes;
     }// fin del método obtenerTodos
-
- 
-    /**
-     * Método para cerrar las Conexiones de la BD
-     * @param ps
-     * @param rs
-     * @param conn
-     * @throws DAOException 
-     */
-    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
-         try{
-            if(rs != null){
-                //Cerramos el rs
-                rs.close();
-            }//fin del if rs
-            
-            if(ps != null){
-                //Cerramos el ps
-                ps.close();
-            }// fin del if ps 
-            
-            if(conn != null){
-                //Cerramos la conn
-                conn.close();
-            }// fin del if conn
-        }catch(SQLException ex){
-            throw new DAOException("ERROR en SQL", ex);
-        }// fin del catch
-    }// fin del método cerrarConexiones
-
-    @Override
-    public cliente obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void estado(cliente estado) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      * Método para obtener clientes y mostrarlos en el combobox
      * @return
@@ -263,15 +211,53 @@ public class MySQLClienteDAO implements IClienteDAO{
         
         return misClientes;
     }// fin del método obtenerClientes
+    
+    /**
+     * Método para cerrar las Conexiones de la BD
+     * @param ps
+     * @param rs
+     * @param conn
+     * @throws DAOException 
+     */
+    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
+         try{
+            if(rs != null){
+                //Cerramos el rs
+                rs.close();
+            }//fin del if rs
+            
+            if(ps != null){
+                //Cerramos el ps
+                ps.close();
+            }// fin del if ps 
+            
+            if(conn != null){
+                //Cerramos la conn
+                conn.close();
+            }// fin del if conn
+        }catch(SQLException ex){
+            throw new DAOException("ERROR en SQL", ex);
+        }// fin del catch
+    }// fin del método cerrarConexiones
+    
+    @Override
+    public boolean verificaUP(String a, String passE) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public cliente obtener(Integer id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void estado(cliente estado) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public void venta(cliente a) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
-    
-
-
  
 }// fin de la clase MySQLClienteDAO

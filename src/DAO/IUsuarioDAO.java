@@ -13,4 +13,4 @@ import Modelo.Usuario;
  */
 public interface IUsuarioDAO extends IDAO<Usuario, Integer>{
     
-}
+}// fin de la interface IUsuarioDAO

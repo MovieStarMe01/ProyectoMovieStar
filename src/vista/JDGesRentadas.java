@@ -10,13 +10,13 @@ import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import Modelo.notas;
 import Modelo.peliculas;
-import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -78,13 +78,13 @@ public class JDGesRentadas extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         btnDevolver = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblRentadas = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblRentadas = new rojerusan.RSTableMetro();
         jPanel3 = new javax.swing.JPanel();
         btnDevolver1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblNoDevueltas = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblNoDevueltas = new rojerusan.RSTableMetro();
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
@@ -145,9 +145,24 @@ public class JDGesRentadas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblRentadas);
+        tblRentadas.setAltoHead(20);
+        tblRentadas.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblRentadas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblRentadas.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblRentadas.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblRentadas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblRentadas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblRentadas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblRentadas.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblRentadas.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblRentadas.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblRentadas.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblRentadas.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblRentadas.setMultipleSeleccion(false);
+        tblRentadas.setShowHorizontalLines(false);
+        jScrollPane3.setViewportView(tblRentadas);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 110));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 680, 120));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 700, 190));
 
@@ -182,9 +197,24 @@ public class JDGesRentadas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblNoDevueltas);
+        tblNoDevueltas.setAltoHead(20);
+        tblNoDevueltas.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblNoDevueltas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblNoDevueltas.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblNoDevueltas.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblNoDevueltas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblNoDevueltas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblNoDevueltas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblNoDevueltas.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblNoDevueltas.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblNoDevueltas.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblNoDevueltas.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblNoDevueltas.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblNoDevueltas.setMultipleSeleccion(false);
+        tblNoDevueltas.setShowHorizontalLines(false);
+        jScrollPane1.setViewportView(tblNoDevueltas);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 670, 110));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 670, 120));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 690, 190));
 
@@ -308,13 +338,13 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
-    private javax.swing.JTable tblNoDevueltas;
-    private javax.swing.JTable tblRentadas;
+    private rojerusan.RSTableMetro tblNoDevueltas;
+    private rojerusan.RSTableMetro tblRentadas;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -361,7 +391,18 @@ public class JDGesRentadas extends javax.swing.JDialog {
         /*Aplicamos el formato a nuestra fecha para que se pueda comparar con la fecha de la película RENTADA
         * ya que la de la BD tienen este formato
         */
+        System.out.println(objSDF.format(fechaHoy));
         objSDF.format(fechaHoy);
+        
+        Calendar calendar = Calendar.getInstance(); 
+        
+        Date date = null;
+        calendar.setTime(date); 
+        calendar.set(Calendar.YEAR, 0); 
+        calendar.set(Calendar.MONTH, 0); 
+        calendar.set(Calendar.DAY_OF_YEAR, 0);  
+
+        System.out.println(calendar.getTime()); 
         
         //Obtenemos la cantidad de filas que hay en nuestra tabla
         int filas = tblRentadas.getRowCount();
@@ -418,7 +459,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private boolean seleccion() {
        boolean validar = false;
         //si se selecciona una fila entonces se devuelve la película
-       if(tblNoDevueltas.getSelectedRow() > -1 || tblRentadas.getSelectedRow() > -1){
+       if(tblRentadas.getSelectedRow() > -1 || tblNoDevueltas.getSelectedRow() > -1){
            validar = true;
        }else{
             validar = false;
@@ -447,7 +488,8 @@ public class JDGesRentadas extends javax.swing.JDialog {
                 fila = tblRentadas.getSelectedRow();
                 // Obtenemos el id de la película seleccionada
                 peli = (String) tblRentadas.getValueAt(fila, 0);
-            }else{
+            }
+            else{
                 fila = tblNoDevueltas.getSelectedRow();
                 // Obtenemos el id de la película seleccionada
                 peli = (String) tblNoDevueltas.getValueAt(fila, 0);

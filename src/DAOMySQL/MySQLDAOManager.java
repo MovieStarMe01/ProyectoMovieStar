@@ -22,6 +22,7 @@ public class MySQLDAOManager implements DAOManager{
     private IClienteDAO cliente = null;
     private IPeliculasDAO pelicula = null;
     private INotasDAO notas = null;
+    
     /**
      * Con esta clase hacemoss el uso del patrón singleton para reutilizar 
      * objetos si estos ya han sido creados
@@ -35,6 +36,11 @@ public class MySQLDAOManager implements DAOManager{
         return usuario;
     }// fin del método getUsuarioDAO
 
+    /**
+     * Con esta clase hacemoss el uso del patrón singleton para reutilizar 
+     * objetos si estos ya han sido creados
+     * @return cliente
+     */
     @Override
     public IClienteDAO getClienteDAO() {
         if(cliente == null){
@@ -43,6 +49,11 @@ public class MySQLDAOManager implements DAOManager{
         return cliente;
     }// fin del método getClienteDAO
     
+    /**
+     * Con esta clase hacemoss el uso del patrón singleton para reutilizar 
+     * objetos si estos ya han sido creados
+     * @return pelicula
+     */
     @Override
     public IPeliculasDAO getPeliculasDAO() {
         if(pelicula == null){
@@ -51,6 +62,11 @@ public class MySQLDAOManager implements DAOManager{
         return pelicula;
     }// fin del método getPeliculasDAO
     
+    /**
+     * Con esta clase hacemoss el uso del patrón singleton para reutilizar 
+     * objetos si estos ya han sido creados
+     * @return notas
+     */
     @Override
     public INotasDAO getNotasDAO() {
         if(notas == null){
@@ -58,7 +74,5 @@ public class MySQLDAOManager implements DAOManager{
         }// fin cel if
         return notas;
     }// fin del método getNotasDAO
-    
-
-    
+   
 }// fin de la clase MySQLDAOManager

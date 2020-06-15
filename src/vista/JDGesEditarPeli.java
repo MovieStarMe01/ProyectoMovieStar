@@ -15,8 +15,12 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -76,13 +80,10 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPeliculas = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         txtBusqueda = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         btnEditarPeli = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         panelImage5 = new org.edisoncor.gui.panel.PanelImage();
@@ -117,6 +118,8 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         panelImage12 = new org.edisoncor.gui.panel.PanelImage();
         txtPrecioVenta = new javax.swing.JTextField();
         cmbGeneros = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPeliculas = new rojerusan.RSTableMetro();
 
         jLabel1.setText("jLabel1");
 
@@ -126,28 +129,13 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblPeliculas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblPeliculas);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 660, 180));
-
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 720, 10));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Buscar Título:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
         panelImage4.setBackground(new java.awt.Color(255, 255, 255));
         panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
@@ -163,14 +151,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         });
         panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/loupe_1.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelImage4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
-
-        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 260, 40));
+        jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 260, 40));
 
         btnEditarPeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/editarPeli_1.png"))); // NOI18N
         btnEditarPeli.setBorder(null);
@@ -391,6 +372,36 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         cmbGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cmbGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 160, -1));
 
+        tblPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblPeliculas.setAltoHead(20);
+        tblPeliculas.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblPeliculas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblPeliculas.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblPeliculas.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblPeliculas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblPeliculas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblPeliculas.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblPeliculas.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblPeliculas.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblPeliculas.setMultipleSeleccion(false);
+        tblPeliculas.setShowHorizontalLines(false);
+        jScrollPane3.setViewportView(tblPeliculas);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 670, 190));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -408,36 +419,12 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditarPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPeliActionPerformed
-        // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
-       if(tblPeliculas.getSelectedRow() > -1){
-            llenarCampos();
-        }else{
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
-            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película a Editar</h1></html>",
-                    "Selecciona una Fila", 0, miIcono);
-        }// fin del else
-    }//GEN-LAST:event_btnEditarPeliActionPerformed
+    private void txtPrecioVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioVentaKeyTyped
+        //Solo se aceptan numeros, las letras no las anota
+        char c = evt.getKeyChar();
 
-    private void btnAbrirCaratulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaratulaActionPerformed
-        
-        JFileChooser rutaImg = new JFileChooser();
-        //Hacemos un filtro para que solo puedan utilizar imagenes de este tipo
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Imagen", "jpg", "png", "gif");
-        //Aplicamos el filtro
-        rutaImg.setFileFilter(filtro);
-        rutaImg.showOpenDialog(this);
-        File caratulaF = rutaImg.getSelectedFile();
-        
-        if(caratulaF != null){
-            if(caratulaF.exists()){
-                txtCaratula.setText(caratulaF.getAbsolutePath());
-            }else{
-                 JOptionPane.showMessageDialog(null, "<html><h2>La Imagen no se encuentra en esta Ruta</h2></html>");
-                 txtCaratula.setText("");
-            }//fin del else
-         }// fin del if  
-    }//GEN-LAST:event_btnAbrirCaratulaActionPerformed
+        if(c < '0' || c > '9' ) evt.consume();
+    }//GEN-LAST:event_txtPrecioVentaKeyTyped
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
@@ -447,17 +434,17 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         //Verificamos que todos los campos esten llenos
         if(validar()){
             //Obtenemos el géneto seleccionado
-            genero = seleccionGenero();  
+            genero = seleccionGenero();
             peliID  = (String) tblPeliculas.getValueAt(fila, 0);
             //llamamos el constructor para crear un objeto de tipo peliculas
             peliculas miPelicula = new peliculas(genero, titulo, sinopsis, precioRenta, precioVenta, caratula, audio,
-                    calidad, anio, peliID);
-            
+                calidad, anio, peliID);
+
             try {
                 manager.getPeliculasDAO().modificar(miPelicula);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliActualizar.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>La Película se ha Actualizado Correctamente</h2></html>",
-                     "Actulización Exitosa", 0, miIcono);
+                    "Actulización Exitosa", 0, miIcono);
                 //llamamos el método limpiarFormulario
                 limpiarFormulario();
                 //llamamos el método deshabilitar
@@ -465,41 +452,60 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
                 //llamamos el método inicializarListaPeliculas
                 inicializarListaPeliculas();
             }catch (DAOException ex) {
-                    mensajeError(ex);
+                mensajeError(ex);
             }
         }// fin del if validar
-
     }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-        // Cada que se presione una tecla en la busqueda se hará una consulta a la BD y traera lo relacionado a esta
-        //Primero limpiamos la tabla para cada vez que se escriba o borre sea nueva consulta con lo solicitado
-        //limpiarTabla();
-        
-       
-         
-    }//GEN-LAST:event_txtBusquedaKeyReleased
-
-    private void txtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyTyped
-        //Solo se aceptan numeros, las letras no las anota
-        char c = evt.getKeyChar();
-        
-        if(c < '0' || c > '9' ) evt.consume();
-    }//GEN-LAST:event_txtAñoKeyTyped
 
     private void txtPrecioRentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioRentaKeyTyped
         //Solo se aceptan numeros, las letras no las anota
         char c = evt.getKeyChar();
-        
+
         if(c < '0' || c > '9' ) evt.consume();
     }//GEN-LAST:event_txtPrecioRentaKeyTyped
 
-    private void txtPrecioVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioVentaKeyTyped
+    private void btnAbrirCaratulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaratulaActionPerformed
+
+        JFileChooser rutaImg = new JFileChooser();
+        //Hacemos un filtro para que solo puedan utilizar imagenes de este tipo
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Imagen", "jpg", "png", "gif");
+        //Aplicamos el filtro
+        rutaImg.setFileFilter(filtro);
+        rutaImg.showOpenDialog(this);
+        File caratulaF = rutaImg.getSelectedFile();
+
+        if(caratulaF != null){
+            if(caratulaF.exists()){
+                txtCaratula.setText(caratulaF.getAbsolutePath());
+            }else{
+                JOptionPane.showMessageDialog(null, "<html><h2>La Imagen no se encuentra en esta Ruta</h2></html>");
+                txtCaratula.setText("");
+            }//fin del else
+        }// fin del if
+    }//GEN-LAST:event_btnAbrirCaratulaActionPerformed
+
+    private void txtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyTyped
         //Solo se aceptan numeros, las letras no las anota
         char c = evt.getKeyChar();
-        
+
         if(c < '0' || c > '9' ) evt.consume();
-    }//GEN-LAST:event_txtPrecioVentaKeyTyped
+    }//GEN-LAST:event_txtAñoKeyTyped
+
+    private void btnEditarPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPeliActionPerformed
+        // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
+        if(tblPeliculas.getSelectedRow() > -1){
+            llenarCampos();
+        }else{
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionFila.png"));
+            JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Película a Editar</h1></html>",
+                "Selecciona una Fila", 0, miIcono);
+        }// fin del else
+    }//GEN-LAST:event_btnEditarPeliActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+       //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblPeliculas
+       filtro(txtBusqueda.getText().toUpperCase(), tblPeliculas);    
+    }//GEN-LAST:event_txtBusquedaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -549,7 +555,6 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JButton btnEditarPeli;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbGeneros;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -565,8 +570,8 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage11;
@@ -577,7 +582,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage7;
     private org.edisoncor.gui.panel.PanelImage panelImage8;
     private org.edisoncor.gui.panel.PanelImage panelImage9;
-    private javax.swing.JTable tblPeliculas;
+    private rojerusan.RSTableMetro tblPeliculas;
     private javax.swing.JTextArea txASinopsis;
     private javax.swing.JTextField txtAudio;
     private javax.swing.JTextField txtAño;
@@ -805,6 +810,19 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         txtPrecioVenta.setText("");
         txASinopsis.setText("");
     }// fin del método limpiarFormulario
+    
+    /**
+     * Método para filtrar las busquedas en la tabla
+     * @param consulta
+     * @param jtableBuscar 
+     */
+    private void filtro(String consulta, JTable jtableBuscar){
+        TableModel dm;
+        dm = tblPeliculas.getModel();
+        TableRowSorter<TableModel> tr = new TableRowSorter<>(dm);
+        jtableBuscar.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + (consulta), 1));
+    }// fin del método filtro
 
 }//fin de la clase JDGesEditarPeli
 

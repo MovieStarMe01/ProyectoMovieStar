@@ -11,7 +11,6 @@ import Modelo.peliculas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,8 +40,8 @@ public class PeliculasTableModel extends AbstractTableModel{
             case 2: return "Año";
             case 3: return "Audio";
             case 4: return "Calidad";
-            case 5: return "Precio Renta";
-            case 6: return "Precio Venta";
+            case 5: return "Renta";
+            case 6: return "Venta";
             case 7: return "Género";
             case 8: return "Sinopsis";
             case 9: return "Caratula";
@@ -104,16 +103,5 @@ public class PeliculasTableModel extends AbstractTableModel{
     public void updateModelAll(String todas) throws DAOException{
         this.datosPeli = peliculas.obtenerTodasPeli(todas);
     }// fin del método updateModelAll
-    
-    /**
-     * Método para realizar busqueda filtrada, Busqueda por nombre
-     * @param genero
-     * @param busqueda
-     * @throws DAOException 
-     */
-    public void updateModelSearch(String genero, String busqueda) throws DAOException{
-        this.datosPeli = peliculas.obtenerBusqueda(genero, busqueda);
-    }// fin del método updateModelSearch
-    
     
 }// fin de la clase PeliculasTableModel

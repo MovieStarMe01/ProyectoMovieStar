@@ -72,16 +72,16 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblVisibles = new javax.swing.JTable();
         btnInvisible = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblVisibles = new rojerusan.RSTableMetro();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblInvisibles = new javax.swing.JTable();
         btnVisible = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblInvisibles = new rojerusan.RSTableMetro();
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
@@ -100,21 +100,6 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblVisibles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblVisibles);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 130));
-
         btnInvisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/borrarPeli.png"))); // NOI18N
         btnInvisible.setBorderPainted(false);
         btnInvisible.setContentAreaFilled(false);
@@ -131,17 +116,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         jLabel2.setText("Hacer Inactiva");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 230));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 670, 10));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tblInvisibles.setModel(new javax.swing.table.DefaultTableModel(
+        tblVisibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -152,9 +127,34 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblInvisibles);
+        tblVisibles.setAltoHead(20);
+        tblVisibles.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblVisibles.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblVisibles.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblVisibles.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblVisibles.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblVisibles.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblVisibles.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblVisibles.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblVisibles.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblVisibles.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblVisibles.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblVisibles.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblVisibles.setMultipleSeleccion(false);
+        tblVisibles.setShowHorizontalLines(false);
+        jScrollPane3.setViewportView(tblVisibles);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 140));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 150));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 230));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 670, 10));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnVisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/verPeli.png"))); // NOI18N
         btnVisible.setBorderPainted(false);
@@ -171,6 +171,36 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel1.setText("Hacer Activa");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+
+        tblInvisibles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblInvisibles.setAltoHead(20);
+        tblInvisibles.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblInvisibles.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblInvisibles.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblInvisibles.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblInvisibles.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblInvisibles.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblInvisibles.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblInvisibles.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblInvisibles.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblInvisibles.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblInvisibles.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblInvisibles.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblInvisibles.setMultipleSeleccion(false);
+        tblInvisibles.setShowHorizontalLines(false);
+        jScrollPane1.setViewportView(tblInvisibles);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 10, 650, 150));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 670, 230));
 
@@ -324,13 +354,13 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
-    private javax.swing.JTable tblInvisibles;
-    private javax.swing.JTable tblVisibles;
+    private rojerusan.RSTableMetro tblInvisibles;
+    private rojerusan.RSTableMetro tblVisibles;
     // End of variables declaration//GEN-END:variables
 
     /**

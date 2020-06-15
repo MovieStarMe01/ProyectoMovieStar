@@ -505,13 +505,12 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
                     "Proceso Exitoso", 0, miIcono);
                 
-                //Llamamos el método para que mande el ticket de venta
-                ticket();
                 //llamamos el constructor para crear un objeto de tipo peliculas
                 peliculas miPelicula = new peliculas(peliID, tipoNota);
                 //Hacemos un update para cambiar el estado de la película a VENDIDA
                 manager.getPeliculasDAO().estado(miPelicula);
-         
+                //Llamamos el método para que mande el ticket de venta
+                ticketVenta();
             }// fin del if VENDIDA
             
             //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
@@ -546,7 +545,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
     public Date sumaFecha(Date notaFecha, int dias) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(notaFecha);
-        calendar.add(Calendar.DAY_OF_YEAR, 2);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
         
       
         return calendar.getTime();
@@ -555,7 +554,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
     /**
      * Método para mostrar el ticket que compra de la película
      */
-    private void ticket() {
+    private void ticketVenta() {
         try {
         conn = ConectarBD();
         JasperReport reporte = null;
@@ -571,6 +570,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
         } catch (SQLException | JRException ex) {
         Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }// fin del método ticket
+    }// fin del método ticketVenta
     
 }// fin de la clase JDRentaVenta

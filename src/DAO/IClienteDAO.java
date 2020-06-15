@@ -16,4 +16,4 @@ public interface IClienteDAO extends IDAO<cliente, Integer>{
    //Obtenemos una lista con todos IDCliente que están dado de alta
    List<cliente> obtenerClientes() throws DAOException;
    
-}
+}// fin de la interface IClienteDAO

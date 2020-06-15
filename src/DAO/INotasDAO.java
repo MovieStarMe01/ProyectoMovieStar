@@ -13,7 +13,7 @@ import java.util.List;
  * @author Jesús Moisés
  */
 public interface INotasDAO extends IDAO<notas, Integer>{
-   //Obtenemos una lista con todos IDCliente que están dado de alta
+   //Obtenemos una lista con todas las notas según lo solicitado
    List<notas> obtenerNotas() throws DAOException;
    
-}
+}// fin de la interface INotasDAO

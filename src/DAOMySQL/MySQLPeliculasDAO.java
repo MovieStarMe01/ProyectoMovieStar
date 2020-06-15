@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     private Connection conn = null;
     private ResultSet rs = null;
     private PreparedStatement ps = null;
-    private Statement st = null;
     
     //Consultas SQL a utilizar
     private final String INSERT = "INSERT INTO peliculas (peli_id, peli_genero, peli_titulo, peli_sinopsis, peli_precio_renta, "
@@ -49,13 +47,6 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     private final String UPDATE = "UPDATE peliculas SET peli_genero = ?, peli_titulo = ?, peli_sinopsis = ?, peli_precio_renta = ?, "
              + " peli_precio_venta = ?, peli_caratula = ?, peli_audio = ?, peli_calidad = ?, peli_anio = ? WHERE peli_id = ?";
     
-    private final String SEARCHGEN = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE peli_titulo LIKE '%?%'";
-    
-    private final String SEARCH = "SELECT peli_titulo, peli_anio, peli_audio, peli_calidad, peli_precio_renta, "
-            + " peli_precio_venta, peli_genero, peli_sinopsis, peli_caratula FROM peliculas WHERE  peli_genero = ? AND"
-            + " peli_titulo LIKE '%?%'";
-    
     private final String ACTIVO = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, "
             + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
     
@@ -67,12 +58,11 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     private final String NODEV = "SELECT peli_id, peli_titulo, peli_anio, peli_audio, peli_calidad, "
             + " peli_estado, peli_genero FROM peliculas WHERE peli_estado = ?";
     
-    
     /**
      * Método para dar de alta peliculas a la BD
      * @param peli
      * @throws DAOException 
-     */
+    */
     @Override
     public void insertar(peliculas peli) throws DAOException {
         try{
@@ -96,7 +86,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //Ejecutamos la consulta y verificamos el resultado
             if(ps.executeUpdate() == 0){
                 throw new DAOException("No se pudo dar de alta la Película");
-            }// fin del if 1.0
+            }// fin del if 
         }catch(SQLException ex){
             throw new DAOException("ERROR de SQL", ex);
         }finally{
@@ -108,7 +98,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
      * Método para actualizar una película
      * @param peli
      * @throws DAOException 
-     */
+    */
     @Override
     public void modificar(peliculas peli) throws DAOException {
         try{
@@ -138,31 +128,16 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             cerrarConexiones(ps, rs, conn);
         }// fin del finally
     }// fin del método modificar
-
-    @Override
-    public void eliminar(String id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean verificaUP(String a, String passE) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<peliculas> obtenerTodos() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      * Método para retornar un objeto de tipo peliculas
      * @param genero
      * @return miPelicula
      * @throws DAOException 
-     */
+    */
     @Override
     public peliculas obtener(String genero) throws DAOException {
-        //Lista de titulos a retornar
+        //Lista de Películas a retornar
         peliculas miPelicula = null;
         
         try{
@@ -177,7 +152,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             rs = ps.executeQuery();
             
             if(rs.isBeforeFirst()){
-                    //Verificamos si  el RS obtuvo un resultado y lo asginamos al objeto correspondiente
+                   //Verificamos si  el RS obtuvo un resultado y lo asginamos al objeto correspondiente
                    while(rs.next()){
                    miPelicula = new peliculas();
                    miPelicula.setPeliTitulo(rs.getString("peli_titulo"));
@@ -191,7 +166,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
                }// fin del while
             }// fin del if
             
-           else{
+            else{
                 throw new DAOException("No se encontró el elemento");
             }// fin del else
         }catch(SQLException ex){
@@ -202,15 +177,16 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         
         return miPelicula;
     }// fin del método obtener
-
+    
     /**
-     * Método para obtener todas las peliculas por genero
+     * Método para obtener todas las películas por genero
      * @param genero
      * @return
      * @throws DAOException 
      */
     @Override
     public List<peliculas> obtenerPeliculas(String genero) throws DAOException {
+      
         List<peliculas> misPeliculas = null;
        
         try{
@@ -301,7 +277,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     /**
      * Método para obtener todas las películas con un campos mas, el de sinopsis
      * para al momento de editarlas
-     * @return
+     * @return misPeliculas
      * @throws DAOException 
      */
     @Override
@@ -347,58 +323,9 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
     }// fin del método ObtenerPeliEdit
 
     /**
-     * Método para obtener una lista de busqueda perzonalizada según lo que se escriba
-     * @param genero
-     * @param busqueda
-     * @return
-     * @throws DAOException 
-     */
-    @Override
-    public List<peliculas> obtenerBusqueda(String genero, String busqueda) throws DAOException {
-        List<peliculas> misPeliculas = null;
-       
-        try{
-            //Creamos un arrayList 
-            misPeliculas = new ArrayList<>();
-            
-            //Creamos la conexión a la BD
-            conn = Conectar.ConectarBD();
-            
-            //preparamos la consulta y especificamos los parametros de entrada
-            ps = conn.prepareStatement(SEARCH);
-                ps.setString(1, genero);
-                ps.setString(2, busqueda);
-                
-            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
-            rs = ps.executeQuery();
-            
-            //recorremos el RS y agregamos cada item al ArrayList
-            while(rs.next()){
-                peliculas miPeli = new peliculas();
-                miPeli.setPeliTitulo(rs.getString("peli_titulo"));
-                miPeli.setAnio(rs.getInt("peli_anio"));
-                miPeli.setAudio(rs.getString("peli_audio"));
-                miPeli.setCalidad(rs.getString("peli_calidad"));
-                miPeli.setPrecioRenta(rs.getDouble("peli_precio_renta"));
-                miPeli.setPrecioVenta(rs.getDouble("peli_precio_venta"));
-                miPeli.setGenero(rs.getString("peli_genero"));
-                miPeli.setPeliSinopsis(rs.getString("peli_sinopsis"));
-                miPeli.setCaratula(rs.getString("peli_caratula"));
-                misPeliculas.add(miPeli);
-            }// fin del while
-        }catch(SQLException ex){
-            throw new DAOException("Error en SQL: " + ex);
-        }finally{
-            cerrarConexiones(ps, rs, conn);
-        }// fin del finally
-        
-        return misPeliculas;
-    }//fin del método obtenerBusqueda
-
-    /**
      * Método para obtener toda las Películas que esten Activas
      * @param estado
-     * @return
+     * @return misPeliculas
      * @throws DAOException 
      */
     @Override
@@ -513,89 +440,13 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         
         return misPeliculas;
     }// fin del método obtenerInactivoVendido
-
+    
     /**
-     * Método para buscar peliculas
-     * @param busqueda
-     * @return
+     * Método para obtener las películas que no se devolvierón en la fecha limite
+     * @param estado
+     * @return misPeliculas
      * @throws DAOException 
      */
-    @Override
-    public List<peliculas> obtenerBusquedaGEN(String busqueda) throws DAOException {
-        List<peliculas> misPeliculas = null;
-       
-        try{
-            //Creamos un arrayList 
-            misPeliculas = new ArrayList<>();
-            
-            //Creamos la conexión a la BD
-            conn = Conectar.ConectarBD();
-            
-            //preparamos la consulta y especificamos los parametros de entrada
-            ps = conn.prepareStatement(SEARCHGEN);
-                ps.setString(1, busqueda);
-                
-                System.out.println(busqueda);
-                
-            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
-            rs = ps.executeQuery();
-            
-            //recorremos el RS y agregamos cada item al ArrayList
-            while(rs.next()){
-                peliculas miPeli = new peliculas();
-                miPeli.setPeliTitulo(rs.getString("peli_titulo"));
-                miPeli.setAnio(rs.getInt("peli_anio"));
-                miPeli.setAudio(rs.getString("peli_audio"));
-                miPeli.setCalidad(rs.getString("peli_calidad"));
-                miPeli.setPrecioRenta(rs.getDouble("peli_precio_renta"));
-                miPeli.setPrecioVenta(rs.getDouble("peli_precio_venta"));
-                miPeli.setGenero(rs.getString("peli_genero"));
-                miPeli.setPeliSinopsis(rs.getString("peli_sinopsis"));
-                miPeli.setCaratula(rs.getString("peli_caratula"));
-                misPeliculas.add(miPeli);
-            }// fin del while
-        }catch(SQLException ex){
-            throw new DAOException("Error en SQL: " + ex);
-        }finally{
-            cerrarConexiones(ps, rs, conn);
-        }// fin del finally
-        
-        return misPeliculas;
-    }// fin del método obtenerBusquedaGEN
-
-     /**
-     * Método para cerrar las Conexiones de la BD
-     * @param ps
-     * @param rs
-     * @param conn
-     * @throws DAOException 
-     */
-    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
-        try{
-            if(rs != null){
-                //Cerramos el rs
-                rs.close();
-            }//fin del if rs
-            
-            if(ps != null){
-                //Cerramos el ps
-                ps.close();
-            }// fin del if ps 
-            
-            if(conn != null){
-                //Cerramos la conn
-                conn.close();
-            }// fin del if conn
-        }catch(SQLException ex){
-            throw new DAOException("ERROR en SQL", ex);
-        }// fin del catch
-    }// fin del método cerrarConexiones
-
-    @Override
-    public void venta(peliculas a) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<peliculas> obtenerNoDevueltas(String estado) throws DAOException {
         List<peliculas> misPeliculas = null;
@@ -636,4 +487,52 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
         return misPeliculas;
     }// fin del método obtenerNoDevueltas
     
+    /**
+    * Método para cerrar las Conexiones de la BD
+    * @param ps
+    * @param rs
+    * @param conn
+    * @throws DAOException 
+    */
+    private void cerrarConexiones(PreparedStatement ps, ResultSet rs, Connection conn) throws DAOException {
+        try{
+            if(rs != null){
+                //Cerramos el rs
+                rs.close();
+            }//fin del if rs
+            
+            if(ps != null){
+                //Cerramos el ps
+                ps.close();
+            }// fin del if ps 
+            
+            if(conn != null){
+                //Cerramos la conn
+                conn.close();
+            }// fin del if conn
+        }catch(SQLException ex){
+            throw new DAOException("ERROR en SQL", ex);
+        }// fin del catch
+    }// fin del método cerrarConexiones
+
+    @Override
+    public void eliminar(String id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean verificaUP(String a, String passE) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<peliculas> obtenerTodos() throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void venta(peliculas a) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }// fin de la clase MySQLPeliculasDAO

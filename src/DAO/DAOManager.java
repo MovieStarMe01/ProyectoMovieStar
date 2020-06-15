@@ -12,10 +12,11 @@ package DAO;
 public interface DAOManager {
     /*
     Mediante esta  interface haremos una forma centralizada de pedir
-    cualquier DAO, Usuario etc.
+    cualquier DAO, Usuario, Cliente, Peliculas y Notas
     */
     IUsuarioDAO getUsuarioDAO();
     IClienteDAO getClienteDAO();
     IPeliculasDAO getPeliculasDAO();
     INotasDAO getNotasDAO();
-}
+    
+}//fin de la interface DAOManager

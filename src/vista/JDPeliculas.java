@@ -14,7 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import static vista.FrmePrincipal.genero;
 
 
@@ -40,14 +44,13 @@ public class JDPeliculas extends javax.swing.JDialog {
     //Modelo para nuestra tablaPeliculas
     private PeliculasTableModel model;
     
+   
     ArrayList<peliculas> misPeliculas = new ArrayList<peliculas>();
+    
     
     //Propiedades para  modificar el width de nuestra tabla tblPeliculas
     TableColumnModel columnModel = null;
-    
-    //String genero = "";
-
-    
+   
     /**
      * Creates new form JDPeliculas
      * @param parent
@@ -59,7 +62,8 @@ public class JDPeliculas extends javax.swing.JDialog {
         
         //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
-        //lblGenero.setText(generos);
+        //Aplicamos el focus en el campo busqueda
+        txtBusqueda.requestFocusInWindow();
         
         try {
             inicializarListaPeliculas();
@@ -83,8 +87,6 @@ public class JDPeliculas extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         panelImage4 = new org.edisoncor.gui.panel.PanelImage();
         txtBusqueda = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPeliculas = new javax.swing.JTable();
         btnRentarComprar = new javax.swing.JButton();
         btnVerPeliculas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -93,6 +95,8 @@ public class JDPeliculas extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPeliculas = new rojerusan.RSTableMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -104,8 +108,8 @@ public class JDPeliculas extends javax.swing.JDialog {
         jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 20));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel2.setText("Buscar:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+        jLabel2.setText("Buscar Título:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,25 +126,13 @@ public class JDPeliculas extends javax.swing.JDialog {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyTyped(evt);
+            }
         });
         panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
 
         jPanel1.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 250, 40));
-
-        tblPeliculas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblPeliculas);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 740, 180));
 
         btnRentarComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/buy.png"))); // NOI18N
         btnRentarComprar.setBorderPainted(false);
@@ -206,6 +198,36 @@ public class JDPeliculas extends javax.swing.JDialog {
         jLabel5.setText("Salir");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 360, 40, -1));
 
+        tblPeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblPeliculas.setAltoHead(20);
+        tblPeliculas.setColorBackgoundHead(new java.awt.Color(255, 192, 0));
+        tblPeliculas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblPeliculas.setColorBordeHead(new java.awt.Color(255, 192, 0));
+        tblPeliculas.setColorFilasBackgound1(new java.awt.Color(255, 242, 204));
+        tblPeliculas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblPeliculas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setColorSelBackgound(new java.awt.Color(255, 243, 166));
+        tblPeliculas.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblPeliculas.setFuenteFilas(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        tblPeliculas.setFuenteFilasSelect(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblPeliculas.setFuenteHead(new java.awt.Font("Rockwell", 1, 15)); // NOI18N
+        tblPeliculas.setMultipleSeleccion(false);
+        tblPeliculas.setShowHorizontalLines(false);
+        jScrollPane2.setViewportView(tblPeliculas);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 740, 190));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,7 +244,6 @@ public class JDPeliculas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRentarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarComprarActionPerformed
-        //tblPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // si se selecciona una fila entonces abrimos la ventana detalles para rentar o vender
         if(tblPeliculas.getSelectedRow() > -1){
             int fila = tblPeliculas.getSelectedRow();
@@ -268,21 +289,13 @@ public class JDPeliculas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVerPeliculasActionPerformed
 
     private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
-
-        try {
-            String busqueda = txtBusqueda.getText(); 
-            inicializarListaPeliculasBusqueda(busqueda);
-            System.out.println(busqueda);
-            /* try {
-            misPeliculas = manager.getPeliculasDAO().obtenerBusqueda(busqueda, genero, model);
-            
-            } catch (DAOException ex) {
-            Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-        } catch (DAOException ex) {
-            Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblPeliculas
+       filtro(txtBusqueda.getText().toUpperCase(), tblPeliculas);
     }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
+
+    }//GEN-LAST:event_txtBusquedaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -337,11 +350,11 @@ public class JDPeliculas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JLabel lblGenero;
     private org.edisoncor.gui.panel.PanelImage panelImage4;
-    private javax.swing.JTable tblPeliculas;
+    private rojerusan.RSTableMetro tblPeliculas;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
@@ -369,19 +382,18 @@ public class JDPeliculas extends javax.swing.JDialog {
             model.fireTableDataChanged();
         }// fin del else if
     }// fin del método cargarPeliculas
-
+    
     /**
-     * Método para cargar los datos según la busqueda
-     * @param busqueda
-     * @throws DAOException 
+     * Método para filtrar las busquedas en la tabla
+     * @param consulta
+     * @param jtableBuscar 
      */
-    private void inicializarListaPeliculasBusqueda(String busqueda) throws DAOException {
-        
-        model = new PeliculasTableModel(manager.getPeliculasDAO());
-        //Asignamos el modelo y ponemos los titulos a ver en nuestra tabla
-        tblPeliculas.setModel(model);
-        model.updateModelSearch(genero, busqueda);
-        model.fireTableDataChanged();
-    }// fin del método inicializarListaAutores
-       
+    private void filtro(String consulta, JTable jtableBuscar){
+        TableModel dm;
+        dm = tblPeliculas.getModel();
+        TableRowSorter<TableModel> tr = new TableRowSorter<>(dm);
+        jtableBuscar.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + (consulta), 1));
+    }// fin del método filtro
+   
 }// fin de la clase JDPeliculas

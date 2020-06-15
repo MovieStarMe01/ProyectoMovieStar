@@ -47,7 +47,7 @@ public class PeliculasVisiblesTableModel extends AbstractTableModel{
     }// fin del método getColumnName
      
     /**
-     * Retorna el número de elementos  obtenidos de la tabla títulos
+     * Retorna el número de elementos  obtenidos de la tabla películas
      * @return 
      */
     @Override
@@ -96,9 +96,14 @@ public class PeliculasVisiblesTableModel extends AbstractTableModel{
         this.datosPeli = peliculas.obtenerActivo(estado);
     }//fin del método updateModelAll
     
+    /**
+     * Método para Actualizar la tabla películas por el estado de la Película
+     * @param estado
+     * @throws DAOException 
+     */
     public void updateModelID(String estado) throws DAOException{
         this.datosPeli = peliculas.obtenerNoDevueltas(estado);
-    }
+    }// fin del método updateModelID
     
     /**
      * Método para actualizar la tabla películas con las Inactivas y Vendidas
@@ -110,4 +115,4 @@ public class PeliculasVisiblesTableModel extends AbstractTableModel{
         this.datosPeli = peliculas.obtenerInactivoVendido(estado, estado1);
     }// fin del método updateModel     
     
-}
+}// fin de la clase PeliculasVisiblesTableModel
