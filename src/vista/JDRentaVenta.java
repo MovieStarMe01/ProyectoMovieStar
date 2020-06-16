@@ -121,8 +121,6 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnRenta = new javax.swing.JButton();
-        btnVenta = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         lblGenero = new javax.swing.JLabel();
@@ -138,6 +136,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         lblIDCliente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnVenta = new rojeru_san.RSButton();
+        btnRenta1 = new rojeru_san.RSButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -189,23 +189,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel10.setText("Precio Venta: $");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
-
-        btnRenta.setText("Renta");
-        btnRenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRentaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
-
-        btnVenta.setText("Venta");
-        btnVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorderPainted(false);
@@ -220,32 +204,29 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 380, 60, -1));
 
         lblNombre.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblNombre.setText("jLabel11");
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 140, 15));
 
         lblGenero.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblGenero.setText("jLabel11");
-        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 140, 15));
+        lblGenero.getAccessibleContext().setAccessibleName("");
 
         lblAño.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblAño.setText("jLabel11");
-        jPanel1.add(lblAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+        jPanel1.add(lblAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 140, 15));
+        lblAño.getAccessibleContext().setAccessibleName("");
 
         lblAudio.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblAudio.setText("jLabel11");
-        jPanel1.add(lblAudio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+        jPanel1.add(lblAudio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, 15));
+        lblAudio.getAccessibleContext().setAccessibleName("");
 
         lblCalidad.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblCalidad.setText("jLabel11");
-        jPanel1.add(lblCalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+        jPanel1.add(lblCalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 140, 15));
+        lblCalidad.getAccessibleContext().setAccessibleName("");
 
         lblRenta.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblRenta.setText("jLabel11");
-        jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, -1, -1));
+        jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 70, 20));
 
         lblVenta.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        lblVenta.setText("jLabel11");
-        jPanel1.add(lblVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+        jPanel1.add(lblVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 70, 20));
 
         cmbClientes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         cmbClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -291,6 +272,28 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jLabel2.setText("ID_Cliente:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 80, -1));
 
+        btnVenta.setBackground(new java.awt.Color(255, 214, 71));
+        btnVenta.setText("Venta");
+        btnVenta.setColorHover(new java.awt.Color(255, 213, 127));
+        btnVenta.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 80, 30));
+
+        btnRenta1.setBackground(new java.awt.Color(255, 214, 71));
+        btnRenta1.setText("Renta");
+        btnRenta1.setColorHover(new java.awt.Color(255, 213, 127));
+        btnRenta1.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
+        btnRenta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRenta1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 80, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -325,22 +328,22 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+         //Cambiamos tipoNota a RENTADA
+        tipoNota = "RENTADA";
+        //Obtenemos el total o costo de la Película
+        notaTotal = lblRenta.getText();
+        //llamamos el método rentaVenta con el parámetro tipoNota
+        rentaVenta(tipoNota, notaTotal); 
+    }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnRenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenta1ActionPerformed
         //Cambiamos tipoNota a VENDIDA
         tipoNota = "VENDIDA";
         //Obtenemos el total o costo de la Película
         notaTotal = lblVenta.getText();
         //llamamos el método rentaVenta con el parámetro tipoNota
         rentaVenta(tipoNota,notaTotal);  
-    }//GEN-LAST:event_btnVentaActionPerformed
-
-    private void btnRentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentaActionPerformed
-        //Cambiamos tipoNota a RENTADA
-        tipoNota = "RENTADA";
-        //Obtenemos el total o costo de la Película
-        notaTotal = lblRenta.getText();
-        //llamamos el método rentaVenta con el parámetro tipoNota
-        rentaVenta(tipoNota, notaTotal); 
-    }//GEN-LAST:event_btnRentaActionPerformed
+    }//GEN-LAST:event_btnRenta1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,9 +388,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRenta;
+    private rojeru_san.RSButton btnRenta1;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVenta;
+    private rojeru_san.RSButton btnVenta;
     private javax.swing.JComboBox<String> cmbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

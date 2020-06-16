@@ -120,6 +120,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
         cmbGeneros = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPeliculas = new rojerusan.RSTableMetro();
+        jLabel16 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -402,6 +403,11 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 670, 190));
 
+        jLabel16.setFont(new java.awt.Font("Rockwell", 2, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel16.setText("180px X 270px");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 80, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -561,6 +567,7 @@ public class JDGesEditarPeli extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

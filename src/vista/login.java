@@ -21,7 +21,6 @@ public class login extends javax.swing.JDialog {
 
     //Creamos un objeto de tipo interface IUsuarioDAO
     private DAOManager manager = null;
-    //private Usuario idUSU;
     PlaceHolder holder;
     String contraseña = "";
     String nickName = "";
@@ -33,14 +32,13 @@ public class login extends javax.swing.JDialog {
     public login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        //Colocamos el icono a nuestra app
+        this.setIconImage(new ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas (1).png")).getImage());
+        //Colocamos el focus en el campo Usuario
         txtUser.requestFocusInWindow();
-        /*txtPassword.setEchoChar((char)0);
-        txtPassword.setText("Contraseña");
-        txtUser.setText("Nick Name");*/
+        //Obtenemos todos los métodos
         this.manager = new MySQLDAOManager();
-        
-        
+         
     }
 
     /**
@@ -69,8 +67,6 @@ public class login extends javax.swing.JDialog {
         panelImage5 = new org.edisoncor.gui.panel.PanelImage();
         btnRegistrar = new org.edisoncor.gui.button.ButtonAction();
         btnEntrar = new org.edisoncor.gui.button.ButtonAction();
-        rSButton1 = new rojeru_san.RSButton();
-        rSMPassView1 = new rojeru_san.RSMPassView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -87,11 +83,6 @@ public class login extends javax.swing.JDialog {
 
         txtUser.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtUser.setBorder(null);
-        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtUserMouseClicked(evt);
-            }
-        });
         panelImage1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 230, 50));
@@ -102,11 +93,6 @@ public class login extends javax.swing.JDialog {
 
         txtPassword.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPassword.setBorder(null);
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
-            }
-        });
         panelImage2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 230, 50));
@@ -167,20 +153,6 @@ public class login extends javax.swing.JDialog {
         });
         jPanel3.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 190, -1));
 
-        rSButton1.setBackground(new java.awt.Color(255, 214, 71));
-        rSButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        rSButton1.setText("Entrar");
-        rSButton1.setColorHover(new java.awt.Color(255, 229, 56));
-        rSButton1.setFont(new java.awt.Font("Roboto Bold", 1, 24)); // NOI18N
-        jPanel3.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
-
-        rSMPassView1.setForeground(new java.awt.Color(0, 0, 0));
-        rSMPassView1.setBordeColorFocus(new java.awt.Color(255, 255, 255));
-        rSMPassView1.setBordeColorNoFocus(new java.awt.Color(0, 0, 0));
-        rSMPassView1.setBotonColor(new java.awt.Color(0, 0, 0));
-        rSMPassView1.setPlaceholder("Contraseña");
-        jPanel3.add(rSMPassView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
-
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
@@ -197,15 +169,6 @@ public class login extends javax.swing.JDialog {
             txtPassword.setEchoChar('*');
         }// fin del else if
     }//GEN-LAST:event_verPassMouseClicked
-
-    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
-       // txtUser.setText("");
-    }//GEN-LAST:event_txtUserMouseClicked
-
-    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-       /* txtPassword.setText("");
-        txtPassword.setEchoChar('*');*/
-    }//GEN-LAST:event_txtPasswordMouseClicked
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         //checar si se llenaron los datos
@@ -259,7 +222,7 @@ public class login extends javax.swing.JDialog {
             }catch(DAOException ex){
                 mensajeError(ex);
             }// fin del catch
-        }
+        }// fin del else
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -325,27 +288,10 @@ public class login extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage5;
-    private rojeru_san.RSButton rSButton1;
-    private rojeru_san.RSMPassView rSMPassView1;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     private javax.swing.JCheckBox verPass;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * Metodo para mostrar leyenda de msj en los campos de texto
-     */
-    private void placerHolder() {
-        holder = new PlaceHolder(txtUser, "Usuario");
-    }// fin del método placeHolder
-
-    /**
-     * Método para mostrar leyenda de msj en los campos de contraseña
-     */
-    private void placeHolderPass() {
-        txtPassword.setEchoChar((char)0);
-        holder = new PlaceHolder(txtPassword, "Contraseña");
-    }// fin del método placeHolderPass
 
     /**
      * Método para mandar mensaje de error

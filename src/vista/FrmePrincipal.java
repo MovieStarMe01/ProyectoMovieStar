@@ -21,6 +21,8 @@ public class FrmePrincipal extends javax.swing.JFrame {
      */
     public FrmePrincipal() {
         initComponents();
+        //Colocamos el icono a nuestra app
+        this.setIconImage(new ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas (1).png")).getImage());
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -67,6 +69,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -751,6 +754,12 @@ public class FrmePrincipal extends javax.swing.JFrame {
         miPelicula.lblGenero.setText(genero);
         miPelicula.setVisible(true);
     }
+    
+    /*@Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("icono/Icono.png"));
+        return retValue;
+    }*/
 
    
 }// fin de la clase FrmePrincipal
