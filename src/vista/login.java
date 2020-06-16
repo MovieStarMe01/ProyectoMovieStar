@@ -9,7 +9,6 @@ import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import com.placeholder.PlaceHolder;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -26,7 +25,7 @@ public class login extends javax.swing.JDialog {
     PlaceHolder holder;
     String contraseña = "";
     String nickName = "";
-    public static int idUsu;
+    public static String idUsu;
     
     /**
      * Creates new form login
@@ -70,6 +69,8 @@ public class login extends javax.swing.JDialog {
         panelImage5 = new org.edisoncor.gui.panel.PanelImage();
         btnRegistrar = new org.edisoncor.gui.button.ButtonAction();
         btnEntrar = new org.edisoncor.gui.button.ButtonAction();
+        rSButton1 = new rojeru_san.RSButton();
+        rSMPassView1 = new rojeru_san.RSMPassView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -166,6 +167,20 @@ public class login extends javax.swing.JDialog {
         });
         jPanel3.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 190, -1));
 
+        rSButton1.setBackground(new java.awt.Color(255, 214, 71));
+        rSButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rSButton1.setText("Entrar");
+        rSButton1.setColorHover(new java.awt.Color(255, 229, 56));
+        rSButton1.setFont(new java.awt.Font("Roboto Bold", 1, 24)); // NOI18N
+        jPanel3.add(rSButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+
+        rSMPassView1.setForeground(new java.awt.Color(0, 0, 0));
+        rSMPassView1.setBordeColorFocus(new java.awt.Color(255, 255, 255));
+        rSMPassView1.setBordeColorNoFocus(new java.awt.Color(0, 0, 0));
+        rSMPassView1.setBotonColor(new java.awt.Color(0, 0, 0));
+        rSMPassView1.setPlaceholder("Contraseña");
+        jPanel3.add(rSMPassView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 390));
@@ -216,7 +231,8 @@ public class login extends javax.swing.JDialog {
                 como parámetro el usuario y la contraseña ya encriptada MD5
                 */
                 if(manager.getUsuarioDAO().verificaUP(usu, contra) == true){
-                    idUsu = 1;
+                    //Obtenemos el id del usuario que ingresó
+                    idUsu = manager.getUsuarioDAO().getIdUsuario(usu, contra);
                     //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
                     ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
                     //Mando mensaje de que el logeo fue exitoso 
@@ -309,6 +325,8 @@ public class login extends javax.swing.JDialog {
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
     private org.edisoncor.gui.panel.PanelImage panelImage5;
+    private rojeru_san.RSButton rSButton1;
+    private rojeru_san.RSMPassView rSMPassView1;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     private javax.swing.JCheckBox verPass;

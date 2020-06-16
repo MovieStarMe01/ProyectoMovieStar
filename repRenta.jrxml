@@ -8,7 +8,7 @@
 INNER JOIN peliculas ON nota.nota_peli_id = peliculas.peli_id
 INNER JOIN usuario on nota.nota_usu_id = usuario.usu_id
 INNER JOIN cliente on nota.nota_cli_id = cliente.cli_id
-WHERE peliculas.peli_estado = 'VENDIDA'
+WHERE peliculas.peli_estado = 'RENTADA'
 
 GROUP BY nota.nota_peli_id
 ORDER BY nota.nota_fecha DESC]]>
@@ -116,7 +116,7 @@ ORDER BY nota.nota_fecha DESC]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="sumatoria" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{peli_precio_venta}]]></variableExpression>
+		<variableExpression><![CDATA[$F{peli_precio_renta}]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
 	<background>
@@ -137,69 +137,85 @@ ORDER BY nota.nota_fecha DESC]]>
 				<textElement>
 					<font fontName="Consolas" size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte de Ventas]]></text>
+				<text><![CDATA[Reporte de Rentas]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement x="6" y="3" width="100" height="20" uuid="7f2a8b62-6db0-4422-8600-207742a940b1"/>
+				<reportElement x="6" y="3" width="86" height="20" uuid="7f2a8b62-6db0-4422-8600-207742a940b1"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ID Película]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="106" y="3" width="252" height="20" uuid="a04d0276-e4d2-4cba-8ec1-e8c988b134e8"/>
+				<reportElement x="93" y="3" width="177" height="20" uuid="a04d0276-e4d2-4cba-8ec1-e8c988b134e8"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Título]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="359" y="3" width="100" height="20" uuid="6a9104cf-5447-42a6-b9de-1a5d130317ab"/>
+				<reportElement x="271" y="3" width="100" height="20" uuid="6a9104cf-5447-42a6-b9de-1a5d130317ab"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Género]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="3" width="95" height="20" uuid="76cec9cf-8538-477d-8284-e78c36bca985"/>
+				<reportElement x="372" y="3" width="95" height="20" uuid="76cec9cf-8538-477d-8284-e78c36bca985"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Precio Venta]]></text>
+				<text><![CDATA[Precio Renta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="3" width="87" height="20" uuid="913e5e77-a342-4199-aa19-f2a52da9d04d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Límite]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="6" y="0" width="100" height="20" uuid="216c9892-ca67-4032-aabf-b7d29bc323f0"/>
+				<reportElement x="6" y="0" width="86" height="20" uuid="216c9892-ca67-4032-aabf-b7d29bc323f0"/>
 				<textElement>
 					<font fontName="Consolas" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nota_peli_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="106" y="0" width="252" height="20" uuid="7c9065cc-1c9d-478f-ad48-f58900a9a837"/>
+				<reportElement x="93" y="0" width="177" height="20" uuid="7c9065cc-1c9d-478f-ad48-f58900a9a837"/>
 				<textElement>
 					<font fontName="Consolas" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peli_titulo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="0" width="100" height="20" uuid="bc5b17fa-dd8e-402d-bcfe-48b28b521403"/>
+				<reportElement x="270" y="0" width="100" height="20" uuid="bc5b17fa-dd8e-402d-bcfe-48b28b521403"/>
 				<textElement textAlignment="Center">
 					<font fontName="Consolas" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peli_genero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="459" y="1" width="96" height="20" uuid="31a190e5-c101-41f1-bfb0-59a602f0643b"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{peli_precio_venta}]]></textFieldExpression>
+				<reportElement x="371" y="0" width="96" height="20" uuid="20c50fa7-1103-4772-86a3-e8e7650f1c52"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_precio_renta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="0" width="88" height="20" uuid="133256e8-dd4f-4f10-bfb1-366415508e49"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_fecha_lim}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -217,7 +233,7 @@ ORDER BY nota.nota_fecha DESC]]>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total de Ventas:]]></text>
+				<text><![CDATA[Total de Rentas:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="428" y="30" width="64" height="20" uuid="3c771b4b-c8fa-4fdc-b64b-ad4b5e44a5bf"/>

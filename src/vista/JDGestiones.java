@@ -124,7 +124,7 @@ public class JDGestiones extends javax.swing.JDialog {
         jLabel5.setText("ALTA PELICULAS");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
-        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/imgGestiones.png"))); // NOI18N
+        panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/gestionTitle.png"))); // NOI18N
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);

@@ -136,6 +136,11 @@ public class FrmePrincipal extends javax.swing.JFrame {
         btnReportes.setContentAreaFilled(false);
         btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imgFrmePrincipal/reportes (1).png"))); // NOI18N
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -568,16 +573,19 @@ public class FrmePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblDramaMouseExited
 
     private void btnAñadirUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirUsuActionPerformed
+        //Abrimos la ventana AñadirUsuario y hacemos visible la ventana
         JDRegistro miUsuario = new JDRegistro(null, true);
         miUsuario.setVisible(true);
     }//GEN-LAST:event_btnAñadirUsuActionPerformed
 
     private void btnAñadirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirCliActionPerformed
+        //Abrimos la ventana AñadirCliente y hacemos visible la ventana
         JDAñadirCliente miCliente = new JDAñadirCliente(null, true);
         miCliente.setVisible(true);
     }//GEN-LAST:event_btnAñadirCliActionPerformed
 
     private void btnGestionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionesActionPerformed
+        //Abrimos la ventana Gestiones y hacemos visible la ventana
         JDGestiones misGestiones = new JDGestiones(null, true);
         misGestiones.setVisible(true);
     }//GEN-LAST:event_btnGestionesActionPerformed
@@ -622,39 +630,52 @@ public class FrmePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCrimenMouseExited
 
     private void lblCrimenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrimenMouseClicked
+        //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "CRIMEN";
         abrirVentana(genero);
     }//GEN-LAST:event_lblCrimenMouseClicked
 
     private void lblAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccionMouseClicked
+        //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "ACCIÓN";
         abrirVentana(genero); 
     }//GEN-LAST:event_lblAccionMouseClicked
 
     private void lblComediasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComediasMouseClicked
+        //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "COMEDIA";
         abrirVentana(genero); 
     }//GEN-LAST:event_lblComediasMouseClicked
 
     private void lblDramaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDramaMouseClicked
+         //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "DRAMA";
         abrirVentana(genero);
     }//GEN-LAST:event_lblDramaMouseClicked
 
     private void lblTerrorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTerrorMouseClicked
+         //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "TERROR";
         abrirVentana(genero);
     }//GEN-LAST:event_lblTerrorMouseClicked
 
     private void lblInfantilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfantilesMouseClicked
+        //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "INFANTILES";
         abrirVentana(genero);
     }//GEN-LAST:event_lblInfantilesMouseClicked
 
     private void lblTodasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTodasMouseClicked
+         //Colocamos el nombre del género solicitado y lo mandaremos como parámetro a la ventana
         genero = "TODOS LOS GÉNEROS";
         abrirVentana(genero);
     }//GEN-LAST:event_lblTodasMouseClicked
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        //Abrimos la ventana Reportes y hacemos visible la ventana
+        JDReportes misReportes = new JDReportes(null, true);
+        misReportes.setVisible(true);
+    }//GEN-LAST:event_btnReportesActionPerformed
 
     /**
      * @param args the command line arguments

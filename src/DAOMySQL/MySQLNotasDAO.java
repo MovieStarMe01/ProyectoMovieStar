@@ -53,7 +53,7 @@ public class MySQLNotasDAO implements INotasDAO {
                 ps.setString(1, nota.getNotaTotal());
                 ps.setTimestamp(2, nota.getNotaFecha());
                 ps.setString(3, nota.getPeliID());
-                ps.setString(4, nota.getNotaTipo());
+                ps.setString(4, "RENTADA");
                 ps.setInt(5, nota.getUsuarioID());
                 ps.setInt(6, nota.getClienteID());
                 ps.setDate(7, new java.sql.Date(nota.getFechaDevolucion().getTime()));

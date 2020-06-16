@@ -41,6 +41,7 @@ import static vista.JDPeliculas.genero1;
 import static vista.JDPeliculas.precioRenta;
 import static vista.JDPeliculas.precioVenta;
 import static vista.JDPeliculas.sinopsis;
+import static vista.login.idUsu;
 
 /**
  *
@@ -498,7 +499,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
             //Si tipoNota es igual a "VENDIDA" entonces mandamos el mensaje de Vendida y cambiamos estado a VENDIDA
             if(tipoNota.equals("VENDIDA")){
                 //llamamos el constructor para crear un Objeto de tipo Notas sin el parámetro fechaLimite
-                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente);
+                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, Integer.parseInt(idUsu), idCliente);
                 
                 manager.getNotasDAO().venta(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
@@ -509,14 +510,15 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 peliculas miPelicula = new peliculas(peliID, tipoNota);
                 //Hacemos un update para cambiar el estado de la película a VENDIDA
                 manager.getPeliculasDAO().estado(miPelicula);
-                //Llamamos el método para que mande el ticket de venta
-                ticketVenta();
+                String path = "ticketVenta.jasper";
+                //Llamamos el método para que mande el ticket de VENTA
+                ticket(path);
             }// fin del if VENDIDA
             
             //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
             if(tipoNota.equals("RENTADA")){
                 //llamamos el constructor para crear un Objeto de tipo Notas con el parámetro fechaLimite
-                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, 1, idCliente, fechaLim);
+                miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, Integer.parseInt(idUsu), idCliente, fechaLim);
                 manager.getNotasDAO().insertar(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Renta Satisfactoria</h2></html>",
@@ -526,6 +528,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 peliculas miPelicula = new peliculas(peliID, tipoNota);
                 //Hacemos un update para cambiar el estado de la película a RENTADA
                 manager.getPeliculasDAO().estado(miPelicula);
+                String path = "ticketRenta.jasper";
+                //Llamamos el método para que mande el ticket de RENTA
+                ticket(path);
             }// fin del if RENTADA
                          
             //Cerramos la ventanda Detalles
@@ -545,20 +550,20 @@ public class JDRentaVenta extends javax.swing.JDialog {
     public Date sumaFecha(Date notaFecha, int dias) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(notaFecha);
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        calendar.add(Calendar.DAY_OF_YEAR, 2);
         
       
         return calendar.getTime();
     }// fin del método sumarFecha
 
     /**
-     * Método para mostrar el ticket que compra de la película
+     * Método para mostrar el ticket de VENTA o RENTA de la película
+     * según lo solicitado
      */
-    private void ticketVenta() {
+    private void ticket(String path) {
         try {
         conn = ConectarBD();
         JasperReport reporte = null;
-        String path = "ticket.jasper";
         //reporte = (JasperReport) JRLoader.loadObjectFromLocation(path);
         reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
         
@@ -570,6 +575,8 @@ public class JDRentaVenta extends javax.swing.JDialog {
         } catch (SQLException | JRException ex) {
         Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }// fin del método ticketVenta
+    }// fin del método ticket
+    
+   
     
 }// fin de la clase JDRentaVenta

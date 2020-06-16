@@ -10,10 +10,8 @@ import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import Modelo.notas;
 import Modelo.peliculas;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,12 +51,10 @@ public class JDGesRentadas extends javax.swing.JDialog {
         
         try {
             inicializarListaPeliculasRent();
-            fechaLimite();
-            inicializarListaPeliculasNoDevueltas();
+            //fechaLimite();
+            //inicializarListaPeliculasNoDevueltas();
         }catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JDGesRentadas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -383,6 +379,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private void fechaLimite() throws DAOException, ParseException {
         //Obtenemos la fecha Actual
         Date fechaHoy = new Date();
+        Date fhoy = new Date();
         
         // El formato de fecha está especificado  
         String strDateFormat = "YYYY-MM-dd"; 
@@ -392,7 +389,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
         * ya que la de la BD tienen este formato
         */
         System.out.println(objSDF.format(fechaHoy));
-        objSDF.format(fechaHoy);
+        //fhoy = objSDF.format(fechaHoy);
         
         Calendar calendar = Calendar.getInstance(); 
         

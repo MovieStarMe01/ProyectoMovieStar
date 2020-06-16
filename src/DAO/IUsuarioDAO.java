@@ -12,5 +12,6 @@ import Modelo.Usuario;
  * @author Jesús Moisés
  */
 public interface IUsuarioDAO extends IDAO<Usuario, Integer>{
-    
+    //Obtenemos el id del usuario que ingresó mediante su nick y su contraseña
+    String getIdUsuario(String nick, String pass) throws DAOException;
 }// fin de la interface IUsuarioDAO

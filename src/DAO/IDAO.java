@@ -24,5 +24,5 @@ public interface IDAO <T, K> {
     T obtener(K id) throws DAOException;
     //Método para cambiar el estado de las peliculas a Activo o Inactivo
     void estado(T estado) throws DAOException;
-
+   
 }// fin de la interface IDAO

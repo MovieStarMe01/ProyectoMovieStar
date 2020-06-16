@@ -41,7 +41,49 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     
     private final String GETALLUSU = "SELECT usu_id, usu_nombre, usu_paterno, usu_materno, usu_domicilio, usu_cel, usu_nick "
              + " FROM usuario";
+    
+    private final String GETUSU = "SELECT usu_id FROM usuario WHERE usu_nick = ? AND usu_pass = ?";
      
+    /**
+     * Método para obtenr el id del Usuario que ingresó al Sistema
+     * @param nick
+     * @param pass
+     * @return idUsuario
+     * @throws DAOException 
+     */
+    @Override
+    public String getIdUsuario(String nick, String pass) throws DAOException {
+        //idUsuario a retornar
+        String idUsuario = "";
+        
+        try{
+            //Creamos la conexión a la BD
+            conn = Conectar.ConectarBD();
+            
+            //preparamos la consulta y especificamos los parametros de entrada
+            ps = conn.prepareStatement(GETUSU);
+                ps.setString(1, nick);
+                ps.setString(2, pass);
+            
+            //ejecutamos la consulta y almacenamos el resultado en un objeto RS
+            rs = ps.executeQuery();
+            
+            //recorremos el RS y agregamos cada item al ArrayList
+            while(rs.next()){
+                //String usu = new String();
+                idUsuario = (rs.getString("usu_id"));
+               
+            }// fin del while
+          
+        }catch(SQLException ex){
+            throw new DAOException("ERROR de SQL", ex);
+        }finally{
+            cerrarConexiones(ps, rs, conn);
+        }// fin dle finally
+        
+        return idUsuario;
+    }// fin del método getIdUsuario
+    
     /**
      * Este método nos sirve para poder agregar un nuevo Usuario a nuestra BD
      * @param miUsuario
@@ -133,9 +175,14 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
         }// fin del finally
     }// fin del método eliminar
 
+    /**
+     * Método para obtener todo los Usuarios que están dados de alta
+     * @return
+     * @throws DAOException 
+     */
     @Override
     public List<Usuario> obtenerTodos() throws DAOException {
-         //Lista de IDClientes a retornar
+        //Lista de IDClientes a retornar
         List<Usuario> misUsuarios = null;
         
         try{
@@ -260,5 +307,5 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     public void venta(Usuario a) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
+
 }// fin de la clase MySQLUsuaioDAO

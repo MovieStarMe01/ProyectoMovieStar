@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="860" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="5" isIgnorePagination="true" uuid="b5356ab1-3c5f-4f9f-9cff-7727363c3a55">
-	<property name="ireport.zoom" value="4.96737058447324"/>
-	<property name="ireport.x" value="105"/>
-	<property name="ireport.y" value="192"/>
-	<parameter name="EFECTIVO" class="java.lang.String"/>
-	<parameter name="LETRA" class="java.lang.String"/>
+	<property name="ireport.zoom" value="2.803951195851139"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="362"/>
 	<queryString>
 		<![CDATA[SELECT * FROM nota 
 INNER JOIN peliculas ON nota.nota_peli_id = peliculas.peli_id
 INNER JOIN usuario on nota.nota_usu_id = usuario.usu_id
 INNER JOIN cliente on nota.nota_cli_id = cliente.cli_id
+WHERE peliculas.peli_estado = 'RENTADA'
+GROUP BY nota.nota_peli_id
 ORDER BY nota.nota_fecha DESC
 LIMIT 1]]>
 	</queryString>
@@ -32,6 +32,9 @@ LIMIT 1]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nota_cli_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_fecha_lim" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="peli_id" class="java.lang.String">
@@ -226,17 +229,17 @@ LIMIT 1]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="82" splitType="Stretch">
+		<band height="112" splitType="Stretch">
 			<textField>
-				<reportElement x="45" y="59" width="58" height="11" uuid="845a4e77-4326-453c-a883-b3e6ec97e19c"/>
-				<textElement textAlignment="Right">
+				<reportElement x="44" y="51" width="58" height="11" uuid="845a4e77-4326-453c-a883-b3e6ec97e19c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nota_tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="114" y="59" width="26" height="11" uuid="d69a0cbc-b671-487a-95e5-157b3847595c"/>
-				<textElement>
+				<reportElement x="112" y="51" width="26" height="11" uuid="d69a0cbc-b671-487a-95e5-157b3847595c"/>
+				<textElement verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peli_precio_venta}]]></textFieldExpression>
@@ -249,25 +252,39 @@ LIMIT 1]]>
 				<textFieldExpression><![CDATA[$F{peli_genero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="15" y="21" width="149" height="24" uuid="aba13f17-dfaf-4033-b79e-e7b28a8b269a"/>
+				<reportElement x="15" y="21" width="149" height="30" uuid="aba13f17-dfaf-4033-b79e-e7b28a8b269a"/>
 				<textElement textAlignment="Left">
 					<font size="6" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peli_sinopsis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="0" width="61" height="11" uuid="de52e754-c18d-456c-b107-da8e93c73081"/>
+				<reportElement x="16" y="0" width="51" height="11" uuid="de52e754-c18d-456c-b107-da8e93c73081"/>
 				<textElement>
 					<font size="7" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{peli_calidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="105" y="59" width="9" height="11" uuid="7a8f089a-9e3e-47f3-8ebe-555bcbd6830c"/>
-				<textElement>
+				<reportElement x="103" y="51" width="9" height="11" uuid="7a8f089a-9e3e-47f3-8ebe-555bcbd6830c"/>
+				<textElement verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="34" y="94" width="93" height="18" uuid="2f083424-da14-4f49-ab64-c2b1a2d33311"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_fecha_lim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="34" y="82" width="93" height="12" uuid="8d418b6f-3fa1-4c7d-a590-4676322db94d"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Devolver ante de:]]></text>
 			</staticText>
 		</band>
 	</columnFooter>
