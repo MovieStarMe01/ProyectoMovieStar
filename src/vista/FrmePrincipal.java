@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class FrmePrincipal extends javax.swing.JFrame {

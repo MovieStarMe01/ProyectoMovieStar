@@ -6,7 +6,7 @@
 package DAO;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public interface DAOManager {

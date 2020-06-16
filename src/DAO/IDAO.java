@@ -8,6 +8,7 @@ package DAO;
 import java.util.List;
 
 /**
+ * @author Erick
  * @author Jesús Moisés
  * @param <T> hace referencia a  una clase del paquete Modelo
  * @param <K> el id que identifica a un objeto de la clase Modelo

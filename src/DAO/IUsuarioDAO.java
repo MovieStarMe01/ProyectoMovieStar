@@ -8,7 +8,7 @@ package DAO;
 import Modelo.Usuario;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public interface IUsuarioDAO extends IDAO<Usuario, Integer>{

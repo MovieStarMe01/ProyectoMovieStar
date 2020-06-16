@@ -9,7 +9,7 @@ import Modelo.notas;
 import java.util.List;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public interface INotasDAO extends IDAO<notas, Integer>{

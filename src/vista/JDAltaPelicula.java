@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDAltaPelicula extends javax.swing.JDialog {

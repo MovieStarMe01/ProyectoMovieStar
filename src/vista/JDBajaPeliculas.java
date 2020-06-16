@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDBajaPeliculas extends javax.swing.JDialog {

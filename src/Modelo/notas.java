@@ -9,7 +9,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class notas {

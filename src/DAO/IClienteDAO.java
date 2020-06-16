@@ -9,7 +9,7 @@ import Modelo.cliente;
 import java.util.List;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public interface IClienteDAO extends IDAO<cliente, Integer>{

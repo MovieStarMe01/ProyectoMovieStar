@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
    
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class login extends javax.swing.JDialog {

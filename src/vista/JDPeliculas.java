@@ -23,7 +23,7 @@ import static vista.FrmePrincipal.genero;
 
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDPeliculas extends javax.swing.JDialog {

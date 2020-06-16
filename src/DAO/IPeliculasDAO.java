@@ -9,7 +9,7 @@ import Modelo.peliculas;
 import java.util.List;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public interface IPeliculasDAO extends IDAO<peliculas, String>{

@@ -19,7 +19,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDReportes extends javax.swing.JDialog {

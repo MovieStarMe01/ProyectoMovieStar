@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDAñadirCliente extends javax.swing.JDialog {

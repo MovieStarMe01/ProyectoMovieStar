@@ -12,7 +12,7 @@ import DAO.IPeliculasDAO;
 import DAO.IUsuarioDAO;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class MySQLDAOManager implements DAOManager{

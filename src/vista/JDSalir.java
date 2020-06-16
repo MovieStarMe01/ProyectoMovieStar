@@ -6,7 +6,7 @@
 package vista;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDSalir extends javax.swing.JDialog {

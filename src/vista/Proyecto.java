@@ -2,7 +2,7 @@ package vista;
 
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class Proyecto{

@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDGesEditarCli extends javax.swing.JDialog {

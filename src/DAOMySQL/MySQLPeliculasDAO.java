@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class MySQLPeliculasDAO implements IPeliculasDAO{

@@ -13,7 +13,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class PeliculasVisiblesTableModel extends AbstractTableModel{

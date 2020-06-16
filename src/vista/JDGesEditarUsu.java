@@ -13,17 +13,15 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import rojerusan.RSTableMetro;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDGesEditarUsu extends javax.swing.JDialog {

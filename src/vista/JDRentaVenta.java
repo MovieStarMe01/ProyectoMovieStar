@@ -44,7 +44,7 @@ import static vista.JDPeliculas.sinopsis;
 import static vista.login.idUsu;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDRentaVenta extends javax.swing.JDialog {

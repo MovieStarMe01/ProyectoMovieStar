@@ -6,7 +6,7 @@
 package vista;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDGestiones extends javax.swing.JDialog {

@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * @author Erick
  * @author Jesús Moisés
  */
 public class JDRegistro extends javax.swing.JDialog {
