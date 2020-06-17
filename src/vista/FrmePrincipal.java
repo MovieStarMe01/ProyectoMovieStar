@@ -749,17 +749,15 @@ public class FrmePrincipal extends javax.swing.JFrame {
     private org.edisoncor.gui.panel.PanelImage panelImage9;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Método para abrir las películas
+     * @param genero 
+     */
     private void abrirVentana(String genero) {
         JDPeliculas miPelicula = new JDPeliculas(null, true);
         miPelicula.lblGenero.setText(genero);
         miPelicula.setVisible(true);
-    }
+    }// fin del método abrirVentana
     
-    /*@Override
-    public Image getIconImage(){
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("icono/Icono.png"));
-        return retValue;
-    }*/
-
    
 }// fin de la clase FrmePrincipal

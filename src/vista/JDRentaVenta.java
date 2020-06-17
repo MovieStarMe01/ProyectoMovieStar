@@ -140,6 +140,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         btnRenta1 = new rojeru_san.RSButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -204,23 +205,19 @@ public class JDRentaVenta extends javax.swing.JDialog {
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 380, 60, -1));
 
         lblNombre.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 140, 15));
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 290, 15));
 
         lblGenero.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 140, 15));
-        lblGenero.getAccessibleContext().setAccessibleName("");
 
         lblAño.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jPanel1.add(lblAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 140, 15));
-        lblAño.getAccessibleContext().setAccessibleName("");
 
         lblAudio.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jPanel1.add(lblAudio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, 15));
-        lblAudio.getAccessibleContext().setAccessibleName("");
 
         lblCalidad.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jPanel1.add(lblCalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 140, 15));
-        lblCalidad.getAccessibleContext().setAccessibleName("");
 
         lblRenta.setFont(new java.awt.Font("Rockwell", 0, 13)); // NOI18N
         jPanel1.add(lblRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 70, 20));
@@ -437,7 +434,10 @@ public class JDRentaVenta extends javax.swing.JDialog {
             FileReader file = new FileReader(caratula);
             lblCaratula.setIcon(new ImageIcon(caratula));
         }catch(FileNotFoundException ex){
-            JOptionPane.showMessageDialog(null, "Imagen No Disponible", "ERROR",JOptionPane.ERROR_MESSAGE);
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgGestiones/caratulaNoDisponible.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>Caratula No Disponible</h2></html>", "ERROR", 0, miIcono);
+            ImageIcon miIcono1 = new ImageIcon(getClass().getResource("/imgGestiones/caraNoDispo.png"));
+            lblCaratula.setIcon(miIcono1);
         }// fin del catch  
     }// fin del método cargarDatos
 
