@@ -9,6 +9,8 @@ import DAO.DAOException;
 import DAO.DAOManager;
 import DAOMySQL.MySQLDAOManager;
 import com.placeholder.PlaceHolder;
+import java.awt.Cursor;
+import static java.awt.Cursor.HAND_CURSOR;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -38,6 +40,10 @@ public class login extends javax.swing.JDialog {
         txtUser.requestFocusInWindow();
         //Obtenemos todos los métodos
         this.manager = new MySQLDAOManager();
+        
+        //Aplicamos el cursor de mano para los botones entrar y registrar
+        btnEntrar.setCursor(new Cursor(HAND_CURSOR));
+        btnRegistrar.setCursor(new Cursor(HAND_CURSOR));
          
     }
 
@@ -171,7 +177,7 @@ public class login extends javax.swing.JDialog {
     }//GEN-LAST:event_verPassMouseClicked
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        //checar si se llenaron los datos
+      //checar si se llenaron los datos
         if(txtUser.getText().equals("")){
             //primero el usuario
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
@@ -195,17 +201,7 @@ public class login extends javax.swing.JDialog {
                 Utilizo el método verificarUP para verificar usuario y contraseña y le mando
                 como parámetro el usuario y la contraseña ya encriptada MD5
                 */
-                if(manager.getUsuarioDAO().verificaUP(usu, contra)==false){
-                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
-                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginfallido.png"));
-                    //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
-                    JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>","ERROR",
-                        JOptionPane.ERROR_MESSAGE, miIcono);
-                    //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
-                    txtUser.setText("");
-                    txtPassword.setText("");
-                    txtUser.requestFocusInWindow();
-                }else if(manager.getUsuarioDAO().verificaUP(usu, contra)==true){
+                if(manager.getUsuarioDAO().verificaUP(usu, contra)){
                     //Obtenemos el id del usuario que ingresó
                     idUsu = manager.getUsuarioDAO().getIdUsuario(usu, contra);
                     //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
@@ -220,9 +216,14 @@ public class login extends javax.swing.JDialog {
                     //Cierro la ventana login
                     this.dispose();
                 }else{
-                    System.out.println("NEL");
+                    //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
+                    JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>", "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+                    //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
+                    txtUser.setText("");
+                    txtPassword.setText("");
+                    txtUser.requestFocusInWindow(); 
                 }
-// fin del else
                 
             }catch(DAOException ex){
                 mensajeError(ex);

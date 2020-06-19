@@ -32,7 +32,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
             + " usu_nick, usu_pass)"
             + " VALUES (?, ?, ?, ?, ?, ?, MD5(?))";
     
-    private final String VALIDAR = "SELECT usu_nick, usu_pass FROM pelicula.usuario";
+    private final String VALIDAR = "SELECT usu_nick, usu_pass FROM usuario";
     
     private final String DELETE = "DELETE FROM usuario WHERE usu_id = ?";
     
@@ -229,7 +229,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
     @Override
     public boolean verificaUP(String usu, String passE) throws DAOException {
         boolean validar = false;
-       
+        
         try{
             //Realizamos la conexión a la BD
             conn = Conectar.ConectarBD();
@@ -254,7 +254,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
                 if(usu.equals(u) && p.equals(passE)){
                     validar = true;
                  }// fin del if
-             }// fin del while
+            }// fin del while
         }catch(SQLException ex){
             throw new DAOException("ERROR de SQL", ex);
         }finally{
