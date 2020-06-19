@@ -126,9 +126,6 @@ public class JDPeliculas extends javax.swing.JDialog {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBusquedaKeyReleased(evt);
             }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyTyped(evt);
-            }
         });
         panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
 
@@ -292,10 +289,6 @@ public class JDPeliculas extends javax.swing.JDialog {
        //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblPeliculas
        filtro(txtBusqueda.getText().toUpperCase(), tblPeliculas);
     }//GEN-LAST:event_txtBusquedaKeyReleased
-
-    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-
-    }//GEN-LAST:event_txtBusquedaKeyTyped
 
     /**
      * @param args the command line arguments

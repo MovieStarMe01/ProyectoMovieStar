@@ -211,21 +211,19 @@ public class JDReportes extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Método para mostrar el ticket de VENTA de la película
+     * Método para mostrar el Reporte de VENTA o RENTA de la películas
      */
     private void reporte(String path) {
         try {
         conn = ConectarBD();
         JasperReport reporte = null;
         
-        //reporte = (JasperReport) JRLoader.loadObjectFromLocation(path);
         reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
         
         JasperPrint jPrint =  JasperFillManager.fillReport(reporte, null, conn);
         JasperViewer view =  new JasperViewer(jPrint, false);
         view.setVisible(true);
         view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //reporte = JRLoader.loadObjectFromFile(path);
         } catch (SQLException | JRException ex) {
         Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
         }

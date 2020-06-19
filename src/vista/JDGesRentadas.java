@@ -13,6 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  * @author Erick
@@ -34,7 +38,8 @@ public class JDGesRentadas extends javax.swing.JDialog {
     public JDGesRentadas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        //Ponemos el cursor en el campos Busqueda
+        txtBusqueda.requestFocusInWindow();
         //Obtenemos todos los métodos de la clase MySQLPeliculasDAO
         this.manager = new MySQLDAOManager();
         
@@ -64,6 +69,9 @@ public class JDGesRentadas extends javax.swing.JDialog {
         tblRentadas = new rojerusan.RSTableMetro();
         btnDevolver = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        panelImage4 = new org.edisoncor.gui.panel.PanelImage();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -123,7 +131,7 @@ public class JDGesRentadas extends javax.swing.JDialog {
         tblRentadas.setShowHorizontalLines(false);
         jScrollPane3.setViewportView(tblRentadas);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 680, 230));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 680, 180));
 
         btnDevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/regresarPeli.png"))); // NOI18N
         btnDevolver.setBorderPainted(false);
@@ -140,6 +148,26 @@ public class JDGesRentadas extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Devolver Película");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
+        panelImage4.setBackground(new java.awt.Color(255, 255, 255));
+        panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
+        panelImage4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBusqueda.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        txtBusqueda.setForeground(new java.awt.Color(153, 153, 153));
+        txtBusqueda.setBorder(null);
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+        panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
+
+        jPanel2.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 250, 40));
+
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel4.setText("Buscar Título:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 700, 310));
 
@@ -183,6 +211,11 @@ public class JDGesRentadas extends javax.swing.JDialog {
         //Mandamos llamar el método devolver
         devolver();
     }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+        //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblRentadas
+        filtro(txtBusqueda.getText().toUpperCase(), tblRentadas);
+    }//GEN-LAST:event_txtBusquedaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -231,12 +264,15 @@ public class JDGesRentadas extends javax.swing.JDialog {
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
+    private org.edisoncor.gui.panel.PanelImage panelImage4;
     private rojerusan.RSTableMetro tblRentadas;
+    private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -302,5 +338,18 @@ public class JDGesRentadas extends javax.swing.JDialog {
             }// fin del catch
         }//fin del if
     }// fin del método devolver
+    
+    /**
+     * Método para filtrar las busquedas en la tabla
+     * @param consulta
+     * @param jtableBuscar 
+     */
+    private void filtro(String consulta, JTable jtableBuscar){
+        TableModel dm;
+        dm = tblRentadas.getModel();
+        TableRowSorter<TableModel> tr = new TableRowSorter<>(dm);
+        jtableBuscar.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + (consulta), 1));
+    }// fin del método filtro
 
 }// fin de la clase JDGesRentadas

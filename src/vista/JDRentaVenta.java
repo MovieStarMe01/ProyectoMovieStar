@@ -325,21 +325,22 @@ public class JDRentaVenta extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-         //Cambiamos tipoNota a RENTADA
+         //Cambiamos tipoNota a VENDIDA
+        tipoNota = "VENDIDA";
+        //Obtenemos el total o costo de la Película
+        notaTotal = lblVenta.getText();
+        //llamamos el método rentaVenta con el parámetro tipoNota
+        rentaVenta(tipoNota,notaTotal); 
+        
+    }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnRenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenta1ActionPerformed
+        //Cambiamos tipoNota a RENTADA
         tipoNota = "RENTADA";
         //Obtenemos el total o costo de la Película
         notaTotal = lblRenta.getText();
         //llamamos el método rentaVenta con el parámetro tipoNota
         rentaVenta(tipoNota, notaTotal); 
-    }//GEN-LAST:event_btnVentaActionPerformed
-
-    private void btnRenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenta1ActionPerformed
-        //Cambiamos tipoNota a VENDIDA
-        tipoNota = "VENDIDA";
-        //Obtenemos el total o costo de la Película
-        notaTotal = lblVenta.getText();
-        //llamamos el método rentaVenta con el parámetro tipoNota
-        rentaVenta(tipoNota,notaTotal);  
     }//GEN-LAST:event_btnRenta1ActionPerformed
 
     /**
@@ -503,7 +504,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
             if(tipoNota.equals("VENDIDA")){
                 //llamamos el constructor para crear un Objeto de tipo Notas sin el parámetro fechaLimite
                 miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, Integer.parseInt(idUsu), idCliente);
-                
+                System.out.println(idUsu);
                 manager.getNotasDAO().venta(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Venta Satisfactoria</h2></html>",
@@ -522,6 +523,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
             if(tipoNota.equals("RENTADA")){
                 //llamamos el constructor para crear un Objeto de tipo Notas con el parámetro fechaLimite
                 miNota = new notas(notaTotal, notaFecha, peliID, tipoNota, Integer.parseInt(idUsu), idCliente, fechaLim);
+                System.out.println(idUsu);
                 manager.getNotasDAO().insertar(miNota);
                 ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/peliAltaJOP.png"));
                 JOptionPane.showMessageDialog(null, "<html><h2>Renta Satisfactoria</h2></html>",

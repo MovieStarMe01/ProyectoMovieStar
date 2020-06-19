@@ -13,6 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  * @author Erick
@@ -76,12 +80,18 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblVisibles = new rojerusan.RSTableMetro();
+        panelImage4 = new org.edisoncor.gui.panel.PanelImage();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         btnVisible = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInvisibles = new rojerusan.RSTableMetro();
+        jLabel5 = new javax.swing.JLabel();
+        panelImage5 = new org.edisoncor.gui.panel.PanelImage();
+        txtBusqueda1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         panelImage1 = new org.edisoncor.gui.panel.PanelImage();
@@ -110,11 +120,11 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
                 btnInvisibleActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
+        jPanel2.add(btnInvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Hacer Inactiva");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, -1, -1));
 
         tblVisibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,13 +154,33 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         tblVisibles.setShowHorizontalLines(false);
         jScrollPane3.setViewportView(tblVisibles);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 150));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 650, 130));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 230));
+        panelImage4.setBackground(new java.awt.Color(255, 255, 255));
+        panelImage4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
+        panelImage4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBusqueda.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        txtBusqueda.setForeground(new java.awt.Color(153, 153, 153));
+        txtBusqueda.setBorder(null);
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+        panelImage4.add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
+
+        jPanel2.add(panelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 250, 40));
+
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel4.setText("Buscar Título:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 670, 250));
 
         jSeparator2.setBackground(new java.awt.Color(255, 214, 71));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 670, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 670, 10));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -166,11 +196,11 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
                 btnVisibleActionPerformed(evt);
             }
         });
-        jPanel3.add(btnVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, -1));
+        jPanel3.add(btnVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel1.setText("Hacer Activa");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, -1, -1));
 
         tblInvisibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,13 +230,33 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         tblInvisibles.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(tblInvisibles);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 10, 650, 150));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 650, 130));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 670, 230));
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel5.setText("Buscar Título:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        panelImage5.setBackground(new java.awt.Color(255, 255, 255));
+        panelImage5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgLogin/campotxt2.png"))); // NOI18N
+        panelImage5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBusqueda1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        txtBusqueda1.setForeground(new java.awt.Color(153, 153, 153));
+        txtBusqueda1.setBorder(null);
+        txtBusqueda1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusqueda1KeyReleased(evt);
+            }
+        });
+        panelImage5.add(txtBusqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
+
+        jPanel3.add(panelImage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 250, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 670, 240));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setText("Salir");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 640, 40, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 670, 40, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgIconos/close door.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -219,7 +269,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 640, -1, -1));
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgGestiones/peliculasActi.png"))); // NOI18N
 
@@ -249,7 +299,7 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 50));
+        jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 330, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,7 +309,9 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -300,6 +352,16 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
         // Cerramos la ventana
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+        //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblVisibles
+        filtro(txtBusqueda.getText().toUpperCase(), tblVisibles);
+    }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtBusqueda1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusqueda1KeyReleased
+        //Mandamos llamar el método filtro y le mandamos como parámetro lo que se escribe en la busqueda y la tblInvisibles
+        filtro1(txtBusqueda1.getText().toUpperCase(), tblInvisibles);
+    }//GEN-LAST:event_txtBusqueda1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -350,6 +412,8 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -359,8 +423,12 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator2;
     private org.edisoncor.gui.panel.PanelImage panelImage1;
     private org.edisoncor.gui.panel.PanelImage panelImage2;
+    private org.edisoncor.gui.panel.PanelImage panelImage4;
+    private org.edisoncor.gui.panel.PanelImage panelImage5;
     private rojerusan.RSTableMetro tblInvisibles;
     private rojerusan.RSTableMetro tblVisibles;
+    private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtBusqueda1;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -440,5 +508,31 @@ public class JDBajaPeliculas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "<html><h1>Selecciona una Fila</h1></html>",
                     "Selecciona una Fila", 0, miIcono);
     }// fin del método mensaje
+    
+    /**
+     * Método para filtrar las busquedas en la tabla
+     * @param consulta
+     * @param jtableBuscar 
+     */
+    private void filtro(String consulta, JTable jtableBuscar){
+        TableModel dm;
+        dm = tblVisibles.getModel();
+        TableRowSorter<TableModel> tr = new TableRowSorter<>(dm);
+        jtableBuscar.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + (consulta), 1));
+    }// fin del método filtro
+    
+     /**
+     * Método para filtrar las busquedas en la tabla
+     * @param consulta
+     * @param jtableBuscar 
+     */
+    private void filtro1(String consulta, JTable jtableBuscar){
+        TableModel dm;
+        dm = tblInvisibles.getModel();
+        TableRowSorter<TableModel> tr = new TableRowSorter<>(dm);
+        jtableBuscar.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + (consulta), 1));
+    }// fin del método filtro
      
 }// fin de la clase JDBajaPeliculas
