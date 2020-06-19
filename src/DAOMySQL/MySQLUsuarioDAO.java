@@ -177,7 +177,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
 
     /**
      * Método para obtener todo los Usuarios que están dados de alta
-     * @return
+     * @return misUsuarios
      * @throws DAOException 
      */
     @Override
@@ -223,7 +223,7 @@ public class MySQLUsuarioDAO implements IUsuarioDAO {
      * Método para verificar usuario y contraseña esten dados de alta en la BD
      * @param usu
      * @param passE
-     * @return true si existe el usuario
+     * @return true si existe el usuario y su contraseña es correcta
      * @throws DAOException 
      */
     @Override

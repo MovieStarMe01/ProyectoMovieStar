@@ -352,8 +352,10 @@ public class login extends javax.swing.JDialog {
                     this.dispose();
                 }else{
                     //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
+                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginFallido.png"));
                     JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>", "ERROR",
-                        JOptionPane.ERROR_MESSAGE);
+                        0, miIcono);
                     //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
                     txtUser.setText("");
                     txtPassword.setText("");

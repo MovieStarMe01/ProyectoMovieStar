@@ -91,7 +91,7 @@ public class MySQLNotasDAO implements INotasDAO {
            
             //Ejecutamos la consulta y verificamos el resultado
             if(ps.executeUpdate() == 0){
-                throw new DAOException("No se pudo dar de alta La Nota");
+                throw new DAOException("No se pudo insertar la Nota");
             }// fin del if 1.0
         }catch(SQLException ex){
             throw new DAOException("ERROR de SQL", ex);
@@ -118,7 +118,6 @@ public class MySQLNotasDAO implements INotasDAO {
             
             //preparamos la consulta y especificamos los parametros de entrada
             ps = conn.prepareStatement(LLENARNOTAS);
-                //ps.setString(1, id);
             
             //ejecutamos la consulta y almacenamos el resultado en un objeto RS
             rs = ps.executeQuery();

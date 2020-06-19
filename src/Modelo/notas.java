@@ -206,6 +206,5 @@ public class notas {
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
-    
-    
+     
 }// fin de la clase notas

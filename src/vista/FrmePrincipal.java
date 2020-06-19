@@ -23,6 +23,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
         initComponents();
         //Colocamos el icono a nuestra app
         this.setIconImage(new ImageIcon(getClass().getResource("/imgGestiones/altaPeliculas (1).png")).getImage());
+        this.setTitle("Movie Star");
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -676,7 +677,7 @@ public class FrmePrincipal extends javax.swing.JFrame {
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         //Abrimos la ventana Reportes y hacemos visible la ventana
-        JDReportes misReportes = new JDReportes(null, true);
+        JDReportes misReportes = new JDReportes(null, false);
         misReportes.setVisible(true);
     }//GEN-LAST:event_btnReportesActionPerformed
 
@@ -754,10 +755,9 @@ public class FrmePrincipal extends javax.swing.JFrame {
      * @param genero 
      */
     private void abrirVentana(String genero) {
-        JDPeliculas miPelicula = new JDPeliculas(null, true);
+        JDPeliculas miPelicula = new JDPeliculas(null, false);
         miPelicula.lblGenero.setText(genero);
         miPelicula.setVisible(true);
     }// fin del método abrirVentana
     
-   
 }// fin de la clase FrmePrincipal

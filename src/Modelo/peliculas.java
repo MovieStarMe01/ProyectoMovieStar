@@ -280,5 +280,4 @@ public class peliculas {
         this.peliID = peliID;
     }
        
-    
 }// fin de la clase peliculas

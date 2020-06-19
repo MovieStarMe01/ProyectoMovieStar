@@ -386,7 +386,7 @@ public class MySQLPeliculasDAO implements IPeliculasDAO{
             //Ejecutamos la consulta y verificamos  el resultado
             if(ps.executeUpdate() == 0){
                 throw new DAOException("Hubo un problema y no se guardaron los cambios");
-            }
+            }// fin del if
         }catch(SQLException ex){
             throw new DAOException("ERROR de SQL", ex);
         }finally{

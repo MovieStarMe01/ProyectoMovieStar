@@ -21,7 +21,7 @@ public class ClientesTableModel extends AbstractTableModel{
     //propiedades
     private IClienteDAO cliente;
     
-    //Lista de elementos de tipi Película
+    //Lista de elementos de tipo Cliente
     private List<cliente> datosCli = new ArrayList<>();
 
     /**

@@ -166,6 +166,5 @@ public class cliente {
     public void setCli_ID(int cli_ID) {
         this.cli_ID = cli_ID;
     }
-     
-    
+       
 }// fin de la clase cliente

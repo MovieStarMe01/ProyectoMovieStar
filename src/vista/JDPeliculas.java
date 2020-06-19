@@ -255,7 +255,8 @@ public class JDPeliculas extends javax.swing.JDialog {
             sinopsis = (String) tblPeliculas.getValueAt(fila, 8);
             caratula = (String) tblPeliculas.getValueAt(fila, 9);
        
-            JDRentaVenta miRentaVenta = new JDRentaVenta(null, true);
+            //Abrimos nuestra ventana de RentaVenta
+            JDRentaVenta miRentaVenta = new JDRentaVenta(null, false);
             miRentaVenta.setVisible(true);
         }else{
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/seleccionaPeli.png"));
@@ -274,10 +275,11 @@ public class JDPeliculas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGestionPeliculasActionPerformed
 
     private void btnVerPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPeliculasActionPerformed
-        
+        //Obtenemos el nombre del género seleccionado
         genero = lblGenero.getText();
       
         try {
+            //llamamos el método inicializarListaPeliculas
             inicializarListaPeliculas();
         } catch (DAOException ex) {
             Logger.getLogger(JDPeliculas.class.getName()).log(Level.SEVERE, null, ex);
