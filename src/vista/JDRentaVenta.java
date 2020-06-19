@@ -515,8 +515,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 //Hacemos un update para cambiar el estado de la película a VENDIDA
                 manager.getPeliculasDAO().estado(miPelicula);
                 String path = "ticketVenta.jasper";
+                String title = "Ticket de Venta";
                 //Llamamos el método para que mande el ticket de VENTA
-                ticket(path);
+                ticket(path, title);
             }// fin del if VENDIDA
             
             //Si tipoNota es igual a "RENTADA" entonces mandamos el mensaje Rentada y cambiamos estado a RENTADA 
@@ -534,8 +535,9 @@ public class JDRentaVenta extends javax.swing.JDialog {
                 //Hacemos un update para cambiar el estado de la película a RENTADA
                 manager.getPeliculasDAO().estado(miPelicula);
                 String path = "ticketRenta.jasper";
+                String title = "Ticket de Renta";
                 //Llamamos el método para que mande el ticket de RENTA
-                ticket(path);
+                ticket(path, title);
             }// fin del if RENTADA
                          
             //Cerramos la ventanda Detalles
@@ -565,7 +567,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
      * Método para mostrar el ticket de VENTA o RENTA de la película
      * según lo solicitado
      */
-    private void ticket(String path) {
+    private void ticket(String path, String title) {
         try {
         conn = ConectarBD();
         JasperReport reporte = null;
@@ -574,6 +576,7 @@ public class JDRentaVenta extends javax.swing.JDialog {
         
         JasperPrint jPrint =  JasperFillManager.fillReport(reporte, null, conn);
         JasperViewer view =  new JasperViewer(jPrint, false);
+        view.setTitle(title);
         view.setVisible(true);
         view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         //reporte = JRLoader.loadObjectFromFile(path);

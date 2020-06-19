@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="860" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="5" isIgnorePagination="true" uuid="b5356ab1-3c5f-4f9f-9cff-7727363c3a55">
 	<property name="ireport.zoom" value="2.803951195851139"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="362"/>
+	<property name="ireport.y" value="240"/>
 	<queryString>
 		<![CDATA[SELECT * FROM nota 
 INNER JOIN peliculas ON nota.nota_peli_id = peliculas.peli_id
@@ -201,6 +201,10 @@ LIMIT 1]]>
 				<reportElement x="0" y="0" width="164" height="57" uuid="7bcda184-2444-434a-aff3-52b164772fb0"/>
 				<imageExpression><![CDATA["C:\\logos\\logoms2.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="64" y="37" width="78" height="10" uuid="6ff3c62b-304a-4e39-90c6-88c68109768c"/>
+				<textFieldExpression><![CDATA[$F{usu_nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -236,13 +240,6 @@ LIMIT 1]]>
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nota_tipo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="112" y="51" width="26" height="11" uuid="d69a0cbc-b671-487a-95e5-157b3847595c"/>
-				<textElement verticalAlignment="Middle">
-					<font size="7" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{peli_precio_venta}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="15" y="11" width="77" height="10" uuid="4d0b636a-f0aa-4547-b638-8dc0ca9ef94d"/>
@@ -286,6 +283,13 @@ LIMIT 1]]>
 				</textElement>
 				<text><![CDATA[Devolver ante de:]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="112" y="51" width="52" height="11" uuid="aa0db2a1-77d6-4990-9642-84c1fe997995"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peli_precio_renta}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>

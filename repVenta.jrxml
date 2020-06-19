@@ -125,8 +125,8 @@ ORDER BY nota.nota_fecha DESC]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<image>
-				<reportElement x="124" y="0" width="326" height="79" uuid="dde6e567-7932-40a0-9212-e0e28b2ab909"/>
-				<imageExpression><![CDATA["C:\\Users\\Yisus\\Desktop\\UAZ\\proyectoPOOII\\img\\newLogoNA.png"]]></imageExpression>
+				<reportElement x="152" y="0" width="308" height="79" uuid="a7a3a675-cd54-45c1-9fd2-9fe48f8ae091"/>
+				<imageExpression><![CDATA["C:\\logos\\logoms2.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

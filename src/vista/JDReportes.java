@@ -145,15 +145,17 @@ public class JDReportes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String path = "repVenta.jasper";
+        String path = "repVenta.jasper";
+        String titulo = "Reporte de Ventas";
         //Llamamos el método para que mande el Reporte de VENTAS
-        reporte(path);
+        reporte(path, titulo);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String path = "repRenta.jasper";
+        String titulo = "Reporte de Rentas";
         //Llamamos el método para que mande el Reporte de RENTA
-        reporte(path);
+        reporte(path, titulo);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -213,15 +215,15 @@ public class JDReportes extends javax.swing.JDialog {
     /**
      * Método para mostrar el Reporte de VENTA o RENTA de la películas
      */
-    private void reporte(String path) {
+    private void reporte(String path, String titulo) {
         try {
         conn = ConectarBD();
         JasperReport reporte = null;
-        
         reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
         
         JasperPrint jPrint =  JasperFillManager.fillReport(reporte, null, conn);
         JasperViewer view =  new JasperViewer(jPrint, false);
+        view.setTitle(titulo);
         view.setVisible(true);
         view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         } catch (SQLException | JRException ex) {

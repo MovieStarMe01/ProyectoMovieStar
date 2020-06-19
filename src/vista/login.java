@@ -99,6 +99,11 @@ public class login extends javax.swing.JDialog {
 
         txtPassword.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         txtPassword.setBorder(null);
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
         panelImage2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 20));
 
         jPanel1.add(panelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 230, 50));
@@ -177,58 +182,7 @@ public class login extends javax.swing.JDialog {
     }//GEN-LAST:event_verPassMouseClicked
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-      //checar si se llenaron los datos
-        if(txtUser.getText().equals("")){
-            //primero el usuario
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
-            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó el nombre del usuario</h2></html>","ERROR",
-                    0, miIcono);
-        }else if(txtPassword.getText().equals("")){
-            //luego la contraseña
-            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/contraIncorrecta.png"));
-            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó la contraseña</h2></html>","ERROR",
-                    0, miIcono);
-        }else{
-            //si se llegó aquí, se llenaron los datos
-            
-            //Obtengo la contraseña encriptada MD5
-            String contra = encriptar();
-            //Obtengo el usurio 
-            String usu = txtUser.getText();
-            
-            try {
-                /*
-                Utilizo el método verificarUP para verificar usuario y contraseña y le mando
-                como parámetro el usuario y la contraseña ya encriptada MD5
-                */
-                if(manager.getUsuarioDAO().verificaUP(usu, contra)){
-                    //Obtenemos el id del usuario que ingresó
-                    idUsu = manager.getUsuarioDAO().getIdUsuario(usu, contra);
-                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
-                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
-                    //Mando mensaje de que el logeo fue exitoso 
-                    JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso Bienvenido "+usu+" </h2></html>","BIENVENIDO",
-                        0, miIcono);
-                    //Creo una instancia de mi FrmePrincipal
-                    FrmePrincipal miVentana = new FrmePrincipal();
-                    //Hago visible miVentana
-                    miVentana.setVisible(true);
-                    //Cierro la ventana login
-                    this.dispose();
-                }else{
-                    //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
-                    JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>", "ERROR",
-                        JOptionPane.ERROR_MESSAGE);
-                    //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
-                    txtUser.setText("");
-                    txtPassword.setText("");
-                    txtUser.requestFocusInWindow(); 
-                }
-                
-            }catch(DAOException ex){
-                mensajeError(ex);
-            }// fin del catch
-        }// fin del else
+      iniciarSesion();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -236,6 +190,13 @@ public class login extends javax.swing.JDialog {
         JDRegistro miRegistro = new JDRegistro(null, true);
         miRegistro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        //si se presiona enter en el campo contraseña se hara la funcion del boton entrar
+        if (evt.getKeyCode() == java.awt.event.KeyEvent .VK_ENTER) {
+            iniciarSesion(); //Método que tienes que crearte
+        }// fin del if
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
@@ -346,5 +307,63 @@ public class login extends javax.swing.JDialog {
         String textoEncriptadoConMD5 = DigestUtils.md5Hex(contra); 
         return textoEncriptadoConMD5;
     }// fin del método encriptar
+
+    /**
+     * Método para iniciarSesion
+     */
+    private void iniciarSesion() {
+         //checar si se llenaron los datos
+        if(txtUser.getText().equals("")){
+            //primero el usuario
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó el nombre del usuario</h2></html>","ERROR",
+                    0, miIcono);
+        }else if(txtPassword.getText().equals("")){
+            //luego la contraseña
+            ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/contraIncorrecta.png"));
+            JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó la contraseña</h2></html>","ERROR",
+                    0, miIcono);
+        }else{
+            //si se llegó aquí, se llenaron los datos
+            
+            //Obtengo la contraseña encriptada MD5
+            String contra = encriptar();
+            //Obtengo el usurio 
+            String usu = txtUser.getText();
+            
+            try {
+                /*
+                Utilizo el método verificarUP para verificar usuario y contraseña y le mando
+                como parámetro el usuario y la contraseña ya encriptada MD5
+                */
+                if(manager.getUsuarioDAO().verificaUP(usu, contra)){
+                    //Obtenemos el id del usuario que ingresó
+                    idUsu = manager.getUsuarioDAO().getIdUsuario(usu, contra);
+                    //Creamos un icono y le aplicamos una imagen para colocarla en el JOptionPane
+                    ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/loginExitoso.png"));
+                    //Mando mensaje de que el logeo fue exitoso 
+                    JOptionPane.showMessageDialog(null, "<html><h2>Login Exitoso Bienvenido "+usu+" </h2></html>","BIENVENIDO",
+                        0, miIcono);
+                    //Creo una instancia de mi FrmePrincipal
+                    FrmePrincipal miVentana = new FrmePrincipal();
+                    //Hago visible miVentana
+                    miVentana.setVisible(true);
+                    //Cierro la ventana login
+                    this.dispose();
+                }else{
+                    //Mando mensaje de que el logeo tuvo un error en contraseña o nickName
+                    JOptionPane.showMessageDialog(null, "<html><h2>Usuario o Contraseña Incorrecta</h2></html>", "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+                    //Limpio las cajas de texto y pongo el cursor en el campo de texto en txtUser
+                    txtUser.setText("");
+                    txtPassword.setText("");
+                    txtUser.requestFocusInWindow(); 
+                }
+                
+            }catch(DAOException ex){
+                mensajeError(ex);
+            }// fin del catch
+        }// fin del else
+    }// fin del método iniciarSesion
     
 }// fin de la clase login
