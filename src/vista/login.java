@@ -318,11 +318,15 @@ public class login extends javax.swing.JDialog {
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/faltaNombre.png"));
             JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó el nombre del usuario</h2></html>","ERROR",
                     0, miIcono);
+            //Colocamos el focus en el campo usuario
+            txtUser.requestFocusInWindow();
         }else if(txtPassword.getText().equals("")){
             //luego la contraseña
             ImageIcon miIcono = new ImageIcon(getClass().getResource("/imgIconos/contraIncorrecta.png"));
             JOptionPane.showMessageDialog(null, "<html><h2>No se ingresó la contraseña</h2></html>","ERROR",
                     0, miIcono);
+            //Colocamos el focus en el campo contraseña
+            txtPassword.requestFocusInWindow();
         }else{
             //si se llegó aquí, se llenaron los datos
             

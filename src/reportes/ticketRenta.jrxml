@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="860" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="5" isIgnorePagination="true" uuid="b5356ab1-3c5f-4f9f-9cff-7727363c3a55">
 	<property name="ireport.zoom" value="2.803951195851139"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="240"/>
+	<property name="ireport.y" value="330"/>
 	<queryString>
 		<![CDATA[SELECT * FROM nota 
 INNER JOIN peliculas ON nota.nota_peli_id = peliculas.peli_id
@@ -281,7 +281,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Center">
 					<font size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Devolver ante de:]]></text>
+				<text><![CDATA[Devolver antes de:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="112" y="51" width="52" height="11" uuid="aa0db2a1-77d6-4990-9642-84c1fe997995"/>
